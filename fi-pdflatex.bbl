@@ -21,8 +21,8 @@
 \providecommand{\BIBdecl}{\relax}
 \BIBdecl
 
-\bibitem{activemq_in_action}
-B.~Snyder, D.~Bosnanac, and R.~Davies, \emph{{ActiveMQ in action}}.\hskip 1em
-  plus 0.5em minus 0.4em\relax Manning, 2011.
+\bibitem{sagas_publ}
+H.~Garcia-Molina and K.~Salem, ``Sagas,'' \emph{ACM SIGMOD Record}, vol.~16,
+  no.~3, pp. 249--259, 1987.
 
 \end{thebibliography}
