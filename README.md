@@ -15,5 +15,6 @@ More details about the thesis:
 [https://issues.jboss.org/browse/JBTM-2920](https://issues.jboss.org/browse/JBTM-2920)
 
 
+The current status can be viewed in the file [fi-pdflatex.pdf](fi-pdflatex.pdf)
 
 
