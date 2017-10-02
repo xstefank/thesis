@@ -70,9 +70,24 @@ abstract
 
 This chapter introduces the basic concepts of distributed transactions and common problems of managing transactions across multiple nodes.
 
-\section{Consensus protocols}
+\section{Transactions}
+
+An atomic transaction is an unit of processing that provides all-or-nothing property to the work that is conducted within its scope, also ensuring that shared resources are protected from multiple users \cite{java_tran_processing}. It represents an unified and inseparable series of operations that are either all provided or none of them take effect. 
+
+Every transaction is associated with a transaction coordinator or transaction manager which is responsible for the control and supervision of the participants performing individual operations. It also administer the comprehensive result of the transaction. Applications are commonly required only to contact the transaction manager about the start of the transaction.
+
+The transaction can end in two forms: it can be either \textit{commited} or \textit{aborted}. The commit determines the successful outcome - all operations within the transaction have been performed and their results are permanently stored in a durable storage. The abort means that all performed operations have been undone and the system is in the same state as if the transaction have not been started.
 
 \subsection{ACID}
+
+\subsection{Distributed transactions}
+
+A distributed transaction is the transaction performed in a distributed system.  
+The distributed system consists of a number of independent computers connected through a communication network. Such systems are liable to the frequent failures of individual participants or communication channels between them. 
+
+The transaction manager can be implemented as a separate service or being placed with some participant or the client. \textbf{TODO}
+
+\section{Consensus protocols}
 
 \subsection{2PCP}
 
