@@ -72,22 +72,47 @@ This chapter introduces the basic concepts of transactions, their properties and
 
 \section{Atomic transaction}
 
-An atomic transaction is an unit of processing that provides all-or-nothing property to the work that is conducted within its scope, also ensuring that shared resources are protected from multiple users \cite{java_tran_processing}. It represents an unified and inseparable series of operations that are either all provided or none of them take effect. 
+An atomic transaction is an unit of processing that provides all-or-nothing property to the work that is conducted within its scope, also ensuring that shared resources are protected from multiple users \cite{java_tran_processing}. It represents an unified and inseparable sequence of operations that are either all provided or none of them take effect. 
 
-Every transaction is associated with a transaction coordinator or transaction manager which is responsible for the control and supervision of the participants performing individual operations. It also administer the comprehensive result of the transaction. Applications are commonly required only to contact the transaction manager about the start of the transaction.
+From
+
+Every transaction is associated with a transaction coordinator or transaction manager which is responsible for the control and supervision of the participants performing individual operations. Applications are commonly required only to contact the transaction manager about the start of the transaction. Transaction managers will be described in more detail in the following section.
 
 The transaction can end in two forms: it can be either \textit{commited} or \textit{aborted}. The commit determines the successful outcome - all operations within the transaction have been performed and their results are permanently stored in a durable storage. The abort means that all performed operations have been undone and the system is in the same state as if the transaction have not been started.
 
-\subsection{ACID properties}
+\section{ACID properties}
 
-\subsection{Two phase commit protocol}
+A transaction can be viewed as a group of business logic statements with certain shared properties \cite{nar_wf}. Generally considered properties are one or more of atomicity, consistency, isolation and durability. These four properties are often referenced as ACID properties \cite{haerder_reuter_1983} and they describe the major points important for the transaction concepts.
+
+\subsection{Atomicity}
+
+\subsection{Consistency}
+
+\subsection{Isolation}
+
+\subsection{Durability}
+
 
 \section{Distributed transactions}
 
 A distributed transaction is the transaction performed in a distributed system.  
-The distributed system consists of a number of independent computers connected through a communication network. Such systems are liable to the frequent failures of individual participants or communication channels between them. 
+The distributed system consists of a number of independent devices connected through a communication network. Such systems are liable to the frequent failures of individual participants or communication channels between them. 
 
 The transaction manager can be implemented as a separate service or being placed with some participant or the client. \textbf{TODO}
+
+\section{Transaction manager}
+
+A transaction manager is a component liable for coordinating transactions in the sequential or parallel execution across one or more resources. It provides proper and complete execution and it administers the comprehensive result of the transaction.
+
+The main responsibilities of transaction manager are starting and ending (commit or abort) of the transaction, management of the transaction context, supervision of transactions scoped across multiple resources and the recovery from failure.
+
+\subsection{Local transaction manager}
+
+A local transaction manager or a resource manager is responsible for the coordination of transactions concerning only a single resource. Because of its scope it is often build in directly to the resource. The span of the resource is defined by its managing platform. 
+
+The resource manager is required to provide a support for the participation in the global transactions that span over several resources. This means that it is effectively capable to handle complete transaction processing to the different transaction manager.
+
+\section{Failure handling}
 
 \section{Saga pattern}
 

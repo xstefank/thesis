@@ -25,6 +25,16 @@
 M.~Little, J.~Maron, and G.~Pavlik, \emph{Java transaction processing}.\hskip
   1em plus 0.5em minus 0.4em\relax Prentice Hall, 2004.
 
+\bibitem{nar_wf}
+\BIBentryALTinterwordspacing
+M.~Musgrove, ``Narayana + wildfly,'' 2015. [Online]. Available:
+  \url{https://developer.jboss.org/servlet/JiveServlet/download/53044-3-129391/jbug-brno-transactions.pdf}
+\BIBentrySTDinterwordspacing
+
+\bibitem{haerder_reuter_1983}
+T.~Haerder and A.~Reuter, ``Principles of transaction-oriented database
+  recovery,'' \emph{ACM Computing Surveys}, vol.~15, no.~4, pp. 287--317, 1983.
+
 \bibitem{sagas_publ}
 H.~Garcia-Molina and K.~Salem, ``Sagas,'' \emph{ACM SIGMOD Record}, vol.~16,
   no.~3, pp. 249--259, 1987.
