@@ -114,32 +114,43 @@ The resource manager is required to provide a support for the participation in t
 
 \section{Failure handling}
 
-\section{Saga pattern}
-
-A saga, as described in the original publication \cite{sagas_publ}, is a long lived transaction that can be written as a sequence of transactions that can be interleaved with other transactions. Each operation that is a part of the saga represents an unit of work that can be undone by the compensation action. The saga guarantees that either all operations complete successfully, or the corresponding compensation actions are run for all executed operations to cancel the partial processing.
-
-\subsection{Participants}
 
 
 
 
+CA CP theorem - CAP
 
 
 
 
 \chapter{Microservices architecture pattern}
 
-\chapter{Transactions in distributed environments}
+
 
 \chapter{Communication patterns}
 
-\section{2PC}
+\section{Consensus protocols}
 
-\section{CQRS}
+\subsection{2PC}
 
-\subsection{Axon framework}
+\subsection{3PC raft paxos}
 
-\subsection{Eventuate.io}
+\section{Event based protocols}
+
+Eventual consistency
+
+\subsection{CQRS}
+
+
+
+\chapter{Transactions in distributed environments}
+
+\section{Saga pattern}
+
+A saga, as described in the original publication \cite{sagas_publ}, is a long lived transaction that can be written as a sequence of transactions that can be interleaved with other transactions. Each operation that is a part of the saga represents an unit of work that can be undone by the compensation action. The saga guarantees that either all operations complete successfully, or the corresponding compensation actions are run for all executed operations to cancel the partial processing.
+
+\subsection{Participants}
+
 
 \chapter{Conclusion}
 
