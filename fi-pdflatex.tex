@@ -92,6 +92,10 @@ Atomicity is generally achieved by the usage of the consensus multi-phase protoc
 
 \subsection{Consistency}
 
+Consistency describes that the transaction maintains the consistency of the system and resources that it is performed on. When the transaction is started on the consistent system this system must remain consistent when the transaction ends - it moves from one consistent state to another.
+
+Unlike other transactional properties (A, I, D), consistency cannot be realized by the transaction system as it does not hold any semantic knowledge about the resources it manipulates \cite{java_tran_processing}. Therefore achieving this property is the responsibility of the application code.
+
 \subsection{Isolation}
 
 \subsection{Durability}

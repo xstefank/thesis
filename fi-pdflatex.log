@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.9.30)  29 OCT 2017 15:14
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.9.30)  29 OCT 2017 15:39
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1968,20 +1968,20 @@ Package catoptions Warning: Undefined options
 (catoptions)                fontenc.sty,T1,. 
 (catoptions)                Default action already taken in each case .
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 173.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 173.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 177.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 177.
 (./fi-pdflatex.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 173.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 173.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 177.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 177.
 Package rerunfilecheck Info: File `fi-pdflatex.out' has not changed.
 (rerunfilecheck)             Checksum: E87FB118BF1503C41C84914A4FF5BA33;1613.
  ) 
 Here is how much of TeX's memory you used:
- 35799 strings out of 494946
- 640780 string characters out of 6180981
+ 35801 strings out of 494946
+ 640800 string characters out of 6180981
  740818 words of memory out of 5000000
  38356 multiletter control sequences out of 15000+600000
- 59804 words of font info for 78 fonts, out of 8000000 for 9000
+ 59937 words of font info for 79 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  69i,8n,84p,10403b,466s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/tex-gyre/q-ec.enc}{/usr/share/
@@ -1989,10 +1989,10 @@ texlive/texmf-dist/fonts/enc/dvips/tex-gyre/q-ec-sc.enc}</usr/share/texlive/tex
 mf-dist/fonts/type1/public/tex-gyre/qplb.pfb></usr/share/texlive/texmf-dist/fon
 ts/type1/public/tex-gyre/qplr.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
 blic/tex-gyre/qplri.pfb>
-Output written on fi-pdflatex.pdf (17 pages, 132255 bytes).
+Output written on fi-pdflatex.pdf (17 pages, 132757 bytes).
 PDF statistics:
- 283 PDF objects out of 1000 (max. 8388607)
- 234 compressed objects within 3 object streams
+ 284 PDF objects out of 1000 (max. 8388607)
+ 235 compressed objects within 3 object streams
  50 named destinations out of 1000 (max. 500000)
  14671 words of extra memory for PDF output out of 17280 (max. 10000000)
 
