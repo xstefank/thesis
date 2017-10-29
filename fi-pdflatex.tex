@@ -86,6 +86,10 @@ A transaction can be viewed as a group of business logic statements with certain
 
 \subsection{Atomicity}
 
+The transaction consists of a sequence of operations performed on different resources or by different participants. Atomicity means that all operation in the transaction are performed as if they were a single operation. When the transaction commits successfully all of its participants are also required to perform a valid commit. Conversely, if the transaction fails and is aborted all performed operations and effects are forced to be undone. This defines a possibility to abort at any point so that all changes done by the transaction will be reverted to the state before the transaction start.
+
+Atomicity is generally achieved by the usage of the consensus multi-phase protocols. Standardized protocol is the two phase commit protocol which is used by the majority of modern transaction systems including Narayana. Consensus protocols together with other approaches for obtaining the atomicity property will be investigated in the following section.
+
 \subsection{Consistency}
 
 \subsection{Isolation}
@@ -143,7 +147,7 @@ Eventual consistency
 
 
 
-\chapter{Transactions in distributed environments}
+\chapter{Transactions in distributed environment}
 
 \section{Saga pattern}
 

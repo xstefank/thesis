@@ -17,7 +17,7 @@
 \BOOKMARK [2][-]{subsection.4.1.2}{\0403PC\040raft\040paxos}{section.4.1}% 17
 \BOOKMARK [1][-]{section.4.2}{\040Event\040based\040protocols}{chapter.4}% 18
 \BOOKMARK [2][-]{subsection.4.2.1}{\040CQRS}{section.4.2}% 19
-\BOOKMARK [0][-]{chapter.5}{Transactions\040in\040distributed\040environments}{}% 20
+\BOOKMARK [0][-]{chapter.5}{Transactions\040in\040distributed\040environment}{}% 20
 \BOOKMARK [1][-]{section.5.1}{\040Saga\040pattern}{chapter.5}% 21
 \BOOKMARK [2][-]{subsection.5.1.1}{\040Participants}{section.5.1}% 22
 \BOOKMARK [0][-]{chapter.6}{Conclusion}{}% 23
