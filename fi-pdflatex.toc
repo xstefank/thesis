@@ -1,16 +1,19 @@
 \select@language {english}
 \contentsline {chapter}{\numberline {1}\bfseries Introduction}{1}{chapter.1}
-\contentsline {chapter}{\numberline {2}\bfseries Transactions}{2}{chapter.2}
-\contentsline {section}{\numberline {2.1}\slshape Atomic transaction}{2}{section.2.1}
-\contentsline {section}{\numberline {2.2}\slshape ACID properties}{2}{section.2.2}
-\contentsline {subsection}{\numberline {2.2.1}\rmfamily Atomicity}{3}{subsection.2.2.1}
-\contentsline {subsection}{\numberline {2.2.2}\rmfamily Consistency}{3}{subsection.2.2.2}
-\contentsline {subsection}{\numberline {2.2.3}\rmfamily Isolation}{3}{subsection.2.2.3}
-\contentsline {subsection}{\numberline {2.2.4}\rmfamily Durability}{4}{subsection.2.2.4}
-\contentsline {section}{\numberline {2.3}\slshape Distributed transactions}{4}{section.2.3}
-\contentsline {section}{\numberline {2.4}\slshape Transaction manager}{4}{section.2.4}
-\contentsline {subsection}{\numberline {2.4.1}\rmfamily Local transaction manager}{4}{subsection.2.4.1}
-\contentsline {section}{\numberline {2.5}\slshape Failure handling}{5}{section.2.5}
+\contentsline {chapter}{\numberline {2}\bfseries Transaction concepts}{2}{chapter.2}
+\contentsline {section}{\numberline {2.1}\slshape Transaction}{2}{section.2.1}
+\contentsline {section}{\numberline {2.2}\slshape 2PC protocol}{2}{section.2.2}
+\contentsline {section}{\numberline {2.3}\slshape ACID properties}{2}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}\rmfamily Atomicity}{3}{subsection.2.3.1}
+\contentsline {subsection}{\numberline {2.3.2}\rmfamily Consistency}{3}{subsection.2.3.2}
+\contentsline {subsection}{\numberline {2.3.3}\rmfamily Isolation}{3}{subsection.2.3.3}
+\contentsline {subsubsection}{\numberline {2.3.3.1} Isolation levels}{4}{subsubsection.2.3.3.1}
+\contentsline {subsection}{\numberline {2.3.4}\rmfamily Durability}{4}{subsection.2.3.4}
+\contentsline {section}{\numberline {2.4}\slshape Transaction models}{4}{section.2.4}
+\contentsline {section}{\numberline {2.5}\slshape Distributed transactions}{4}{section.2.5}
+\contentsline {section}{\numberline {2.6}\slshape Transaction manager}{4}{section.2.6}
+\contentsline {subsection}{\numberline {2.6.1}\rmfamily Local transaction manager}{5}{subsection.2.6.1}
+\contentsline {section}{\numberline {2.7}\slshape Failure handling}{5}{section.2.7}
 \contentsline {chapter}{\numberline {3}\bfseries Microservices architecture pattern}{6}{chapter.3}
 \contentsline {chapter}{\numberline {4}\bfseries Communication patterns}{7}{chapter.4}
 \contentsline {section}{\numberline {4.1}\slshape Consensus protocols}{7}{section.4.1}

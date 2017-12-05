@@ -42,8 +42,8 @@
     advisor       = {Bruno Rossi, PhD},
     title         = {Use of Transactions within a Reactive Microservices Environment},
     TeXtitle      = {Use of Transactions within a Reactive Microservices Environment},
-    keywords      = {transactions, Narayana, JTA, reactive, microservices, asynchronous, saga},
-    TeXkeywords   = {transactions, Narayana, JTA, reactive, microservices, asynchronous, saga},
+    keywords      = {transactions, Narayana, JTA, reactive, microservices, asynchronous, saga, compensating transactions},
+    TeXkeywords   = {transactions, Narayana, JTA, reactive, microservices, asynchronous, saga, compensating transactions},
 }
 \thesislong{abstract}{
 abstract
@@ -63,22 +63,26 @@ abstract
 \usepackage{amsfonts}
 \usepackage{url}
 \usepackage{menukeys}
+
+
 \begin{document}
 \chapter{Introduction}
 
-\chapter{Transactions}
+\chapter{Transaction concepts}
 
-This chapter introduces the basic concepts of transactions, their properties and common problems of the management of transactions across multiple nodes in the distributed systems. 
+This chapter introduces the basic notions of transactions, their properties and common problems of the management of transactions across multiple nodes in the distributed systems. 
 
-\section{Atomic transaction}
+\section{Transaction}
 
-An atomic transaction is an unit of processing that provides all-or-nothing property to the work that is conducted within its scope, also ensuring that shared resources are protected from multiple users \cite{java_tran_processing}. It represents an unified and inseparable sequence of operations that are either all provided or none of them take effect. 
+A transaction is an unit of processing that provides all-or-nothing property to the work that is conducted within its scope, also ensuring that shared resources are protected from multiple users \cite{java_tran_processing}. It represents an unified and inseparable sequence of operations that are either all provided or none of them take effect. 
 
-From
-
-Every transaction is associated with a transaction coordinator or transaction manager which is responsible for the control and supervision of the participants performing individual operations. Applications are commonly required only to contact the transaction manager about the start of the transaction. Transaction managers will be described in more detail in the following section.
+From the application point of view there exist several transaction models in which the transactions can be executed. The applicable models in the transaction management are local, programmatic and declarative transaction models. All three models will be described in detail in the following section.
 
 The transaction can end in two forms: it can be either \textit{commited} or \textit{aborted}. The commit determines the successful outcome - all operations within the transaction have been performed and their results are permanently stored in a durable storage. The abort means that all performed operations have been undone and the system is in the same state as if the transaction have not been started.
+
+Generally the achieving of above features may differ. The most common pattern for the transaction processing is a two phase commit protocol with the ACID transactions. Other approaches are based on the relaxation of the one or more of ACID properties to adjust to the real world environments.
+
+\section{2PC protocol}
 
 \section{ACID properties}
 
@@ -88,7 +92,7 @@ A transaction can be viewed as a group of business logic statements with certain
 
 The transaction consists of a sequence of operations performed on different resources or by different participants. Atomicity means that all operation in the transaction are performed as if they were a single operation. When the transaction commits successfully all of its participants are also required to perform a valid commit. Conversely, if the transaction fails and is aborted all performed operations and effects are forced to be undone. This defines a possibility to abort at any point so that all changes done by the transaction will be reverted to the state before the transaction start.
 
-Atomicity is generally achieved by the usage of the consensus multi-phase protocols. Standardized protocol is the two phase commit protocol which is used by the majority of modern transaction systems including Narayana. Consensus protocols together with other approaches for obtaining the atomicity property will be investigated in the following section.
+Atomicity is generally achieved by the usage of the consensus multi-phase protocols. Standardized protocol is the two phase commit protocol which is used by the majority of modern transaction systems. 
 
 \subsection{Consistency}
 
@@ -104,7 +108,13 @@ From the perspective of an external user the isolation property means that the t
 
 As an instinctive extension of the consistency property, the serial execution of the transaction keeps the consistent state. The execution of the transactions in parallel therefore cannot result into the inconsistent system.
 
+\subsubsection{Isolation levels}
+
 \subsection{Durability}
+
+\section{Transaction models}
+
+\url{https://ress.infoq.com/minibooks/JTDS/en/pdf/javatransactionsbook.pdf?Expires=1512505329&Signature=NBftdwZSbBAKvAxQ1LfPMzvO~9vusCCd1WxWIiqcSU7Ja-JB7LtolrFSCIBkZM2mDYNc6Zw9erfuo-31FosKWWx64~tUEPbxBD781bVplO3Maal3Bji8wMnFvROJucBH60m3-WzHJTlCJN7OxJ6l1ciBJNlSGY4HSc~QzSjEbT8_&Key-Pair-Id=APKAIMZVI7QH4C5YKH6Q}
 
 
 \section{Distributed transactions}
@@ -116,7 +126,7 @@ The transaction manager can be implemented as a separate service or being placed
 
 \section{Transaction manager}
 
-A transaction manager is a component liable for coordinating transactions in the sequential or parallel execution across one or more resources. It provides proper and complete execution and it administers the comprehensive result of the transaction.
+Every transaction is associated with a transaction coordinator or transaction manager which is responsible for the control and supervision of the participants performing individual operations. It is a component liable for coordinating transactions in the sequential or parallel execution across one or more resources. It provides proper and complete execution and it administers the comprehensive result of the transaction.  Applications are commonly required only to contact the transaction manager about the start of the transaction.
 
 The main responsibilities of transaction manager are starting and ending (commit or abort) of the transaction, management of the transaction context, supervision of transactions scoped across multiple resources and the recovery from failure.
 
