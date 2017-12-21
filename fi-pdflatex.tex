@@ -102,15 +102,20 @@ Unlike other transactional properties (A, I, D), consistency cannot be realized 
 
 \subsection{Isolation}
 
-An isolation property takes effect when multiple transactions can be executed concurrently on the same resources. It means that concurrent transactions do not interfere one with another. Therefore each concurrent execution on the shared resource must be equivalent to some serial ordering of contained transactions which is why the isolation is often also referenced as serializability.
+An isolation property takes effect when multiple transactions can be executed concurrently on the same resources. That means concurrent transactions can not interfere one with another. Therefore each concurrent execution on the shared resource must be equivalent to some serial ordering of contained transactions which is why the isolation is often also referenced as serializability.
 
-From the perspective of an external user the isolation property means that the transaction appears as it was executed entirely by itself. This means that even if there are multiple transactions in the system executed concurrently, this fact is hidden from the external views when the system is serializable.
+From the perspective of an external user the isolation property means that the transaction appears as it was executed entirely by itself. This means that even if there are multiple transactions in the system executed concurrently, this fact is hidden from the every external view.
 
 As an instinctive extension of the consistency property, the serial execution of the transaction keeps the consistent state. The execution of the transactions in parallel therefore cannot result into the inconsistent system.
 
 \subsubsection{Isolation levels}
 
+As transactions were first defined only in the database environment, in practice we distinguish several levels that describe to which extent the isolation succeeds.
+
+
 \subsection{Durability}
+
+
 
 \section{Transaction models}
 
