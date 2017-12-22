@@ -154,6 +154,46 @@ CA CP theorem - CAP
 
 \chapter{Microservices architecture pattern}
 
+This chapter introduces the basic concept of microservices and describes why modern scalable enterprise applications should be developed implementing this pattern.
+
+\section{Architecture pattern}
+
+Microservices as a subset of service oriented architecture (SOA) \cite{soa} is an architectural pattern which offers an intuitive approach to common problems following the software development. Instead of SOA which builds the applications around the logical domain, microservices are built around the business model. Each microservice represents the part of the system.
+
+\subsection{Monolithic architecture}
+
+When describing microservices, the best way is to start by defining its opposite, monolithic architecture. When the application is developed in a monolithic fashion, all of its content is being implemented and deployed as a single archive. Every component, i. e. "a unit of software that is independently replaceable and upgradeable" \cite{microservices}, is tightly coupled with the application, which is using it. Because of the easy development, scalability and deployment of monolithic software this approach is being preferred by the majority of modern enterprise applications. However, when the application needs to be expanded, it can be difficult to maintain. For instance, even because of the minor change or update in the single component, the scaling and continuous deployment of the whole application can stagnate. 
+
+\subsection{Microservice architecture}
+
+Microservices introduced the application separation into  the self-maintained units – services \cite{intro_to_microservices}. The service is a single scalable and deployable unit, which is not dependent on any context. This means that the service can be maintained apart from applications which use it. In addition, microservices are being developed independently from other services. Each instance is managing its resources and is not able to directly access resources of any other service. This allows each request to data to be processed by the managing service. Service corresponds to component in monolithic architecture.
+
+One of the biggest advantages of microservices is the ability to be deployed to the server, not affecting other applications or services. This allows separated teams to develop and maintain services independently. Applications based on this architecture utilize services by remote procedure calls instead of in-process calls used in monolithic architecture.
+
+\section{Principles of microservices}
+
+This section is inspired by the talk delivered by Sam Newman \cite{principles_of_microservices} in 2015 on the Devoxx conference in Belgium. In this presentation he described microservices from the business perspective. By his definition microservices are "Small autonomous services that work together" and they are based on eight principles.
+
+\begin{enumerate}
+	
+	\item \textbf{Modeled around the business domain} -- As was stated in the beginning of this chapter, microservices as well as the teams which are maintaining them correspond to the business model. This means that the requirements on their functionality do not change frequently. This architecture scales applications vertically -- changes processed in one microservice do not affect other services and the system itself. They allow developers to focus on the particular part of the system rather than some specific technology. 
+	
+	\item \textbf{Automation} -- The services are managed by teams. The team is responsible for development, administration, deployment and the life cycle of the service infrastructure. When the number of services is small it is possible to maintain them manually but when their number increases, this will became unacceptable. Automation processes like testing or continuous delivery then allow the enterprises to scale more efficiently and speed up the mechanism of service coordination.
+	
+	\item \textbf{Hide the implementation details} -- Microservices use external resources. Often, there is a requirement to share the same resource between two or more services. One possibility to do this is by providing the resource directly. The problem with this approach is that when one service changes the resource other services need to react to the change. The idea of this principle is that each microservice maintains its own resources. It  provides the API\footnote{Application Programming Interface} to access them. This allows the developers to decide what is hidden. Every request for the data must be processed through the public interface.
+	
+	\item \textbf{Decentralization} -- Microservice architecture is build around the idea of self-sustaining development. Services are maintained autonomously. When the teams are not dependent on each other, they can work more freely which allows faster improvement. This principle also corresponds to partitioning of responsibilities. It accentuates that relevant business logic should be kept in the services themselves and the communication between them must be as simple as possible.  
+	
+	\item \textbf{Independent deployments} -- This is the most important principle of this architecture. It expands the base provided by the option of independent development. When the service is being deployed it should be the requirement that it cannot influence the lifespan of any other service. To achieve this, various techniques like consumer-driven contracts or co-existing endpoints can be used. Consumer-driven contracts make services to state their explicit expectations. These requirements are supported by the provided test suite for individual parts of the domain and they are run with each CI\footnote{Continuous integration} build. Co-existing endpoints model describes the situation when customers need to upgrade to the new version of the service. As customers cannot be forced to upgrade at the same time as the release happens, the idea is to make new endpoint which would process the client requests. Customers use both endpoints depending on the version their applications require. This allows them to upgrade. When the endpoint is no longer in use, it can be safely removed.
+	
+	\item \textbf{Customer first} -- Services exist to be called. It is indispensable to make these calls as simple as possible for the customers. For the developers it can be useful to have any feedback from the clients that use their service. The understanding of the API can be supported by a good documentation provided by API frameworks like Swagger \cite{swagger}, or by the service discovery to propagate services and make the discovery of service providers easier. To combine this information we can use the humane registries \cite{humane_registry} which indicate the human interaction. 
+	
+	\item \textbf{Failure isolation} -- Even if microservices force distributed development it is not a necessity that the failure of one service cannot influence another. This principle describes the distribution of resources to avoid the single point of failure. As there are many vulnerabilities in applications which can break, there is no precise manual on how to attain this principle.
+	
+	\item \textbf{High observability} -- Monitoring is an important part of development. As the microservice architecture is distributed it can be complicated to process this information. To make it more accessible aggregation is essential. Storing all logging entries and statistics in one place can highly impact the monitoring process. Another relevant point is to track the service calls as the services typically communicate with other services. By logging this information we can ensure traceability in case of failure.
+	
+\end{enumerate}
+
 
 
 \chapter{Communication patterns}
