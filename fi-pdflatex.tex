@@ -92,17 +92,17 @@ A transaction can be viewed as a group of business logic statements with certain
 
 The transaction consists of a sequence of operations performed on different resources or by different participants. Atomicity means that all operation in the transaction are performed as if they were a single operation. When the transaction commits successfully all of its participants are also required to perform a valid commit. Conversely, if the transaction fails and is aborted all performed operations and effects are forced to be undone. This defines a possibility to abort at any point so that all changes done by the transaction will be reverted to the state before the transaction start.
 
-Atomicity is generally achieved by the usage of the consensus multi-phase protocols. Standardized protocol is the two phase commit protocol which is used by the majority of modern transaction systems. 
+The atomicity is generally achieved by the usage of the consensus multi-phase protocols. Standardized protocol is the two phase commit protocol which is used by the majority of modern transaction systems. 
 
 \subsection{Consistency}
 
-Consistency describes that the transaction maintains the consistency of the system and resources that it is performed on. When the transaction is started on the consistent system this system must remain consistent when the transaction ends - it moves from one consistent state to another.
+The consistency describes that the transaction maintains the consistency of the system and resources that it is performed on. When the transaction is started on the consistent system this system must remain consistent when the transaction ends - it moves from one consistent state to another.
 
 Unlike other transactional properties (A, I, D), consistency cannot be realized by the transaction system as it does not hold any semantic knowledge about the resources it manipulates \cite{java_tran_processing}. Therefore achieving this property is the responsibility of the application code.
 
 \subsection{Isolation}
 
-An isolation property takes effect when multiple transactions can be executed concurrently on the same resources. That means concurrent transactions can not interfere one with another. Therefore each concurrent execution on the shared resource must be equivalent to some serial ordering of contained transactions which is why the isolation is often also referenced as serializability.
+The isolation property takes effect when multiple transactions can be executed concurrently on the same resources. That means concurrent transactions can not interfere one with another. Therefore each concurrent execution on the shared resource must be equivalent to some serial ordering of contained transactions which is why the isolation is often also referenced as serializability.
 
 From the perspective of an external user the isolation property means that the transaction appears as it was executed entirely by itself. This means that even if there are multiple transactions in the system executed concurrently, this fact is hidden from the every external view.
 
@@ -114,6 +114,8 @@ As transactions were first defined only in the database environment, in practice
 
 
 \subsection{Durability}
+
+This property characterizes that all changes done by the transactions must be persistent, i. e. any state changes performed during the transaction must be preserved in case of any subsequent system failure. How the state is preserved usually depends on the particular implementation of the transaction system. Generally, to achieve this property the use of the persistent storage like a disk drive or a cloud is sufficient. Even if this kind of storage is acceptable, it still can not prevent data loss in the case of the catastrophic failure.
 
 
 
