@@ -24,8 +24,12 @@
 \BOOKMARK [2][-]{subsection.4.1.2}{\0403PC\040raft\040paxos}{section.4.1}% 24
 \BOOKMARK [1][-]{section.4.2}{\040Event\040based\040protocols}{chapter.4}% 25
 \BOOKMARK [2][-]{subsection.4.2.1}{\040CQRS}{section.4.2}% 26
-\BOOKMARK [0][-]{chapter.5}{Transactions\040in\040distributed\040environment}{}% 27
-\BOOKMARK [1][-]{section.5.1}{\040Saga\040pattern}{chapter.5}% 28
-\BOOKMARK [2][-]{subsection.5.1.1}{\040Participants}{section.5.1}% 29
-\BOOKMARK [0][-]{chapter.6}{Conclusion}{}% 30
-\BOOKMARK [0][-]{section*.6}{Bibliography}{}% 31
+\BOOKMARK [0][-]{chapter.5}{Saga\040pattern}{}% 27
+\BOOKMARK [1][-]{section.5.1}{\040Participants}{chapter.5}% 28
+\BOOKMARK [1][-]{section.5.2}{\040Current\040support}{chapter.5}% 29
+\BOOKMARK [2][-]{subsection.5.2.1}{\040Axon\040framework}{section.5.2}% 30
+\BOOKMARK [2][-]{subsection.5.2.2}{\040Eventuate.io}{section.5.2}% 31
+\BOOKMARK [2][-]{subsection.5.2.3}{\040Narayana\040LRA}{section.5.2}% 32
+\BOOKMARK [2][-]{subsection.5.2.4}{\040Example\040application}{section.5.2}% 33
+\BOOKMARK [0][-]{chapter.6}{Conclusion}{}% 34
+\BOOKMARK [0][-]{section*.6}{Bibliography}{}% 35

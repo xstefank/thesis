@@ -213,14 +213,23 @@ Eventual consistency
 \subsection{CQRS}
 
 
-
-\chapter{Transactions in distributed environment}
-
-\section{Saga pattern}
+\chapter{Saga pattern}
 
 A saga, as described in the original publication \cite{sagas_publ}, is a long lived transaction that can be written as a sequence of transactions that can be interleaved with other transactions. Each operation that is a part of the saga represents an unit of work that can be undone by the compensation action. The saga guarantees that either all operations complete successfully, or the corresponding compensation actions are run for all executed operations to cancel the partial processing.
 
-\subsection{Participants}
+\section{Participants}
+
+\section{Current support}
+
+In this subsection we explore the current implementation of the saga pattern available for the enterprise use.
+
+\subsection{Axon framework}
+
+\subsection{Eventuate.io}
+
+\subsection{Narayana LRA}
+
+\subsection{Example application}
 
 
 \chapter{Conclusion}
