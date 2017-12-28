@@ -76,4 +76,22 @@ M.~Fowler, ``Humaneregistry,'' 2008. [Online]. Available:
 H.~Garcia-Molina and K.~Salem, ``Sagas,'' \emph{ACM SIGMOD Record}, vol.~16,
   no.~3, pp. 249--259, 1987.
 
+\bibitem{axon_framework}
+\BIBentryALTinterwordspacing
+A.~framework, ``{Axon framework},'' 2017. [Online]. Available:
+  \url{http://www.axonframework.org/}
+\BIBentrySTDinterwordspacing
+
+\bibitem{eventuate.io}
+\BIBentryALTinterwordspacing
+Eventuate.io, ``{Eventuate.io},'' 2017. [Online]. Available:
+  \url{http://eventuate.io/}
+\BIBentrySTDinterwordspacing
+
+\bibitem{narayana_lra}
+\BIBentryALTinterwordspacing
+Narayana, ``{Narayana LRA},'' 2017. [Online]. Available:
+  \url{https://github.com/eclipse/microprofile-sandbox/tree/master/proposals/0009-LRA}
+\BIBentrySTDinterwordspacing
+
 \end{thebibliography}
