@@ -235,9 +235,14 @@ The Axon framework is based upon the event processing including asynchronous mes
 
 \subsection{Narayana LRA}
 
-\subsection{Example application}
+\section{Example application}
 
-As a part of the investigation of each discussed framework, I created a sample application simulating the saga utilization. This application is an ordering backend with a simple REST\footnote{Representational State Transfer} frontend interface. An user is able to create an order by providing a product information JSON\footnote{JavaScript object notation} containing the product id, commentary and price. For the simplicity the order always consists only of one product. The figure 5.1 shows the example input JSON.
+As a part of the investigation of each discussed framework from the previous section, I created a sample application simulating the saga utilization. This application is an ordering backend with a simple REST\footnote{Representational State Transfer} frontend interface. An user is able to create an order by providing a product information JSON\footnote{JavaScript object notation} containing the product id, commentary and price. For the simplicity the order always consists only of one product. The figure 5.1 shows the example input JSON. The complete API\footnote{Application programming interface} is provided in the Appendix B.
+
+\subsection{The saga model}
+
+The saga pattern in this application is used to create orders. The order consists of three parts -- the production of a shipping and an invoice information and if both invocations are successful, the actual order persist. 
+
 
 \begin{figure}
 	\begin{center}
@@ -264,5 +269,9 @@ As a part of the investigation of each discussed framework, I created a sample a
 \chapter{Command Query Responsibility Segregation pattern}
 
 CQRS
+
+\chapter{Order service example application API}
+
+
 
 \end{document}
