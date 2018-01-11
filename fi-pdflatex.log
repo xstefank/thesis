@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.9.30)  9 JAN 2018 17:00
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.9.30)  11 JAN 2018 22:10
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1850,7 +1850,7 @@ Package microtype Info: Character `029' is missing
 (microtype)             in font `T1/qpl/m/sc/17.28'.
 (microtype)             Ignoring protrusion settings for this character.
 
-<fithesis/logo/mu/fithesis-fi.pdf, id=189, 291.0875pt x 292.09125pt>
+<fithesis/logo/mu/fithesis-fi.pdf, id=193, 291.0875pt x 292.09125pt>
 File: fithesis/logo/mu/fithesis-fi.pdf Graphic file (type pdf)
 
 <use fithesis/logo/mu/fithesis-fi.pdf>
@@ -1864,7 +1864,7 @@ Package microtype Info: Character `029' is missing
 
 {/usr/share/texlive/texmf-dist/fonts/map/pdftex/updmap/pdftex.map} <./fithesis/
 logo/mu/fithesis-fi.pdf>]
-<fithesis/logo/mu/fithesis-fi-color.pdf, id=200, 291.0875pt x 292.09125pt>
+<fithesis/logo/mu/fithesis-fi-color.pdf, id=204, 291.0875pt x 292.09125pt>
 File: fithesis/logo/mu/fithesis-fi-color.pdf Graphic file (type pdf)
 
 <use fithesis/logo/mu/fithesis-fi-color.pdf>
@@ -1947,59 +1947,29 @@ Chapter 1.
 
 ]
 Chapter 2.
-[2] [3]
-LaTeX Font Info:    Try loading font information for T1+lmtt on input line 124.
-
- (/usr/share/texlive/texmf-dist/tex/latex/lm/t1lmtt.fd
-File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
-)
-Package microtype Info: Loading generic settings for font family
-(microtype)             `lmtt' (encoding: T1).
-(microtype)             For optimal results, create family-specific settings.
-(microtype)             See the microtype manual for details.
-
-Overfull \hbox (41.8777pt too wide) in paragraph at lines 124--125
-[]$\T1/lmtt/m/n/12 https : / / ress . infoq . com / minibooks / JTDS / en / pdf
- / javatransactionsbook .
- []
-
-
-Overfull \hbox (905.3591pt too wide) in paragraph at lines 124--125
-\T1/lmtt/m/n/12 pdf ? Expires = 1512505329 & Signature = NBftdwZSbBAKvAxQ1LfPMz
-vO~9vusCCd1WxWIiqcSU7Ja-[]JB7LtolrFSCIBkZM2mDYNc6Zw9erfuo-[]31FosKWWx64~tUEPbxB
-D781bVplO3Maal3Bji8wMnFvROJucBH60m3-[]WzHJTlCJN7OxJ6l1ciBJNlSGY4HSc~QzSjEbT8 _
- []
-
-
-Underfull \vbox (badness 5446) has occurred while \output is active []
-
- [4]
-Underfull \vbox (badness 2856) has occurred while \output is active []
-
- [5]
-[6]
+[2] [3] [4] [5]
 Chapter 3.
-[7] [8]
+[6] [7]
 Overfull \vbox (1.03392pt too high) has occurred while \output is active []
 
 
-[9] [10]
+[8] [9]
 Chapter 4.
-[11]
+[10]
 Chapter 5.
 
 Underfull \vbox (badness 3039) has occurred while \output is active []
 
- [12]
-<images/productInfoJSON.png, id=384, 316.18124pt x 101.37875pt>
+ [11]
+<images/productInfoJSON.png, id=381, 316.18124pt x 101.37875pt>
 File: images/productInfoJSON.png Graphic file (type png)
 
 <use images/productInfoJSON.png>
 Package pdftex.def Info: images/productInfoJSON.png used on input line 249.
 (pdftex.def)             Requested size: 266.22244pt x 85.35826pt.
- [13 <./images/productInfoJSON.png>]
+ [12]
 Chapter 6.
-[14]
+[13 <./images/productInfoJSON.png>]
 No file fi-pdflatex.ind.
 (./fi-pdflatex.bbl
 Underfull \hbox (badness 1189) in paragraph at lines 30--33
@@ -2017,10 +1987,12 @@ Underfull \hbox (badness 1107) in paragraph at lines 93--96
 []\T1/qpl/m/n/12 (+20) Narayana, ``Narayana LRA,'' 2017. [On-line]. Avail-
  []
 
-[15]) [16]
+[14]) [15]
 Appendix A.
-[17]
+[16]
 Appendix B.
+[17]
+Appendix C.
 [18]
 
 Package catoptions Warning: Undefined options 
@@ -2028,32 +2000,31 @@ Package catoptions Warning: Undefined options
 (catoptions)                fontenc.sty,T1,. 
 (catoptions)                Default action already taken in each case .
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 277.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 277.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 279.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 279.
 (./fi-pdflatex.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 277.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 277.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 279.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 279.
 Package rerunfilecheck Info: File `fi-pdflatex.out' has not changed.
-(rerunfilecheck)             Checksum: 4B3E790D327C4DB12B3A73B993710FD6;2761.
+(rerunfilecheck)             Checksum: BF78C08DE6994F6261EE524F8961C2D6;2841.
  ) 
 Here is how much of TeX's memory you used:
- 35964 strings out of 494946
- 642995 string characters out of 6180981
- 745737 words of memory out of 5000000
- 38426 multiletter control sequences out of 15000+600000
- 65472 words of font info for 98 fonts, out of 8000000 for 9000
+ 35921 strings out of 494946
+ 642315 string characters out of 6180981
+ 745736 words of memory out of 5000000
+ 38389 multiletter control sequences out of 15000+600000
+ 65154 words of font info for 97 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  69i,8n,84p,10387b,601s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texlive/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texli
-ve/texmf-dist/fonts/enc/dvips/tex-gyre/q-ec.enc}{/usr/share/texlive/texmf-dist/
-fonts/enc/dvips/tex-gyre/q-ec-sc.enc}</usr/share/texlive/texmf-dist/fonts/type1
-/public/lm/lmtt12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/tex-gyr
-e/qplb.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/tex-gyre/qplr.pfb>
-</usr/share/texlive/texmf-dist/fonts/type1/public/tex-gyre/qplri.pfb>
-Output written on fi-pdflatex.pdf (27 pages, 192706 bytes).
+{/usr/share/texlive/texmf-dist/fonts/enc/dvips/tex-gyre/q-ec.enc}{/usr/share/
+texlive/texmf-dist/fonts/enc/dvips/tex-gyre/q-ec-sc.enc}</usr/share/texlive/tex
+mf-dist/fonts/type1/public/tex-gyre/qplb.pfb></usr/share/texlive/texmf-dist/fon
+ts/type1/public/tex-gyre/qplr.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
+blic/tex-gyre/qplri.pfb>
+Output written on fi-pdflatex.pdf (27 pages, 163422 bytes).
 PDF statistics:
- 476 PDF objects out of 1000 (max. 8388607)
- 413 compressed objects within 5 object streams
- 99 named destinations out of 1000 (max. 500000)
- 19404 words of extra memory for PDF output out of 20736 (max. 10000000)
+ 473 PDF objects out of 1000 (max. 8388607)
+ 411 compressed objects within 5 object streams
+ 100 named destinations out of 1000 (max. 500000)
+ 18900 words of extra memory for PDF output out of 20736 (max. 10000000)
 

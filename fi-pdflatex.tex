@@ -237,9 +237,11 @@ The Axon framework is based upon the event processing including asynchronous mes
 
 As a part of the investigation of each discussed framework from the previous section, I created a sample application simulating the saga utilization. This application is an ordering backend with a simple REST\footnote{Representational State Transfer} frontend interface. An user is able to create an order by providing a product information JSON\footnote{JavaScript object notation} containing the product id, commentary and price. For the simplicity the order always consists only of one product. The figure 5.1 shows the example input JSON. The complete API\footnote{Application programming interface} is provided in the Appendix B.
 
+All examples are based on the microservices pattern. As every framework is suitable for the use in different environments, each example is achieving the same goal through the different portfolio of technologies. The exact mechanisms used is individual projects will be discussed in more detail in their respective sections.
+
 \subsection{The saga model}
 
-The saga pattern in this application is used to create orders. The order consists of three parts -- the production of a shipping and an invoice information and if both invocations are successful, the actual order persist. 
+The saga pattern in this application is used to create orders. The order saga consists of three parts -- the production of a shipping and an invoice information and if both invocations are successful, the actual order creation. If any part of the processing fails, the whole progress is expected to be undone. For instance, if the shipment is successfully created but the invoice assembly is not able to confirmed, the persisted shipment information as well as the order must be canceled (also optionally notifying the user that the order cannot be created). The graphical representation of the saga progress is available in the Appendix C.
 
 
 \begin{figure}
@@ -264,12 +266,14 @@ The saga pattern in this application is used to create orders. The order consist
 
 \appendix %% Start the appendices.
 
-\chapter{Command Query Responsibility Segregation pattern}
+\chapter{The Command Query Responsibility Segregation pattern}
 
 CQRS
 
-\chapter{Order service example application API}
+\chapter{The order service example application API}
 
+
+\chapter{The order saga model}
 
 
 \end{document}

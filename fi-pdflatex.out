@@ -35,5 +35,6 @@
 \BOOKMARK [2][-]{subsection.5.4.1}{\040The\040saga\040model}{section.5.4}% 35
 \BOOKMARK [0][-]{chapter.6}{Conclusion}{}% 36
 \BOOKMARK [0][-]{section*.6}{Bibliography}{}% 37
-\BOOKMARK [0][-]{appendix.A}{Command\040Query\040Responsibility\040Segregation\040pattern}{}% 38
-\BOOKMARK [0][-]{appendix.B}{Order\040service\040example\040application\040API}{}% 39
+\BOOKMARK [0][-]{appendix.A}{The\040Command\040Query\040Responsibility\040Segregation\040pattern}{}% 38
+\BOOKMARK [0][-]{appendix.B}{The\040order\040service\040example\040application\040API}{}% 39
+\BOOKMARK [0][-]{appendix.C}{The\040order\040saga\040model}{}% 40
