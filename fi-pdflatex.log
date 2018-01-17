@@ -1,8 +1,8 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.9.30)  11 JAN 2018 22:10
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.9.30)  17 JAN 2018 23:39
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**fi-pdflatex.tex
+**fi-pdflatex.tex -shell-escape
 (./fi-pdflatex.tex
 LaTeX2e <2016/03/31>
 Babel <3.9r> and hyphenation patterns for 3 language(s) loaded.
@@ -1442,6 +1442,130 @@ Package etexcmds Info: Could not find \expanded.
 . Defining command \tw@make@key@macro with sig. 's m' on line 685.
 .................................................
 )
+(/usr/share/texlive/texmf-dist/tex/latex/minted/minted.sty
+Package: minted 2016/06/08 v2.2 Yet another Pygments shim for LaTeX
+
+(/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
+Package: fancyvrb 2008/02/07
+
+Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
+<2008/02/07> (tvz)
+\FV@CodeLineNo=\count172
+\FV@InFile=\read2
+\FV@TabBox=\box57
+\c@FancyVerbLine=\count173
+\FV@StepNumber=\count174
+\FV@OutFile=\write6
+) (/usr/share/texlive/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count175
+\float@exts=\toks45
+\float@box=\box58
+\@float@everytoks=\toks46
+\@floatcapt=\box59
+)
+(/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/calc.sty
+Package: calc 2014/10/28 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count176
+\calc@Bcount=\count177
+\calc@Adimen=\dimen276
+\calc@Bdimen=\dimen277
+\calc@Askip=\skip62
+\calc@Bskip=\skip63
+LaTeX Info: Redefining \setlength on input line 80.
+LaTeX Info: Redefining \addtolength on input line 81.
+\calc@Ccount=\count178
+\calc@Cskip=\skip64
+)
+(/usr/share/texlive/texmf-dist/tex/latex/ifplatform/ifplatform.sty
+Package: ifplatform 2010/10/22 v0.4 Testing for the operating system
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
+Package: pdftexcmds 2016/05/21 v0.22 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2016/05/14 v3.1 Provides the ifpdf switch
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/catchfile.sty
+Package: catchfile 2016/05/16 v1.7 Catch the contents of a file (HO)
+)
+
+Package ifplatform Warning: 
+    shell escape is disabled, so I can only detect \ifwindows.
+
+) (/usr/share/texlive/texmf-dist/tex/latex/lineno/lineno.sty
+Package: lineno 2005/11/02 line numbers on paragraphs v4.41
+\linenopenalty=\count179
+\output=\toks47
+\linenoprevgraf=\count180
+\linenumbersep=\dimen278
+\linenumberwidth=\dimen279
+\c@linenumber=\count181
+\c@pagewiselinenumber=\count182
+\c@LN@truepage=\count183
+\c@internallinenumber=\count184
+\c@internallinenumbers=\count185
+\quotelinenumbersep=\dimen280
+\bframerule=\dimen281
+\bframesep=\dimen282
+\bframebox=\box60
+LaTeX Info: Redefining \\ on input line 3056.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/framed/framed.sty
+Package: framed 2011/10/22 v 0.96: framed or shaded text with page breaks
+\OuterFrameSep=\skip65
+\fb@frw=\dimen283
+\fb@frh=\dimen284
+\FrameRule=\dimen285
+\FrameSep=\dimen286
+)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/shellesc.sty
+Package: shellesc 2016/04/29 v0.01c unified shell escape interface for LaTeX
+Package shellesc Info: Restricted shell escape ensabled on input line 67.
+)
+\minted@appexistsfile=\read3
+\FV@BreakIndent=\dimen287
+\FV@BreakSymbolSepLeft=\dimen288
+\FV@BreakSymbolSepRight=\dimen289
+\FV@BreakSymbolIndentLeft=\dimen290
+LaTeX Font Info:    Try loading font information for T2A+PTMono-TLF on input li
+ne 732.
+
+(/usr/share/texlive/texmf-dist/tex/latex/paratype/T2APTMono-TLF.fd
+File: T2APTMono-TLF.fd 2014/02/02 Font definitions for T2A/PTMono-TLF.
+)
+\FV@BreakSymbolIndentRight=\dimen291
+\c@FancyVerbLineBreakLast=\count186
+\FV@LineBox=\box61
+\FV@LineIndentBox=\box62
+\minted@bgbox=\box63
+\minted@code=\write7
+\c@minted@FancyVerbLineTemp=\count187
+\c@minted@pygmentizecounter=\count188
+\@float@every@listing=\toks48
+\c@listing=\count189
+)
+
+! Package minted Error: You must invoke LaTeX with the -shell-escape flag.
+
+See the minted package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.67 
+     
+Pass the -shell-escape flag to LaTeX. Refer to the minted.sty documentation for
+ more information.
+
 (./fithesis/locale/fithesis-english.def
 File: fithesis/locale/fithesis-english.def 2016/01/13
 )
@@ -1459,58 +1583,39 @@ Package: fithesis/style/mu/fithesis-base 2016/01/07
 (/usr/share/texlive/texmf-dist/tex/latex/pdfpages/pdfpages.sty
 Package: pdfpages 2016/04/19 v0.5f Insert pages of external PDF documents (AM)
 
-(/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
-Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
-)
-(/usr/share/texlive/texmf-dist/tex/latex/tools/calc.sty
-Package: calc 2014/10/28 v4.3 Infix arithmetic (KKT,FJ)
-\calc@Acount=\count172
-\calc@Bcount=\count173
-\calc@Adimen=\dimen276
-\calc@Bdimen=\dimen277
-\calc@Askip=\skip62
-\calc@Bskip=\skip63
-LaTeX Info: Redefining \setlength on input line 80.
-LaTeX Info: Redefining \addtolength on input line 81.
-\calc@Ccount=\count174
-\calc@Cskip=\skip64
-)
 (/usr/share/texlive/texmf-dist/tex/latex/eso-pic/eso-pic.sty
 Package: eso-pic 2015/07/21 v2.0g eso-pic (RN)
 
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/atbegshi.sty
 Package: atbegshi 2016/06/09 v1.18 At begin shipout hook (HO)
-
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifpdf.sty
-Package: ifpdf 2016/05/14 v3.1 Provides the ifpdf switch
-)))
-\AM@pagewidth=\dimen278
-\AM@pageheight=\dimen279
+))
+\AM@pagewidth=\dimen292
+\AM@pageheight=\dimen293
 
 (/usr/share/texlive/texmf-dist/tex/latex/pdfpages/pppdftex.def
 File: pppdftex.def 2016/04/19 v0.5f Pdfpages driver for pdfTeX (AM)
 )
-\AM@pagebox=\box57
-\AM@global@opts=\toks45
-\AM@toc@title=\toks46
-\c@AM@survey=\count175
-\AM@templatesizebox=\box58
+\AM@pagebox=\box64
+\AM@global@opts=\toks49
+\AM@toc@title=\toks50
+\c@AM@survey=\count190
+\AM@templatesizebox=\box65
 )
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.sty
 Package: microtype 2016/05/14 v2.6a Micro-typographical refinements (RS)
-\MT@toks=\toks47
-\MT@count=\count176
+\MT@toks=\toks51
+\MT@count=\count191
 LaTeX Info: Redefining \textls on input line 774.
-\MT@outer@kern=\dimen280
+\MT@outer@kern=\dimen294
 LaTeX Info: Redefining \textmicrotypecontext on input line 1310.
-\MT@listname@count=\count177
+\MT@listname@count=\count192
 
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype-pdftex.def
 File: microtype-pdftex.def 2016/05/14 v2.6a Definitions specific to pdftex (RS)
 
 LaTeX Info: Redefining \lsstyle on input line 916.
 LaTeX Info: Redefining \lslig on input line 916.
-\MT@outer@space=\skip65
+\MT@outer@space=\skip66
 )
 Package microtype Info: Loading configuration file microtype.cfg.
 
@@ -1573,38 +1678,38 @@ File: t1qpl.fd 2009/09/25 v1.2 font definition file for T1/qpl
 )<<t1.cmap>>)
 (/usr/share/texlive/texmf-dist/tex/latex/tools/tabularx.sty
 Package: tabularx 2016/02/03 v2.11 `tabularx' package (DPC)
-\TX@col@width=\dimen281
-\TX@old@table=\dimen282
-\TX@old@col=\dimen283
-\TX@target=\dimen284
-\TX@delta=\dimen285
-\TX@cols=\count178
-\TX@ftn=\toks48
+\TX@col@width=\dimen295
+\TX@old@table=\dimen296
+\TX@old@col=\dimen297
+\TX@target=\dimen298
+\TX@delta=\dimen299
+\TX@cols=\count193
+\TX@ftn=\toks52
 )
 (/usr/share/texlive/texmf-dist/tex/latex/tabu/tabu.sty
 Package: tabu 2011/02/26 v2.8 - flexible LaTeX tabulars (FC)
-\c@taburow=\count179
-\tabu@nbcols=\count180
-\tabu@cnt=\count181
-\tabu@Xcol=\count182
-\tabu@alloc=\count183
-\tabu@nested=\count184
-\tabu@target=\dimen286
-\tabu@spreadtarget=\dimen287
-\tabu@naturalX=\dimen288
-\tabucolX=\dimen289
-\tabu@Xsum=\dimen290
-\extrarowdepth=\dimen291
-\abovetabulinesep=\dimen292
-\belowtabulinesep=\dimen293
-\tabustrutrule=\dimen294
-\tabu@thebody=\toks49
-\tabu@footnotes=\toks50
-\tabu@box=\box59
-\tabu@arstrutbox=\box60
-\tabu@hleads=\box61
-\tabu@vleads=\box62
-\tabu@cellskip=\skip66
+\c@taburow=\count194
+\tabu@nbcols=\count195
+\tabu@cnt=\count196
+\tabu@Xcol=\count197
+\tabu@alloc=\count198
+\tabu@nested=\count199
+\tabu@target=\dimen300
+\tabu@spreadtarget=\dimen301
+\tabu@naturalX=\dimen302
+\tabucolX=\dimen303
+\tabu@Xsum=\dimen304
+\extrarowdepth=\dimen305
+\abovetabulinesep=\dimen306
+\belowtabulinesep=\dimen307
+\tabustrutrule=\dimen308
+\tabu@thebody=\toks53
+\tabu@footnotes=\toks54
+\tabu@box=\box66
+\tabu@arstrutbox=\box67
+\tabu@hleads=\box68
+\tabu@vleads=\box69
+\tabu@cellskip=\skip67
 )
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
 Package: hyperref 2016/05/21 v6.83p Hypertext links for LaTeX
@@ -1626,12 +1731,7 @@ Package hobsub Info: Skipping package `ifpdf' (already loaded).
 Package hobsub Info: Skipping package `etexcmds' (already loaded).
 Package hobsub Info: Skipping package `kvsetkeys' (already loaded).
 Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
-Package: pdftexcmds 2016/05/21 v0.22 Utility functions of pdfTeX for LuaTeX (HO
-)
-Package pdftexcmds Info: LuaTeX not detected.
-Package pdftexcmds Info: \pdf@primitive is available.
-Package pdftexcmds Info: \pdf@ifprimitive is available.
-Package pdftexcmds Info: \pdfdraftmode found.
+Package hobsub Info: Skipping package `pdftexcmds' (already loaded).
 Package: pdfescape 2016/05/16 v1.14 Implements pdfTeX's escape features (HO)
 Package: bigintcalc 2016/05/16 v1.4 Expandable calculations on big integers (HO
 )
@@ -1650,16 +1750,16 @@ Package: hycolor 2016/05/16 v1.8 Color options for hyperref/bookmark (HO)
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/auxhook.sty
 Package: auxhook 2016/05/16 v1.4 Hooks for auxiliary files (HO)
 )
-\@linkdim=\dimen295
-\Hy@linkcounter=\count185
-\Hy@pagecounter=\count186
+\@linkdim=\dimen309
+\Hy@linkcounter=\count266
+\Hy@pagecounter=\count267
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/pd1enc.def
 File: pd1enc.def 2016/05/21 v6.83p Hyperref: PDFDocEncoding definition (HO)
 Now handling font encoding PD1 ...
 ... no UTF-8 mapping file for font encoding PD1
 )
-\Hy@SavedSpaceFactor=\count187
+\Hy@SavedSpaceFactor=\count268
 Package hyperref Info: Option `unicode' set `true' on input line 3453.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/puenc.def
@@ -1677,12 +1777,12 @@ Package hyperref Info: Plain pages OFF on input line 4501.
 Package hyperref Info: Backreferencing OFF on input line 4506.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4735.
-\c@Hy@tempcnt=\count188
+\c@Hy@tempcnt=\count269
 LaTeX Info: Redefining \url on input line 5088.
-\XeTeXLinkMargin=\dimen296
-\Fld@menulength=\count189
-\Field@Width=\dimen297
-\Fld@charsize=\dimen298
+\XeTeXLinkMargin=\dimen310
+\Fld@menulength=\count270
+\Field@Width=\dimen311
+\Fld@charsize=\dimen312
 Package hyperref Info: Hyper figures OFF on input line 6342.
 Package hyperref Info: Link nesting OFF on input line 6347.
 Package hyperref Info: Hyper index ON on input line 6350.
@@ -1692,32 +1792,32 @@ Package hyperref Info: Link coloring with OCG OFF on input line 6367.
 Package hyperref Info: PDF/A mode OFF on input line 6372.
 LaTeX Info: Redefining \ref on input line 6412.
 LaTeX Info: Redefining \pageref on input line 6416.
-\Hy@abspage=\count190
-\c@Item=\count191
-\c@Hfootnote=\count192
+\Hy@abspage=\count271
+\c@Item=\count272
+\c@Hfootnote=\count273
 )
 
 Package hyperref Message: Driver (autodetected): hpdftex.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
 File: hpdftex.def 2016/05/21 v6.83p Hyperref driver for pdfTeX
-\Fld@listcount=\count193
-\c@bookmark@seq@number=\count194
+\Fld@listcount=\count274
+\c@bookmark@seq@number=\count275
 
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty
 Package: rerunfilecheck 2016/05/16 v1.8 Rerun checks for auxiliary files (HO)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 82.
 )
-\Hy@SectionHShift=\skip67
+\Hy@SectionHShift=\skip68
 )
 (./fithesis/style/mu/fithesis-12.clo
 File: fithesis/style/mu/fithesis-12.clo 2016/01/07
 )) (./fithesis/style/mu/fithesis-fi.sty
 Package: fithesis/style/mu/fithesis-fi 2016/01/07
 )
-Package hyperref Info: Option `unicode' set `true' on input line 68.
-Package hyperref Info: Option `unicode' set `true' on input line 68.
+Package hyperref Info: Option `unicode' set `true' on input line 69.
+Package hyperref Info: Option `unicode' set `true' on input line 69.
 
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/stringenc.sty
 Package: stringenc 2016/05/16 v1.11 Convert strings between diff. encodings (HO
@@ -1728,13 +1828,13 @@ File: se-pdfdoc.def 2016/05/16 v1.11 stringenc: PDFDocEncoding
 )
 (/usr/share/texlive/texmf-dist/tex/latex/csquotes/csquotes.sty
 Package: csquotes 2016/01/31 v5.1g context-sensitive quotations (JAW)
-\csq@reset=\count195
-\csq@gtype=\count196
-\csq@glevel=\count197
-\csq@qlevel=\count198
-\csq@maxlvl=\count199
-\csq@tshold=\count266
-\csq@ltx@everypar=\toks51
+\csq@reset=\count276
+\csq@gtype=\count277
+\csq@glevel=\count278
+\csq@qlevel=\count279
+\csq@maxlvl=\count280
+\csq@tshold=\count281
+\csq@ltx@everypar=\toks55
 
 (/usr/share/texlive/texmf-dist/tex/latex/csquotes/csquotes.def
 File: csquotes.def 2016/01/31 v5.1g csquotes generic definitions (JAW)
@@ -1745,41 +1845,57 @@ Package csquotes Info: ... configuration file loaded successfully.
 (/usr/share/texlive/texmf-dist/tex/latex/csquotes/csquotes.cfg
 File: csquotes.cfg 
 ))
+runsystem(which pygmentize && touch fi-pdflatex.aex)...disabled (restricted).
+
+
+
+! Package minted Error: You must have `pygmentize' installed to use this packag
+e.
+
+See the minted package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.69 \begin{document}
+                     
+Refer to the installation instructions in the minted documentation for more inf
+ormation.
+
 (./fi-pdflatex.aux)
 \openout1 = `fi-pdflatex.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
-LaTeX Font Info:    Checking defaults for T2A/cmr/m/n on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 69.
+LaTeX Font Info:    ... okay on input line 69.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 69.
+LaTeX Font Info:    ... okay on input line 69.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 69.
+LaTeX Font Info:    ... okay on input line 69.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 69.
+LaTeX Font Info:    ... okay on input line 69.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 69.
+LaTeX Font Info:    ... okay on input line 69.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 69.
+LaTeX Font Info:    ... okay on input line 69.
+LaTeX Font Info:    Checking defaults for T2A/cmr/m/n on input line 69.
+LaTeX Font Info:    ... okay on input line 69.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 69.
+LaTeX Font Info:    ... okay on input line 69.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 69.
+LaTeX Font Info:    ... okay on input line 69.
  ABD: EveryShipout initializing macros
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count267
-\scratchdimen=\dimen299
-\scratchbox=\box63
-\nofMPsegments=\count268
-\nofMParguments=\count269
-\everyMPshowfont=\toks52
-\MPscratchCnt=\count270
-\MPscratchDim=\dimen300
-\MPnumerator=\count271
-\makeMPintoPDFobject=\count272
-\everyMPtoPDFconversion=\toks53
+\scratchcounter=\count282
+\scratchdimen=\dimen313
+\scratchbox=\box70
+\nofMPsegments=\count283
+\nofMParguments=\count284
+\everyMPshowfont=\toks56
+\MPscratchCnt=\count285
+\MPscratchDim=\dimen314
+\MPnumerator=\count286
+\makeMPintoPDFobject=\count287
+\everyMPtoPDFconversion=\toks57
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
 
@@ -1797,8 +1913,48 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-\AtBeginShipoutBox=\box64
+runsystem(pygmentize -S default -f latex -P commandprefix=PYG > fi-pdflatex.out
+.pyg)...disabled (restricted).
 
+
+
+! Package minted Error: Missing Pygments output; \inputminted was
+probably given a file that does not exist--otherwise, you may need 
+the outputdir package option, or may be using an incompatible build tool,
+or may be using frozencache with a missing file.
+
+See the minted package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.69 \begin{document}
+                     ^^M
+This could be caused by using -output-directory or -aux-directory 
+without setting minted's outputdir, or by using a build tool that 
+changes paths in ways minted cannot detect, 
+or using frozencache with a missing file.
+
+runsystem(pygmentize -S default -f latex -P commandprefix=PYGdefault > fi-pdfla
+tex.out.pyg)...disabled (restricted).
+
+
+! Package minted Error: Missing Pygments output; \inputminted was
+probably given a file that does not exist--otherwise, you may need 
+the outputdir package option, or may be using an incompatible build tool,
+or may be using frozencache with a missing file.
+
+See the minted package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.69 \begin{document}
+                     ^^M
+This could be caused by using -output-directory or -aux-directory 
+without setting minted's outputdir, or by using a build tool that 
+changes paths in ways minted cannot detect, 
+or using frozencache with a missing file.
+
+\AtBeginShipoutBox=\box71
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/pdflscape.sty
 Package: pdflscape 2016/05/14 v0.11 Display of landscape pages in PDF (HO)
 
@@ -1807,7 +1963,7 @@ Package: lscape 2000/10/22 v3.01 Landscape Pages (DPC)
 )
 Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
 )
-LaTeX Info: Redefining \microtypecontext on input line 68.
+LaTeX Info: Redefining \microtypecontext on input line 69.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
@@ -1822,7 +1978,7 @@ Package microtype Info: Redefining babel's language switching commands.
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-ppl.cfg
 File: mt-ppl.cfg 2005/11/16 v1.6 microtype config. file: Palatino (RS)
 )
-Package hyperref Info: Link coloring OFF on input line 68.
+Package hyperref Info: Link coloring OFF on input line 69.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
@@ -1830,15 +1986,15 @@ Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count273
+\c@section@level=\count288
 )
-LaTeX Info: Redefining \ref on input line 68.
-LaTeX Info: Redefining \pageref on input line 68.
-LaTeX Info: Redefining \nameref on input line 68.
+LaTeX Info: Redefining \ref on input line 69.
+LaTeX Info: Redefining \pageref on input line 69.
+LaTeX Info: Redefining \nameref on input line 69.
 
 (./fi-pdflatex.out) (./fi-pdflatex.out)
-\@outlinefile=\write6
-\openout6 = `fi-pdflatex.out'.
+\@outlinefile=\write8
+\openout8 = `fi-pdflatex.out'.
 
 Package microtype Info: Character `029' is missing
 (microtype)             in font `T1/qpl/m/sc/12'.
@@ -1854,7 +2010,7 @@ Package microtype Info: Character `029' is missing
 File: fithesis/logo/mu/fithesis-fi.pdf Graphic file (type pdf)
 
 <use fithesis/logo/mu/fithesis-fi.pdf>
-Package pdftex.def Info: fithesis/logo/mu/fithesis-fi.pdf used on input line 68
+Package pdftex.def Info: fithesis/logo/mu/fithesis-fi.pdf used on input line 69
 .
 (pdftex.def)             Requested size: 113.81102pt x 114.20036pt.
 Package microtype Info: Character `029' is missing
@@ -1869,19 +2025,19 @@ File: fithesis/logo/mu/fithesis-fi-color.pdf Graphic file (type pdf)
 
 <use fithesis/logo/mu/fithesis-fi-color.pdf>
 Package pdftex.def Info: fithesis/logo/mu/fithesis-fi-color.pdf used on input l
-ine 68.
+ine 69.
 (pdftex.def)             Requested size: 113.81102pt x 114.20036pt.
 pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
 een already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.68 \begin{document}
+l.69 \begin{document}
                       [2 <./fithesis/logo/mu/fithesis-fi-color.pdf>]pdfTeX warn
 ing (ext4): destination with the same identifier (name{page.}) has been already
  used, duplicate ignored
 <to be read again> 
                    \relax 
-l.68 \begin{document}
+l.69 \begin{document}
                       [0] [1] [2] [3] [4] (./fi-pdflatex.toc
 LaTeX Font Info:    Try loading font information for OT1+ppl on input line 2.
 
@@ -1938,8 +2094,8 @@ LaTeX Font Warning: Font shape `T1/qpl/m/sl' in size <12> not available
 (Font)              Font shape `T1/qpl/m/it' tried instead on input line 4.
 
 [5])
-\tf@toc=\write7
-\openout7 = `fi-pdflatex.toc'.
+\tf@toc=\write9
+\openout9 = `fi-pdflatex.toc'.
 
  [6]
 Chapter 1.
@@ -1965,7 +2121,7 @@ Underfull \vbox (badness 3039) has occurred while \output is active []
 File: images/productInfoJSON.png Graphic file (type png)
 
 <use images/productInfoJSON.png>
-Package pdftex.def Info: images/productInfoJSON.png used on input line 249.
+Package pdftex.def Info: images/productInfoJSON.png used on input line 250.
 (pdftex.def)             Requested size: 266.22244pt x 85.35826pt.
  [12]
 Chapter 6.
@@ -1991,7 +2147,38 @@ Underfull \hbox (badness 1107) in paragraph at lines 93--96
 Appendix A.
 [16]
 Appendix B.
-[17]
+\openout6 = `fi-pdflatex.pyg'.
+
+runsystem(pygmentize -l java -f latex -P commandprefix=PYG -F tokenmerge -o fi-
+pdflatex.out.pyg fi-pdflatex.pyg)...disabled (restricted).
+
+
+! Package minted Error: Missing Pygments output; \inputminted was
+probably given a file that does not exist--otherwise, you may need 
+the outputdir package option, or may be using an incompatible build tool,
+or may be using frozencache with a missing file.
+
+See the minted package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.280 \end{minted}
+                  
+This could be caused by using -output-directory or -aux-directory 
+without setting minted's outputdir, or by using a build tool that 
+changes paths in ways minted cannot detect, 
+or using frozencache with a missing file.
+
+LaTeX Font Info:    Try loading font information for T1+lmtt on input line 286.
+
+(/usr/share/texlive/texmf-dist/tex/latex/lm/t1lmtt.fd
+File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+Package microtype Info: Loading generic settings for font family
+(microtype)             `lmtt' (encoding: T1).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+ [17]
 Appendix C.
 [18]
 
@@ -2000,31 +2187,34 @@ Package catoptions Warning: Undefined options
 (catoptions)                fontenc.sty,T1,. 
 (catoptions)                Default action already taken in each case .
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 279.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 279.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 301.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 301.
 (./fi-pdflatex.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 279.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 279.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 301.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 301.
 Package rerunfilecheck Info: File `fi-pdflatex.out' has not changed.
 (rerunfilecheck)             Checksum: BF78C08DE6994F6261EE524F8961C2D6;2841.
+runsystem(rm fi-pdflatex.pyg)...disabled (restricted).
+
  ) 
 Here is how much of TeX's memory you used:
- 35921 strings out of 494946
- 642315 string characters out of 6180981
- 745736 words of memory out of 5000000
- 38389 multiletter control sequences out of 15000+600000
- 65154 words of font info for 97 fonts, out of 8000000 for 9000
+ 37726 strings out of 494946
+ 682305 string characters out of 6180981
+ 818703 words of memory out of 5000000
+ 40142 multiletter control sequences out of 15000+600000
+ 65782 words of font info for 99 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 69i,8n,84p,10387b,601s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texlive/texmf-dist/fonts/enc/dvips/tex-gyre/q-ec.enc}{/usr/share/
-texlive/texmf-dist/fonts/enc/dvips/tex-gyre/q-ec-sc.enc}</usr/share/texlive/tex
-mf-dist/fonts/type1/public/tex-gyre/qplb.pfb></usr/share/texlive/texmf-dist/fon
-ts/type1/public/tex-gyre/qplr.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
-blic/tex-gyre/qplri.pfb>
-Output written on fi-pdflatex.pdf (27 pages, 163422 bytes).
+ 69i,8n,84p,10433b,603s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texlive/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texli
+ve/texmf-dist/fonts/enc/dvips/tex-gyre/q-ec.enc}{/usr/share/texlive/texmf-dist/
+fonts/enc/dvips/tex-gyre/q-ec-sc.enc}</usr/share/texlive/texmf-dist/fonts/type1
+/public/lm/lmtt12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/tex-gyr
+e/qplb.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/tex-gyre/qplr.pfb>
+</usr/share/texlive/texmf-dist/fonts/type1/public/tex-gyre/qplri.pfb>
+Output written on fi-pdflatex.pdf (27 pages, 184849 bytes).
 PDF statistics:
- 473 PDF objects out of 1000 (max. 8388607)
- 411 compressed objects within 5 object streams
+ 478 PDF objects out of 1000 (max. 8388607)
+ 415 compressed objects within 5 object streams
  100 named destinations out of 1000 (max. 500000)
- 18900 words of extra memory for PDF output out of 20736 (max. 10000000)
+ 19412 words of extra memory for PDF output out of 20736 (max. 10000000)
 

@@ -63,6 +63,7 @@ abstract
 \usepackage{amsfonts}
 \usepackage{url}
 \usepackage{menukeys}
+\usepackage[cache=false]{minted}
 
 
 \begin{document}
@@ -272,6 +273,27 @@ CQRS
 
 \chapter{The order service example application API}
 
+
+\begin{minted}{java}
+	String hello = "World";
+	System.out.println("hello " + hello);
+\end{minted}
+
+------------------------
+
+\textbf{Order service}
+
+\texttt{POST /api/order} \hfill \break
+\texttt{GET /api/orders} 
+\texttt{GET /api/order/\{order\_id \}} 
+
+\textbf{Shipment service}
+
+\begin{verbatim}
+POST ORDER_SERVICE/api/order
+GET /api/orders
+GET /api/order/{order_id}
+\end{verbatim}
 
 \chapter{The order saga model}
 

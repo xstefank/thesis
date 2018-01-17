@@ -1,0 +1,2 @@
+	String hello = "World";
+	System.out.println("hello " + hello);
