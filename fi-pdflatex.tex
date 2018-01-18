@@ -271,29 +271,48 @@ The saga pattern in this application is used to create orders. The order saga co
 
 CQRS
 
-\chapter{The order service example application API}
+\chapter{The example application public API}
 
+\textbf{Order service}
 
 \begin{minted}{python}
 	POST /api/order
 	GET  /api/orders
+	GET  /api/order/{order_id}
 \end{minted}
 
-------------------------
-
-\textbf{Order service}
-
-\texttt{POST /api/order} \hfill \break
-\texttt{GET /api/orders} 
-\texttt{GET /api/order/\{order\_id \}} 
-
+\noindent
 \textbf{Shipment service}
 
-\begin{verbatim}
-POST ORDER_SERVICE/api/order
-GET /api/orders
-GET /api/order/{order_id}
-\end{verbatim}
+\begin{minted}{python}
+	POST /api/request
+	POST /api/compensate
+	GET  /api/shipments
+	GET  /api/shipment/{shipment_id}
+\end{minted}
+
+\noindent
+\textbf{Invoice service}
+
+\begin{minted}{python}
+	POST /api/request
+	POST /api/compensate
+	GET  /api/invoices
+	GET  /api/invoice/{invoice_id}
+\end{minted}
+
+\noindent
+\textbf{Query service}
+
+\begin{minted}{python}
+	GET /api/orders
+	GET /api/order/{order_id}
+	GET /api/shipments
+	GET /api/shipment/{shipment_id}
+	GET /api/invoices
+	GET /api/invoice/{invoice_id}
+\end{minted}
+
 
 \chapter{The order saga model}
 
