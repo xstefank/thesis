@@ -281,25 +281,31 @@ CQRS
 	GET  /api/order/{order_id}
 \end{minted}
 
+\hfill \break
+
 \noindent
 \textbf{Shipment service}
 
 \begin{minted}{python}
-	POST /api/request
-	POST /api/compensate
+	POST /api/request                      // LRA
+	POST /api/compensate                   // LRA
 	GET  /api/shipments
 	GET  /api/shipment/{shipment_id}
 \end{minted}
+
+\hfill \break
 
 \noindent
 \textbf{Invoice service}
 
 \begin{minted}{python}
-	POST /api/request
-	POST /api/compensate
+	POST /api/request                      // LRA
+	POST /api/compensate                   // LRA
 	GET  /api/invoices
 	GET  /api/invoice/{invoice_id}
 \end{minted}
+
+\hfill \break
 
 \noindent
 \textbf{Query service}
