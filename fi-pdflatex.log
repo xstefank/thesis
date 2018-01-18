@@ -1,8 +1,8 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.9.30)  17 JAN 2018 23:39
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.9.30)  18 JAN 2018 12:21
 entering extended mode
- restricted \write18 enabled.
+ \write18 enabled.
  %&-line parsing enabled.
-**fi-pdflatex.tex -shell-escape
+**fi-pdflatex.tex
 (./fi-pdflatex.tex
 LaTeX2e <2016/03/31>
 Babel <3.9r> and hyphenation patterns for 3 language(s) loaded.
@@ -1498,9 +1498,11 @@ Package pdftexcmds Info: \pdfdraftmode found.
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/catchfile.sty
 Package: catchfile 2016/05/16 v1.7 Catch the contents of a file (HO)
 )
+runsystem(uname -s > "fi-pdflatex.w18")...executed.
 
-Package ifplatform Warning: 
-    shell escape is disabled, so I can only detect \ifwindows.
+
+(./fi-pdflatex.w18)
+runsystem(rm -- "fi-pdflatex.w18")...executed.
 
 ) (/usr/share/texlive/texmf-dist/tex/latex/lineno/lineno.sty
 Package: lineno 2005/11/02 line numbers on paragraphs v4.41
@@ -1519,8 +1521,7 @@ Package: lineno 2005/11/02 line numbers on paragraphs v4.41
 \bframesep=\dimen282
 \bframebox=\box60
 LaTeX Info: Redefining \\ on input line 3056.
-)
-(/usr/share/texlive/texmf-dist/tex/latex/framed/framed.sty
+) (/usr/share/texlive/texmf-dist/tex/latex/framed/framed.sty
 Package: framed 2011/10/22 v 0.96: framed or shaded text with page breaks
 \OuterFrameSep=\skip65
 \fb@frw=\dimen283
@@ -1530,7 +1531,7 @@ Package: framed 2011/10/22 v 0.96: framed or shaded text with page breaks
 )
 (/usr/share/texlive/texmf-dist/tex/latex/tools/shellesc.sty
 Package: shellesc 2016/04/29 v0.01c unified shell escape interface for LaTeX
-Package shellesc Info: Restricted shell escape ensabled on input line 67.
+Package shellesc Info: Unrestricted shell escape ensabled on input line 65.
 )
 \minted@appexistsfile=\read3
 \FV@BreakIndent=\dimen287
@@ -1554,18 +1555,6 @@ File: T2APTMono-TLF.fd 2014/02/02 Font definitions for T2A/PTMono-TLF.
 \@float@every@listing=\toks48
 \c@listing=\count189
 )
-
-! Package minted Error: You must invoke LaTeX with the -shell-escape flag.
-
-See the minted package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.67 
-     
-Pass the -shell-escape flag to LaTeX. Refer to the minted.sty documentation for
- more information.
-
 (./fithesis/locale/fithesis-english.def
 File: fithesis/locale/fithesis-english.def 2016/01/13
 )
@@ -1845,21 +1834,10 @@ Package csquotes Info: ... configuration file loaded successfully.
 (/usr/share/texlive/texmf-dist/tex/latex/csquotes/csquotes.cfg
 File: csquotes.cfg 
 ))
-runsystem(which pygmentize && touch fi-pdflatex.aex)...disabled (restricted).
+runsystem(which pygmentize && touch fi-pdflatex.aex)...executed.
 
+runsystem(rm fi-pdflatex.aex)...executed.
 
-
-! Package minted Error: You must have `pygmentize' installed to use this packag
-e.
-
-See the minted package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.69 \begin{document}
-                     
-Refer to the installation instructions in the minted documentation for more inf
-ormation.
 
 (./fi-pdflatex.aux)
 \openout1 = `fi-pdflatex.aux'.
@@ -1914,47 +1892,16 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 runsystem(pygmentize -S default -f latex -P commandprefix=PYG > fi-pdflatex.out
-.pyg)...disabled (restricted).
+.pyg)...executed.
 
 
-
-! Package minted Error: Missing Pygments output; \inputminted was
-probably given a file that does not exist--otherwise, you may need 
-the outputdir package option, or may be using an incompatible build tool,
-or may be using frozencache with a missing file.
-
-See the minted package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.69 \begin{document}
-                     ^^M
-This could be caused by using -output-directory or -aux-directory 
-without setting minted's outputdir, or by using a build tool that 
-changes paths in ways minted cannot detect, 
-or using frozencache with a missing file.
-
+(./fi-pdflatex.out.pyg)
 runsystem(pygmentize -S default -f latex -P commandprefix=PYGdefault > fi-pdfla
-tex.out.pyg)...disabled (restricted).
+tex.out.pyg)...executed.
 
-
-! Package minted Error: Missing Pygments output; \inputminted was
-probably given a file that does not exist--otherwise, you may need 
-the outputdir package option, or may be using an incompatible build tool,
-or may be using frozencache with a missing file.
-
-See the minted package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.69 \begin{document}
-                     ^^M
-This could be caused by using -output-directory or -aux-directory 
-without setting minted's outputdir, or by using a build tool that 
-changes paths in ways minted cannot detect, 
-or using frozencache with a missing file.
-
+ (./fi-pdflatex.out.pyg)
 \AtBeginShipoutBox=\box71
+
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/pdflscape.sty
 Package: pdflscape 2016/05/14 v0.11 Display of landscape pages in PDF (HO)
 
@@ -2149,36 +2096,20 @@ Appendix A.
 Appendix B.
 \openout6 = `fi-pdflatex.pyg'.
 
-runsystem(pygmentize -l java -f latex -P commandprefix=PYG -F tokenmerge -o fi-
-pdflatex.out.pyg fi-pdflatex.pyg)...disabled (restricted).
+runsystem(pygmentize -l python -f latex -P commandprefix=PYG -F tokenmerge -o f
+i-pdflatex.out.pyg fi-pdflatex.pyg)...executed.
 
-
-! Package minted Error: Missing Pygments output; \inputminted was
-probably given a file that does not exist--otherwise, you may need 
-the outputdir package option, or may be using an incompatible build tool,
-or may be using frozencache with a missing file.
-
-See the minted package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.280 \end{minted}
-                  
-This could be caused by using -output-directory or -aux-directory 
-without setting minted's outputdir, or by using a build tool that 
-changes paths in ways minted cannot detect, 
-or using frozencache with a missing file.
-
-LaTeX Font Info:    Try loading font information for T1+lmtt on input line 286.
-
-(/usr/share/texlive/texmf-dist/tex/latex/lm/t1lmtt.fd
+(./fi-pdflatex.out.pyg
+LaTeX Font Info:    Try loading font information for T1+lmtt on input line 1.
+ (/usr/share/texlive/texmf-dist/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 Package microtype Info: Loading generic settings for font family
 (microtype)             `lmtt' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
- [17]
+)
+[17]
 Appendix C.
 [18]
 
@@ -2194,24 +2125,26 @@ Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 301.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 301.
 Package rerunfilecheck Info: File `fi-pdflatex.out' has not changed.
 (rerunfilecheck)             Checksum: BF78C08DE6994F6261EE524F8961C2D6;2841.
-runsystem(rm fi-pdflatex.pyg)...disabled (restricted).
+runsystem(rm fi-pdflatex.pyg)...executed.
+
+runsystem(rm fi-pdflatex.out.pyg)...executed.
 
  ) 
 Here is how much of TeX's memory you used:
- 37726 strings out of 494946
- 682305 string characters out of 6180981
- 818703 words of memory out of 5000000
- 40142 multiletter control sequences out of 15000+600000
+ 37908 strings out of 494946
+ 684722 string characters out of 6180981
+ 823397 words of memory out of 5000000
+ 40315 multiletter control sequences out of 15000+600000
  65782 words of font info for 99 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 69i,8n,84p,10433b,603s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 69i,8n,84p,10419b,603s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texli
 ve/texmf-dist/fonts/enc/dvips/tex-gyre/q-ec.enc}{/usr/share/texlive/texmf-dist/
 fonts/enc/dvips/tex-gyre/q-ec-sc.enc}</usr/share/texlive/texmf-dist/fonts/type1
 /public/lm/lmtt12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/tex-gyr
 e/qplb.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/tex-gyre/qplr.pfb>
 </usr/share/texlive/texmf-dist/fonts/type1/public/tex-gyre/qplri.pfb>
-Output written on fi-pdflatex.pdf (27 pages, 184849 bytes).
+Output written on fi-pdflatex.pdf (27 pages, 184912 bytes).
 PDF statistics:
  478 PDF objects out of 1000 (max. 8388607)
  415 compressed objects within 5 object streams
