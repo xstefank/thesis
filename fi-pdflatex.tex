@@ -277,8 +277,8 @@ CQRS
 
 \begin{minted}{python}
 	POST /api/order
-	GET  /api/orders
-	GET  /api/order/{order_id}
+	GET  /api/orders                       // except Axon, Eventuate
+	GET  /api/order/{order_id}             // except Axon, Eventuate
 \end{minted}
 
 \hfill \break
@@ -287,10 +287,10 @@ CQRS
 \textbf{Shipment service}
 
 \begin{minted}{python}
-	POST /api/request                      // LRA
-	POST /api/compensate                   // LRA
-	GET  /api/shipments
-	GET  /api/shipment/{shipment_id}
+	POST /api/request                      // except Axon
+	POST /api/compensate                   // except Axon
+	GET  /api/shipments                    // except Axon, Eventuate
+	GET  /api/shipment/{shipment_id}       // except Axon, Eventuate
 \end{minted}
 
 \hfill \break
@@ -299,16 +299,16 @@ CQRS
 \textbf{Invoice service}
 
 \begin{minted}{python}
-	POST /api/request                      // LRA
-	POST /api/compensate                   // LRA
-	GET  /api/invoices
-	GET  /api/invoice/{invoice_id}
+	POST /api/request                      // except Axon
+	POST /api/compensate                   // except Axon
+	GET  /api/invoices                     // except Axon, Eventuate
+	GET  /api/invoice/{invoice_id}         // except Axon, Eventuate
 \end{minted}
 
 \hfill \break
 
 \noindent
-\textbf{Query service}
+\textbf{Query service}\mintinline{python}{                                  // Axon, Eventuate}
 
 \begin{minted}{python}
 	GET /api/orders
@@ -318,6 +318,7 @@ CQRS
 	GET /api/invoices
 	GET /api/invoice/{invoice_id}
 \end{minted}
+
 
 
 \chapter{The order saga model}
