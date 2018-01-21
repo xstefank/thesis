@@ -63,7 +63,7 @@ abstract
 \usepackage{amsfonts}
 \usepackage{url}
 \usepackage{menukeys}
-\usepackage[cache=false]{minted}
+\usepackage{minted}
 
 
 \begin{document}
@@ -273,42 +273,16 @@ CQRS
 
 \chapter{The example application public API}
 
+\section{Axon service}
+
 \textbf{Order service}
 
 \begin{minted}{python}
 	POST /api/order
-	GET  /api/orders                       // except Axon, Eventuate
-	GET  /api/order/{order_id}             // except Axon, Eventuate
 \end{minted}
 
-\hfill \break
-
 \noindent
-\textbf{Shipment service}
-
-\begin{minted}{python}
-	POST /api/request                      // except Axon
-	POST /api/compensate                   // except Axon
-	GET  /api/shipments                    // except Axon, Eventuate
-	GET  /api/shipment/{shipment_id}       // except Axon, Eventuate
-\end{minted}
-
-\hfill \break
-
-\noindent
-\textbf{Invoice service}
-
-\begin{minted}{python}
-	POST /api/request                      // except Axon
-	POST /api/compensate                   // except Axon
-	GET  /api/invoices                     // except Axon, Eventuate
-	GET  /api/invoice/{invoice_id}         // except Axon, Eventuate
-\end{minted}
-
-\hfill \break
-
-\noindent
-\textbf{Query service}\mintinline{python}{                                  // Axon, Eventuate}
+\textbf{Query service}
 
 \begin{minted}{python}
 	GET /api/orders
@@ -318,6 +292,52 @@ CQRS
 	GET /api/invoices
 	GET /api/invoice/{invoice_id}
 \end{minted}
+
+\section{Eventuate service}
+
+\textbf{Order service}
+
+\begin{minted}{python}
+	POST /api/order
+	POST /management/shipment
+	POST /management/shipment/fail
+	POST /management/shipment/compensation
+	POST /management/invoice
+	POST /management/invoice/fail
+	POST /management/invoice/compensation
+\end{minted}
+
+\noindent
+\textbf{Shipment service}
+
+\begin{minted}{python}
+	POST /api/request
+	POST /api/compensate
+\end{minted}
+
+\noindent
+\textbf{Invoice service}
+
+\begin{minted}{python}
+	POST /api/request
+	POST /api/compensate
+\end{minted}
+
+\noindent
+\textbf{Query service}
+
+\begin{minted}{python}
+	GET /api/orders
+	GET /api/order/{order_id}
+	GET /api/shipments
+	GET /api/shipment/{shipment_id}
+	GET /api/invoices
+	GET /api/invoice/{invoice_id}
+\end{minted}
+
+\section{LRA service}
+
+\section{Eventuate Tram}
 
 
 
