@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+	\PYG{n}{PUT}  \PYG{o}{/}\PYG{n}{api}\PYG{o}{/}\PYG{n}{complete}
+	\PYG{n}{PUT}  \PYG{o}{/}\PYG{n}{api}\PYG{o}{/}\PYG{n}{compensate}
+	\PYG{n}{GET}  \PYG{o}{/}\PYG{n}{api}\PYG{o}{/}\PYG{n}{health}
+	\PYG{n}{POSt} \PYG{o}{/}\PYG{n}{api}\PYG{o}{/}\PYG{n}{lra}
+\end{Verbatim}

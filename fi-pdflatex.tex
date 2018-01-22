@@ -271,7 +271,7 @@ The saga pattern in this application is used to create orders. The order saga co
 
 CQRS
 
-\chapter{The example application public API}
+\chapter{The example applications public APIs}
 
 \section{Axon service}
 
@@ -381,6 +381,16 @@ CQRS
 	PUT  /lra-coordinator/{LraId}/cancel
 	PUT  /lra-coordinator/{LraId}
 	PUT  /lra-coordinator/{LraId}/remove
+\end{minted}
+
+\noindent
+\textbf{API gateway}
+
+\begin{minted}{python}
+	PUT  /api/complete
+	PUT  /api/compensate
+	GET  /api/health
+	POSt /api/lra
 \end{minted}
 
 

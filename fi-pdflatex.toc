@@ -37,7 +37,7 @@
 \contentsline {chapter}{\numberline {6}\bfseries Conclusion}{13}{chapter.6}
 \contentsline {chapter}{Bibliography}{14}{section*.6}
 \contentsline {chapter}{\numberline {A}\bfseries The Command Query Responsibility Segregation pattern}{16}{appendix.A}
-\contentsline {chapter}{\numberline {B}\bfseries The example application public API}{17}{appendix.B}
+\contentsline {chapter}{\numberline {B}\bfseries The example applications public APIs}{17}{appendix.B}
 \contentsline {section}{\numberline {B.1}\slshape Axon service}{17}{section.B.1}
 \contentsline {section}{\numberline {B.2}\slshape Eventuate service}{17}{section.B.2}
 \contentsline {section}{\numberline {B.3}\slshape LRA service}{18}{section.B.3}
