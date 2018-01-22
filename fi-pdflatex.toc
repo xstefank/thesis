@@ -41,5 +41,5 @@
 \contentsline {section}{\numberline {B.1}\slshape Axon service}{17}{section.B.1}
 \contentsline {section}{\numberline {B.2}\slshape Eventuate service}{17}{section.B.2}
 \contentsline {section}{\numberline {B.3}\slshape LRA service}{18}{section.B.3}
-\contentsline {section}{\numberline {B.4}\slshape Eventuate Tram}{18}{section.B.4}
-\contentsline {chapter}{\numberline {C}\bfseries The order saga model}{19}{appendix.C}
+\contentsline {section}{\numberline {B.4}\slshape Eventuate Tram}{19}{section.B.4}
+\contentsline {chapter}{\numberline {C}\bfseries The order saga model}{20}{appendix.C}

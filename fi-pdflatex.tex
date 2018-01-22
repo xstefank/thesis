@@ -337,6 +337,53 @@ CQRS
 
 \section{LRA service}
 
+\textbf{Order service}
+
+\begin{minted}{python}
+	POST /api/order
+	GET  /api/health
+\end{minted}
+
+\noindent
+\textbf{Shipment service}
+
+\begin{minted}{python}
+	POST /api/request
+	PUT  /api/complete
+	PUT  /api/compensate
+	GET  /api/health
+\end{minted}
+
+\noindent
+\textbf{Invoice service}
+
+\begin{minted}{python}
+	POST /api/request
+	PUT  /api/complete
+	PUT  /api/compensate
+	GET  /api/health
+\end{minted}
+
+\noindent
+\textbf{LRA coordinator}
+
+\begin{minted}{python}
+	GET  /lra-coordinator
+	GET  /lra-coordinator/{LraId}
+	GET  /lra-coordinator/status/{LraId}
+	POST /lra-coordinator/start
+	PUT  /lra-coordinator/{LraId}/renew
+	GET  /lra-coordinator/{NestedLraId}/status
+	PUT  /lra-coordinator/{NestedLraId}/complete
+	PUT  /lra-coordinator/{NestedLraId}/compensate
+	PUT  /lra-coordinator/{NestedLraId}/forget
+	PUT  /lra-coordinator/{LraId}/close
+	PUT  /lra-coordinator/{LraId}/cancel
+	PUT  /lra-coordinator/{LraId}
+	PUT  /lra-coordinator/{LraId}/remove
+\end{minted}
+
+
 \section{Eventuate Tram}
 
 
