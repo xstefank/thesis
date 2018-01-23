@@ -391,14 +391,39 @@ CQRS
 \textbf{API gateway}
 
 \begin{minted}{python}
-	PUT  /api/complete
-	PUT  /api/compensate
-	GET  /api/health
-	POST /api/lra
+        PUT  /api/complete
+        PUT  /api/compensate
+        GET  /api/health
+        POST /api/lra
 \end{minted}
 
 
 \section{Eventuate Tram}
+
+\textbf{Order service}
+
+\begin{minted}{python}
+        POST /api/order
+        GET  /api/orders
+        GET  /api/order/{orderId}
+\end{minted}
+
+\noindent
+\textbf{Shipment service}
+
+\begin{minted}{python}
+        GET /api/shipments
+        GET /api/shipment/{shipmentId}
+\end{minted}
+
+\noindent
+\textbf{Invoice service}
+
+\begin{minted}{python}
+        GET /api/invoices
+        GET /api/invoice/{invoiceId}
+\end{minted}
+
 
 
 

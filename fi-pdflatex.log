@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.9.30)  23 JAN 2018 08:15
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.9.30)  23 JAN 2018 09:08
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -2154,7 +2154,26 @@ B2CA462F.pygtex [18])
 \openout6 = `fi-pdflatex.pyg'.
 
 
-(./_minted-fi-pdflatex/EBDF7B6038E6649E8E88BA92EA1D5A78FC600DE6684BB3C58945898F
+(./_minted-fi-pdflatex/3CD25BD8A485E5185EE3CA7DCAE2D566FC600DE6684BB3C58945898F
+B2CA462F.pygtex)
+\openout6 = `fi-pdflatex.pyg'.
+
+
+(./_minted-fi-pdflatex/6DB0A560B1469CE54777CFEE8F34BEA8FC600DE6684BB3C58945898F
+B2CA462F.pygtex)
+\openout6 = `fi-pdflatex.pyg'.
+
+
+(./_minted-fi-pdflatex/09B61A1A784CD2DF78B2473095787F35FC600DE6684BB3C58945898F
+B2CA462F.pygtex)
+\openout6 = `fi-pdflatex.pyg'.
+
+runsystem(pygmentize -l python -f latex -P commandprefix=PYG -F tokenmerge -o _
+minted-fi-pdflatex/B587EFE444458382F4F971730D264670FC600DE6684BB3C58945898FB2CA
+462F.pygtex fi-pdflatex.pyg)...executed.
+
+
+(./_minted-fi-pdflatex/B587EFE444458382F4F971730D264670FC600DE6684BB3C58945898F
 B2CA462F.pygtex) [19]
 Appendix C.
 [20]
@@ -2164,21 +2183,21 @@ Package catoptions Warning: Undefined options
 (catoptions)                fontenc.sty,T1,. 
 (catoptions)                Default action already taken in each case .
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 408.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 408.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 433.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 433.
 (./fi-pdflatex.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 408.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 408.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 433.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 433.
 Package rerunfilecheck Info: File `fi-pdflatex.out' has not changed.
 (rerunfilecheck)             Checksum: C9A099747B1D7500C844EE5A0A29A997;3107.
 runsystem(rm fi-pdflatex.pyg)...executed.
 
  ) 
 Here is how much of TeX's memory you used:
- 37965 strings out of 494946
- 688273 string characters out of 6180981
- 824379 words of memory out of 5000000
- 40330 multiletter control sequences out of 15000+600000
+ 37977 strings out of 494946
+ 689272 string characters out of 6180981
+ 824526 words of memory out of 5000000
+ 40333 multiletter control sequences out of 15000+600000
  66048 words of font info for 101 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  69i,8n,84p,10406b,646s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -2188,7 +2207,7 @@ fonts/enc/dvips/tex-gyre/q-ec-sc.enc}</usr/share/texlive/texmf-dist/fonts/type1
 /public/lm/lmtt12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/tex-gyr
 e/qplb.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/tex-gyre/qplr.pfb>
 </usr/share/texlive/texmf-dist/fonts/type1/public/tex-gyre/qplri.pfb>
-Output written on fi-pdflatex.pdf (29 pages, 190598 bytes).
+Output written on fi-pdflatex.pdf (29 pages, 190723 bytes).
 PDF statistics:
  507 PDF objects out of 1000 (max. 8388607)
  442 compressed objects within 5 object streams
