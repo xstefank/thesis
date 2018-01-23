@@ -278,19 +278,19 @@ CQRS
 \textbf{Order service}
 
 \begin{minted}{python}
-	POST /api/order
+        POST /api/order
 \end{minted}
 
 \noindent
 \textbf{Query service}
 
 \begin{minted}{python}
-	GET /api/orders
-	GET /api/order/{order_id}
-	GET /api/shipments
-	GET /api/shipment/{shipment_id}
-	GET /api/invoices
-	GET /api/invoice/{invoice_id}
+        GET /api/orders
+        GET /api/order/{order_id}
+        GET /api/shipments
+        GET /api/shipment/{shipment_id}
+        GET /api/invoices
+        GET /api/invoice/{invoice_id}
 \end{minted}
 
 \section{Eventuate service}
@@ -298,41 +298,41 @@ CQRS
 \textbf{Order service}
 
 \begin{minted}{python}
-	POST /api/order
-	POST /management/shipment
-	POST /management/shipment/fail
-	POST /management/shipment/compensation
-	POST /management/invoice
-	POST /management/invoice/fail
-	POST /management/invoice/compensation
+        POST /api/order
+        POST /management/shipment
+        POST /management/shipment/fail
+        POST /management/shipment/compensation
+        POST /management/invoice
+        POST /management/invoice/fail
+        POST /management/invoice/compensation
 \end{minted}
 
 \noindent
 \textbf{Shipment service}
 
 \begin{minted}{python}
-	POST /api/request
-	POST /api/compensate
+        POST /api/request
+        POST /api/compensate
 \end{minted}
 
 \noindent
 \textbf{Invoice service}
 
 \begin{minted}{python}
-	POST /api/request
-	POST /api/compensate
+        POST /api/request
+        POST /api/compensate
 \end{minted}
 
 \noindent
 \textbf{Query service}
 
 \begin{minted}{python}
-	GET /api/orders
-	GET /api/order/{order_id}
-	GET /api/shipments
-	GET /api/shipment/{shipment_id}
-	GET /api/invoices
-	GET /api/invoice/{invoice_id}
+        GET /api/orders
+        GET /api/order/{order_id}
+        GET /api/shipments
+        GET /api/shipment/{shipment_id}
+        GET /api/invoices
+        GET /api/invoice/{invoice_id}
 \end{minted}
 
 \section{LRA service}
@@ -340,51 +340,51 @@ CQRS
 \textbf{Order service}
 
 \begin{minted}{python}
-	POST /api/order
-	GET  /api/health
+        POST /api/order
+        GET  /api/health
 \end{minted}
 
 \noindent
 \textbf{Shipment service}
 
 \begin{minted}{python}
-	POST /api/request
-	PUT  /api/complete
-	PUT  /api/compensate
-	GET  /api/health
+        POST /api/request
+        PUT  /api/complete
+        PUT  /api/compensate
+        GET  /api/health
 \end{minted}
 
 \noindent
 \textbf{Invoice service}
 
 \begin{minted}{python}
-	POST /api/request
-	PUT  /api/complete
-	PUT  /api/compensate
-	GET  /api/health
+        POST /api/request
+        PUT  /api/complete
+        PUT  /api/compensate
+        GET  /api/health
 \end{minted}
 
 \noindent
 \textbf{LRA coordinator}
 
 \begin{minted}{python}
-	GET  /lra-coordinator
-	GET  /lra-coordinator/{LraId}
-	GET  /lra-coordinator/status/{LraId}
-	POST /lra-coordinator/start
-	PUT  /lra-coordinator/{LraId}/renew
-	GET  /lra-coordinator/{NestedLraId}/status
-	PUT  /lra-coordinator/{NestedLraId}/complete
-	PUT  /lra-coordinator/{NestedLraId}/compensate
-	PUT  /lra-coordinator/{NestedLraId}/forget
-	PUT  /lra-coordinator/{LraId}/close
-	PUT  /lra-coordinator/{LraId}/cancel
-	PUT  /lra-coordinator/{LraId}
-	PUT  /lra-coordinator/{LraId}/remove
-	GET  /api/health
-	GET  /lra-recovery-coordinator/{LRAId}/{RecCoordId}
-	PUT  /lra-recovery-coordinator/{LRAId}/{RecCoordId}
-	GET  /lra-recovery-coordinator/recovery
+        GET  /lra-coordinator
+        GET  /lra-coordinator/{LraId}
+        GET  /lra-coordinator/status/{LraId}
+        POST /lra-coordinator/start
+        PUT  /lra-coordinator/{LraId}/renew
+        GET  /lra-coordinator/{NestedLraId}/status
+        PUT  /lra-coordinator/{NestedLraId}/complete
+        PUT  /lra-coordinator/{NestedLraId}/compensate
+        PUT  /lra-coordinator/{NestedLraId}/forget
+        PUT  /lra-coordinator/{LraId}/close
+        PUT  /lra-coordinator/{LraId}/cancel
+        PUT  /lra-coordinator/{LraId}
+        PUT  /lra-coordinator/{LraId}/remove
+        GET  /api/health
+        GET  /lra-recovery-coordinator/{LRAId}/{RecCoordId}
+        PUT  /lra-recovery-coordinator/{LRAId}/{RecCoordId}
+        GET  /lra-recovery-coordinator/recovery
 \end{minted}
 
 \noindent
