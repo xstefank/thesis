@@ -381,6 +381,10 @@ CQRS
 	PUT  /lra-coordinator/{LraId}/cancel
 	PUT  /lra-coordinator/{LraId}
 	PUT  /lra-coordinator/{LraId}/remove
+	GET  /api/health
+	GET  /lra-recovery-coordinator/{LRAId}/{RecCoordId}
+	PUT  /lra-recovery-coordinator/{LRAId}/{RecCoordId}
+	GET  /lra-recovery-coordinator/recovery
 \end{minted}
 
 \noindent
@@ -390,7 +394,7 @@ CQRS
 	PUT  /api/complete
 	PUT  /api/compensate
 	GET  /api/health
-	POSt /api/lra
+	POST /api/lra
 \end{minted}
 
 

@@ -12,4 +12,8 @@
 	\PYG{n}{PUT}  \PYG{o}{/}\PYG{n}{lra}\PYG{o}{\PYGZhy{}}\PYG{n}{coordinator}\PYG{o}{/}\PYG{p}{\PYGZob{}}\PYG{n}{LraId}\PYG{p}{\PYGZcb{}}\PYG{o}{/}\PYG{n}{cancel}
 	\PYG{n}{PUT}  \PYG{o}{/}\PYG{n}{lra}\PYG{o}{\PYGZhy{}}\PYG{n}{coordinator}\PYG{o}{/}\PYG{p}{\PYGZob{}}\PYG{n}{LraId}\PYG{p}{\PYGZcb{}}
 	\PYG{n}{PUT}  \PYG{o}{/}\PYG{n}{lra}\PYG{o}{\PYGZhy{}}\PYG{n}{coordinator}\PYG{o}{/}\PYG{p}{\PYGZob{}}\PYG{n}{LraId}\PYG{p}{\PYGZcb{}}\PYG{o}{/}\PYG{n}{remove}
+	\PYG{n}{GET}  \PYG{o}{/}\PYG{n}{api}\PYG{o}{/}\PYG{n}{health}
+	\PYG{n}{GET}  \PYG{o}{/}\PYG{n}{lra}\PYG{o}{\PYGZhy{}}\PYG{n}{recovery}\PYG{o}{\PYGZhy{}}\PYG{n}{coordinator}\PYG{o}{/}\PYG{p}{\PYGZob{}}\PYG{n}{LRAId}\PYG{p}{\PYGZcb{}}\PYG{o}{/}\PYG{p}{\PYGZob{}}\PYG{n}{RecCoordId}\PYG{p}{\PYGZcb{}}
+	\PYG{n}{PUT}  \PYG{o}{/}\PYG{n}{lra}\PYG{o}{\PYGZhy{}}\PYG{n}{recovery}\PYG{o}{\PYGZhy{}}\PYG{n}{coordinator}\PYG{o}{/}\PYG{p}{\PYGZob{}}\PYG{n}{LRAId}\PYG{p}{\PYGZcb{}}\PYG{o}{/}\PYG{p}{\PYGZob{}}\PYG{n}{RecCoordId}\PYG{p}{\PYGZcb{}}
+	\PYG{n}{GET}  \PYG{o}{/}\PYG{n}{lra}\PYG{o}{\PYGZhy{}}\PYG{n}{recovery}\PYG{o}{\PYGZhy{}}\PYG{n}{coordinator}\PYG{o}{/}\PYG{n}{recovery}
 \end{Verbatim}
