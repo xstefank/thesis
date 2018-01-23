@@ -245,6 +245,14 @@ All examples are based on the microservices pattern. As every framework is suita
 
 The saga pattern used in this application is able to create orders. The order saga consists of three parts -- the production of a shipping and an invoice information and if both invocations are successful, the actual order creation. If any part of the processing fails, the whole progress is expected to be undone. For instance, if the shipment is successfully created but the invoice assembly is not able to be confirmed, the persisted shipment information as well as the order must be canceled (also optionally notifying the user that the order cannot be created). The graphical representation of the saga progress is available in the Appendix C.
 
+\subsubsection{Axon service}
+
+As it was stated in the previous chapter, the Axon framework is based upon the CQRS principles. Because of this nature, it would be difficult not to follow this pattern. The individual services contain separated aggregates\footnote{for the definition of aggregate please refer to the Appendix A} each processing its respective commands and producing various events. Any inter-service interaction is restricted to the use of the command and event buses.
+
+Axon service is a Java Spring Boot microservices application. Each service is fully separated and independent Maven\cite{maven} project. Every project is standalone runnable application (fat jar\footnote{Java Archive}) as the Spring Boot does not use any underlying platform to run its microservices.
+
+The application is separated into four microservices -- the \newline \texttt{order-service}, the \texttt{shipment-service}, the \texttt{invoice-service} and the \texttt{query-service}. Furthermore it also contains a project \texttt{service-model} which serves as a support library for the microservices.
+
 
 \begin{figure}
 	\begin{center}

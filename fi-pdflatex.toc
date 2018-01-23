@@ -34,6 +34,7 @@
 \contentsline {subsection}{\numberline {5.3.3}\rmfamily Narayana LRA}{12}{subsection.5.3.3}
 \contentsline {section}{\numberline {5.4}\slshape Example application}{12}{section.5.4}
 \contentsline {subsection}{\numberline {5.4.1}\rmfamily The saga model}{12}{subsection.5.4.1}
+\contentsline {subsubsection}{\numberline {5.4.1.1} Axon service}{13}{subsubsection.5.4.1.1}
 \contentsline {chapter}{\numberline {6}\bfseries Conclusion}{14}{chapter.6}
 \contentsline {chapter}{Bibliography}{15}{section*.6}
 \contentsline {chapter}{\numberline {A}\bfseries The Command Query Responsibility Segregation pattern}{17}{appendix.A}

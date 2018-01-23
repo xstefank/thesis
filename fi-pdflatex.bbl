@@ -94,4 +94,10 @@ Narayana, ``{Narayana LRA},'' 2017. [Online]. Available:
   \url{https://github.com/eclipse/microprofile-sandbox/tree/master/proposals/0009-LRA}
 \BIBentrySTDinterwordspacing
 
+\bibitem{maven}
+\BIBentryALTinterwordspacing
+B.~Porter, J.~Zyl, and O.~Lamy, ``Maven,'' 2018. [Online]. Available:
+  \url{https://maven.apache.org/}
+\BIBentrySTDinterwordspacing
+
 \end{thebibliography}
