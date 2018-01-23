@@ -69,6 +69,7 @@ abstract
 \begin{document}
 \chapter{Introduction}
 
+\clearpage
 \chapter{Transaction concepts}
 
 This chapter introduces the basic notions of transactions, their properties and common problems of the management of transactions across multiple nodes in the distributed systems. 
@@ -152,7 +153,7 @@ CA CP theorem - CAP
 
 
 
-
+\clearpage
 \chapter{Microservices architecture pattern}
 
 This chapter introduces the basic concept of microservices and describes why modern scalable enterprise applications are to be developed implementing this pattern.
@@ -196,7 +197,7 @@ This section is inspired by the talk delivered by Sam Newman \cite{principles_of
 \end{enumerate}
 
 
-
+\clearpage
 \chapter{Communication patterns}
 
 \section{Consensus protocols}
@@ -211,7 +212,7 @@ Eventual consistency
 
 \subsection{CQRS}
 
-
+\clearpage
 \chapter{Saga pattern}
 
 A saga, as described in the original publication \cite{sagas_publ}, is a long lived transaction that can be written as a sequence of transactions that can be interleaved with other transactions. Each operation that is a part of the saga represents an unit of work that can be undone by the compensation action. The saga guarantees that either all operations complete successfully, or the corresponding compensation actions are run for all executed operations to cancel the partial processing.
@@ -236,13 +237,13 @@ The Axon framework is based upon the event processing including asynchronous mes
 
 \section{Example application}
 
-As a part of the investigation of each discussed framework from the previous section, I created a sample application simulating the saga utilization. This application is an ordering backend with a simple REST\footnote{Representational State Transfer} frontend interface. An user is able to create an order by providing a product information JSON\footnote{JavaScript object notation} containing the product id, commentary and price. For the simplicity the order always consists only of one product. The figure 5.1 shows the example input JSON. The complete API\footnote{Application programming interface} is provided in the Appendix B.
+As a part of the investigation of each discussed framework from the previous section, I created a sample application simulating the saga utilization. This application is an ordering backend with a simple REST\footnote{Representational State Transfer} frontend interface. An user is able to create an order by providing a product information JSON\footnote{JavaScript object notation} containing a product id, a commentary and a price. For the simplicity the order always consists only of the single product. The figure 5.1 shows the example input JSON format for the product data. The complete REST API\footnote{Application programming interface} for each individual example is provided in the Appendix B.
 
 All examples are based on the microservices pattern. As every framework is suitable for the use in different environments, each example is achieving the same goal through the different portfolio of technologies. The exact mechanisms used is individual projects will be discussed in more detail in their respective sections.
 
 \subsection{The saga model}
 
-The saga pattern in this application is used to create orders. The order saga consists of three parts -- the production of a shipping and an invoice information and if both invocations are successful, the actual order creation. If any part of the processing fails, the whole progress is expected to be undone. For instance, if the shipment is successfully created but the invoice assembly is not able to confirmed, the persisted shipment information as well as the order must be canceled (also optionally notifying the user that the order cannot be created). The graphical representation of the saga progress is available in the Appendix C.
+The saga pattern used in this application is able to create orders. The order saga consists of three parts -- the production of a shipping and an invoice information and if both invocations are successful, the actual order creation. If any part of the processing fails, the whole progress is expected to be undone. For instance, if the shipment is successfully created but the invoice assembly is not able to be confirmed, the persisted shipment information as well as the order must be canceled (also optionally notifying the user that the order cannot be created). The graphical representation of the saga progress is available in the Appendix C.
 
 
 \begin{figure}
@@ -252,7 +253,7 @@ The saga pattern in this application is used to create orders. The order saga co
 	\caption{Product Information example JSON}
 \end{figure}
 
-
+\clearpage
 \chapter{Conclusion}
 
 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.9.30)  23 JAN 2018 09:12
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.9.30)  23 JAN 2018 15:30
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -2046,31 +2046,41 @@ Chapter 1.
 
 ]
 Chapter 2.
-[2] [3] [4] [5]
+[2
+
+] [3] [4] [5]
 Chapter 3.
-[6] [7]
-Overfull \hbox (1.17848pt too wide) in paragraph at lines 186--187
+[6
+
+] [7]
+Overfull \hbox (1.17848pt too wide) in paragraph at lines 187--188
 []\T1/qpl/b/n/12 Decentralization \T1/qpl/m/n/12 (-20) -- Mi-croser-vice ar-chi
 -tec-ture is build around
  []
 
 [8] [9]
 Chapter 4.
-[10]
+[10
+
+]
 Chapter 5.
 
 Underfull \vbox (badness 3039) has occurred while \output is active []
 
- [11]
+ [11
+
+]
 <images/productInfoJSON.png, id=401, 316.18124pt x 101.37875pt>
 File: images/productInfoJSON.png Graphic file (type png)
 
 <use images/productInfoJSON.png>
-Package pdftex.def Info: images/productInfoJSON.png used on input line 250.
+Package pdftex.def Info: images/productInfoJSON.png used on input line 251.
 (pdftex.def)             Requested size: 266.22244pt x 85.35826pt.
- [12]
+ [12] [13 <./images/productInfoJSON.png>]
 Chapter 6.
-[13 <./images/productInfoJSON.png>]
+[14
+
+]
 No file fi-pdflatex.ind.
 (./fi-pdflatex.bbl
 Underfull \hbox (badness 1189) in paragraph at lines 30--33
@@ -2088,9 +2098,9 @@ Underfull \hbox (badness 1107) in paragraph at lines 93--96
 []\T1/qpl/m/n/12 (+20) Narayana, ``Narayana LRA,'' 2017. [On-line]. Avail-
  []
 
-[14]) [15]
+[15]) [16]
 Appendix A.
-[16]
+[17]
 Appendix B.
 \openout6 = `fi-pdflatex.pyg'.
 
@@ -2108,28 +2118,16 @@ Package microtype Info: Loading generic settings for font family
 )
 \openout6 = `fi-pdflatex.pyg'.
 
-runsystem(pygmentize -l python -f latex -P commandprefix=PYG -F tokenmerge -o _
-minted-fi-pdflatex/59414BBEA25BFD0489321CE8C72016DAFC600DE6684BB3C58945898FB2CA
-462F.pygtex fi-pdflatex.pyg)...executed.
-
 
 (./_minted-fi-pdflatex/59414BBEA25BFD0489321CE8C72016DAFC600DE6684BB3C58945898F
 B2CA462F.pygtex)
 \openout6 = `fi-pdflatex.pyg'.
-
-runsystem(pygmentize -l python -f latex -P commandprefix=PYG -F tokenmerge -o _
-minted-fi-pdflatex/CEB876E4F3D102A28BFB6D8883DA662EFC600DE6684BB3C58945898FB2CA
-462F.pygtex fi-pdflatex.pyg)...executed.
 
 
 (./_minted-fi-pdflatex/CEB876E4F3D102A28BFB6D8883DA662EFC600DE6684BB3C58945898F
 B2CA462F.pygtex)
 \openout6 = `fi-pdflatex.pyg'.
 
-runsystem(pygmentize -l python -f latex -P commandprefix=PYG -F tokenmerge -o _
-minted-fi-pdflatex/79B72FC39C02D220F09102A63B418BD7FC600DE6684BB3C58945898FB2CA
-462F.pygtex fi-pdflatex.pyg)...executed.
-
 
 (./_minted-fi-pdflatex/79B72FC39C02D220F09102A63B418BD7FC600DE6684BB3C58945898F
 B2CA462F.pygtex)
@@ -2142,22 +2140,14 @@ B2CA462F.pygtex)
 
 
 (./_minted-fi-pdflatex/59414BBEA25BFD0489321CE8C72016DAFC600DE6684BB3C58945898F
-B2CA462F.pygtex [17])
+B2CA462F.pygtex [18])
 \openout6 = `fi-pdflatex.pyg'.
-
-runsystem(pygmentize -l python -f latex -P commandprefix=PYG -F tokenmerge -o _
-minted-fi-pdflatex/5EB0619FF6DE29968C7D67E9650BE16DFC600DE6684BB3C58945898FB2CA
-462F.pygtex fi-pdflatex.pyg)...executed.
 
 
 (./_minted-fi-pdflatex/5EB0619FF6DE29968C7D67E9650BE16DFC600DE6684BB3C58945898F
 B2CA462F.pygtex)
 \openout6 = `fi-pdflatex.pyg'.
 
-runsystem(pygmentize -l python -f latex -P commandprefix=PYG -F tokenmerge -o _
-minted-fi-pdflatex/75E76146C4988FF4A37E09EB7FA3F4F4FC600DE6684BB3C58945898FB2CA
-462F.pygtex fi-pdflatex.pyg)...executed.
-
 
 (./_minted-fi-pdflatex/75E76146C4988FF4A37E09EB7FA3F4F4FC600DE6684BB3C58945898F
 B2CA462F.pygtex)
@@ -2167,14 +2157,10 @@ B2CA462F.pygtex)
 (./_minted-fi-pdflatex/75E76146C4988FF4A37E09EB7FA3F4F4FC600DE6684BB3C58945898F
 B2CA462F.pygtex)
 \openout6 = `fi-pdflatex.pyg'.
-
-runsystem(pygmentize -l python -f latex -P commandprefix=PYG -F tokenmerge -o _
-minted-fi-pdflatex/F9A48A8A0F37F75E7AC2FFA3FF979597FC600DE6684BB3C58945898FB2CA
-462F.pygtex fi-pdflatex.pyg)...executed.
 
 
 (./_minted-fi-pdflatex/F9A48A8A0F37F75E7AC2FFA3FF979597FC600DE6684BB3C58945898F
-B2CA462F.pygtex [18])
+B2CA462F.pygtex [19])
 \openout6 = `fi-pdflatex.pyg'.
 
 
@@ -2194,46 +2180,28 @@ B2CA462F.pygtex)
 
 
 (./_minted-fi-pdflatex/B587EFE444458382F4F971730D264670FC600DE6684BB3C58945898F
-B2CA462F.pygtex) [19]
+B2CA462F.pygtex) [20]
 Appendix C.
-runsystem(rm _minted-fi-pdflatex/D4D71579DA9A7845D1B8CD6A1DFD374BFC600DE6684BB3
-C58945898FB2CA462F.pygtex)...executed.
-
-runsystem(rm _minted-fi-pdflatex/3994D61016C62AFDEF2B2F954EA3CE72FC600DE6684BB3
-C58945898FB2CA462F.pygtex)...executed.
-
-runsystem(rm _minted-fi-pdflatex/E473C6A12B7BBEDDA38A6E3B6C9932ABFC600DE6684BB3
-C58945898FB2CA462F.pygtex)...executed.
-
-runsystem(rm _minted-fi-pdflatex/37BC5D36F81FD8083B3C806E2DA23D7AFC600DE6684BB3
-C58945898FB2CA462F.pygtex)...executed.
-
-runsystem(rm _minted-fi-pdflatex/A0A964779B1F28017E67C4500704A76FFC600DE6684BB3
-C58945898FB2CA462F.pygtex)...executed.
-
-runsystem(rm _minted-fi-pdflatex/063271B5325B761B5C0EFE529EA6378CFC600DE6684BB3
-C58945898FB2CA462F.pygtex)...executed.
-
-[20]
+[21]
 
 Package catoptions Warning: Undefined options 
 (catoptions)                [Family, Option, Value]: 
 (catoptions)                fontenc.sty,T1,. 
 (catoptions)                Default action already taken in each case .
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 433.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 433.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 434.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 434.
 (./fi-pdflatex.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 433.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 433.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 434.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 434.
 Package rerunfilecheck Info: File `fi-pdflatex.out' has not changed.
 (rerunfilecheck)             Checksum: C9A099747B1D7500C844EE5A0A29A997;3107.
 runsystem(rm fi-pdflatex.pyg)...executed.
 
  ) 
 Here is how much of TeX's memory you used:
- 37983 strings out of 494946
- 689656 string characters out of 6180981
+ 37978 strings out of 494946
+ 689279 string characters out of 6180981
  824599 words of memory out of 5000000
  40333 multiletter control sequences out of 15000+600000
  66048 words of font info for 101 fonts, out of 8000000 for 9000
@@ -2245,10 +2213,10 @@ fonts/enc/dvips/tex-gyre/q-ec-sc.enc}</usr/share/texlive/texmf-dist/fonts/type1
 /public/lm/lmtt12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/tex-gyr
 e/qplb.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/tex-gyre/qplr.pfb>
 </usr/share/texlive/texmf-dist/fonts/type1/public/tex-gyre/qplri.pfb>
-Output written on fi-pdflatex.pdf (29 pages, 190723 bytes).
+Output written on fi-pdflatex.pdf (30 pages, 191078 bytes).
 PDF statistics:
- 507 PDF objects out of 1000 (max. 8388607)
- 442 compressed objects within 5 object streams
- 106 named destinations out of 1000 (max. 500000)
+ 511 PDF objects out of 1000 (max. 8388607)
+ 445 compressed objects within 5 object streams
+ 107 named destinations out of 1000 (max. 500000)
  19444 words of extra memory for PDF output out of 20736 (max. 10000000)
 
