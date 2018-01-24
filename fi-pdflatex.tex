@@ -248,6 +248,13 @@ All examples are based on the microservices pattern. As every framework is suita
 
 An user is able to create the order by a REST call to the dedicated endpoint of the \texttt{order-service} microservice. The request must provide a product information JSON\footnote{JavaScript object notation} containing a product id, a commentary and a price. For the simplicity reasons, the order always consists only of the single product. The figure 5.1 shows the example of the input JSON format for the product data. The complete REST API\footnote{Application programming interface} for each individual example is provided in the Appendix B.
 
+\begin{figure}
+    \begin{center}
+        \includegraphics[height=30mm]{images/productInfoJSON.png}
+    \end{center}
+    \caption{Product Information example JSON}
+\end{figure}
+
 The setup of each example is described in detail in their respective repositories included in the Appendex B. Generally, each service is a standalone Java application that must run in a separated terminal instance by default located on the local computer address (localhost). Except for the LRA example, all examples are also able to run on the Docker\cite{docker} platform using the Docker compose project\cite{docker_compose}.
 
 Every saga invocation is asynchronous - the REST call for the order request directly returns an order identification number in the response. All of the following interactions are documented in individual services by messages that are logged by the underlying platform. The overall saga process can be examined in the \texttt{order-service} or in the case of LRA in the \texttt{api-gateway} modules.
@@ -275,12 +282,6 @@ Axon service is a Java Spring Boot microservices application. Each service is fu
 The application is separated into four microservices -- the \newline \texttt{order-service}, the \texttt{shipment-service}, the \texttt{invoice-service} and the \texttt{query-service}. Furthermore it also contains a project \texttt{service-model} which serves as a support library for the microservices.
 
 
-\begin{figure}
-	\begin{center}
-		\includegraphics[height=30mm]{images/productInfoJSON.png}
-	\end{center}
-	\caption{Product Information example JSON}
-\end{figure}
 
 \clearpage
 \chapter{Conclusion}
