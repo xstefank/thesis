@@ -31,10 +31,10 @@
 \BOOKMARK [2][-]{subsection.5.3.1}{\040Axon\040framework}{section.5.3}% 31
 \BOOKMARK [2][-]{subsection.5.3.2}{\040Eventuate.io}{section.5.3}% 32
 \BOOKMARK [2][-]{subsection.5.3.3}{\040Narayana\040LRA}{section.5.3}% 33
-\BOOKMARK [1][-]{section.5.4}{\040Example\040application}{chapter.5}% 34
-\BOOKMARK [2][-]{subsection.5.4.1}{\040The\040saga\040model}{section.5.4}% 35
-\BOOKMARK [3][-]{subsubsection.5.4.1.1}{\040Axon\040service}{subsection.5.4.1}% 36
-\BOOKMARK [0][-]{chapter.6}{Conclusion}{}% 37
+\BOOKMARK [0][-]{chapter.6}{Saga\040implementations\040comparison\040example}{}% 34
+\BOOKMARK [1][-]{section.6.1}{\040The\040saga\040model}{chapter.6}% 35
+\BOOKMARK [1][-]{section.6.2}{\040Axon\040service}{chapter.6}% 36
+\BOOKMARK [0][-]{chapter.7}{Conclusion}{}% 37
 \BOOKMARK [0][-]{section*.6}{Bibliography}{}% 38
 \BOOKMARK [0][-]{appendix.A}{The\040Command\040Query\040Responsibility\040Segregation\040pattern}{}% 39
 \BOOKMARK [0][-]{appendix.B}{The\040example\040applications\040public\040APIs}{}% 40
