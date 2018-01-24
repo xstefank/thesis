@@ -262,7 +262,9 @@ Every application is able to demonstrate three testing scenarios: the valid pass
 
 As most of the applied platforms invoke participants in the synchronous way, we distinguish separated member failures of the shipment or invoice. The shipment failure simulates the termination of saga without the full request coverage. This means that the compensations are distributed to all services including the \texttt{invoice-service} which has not received the work request for the order being processed yet. The scenario demonstrates the need of microservices to be able to react to the requests which are not associated with any saga which means actively keeping track of the sagas being currently executed. 
 
-Conversely, the invoice failure scenario validates that the saga compensations are executed on all participating services.
+The invoice failure scenario on the other hand validates that the saga compensations are executed on all participating services as the shipment is already expected to be completed. Generally, the saga pattern assumes that the compensations of the participants are called in the reverse order of the invocations because of the possible dependencies between them.
+
+To initiate the failures scenarios in examples both \texttt{shipment-service} and \texttt{invoice-service} are equipped with injected failure conditions. To invoke the failure the quickstarts expect a product information containing a specialized product identification: \texttt{fail-shipment} or \texttt{fail-invoice} respectively.
 
 \section{Axon service}
 

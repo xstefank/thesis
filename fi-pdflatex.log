@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.9.30)  24 JAN 2018 23:19
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.9.30)  24 JAN 2018 23:52
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -2084,15 +2084,20 @@ Package microtype Info: Loading generic settings for font family
  [12
 
 ] [13]
+Overfull \hbox (6.52922pt too wide) in paragraph at lines 267--268
+[]\T1/qpl/m/n/12 (-20) To ini-ti-ate the fail-ures sce-nar-ios in ex-am-ples bo
+th \T1/lmtt/m/n/12 shipment-service
+ []
+
 <images/productInfoJSON.png, id=435, 316.18124pt x 101.37875pt>
 File: images/productInfoJSON.png Graphic file (type png)
 
 <use images/productInfoJSON.png>
-Package pdftex.def Info: images/productInfoJSON.png used on input line 278.
+Package pdftex.def Info: images/productInfoJSON.png used on input line 280.
 (pdftex.def)             Requested size: 266.22244pt x 85.35826pt.
- [14 <./images/productInfoJSON.png>]
+ [14] [15 <./images/productInfoJSON.png>]
 Chapter 7.
-[15
+[16
 
 ]
 No file fi-pdflatex.ind.
@@ -2112,9 +2117,9 @@ Underfull \hbox (badness 1107) in paragraph at lines 93--96
 []\T1/qpl/m/n/12 (+20) Narayana, ``Narayana LRA,'' 2017. [On-line]. Avail-
  []
 
-[16]) [17]
+[17]) [18]
 Appendix A.
-[18]
+[19]
 Appendix B.
 \openout6 = `fi-pdflatex.pyg'.
 
@@ -2145,7 +2150,7 @@ B2CA462F.pygtex)
 
 
 (./_minted-fi-pdflatex/59414BBEA25BFD0489321CE8C72016DAFC600DE6684BB3C58945898F
-B2CA462F.pygtex [19])
+B2CA462F.pygtex [20])
 \openout6 = `fi-pdflatex.pyg'.
 
 
@@ -2165,7 +2170,7 @@ B2CA462F.pygtex)
 
 
 (./_minted-fi-pdflatex/F9A48A8A0F37F75E7AC2FFA3FF979597FC600DE6684BB3C58945898F
-B2CA462F.pygtex [20])
+B2CA462F.pygtex [21])
 \openout6 = `fi-pdflatex.pyg'.
 
 
@@ -2185,28 +2190,28 @@ B2CA462F.pygtex)
 
 
 (./_minted-fi-pdflatex/B587EFE444458382F4F971730D264670FC600DE6684BB3C58945898F
-B2CA462F.pygtex) [21]
+B2CA462F.pygtex) [22]
 Appendix C.
-[22]
+[23]
 
 Package catoptions Warning: Undefined options 
 (catoptions)                [Family, Option, Value]: 
 (catoptions)                fontenc.sty,T1,. 
 (catoptions)                Default action already taken in each case .
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 461.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 461.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 463.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 463.
 (./fi-pdflatex.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 461.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 461.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 463.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 463.
 Package rerunfilecheck Info: File `fi-pdflatex.out' has not changed.
 (rerunfilecheck)             Checksum: B48645E2EB485719B4B3CDB191BC3FFD;3336.
 runsystem(rm fi-pdflatex.pyg)...executed.
 
  ) 
 Here is how much of TeX's memory you used:
- 37993 strings out of 494946
- 689437 string characters out of 6180981
+ 37994 strings out of 494946
+ 689444 string characters out of 6180981
  824752 words of memory out of 5000000
  40339 multiletter control sequences out of 15000+600000
  66048 words of font info for 101 fonts, out of 8000000 for 9000
@@ -2218,10 +2223,10 @@ fonts/enc/dvips/tex-gyre/q-ec-sc.enc}</usr/share/texlive/texmf-dist/fonts/type1
 /public/lm/lmtt12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/tex-gyr
 e/qplb.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/tex-gyre/qplr.pfb>
 </usr/share/texlive/texmf-dist/fonts/type1/public/tex-gyre/qplri.pfb>
-Output written on fi-pdflatex.pdf (31 pages, 196016 bytes).
+Output written on fi-pdflatex.pdf (32 pages, 196996 bytes).
 PDF statistics:
- 548 PDF objects out of 1000 (max. 8388607)
- 481 compressed objects within 5 object streams
- 116 named destinations out of 1000 (max. 500000)
+ 552 PDF objects out of 1000 (max. 8388607)
+ 484 compressed objects within 5 object streams
+ 117 named destinations out of 1000 (max. 500000)
  19468 words of extra memory for PDF output out of 20736 (max. 10000000)
 
