@@ -19,6 +19,7 @@
 \contentsline {subsection}{\numberline {3.1.1}\rmfamily Monolithic architecture}{6}{subsection.3.1.1}
 \contentsline {subsection}{\numberline {3.1.2}\rmfamily Microservice architecture}{6}{subsection.3.1.2}
 \contentsline {section}{\numberline {3.2}\slshape Principles of microservices}{7}{section.3.2}
+\contentsline {section}{\numberline {3.3}\slshape Reactive microservices}{9}{section.3.3}
 \contentsline {chapter}{\numberline {4}\bfseries Communication patterns}{10}{chapter.4}
 \contentsline {section}{\numberline {4.1}\slshape Consensus protocols}{10}{section.4.1}
 \contentsline {subsection}{\numberline {4.1.1}\rmfamily 2PC}{10}{subsection.4.1.1}
