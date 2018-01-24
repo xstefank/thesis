@@ -36,7 +36,7 @@
 \contentsline {chapter}{\numberline {6}\bfseries Saga implementations comparison example}{12}{chapter.6}
 \contentsline {section}{\numberline {6.1}\slshape Invocation and interaction}{12}{section.6.1}
 \contentsline {section}{\numberline {6.2}\slshape The saga model}{13}{section.6.2}
-\contentsline {section}{\numberline {6.3}\slshape Axon service}{13}{section.6.3}
+\contentsline {section}{\numberline {6.3}\slshape Axon service}{14}{section.6.3}
 \contentsline {chapter}{\numberline {7}\bfseries Conclusion}{15}{chapter.7}
 \contentsline {chapter}{Bibliography}{16}{section*.6}
 \contentsline {chapter}{\numberline {A}\bfseries The Command Query Responsibility Segregation pattern}{18}{appendix.A}
