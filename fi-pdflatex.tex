@@ -240,9 +240,21 @@ The Axon framework is based upon the event processing including asynchronous mes
 \clearpage
 \chapter{Saga implementations comparison example}
 
-As a part of the investigation of each discussed framework from the previous chapter, I created a sample application simulating the saga utilization. This application is an ordering backend with a simple REST\footnote{Representational State Transfer} frontend interface. An user is able to create an order by providing a product information JSON\footnote{JavaScript object notation} containing a product id, a commentary and a price. For the simplicity the order always consists only of the single product. The figure 5.1 shows the example input JSON format for the product data. The complete REST API\footnote{Application programming interface} for each individual example is provided in the Appendix B.
+As a part of the investigation of the each discussed framework from the previous chapter, I created a sample application simulating the saga utilization. This application is a backend processing for orders with a simple REST\footnote{Representational State Transfer} interface. 
 
 All examples are based on the microservices pattern. As every framework is suitable for the use in different environments, each example is achieving the same goal through the different portfolio of technologies. The exact mechanisms used is individual projects will be discussed in more detail in their respective sections.
+
+\section{Invocation and interaction}
+
+An user is able to create the order by a REST call to the dedicated endpoint of the \texttt{order-service} microservice. The request must provide a product information JSON\footnote{JavaScript object notation} containing a product id, a commentary and a price. For the simplicity reasons, the order always consists only of the single product. The figure 5.1 shows the example of the input JSON format for the product data. The complete REST API\footnote{Application programming interface} for each individual example is provided in the Appendix B.
+
+The setup of each example is described in detail in their respective repositories included in the Appendex B. Generally, each service is a standalone Java application that must run in a separated terminal instance by default located on the local computer address (localhost). Except for the LRA example, all examples are also able to run on the Docker\cite{docker} platform using the Docker compose project\cite{docker_compose}.
+
+Every saga invocation is asynchronous - the REST call for the order request directly returns an order identification number in the response. All of the following interactions are documented in individual services by messages that are logged by the underlying platform. The overall saga process can be examined in the \texttt{order-service} or in the case of LRA in the \texttt{api-gateway} modules.
+
+Users are also allowed to query the persisted saga information (orders, shipments and invoices) by the respective REST endpoints described in the Appendix B. For the CQRS based examples this information is available at the \texttt{query-service} microservice, otherwise each service is expected to be responsible for maintaining its individual persistence solution which corresponds with the microservices pattern definition.
+
+
 
 \section{The saga model}
 

@@ -94,6 +94,17 @@ Narayana, ``{Narayana LRA},'' 2017. [Online]. Available:
   \url{https://github.com/eclipse/microprofile-sandbox/tree/master/proposals/0009-LRA}
 \BIBentrySTDinterwordspacing
 
+\bibitem{docker}
+\BIBentryALTinterwordspacing
+``Docker,'' 2018. [Online]. Available: \url{https://www.docker.com/}
+\BIBentrySTDinterwordspacing
+
+\bibitem{docker_compose}
+\BIBentryALTinterwordspacing
+``Docker compose,'' 2018. [Online]. Available:
+  \url{https://docs.docker.com/compose/}
+\BIBentrySTDinterwordspacing
+
 \bibitem{maven}
 \BIBentryALTinterwordspacing
 B.~Porter, J.~Zyl, and O.~Lamy, ``Maven,'' 2018. [Online]. Available:
