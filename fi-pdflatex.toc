@@ -36,13 +36,15 @@
 \contentsline {chapter}{\numberline {6}\bfseries Saga implementations comparison example}{12}{chapter.6}
 \contentsline {section}{\numberline {6.1}\slshape Invocation and interaction}{12}{section.6.1}
 \contentsline {section}{\numberline {6.2}\slshape The saga model}{13}{section.6.2}
-\contentsline {section}{\numberline {6.3}\slshape Axon service}{14}{section.6.3}
-\contentsline {chapter}{\numberline {7}\bfseries Conclusion}{16}{chapter.7}
-\contentsline {chapter}{Bibliography}{17}{section*.6}
-\contentsline {chapter}{\numberline {A}\bfseries The Command Query Responsibility Segregation pattern}{19}{appendix.A}
-\contentsline {chapter}{\numberline {B}\bfseries The example applications public APIs}{20}{appendix.B}
-\contentsline {section}{\numberline {B.1}\slshape Axon service}{20}{section.B.1}
-\contentsline {section}{\numberline {B.2}\slshape Eventuate service}{20}{section.B.2}
-\contentsline {section}{\numberline {B.3}\slshape LRA service}{21}{section.B.3}
-\contentsline {section}{\numberline {B.4}\slshape Eventuate Tram}{22}{section.B.4}
-\contentsline {chapter}{\numberline {C}\bfseries The order saga model}{23}{appendix.C}
+\contentsline {section}{\numberline {6.3}\slshape Axon service}{15}{section.6.3}
+\contentsline {subsection}{\numberline {6.3.1}\rmfamily Platform}{15}{subsection.6.3.1}
+\contentsline {subsection}{\numberline {6.3.2}\rmfamily Structure}{15}{subsection.6.3.2}
+\contentsline {chapter}{\numberline {7}\bfseries Conclusion}{17}{chapter.7}
+\contentsline {chapter}{Bibliography}{18}{section*.6}
+\contentsline {chapter}{\numberline {A}\bfseries The Command Query Responsibility Segregation pattern}{20}{appendix.A}
+\contentsline {chapter}{\numberline {B}\bfseries The example applications public APIs}{21}{appendix.B}
+\contentsline {section}{\numberline {B.1}\slshape Axon service}{21}{section.B.1}
+\contentsline {section}{\numberline {B.2}\slshape Eventuate service}{21}{section.B.2}
+\contentsline {section}{\numberline {B.3}\slshape LRA service}{22}{section.B.3}
+\contentsline {section}{\numberline {B.4}\slshape Eventuate Tram}{23}{section.B.4}
+\contentsline {chapter}{\numberline {C}\bfseries The saga scenarios}{24}{appendix.C}

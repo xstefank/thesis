@@ -246,7 +246,7 @@ All examples are based on the microservices pattern. As every framework is suita
 
 \section{Invocation and interaction}
 
-An user is able to create the order by a REST call to the dedicated endpoint of the \texttt{order-service} microservice. The request must provide a product information JSON\footnote{JavaScript object notation} containing a product id, a commentary and a price. For the simplicity reasons, the order always consists only of the single product. The figure 5.1 shows the example of the input JSON format for the product data. The complete REST API\footnote{Application programming interface} for each individual example is provided in the Appendix B.
+An user is able to create the order by a REST call to the dedicated endpoint of the \texttt{order-service} microservice. The request must provide a product information JSON\footnote{JavaScript object notation} containing a product id, a commentary and a price. For the simplicity reasons, the order always consists only of the single product. The figure 6.1 shows the example of the input JSON format for the product data. The complete REST API\footnote{Application programming interface} for each individual example is provided in the Appendix B.
 
 \begin{figure}
     \begin{center}
@@ -263,7 +263,14 @@ Users are also allowed to query the persisted saga information (orders, shipment
 
 \section{The saga model}
 
-The saga pattern used in this application is able to create orders. The order saga consists of three parts -- the production of a shipping and an invoice information and if both invocations are successful, the actual order creation. If any part of the processing fails, the whole progress is expected to be undone. For instance, if the shipment is successfully created but the invoice assembly is not able to be confirmed, the persisted shipment information as well as the order must be canceled (also optionally notifying the user that the order cannot be created). The graphical representation of the saga progress is available in the Appendix C.
+The saga pattern used in this application is able to create orders. The order saga consists of three parts -- the production of a shipping and an invoice information and if both invocations are successful, the actual order creation. If any part of the processing fails, the whole progress is expected to be undone. For instance, if the shipment is successfully created but the invoice assembly is not able to be confirmed, the persisted shipment information as well as the order must be canceled (also optionally notifying the user that the order cannot be created). The graphical representation of the saga progress is available in the figure 6.2.
+
+\begin{figure}
+    \begin{center}
+        \includegraphics[height=40mm]{images/sagaModel.pdf}
+    \end{center}
+    \caption{The saga model}
+\end{figure}
 
 Every application is able to demonstrate three testing scenarios: the valid pass, the shipment failure and the invoice failure. In the valid scenario after the order is requested, the saga propagation invokes requests for the shipment and the invoice. If the connection between services is stable, both participants successfully return a stub answer and the order is completed. 
 
@@ -271,13 +278,23 @@ As most of the applied platforms invoke participants in the synchronous way, we 
 
 The invoice failure scenario on the other hand validates that the saga compensations are executed on all participating services as the shipment is already expected to be completed. Generally, the saga pattern assumes that the compensations of the participants are called in the reverse order of the invocations because of the possible dependencies between them.
 
-To initiate the failures scenarios in examples both \texttt{shipment-service} and \texttt{invoice-service} are equipped with injected failure conditions. To invoke the failure the quickstarts expect a product information containing a specialized product identification: \texttt{fail-shipment} or \texttt{fail-invoice} respectively.
+To initiate the failures scenarios in examples both \texttt{shipment-service} and \texttt{invoice-service} are equipped with injected failure conditions. To invoke the failure the quickstarts expect a product information containing a specialized product identification: \texttt{fail-shipment} or \texttt{fail-invoice} respectively. 
+
+The graphical representation in form of the sequence diagrams for corresponding scenarios is available in the Appendix C.
 
 \section{Axon service}
 
 As it was stated in the previous chapter, the Axon framework is based upon the CQRS principles. Because of this nature, it would be difficult not to follow this pattern. The individual services contain separated aggregates\footnote{for the definition of aggregate please refer to the Appendix A} each processing its respective commands and producing various events. Any inter-service interaction is restricted to the use of the command and event buses.
 
-Axon service is a Java Spring Boot microservices application. Each service is fully separated and independent Maven\cite{maven} project. Every project is standalone runnable application (fat jar\footnote{Java Archive}) as the Spring Boot does not use any underlying platform to run its microservices.
+\subsection{Platform}
+
+Axon service is a Java Spring Boot microservices application. Each service is fully separated and independent Maven\cite{maven} project. Every project is standalone runnable application (fat jar\footnote{Java Archive}) as the Spring Boot does not use any underlying platform to run microservices.
+
+As a CQRS based quickstart, Axon service uses two different and separated communication channels to exchange information between services: the command bus and the event bus. By default, the Axon framework reduce both channels to one JVM\footnote{Java Virtual Machine} thus one microservice. Except from that, developers are able to specify several specialized ways of the configuration to distribute messages between different services which is used in this Axon quickstart.
+
+The quickstart uses a motion of the distributed command bus which is based upon different approach then traditional single JVM command bus. The distributed command bus forms a bridge between separated command bus implementations to transfer commands between different JVMs. It is responsible for the selection of the communication protocol and the choice of the target destination for each incoming command.
+
+\subsection{Structure}
 
 The application is separated into four microservices -- the \newline \texttt{order-service}, the \texttt{shipment-service}, the \texttt{invoice-service} and the \texttt{query-service}. Furthermore it also contains a project \texttt{service-model} which serves as a support library for the microservices.
 
@@ -458,7 +475,7 @@ CQRS
 
 
 
-\chapter{The order saga model}
+\chapter{The saga scenarios}
 
 
 \end{document}
