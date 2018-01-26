@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.9.30)  26 JAN 2018 09:39
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.9.30)  26 JAN 2018 14:17
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1949,7 +1949,7 @@ Package microtype Info: Character `029' is missing
 (microtype)             in font `T1/qpl/m/sc/17.28'.
 (microtype)             Ignoring protrusion settings for this character.
 
-<fithesis/logo/mu/fithesis-fi.pdf, id=230, 291.0875pt x 292.09125pt>
+<fithesis/logo/mu/fithesis-fi.pdf, id=234, 291.0875pt x 292.09125pt>
 File: fithesis/logo/mu/fithesis-fi.pdf Graphic file (type pdf)
 
 <use fithesis/logo/mu/fithesis-fi.pdf>
@@ -1963,7 +1963,7 @@ Package microtype Info: Character `029' is missing
 
 {/usr/share/texlive/texmf-dist/fonts/map/pdftex/updmap/pdftex.map} <./fithesis/
 logo/mu/fithesis-fi.pdf>]
-<fithesis/logo/mu/fithesis-fi-color.pdf, id=241, 291.0875pt x 292.09125pt>
+<fithesis/logo/mu/fithesis-fi-color.pdf, id=245, 291.0875pt x 292.09125pt>
 File: fithesis/logo/mu/fithesis-fi-color.pdf Graphic file (type pdf)
 
 <use fithesis/logo/mu/fithesis-fi-color.pdf>
@@ -2064,15 +2064,7 @@ Chapter 4.
 
 ]
 Chapter 5.
-
-Overfull \vbox (1.00728pt too high) has occurred while \output is active []
-
-
-[11
-
-]
-Chapter 6.
-LaTeX Font Info:    Try loading font information for T1+lmtt on input line 249.
+LaTeX Font Info:    Try loading font information for T1+lmtt on input line 238.
 
 (/usr/share/texlive/texmf-dist/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
@@ -2082,26 +2074,33 @@ Package microtype Info: Loading generic settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 
-<images/productInfoJSON.png, id=426, 316.18124pt x 101.37875pt>
+Overfull \vbox (7.61726pt too high) has occurred while \output is active []
+
+
+[11
+
+] [12]
+Chapter 6.
+<images/productInfoJSON.png, id=436, 316.18124pt x 101.37875pt>
 File: images/productInfoJSON.png Graphic file (type png)
 
 <use images/productInfoJSON.png>
-Package pdftex.def Info: images/productInfoJSON.png used on input line 253.
+Package pdftex.def Info: images/productInfoJSON.png used on input line 265.
 (pdftex.def)             Requested size: 266.22244pt x 85.35826pt.
- [12
+ [13
 
  <./images/productInfoJSON.png>]
-<images/sagaModel.pdf, id=438, 980.66376pt x 328.22626pt>
+<images/sagaModel.pdf, id=448, 980.66376pt x 328.22626pt>
 File: images/sagaModel.pdf Graphic file (type pdf)
 
 <use images/sagaModel.pdf>
-Package pdftex.def Info: images/sagaModel.pdf used on input line 270.
+Package pdftex.def Info: images/sagaModel.pdf used on input line 282.
 (pdftex.def)             Requested size: 340.03522pt x 113.81102pt.
 
 Underfull \vbox (badness 4634) has occurred while \output is active []
 
- [13]
-Overfull \hbox (6.52922pt too wide) in paragraph at lines 281--282
+ [14]
+Overfull \hbox (6.52922pt too wide) in paragraph at lines 293--294
 []\T1/qpl/m/n/12 (-20) To ini-ti-ate the fail-ures sce-nar-ios in ex-am-ples bo
 th \T1/lmtt/m/n/12 shipment-service
  []
@@ -2109,14 +2108,14 @@ th \T1/lmtt/m/n/12 shipment-service
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [14 <./images/sagaModel.pdf>]
-Overfull \hbox (4.80833pt too wide) in paragraph at lines 297--298
+ [15 <./images/sagaModel.pdf>]
+Overfull \hbox (4.80833pt too wide) in paragraph at lines 309--310
 []\T1/qpl/m/n/12 (-20) Axon pro-vides two op-tions for con-nect-ing dif-fer-ent
  ser-vices through
  []
 
 
-Overfull \hbox (6.58896pt too wide) in paragraph at lines 297--298
+Overfull \hbox (6.58896pt too wide) in paragraph at lines 309--310
 \T1/qpl/m/n/12 (-20) of its ini-tial-iza-tion reg-is-ters it-self with the ser-
 vice \T1/lmtt/m/n/12 registration-server
  []
@@ -2125,15 +2124,15 @@ vice \T1/lmtt/m/n/12 registration-server
 Overfull \vbox (4.94179pt too high) has occurred while \output is active []
 
 
-[15]
-Overfull \hbox (0.81178pt too wide) in paragraph at lines 305--306
+[16]
+Overfull \hbox (0.81178pt too wide) in paragraph at lines 317--318
 \T1/qpl/m/n/12 (-20) The ap-pli-ca-tion is com-posed of five mi-croser-vices --
  the \T1/lmtt/m/n/12 order-service\T1/qpl/m/n/12 (-20) ,
  []
 
-[16] [17]
+[17] [18]
 Chapter 7.
-[18
+[19
 
 ]
 No file fi-pdflatex.ind.
@@ -2153,9 +2152,9 @@ Underfull \hbox (badness 1107) in paragraph at lines 93--96
 []\T1/qpl/m/n/12 (+20) Narayana, ``Narayana LRA,'' 2017. [On-line]. Avail-
  []
 
-[19]) [20]
+[20]) [21]
 Appendix A.
-[21]
+[22]
 Appendix B.
 \openout6 = `fi-pdflatex.pyg'.
 
@@ -2186,7 +2185,7 @@ B2CA462F.pygtex)
 
 
 (./_minted-fi-pdflatex/59414BBEA25BFD0489321CE8C72016DAFC600DE6684BB3C58945898F
-B2CA462F.pygtex [22])
+B2CA462F.pygtex [23])
 \openout6 = `fi-pdflatex.pyg'.
 
 
@@ -2206,7 +2205,7 @@ B2CA462F.pygtex)
 
 
 (./_minted-fi-pdflatex/F9A48A8A0F37F75E7AC2FFA3FF979597FC600DE6684BB3C58945898F
-B2CA462F.pygtex [23])
+B2CA462F.pygtex [24])
 \openout6 = `fi-pdflatex.pyg'.
 
 
@@ -2226,30 +2225,30 @@ B2CA462F.pygtex)
 
 
 (./_minted-fi-pdflatex/B587EFE444458382F4F971730D264670FC600DE6684BB3C58945898F
-B2CA462F.pygtex) [24]
+B2CA462F.pygtex) [25]
 Appendix C.
-[25]
+[26]
 
 Package catoptions Warning: Undefined options 
 (catoptions)                [Family, Option, Value]: 
 (catoptions)                fontenc.sty,T1,. 
 (catoptions)                Default action already taken in each case .
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 497.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 497.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 511.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 511.
 (./fi-pdflatex.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 497.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 497.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 511.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 511.
 Package rerunfilecheck Info: File `fi-pdflatex.out' has not changed.
-(rerunfilecheck)             Checksum: ED003A16D5888B4E80205608C6AD0159;3464.
+(rerunfilecheck)             Checksum: A94CF13F79C3E58BABA1FB11C55C090A;3541.
 runsystem(rm fi-pdflatex.pyg)...executed.
 
  ) 
 Here is how much of TeX's memory you used:
- 38014 strings out of 494946
- 689808 string characters out of 6180981
- 824882 words of memory out of 5000000
- 40348 multiletter control sequences out of 15000+600000
+ 38017 strings out of 494946
+ 689849 string characters out of 6180981
+ 824901 words of memory out of 5000000
+ 40349 multiletter control sequences out of 15000+600000
  66048 words of font info for 101 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  69i,8n,84p,10406b,646s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -2259,10 +2258,10 @@ fonts/enc/dvips/tex-gyre/q-ec-sc.enc}</usr/share/texlive/texmf-dist/fonts/type1
 /public/lm/lmtt12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/tex-gyr
 e/qplb.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/tex-gyre/qplr.pfb>
 </usr/share/texlive/texmf-dist/fonts/type1/public/tex-gyre/qplri.pfb>
-Output written on fi-pdflatex.pdf (34 pages, 258581 bytes).
+Output written on fi-pdflatex.pdf (35 pages, 262242 bytes).
 PDF statistics:
- 589 PDF objects out of 1000 (max. 8388607)
- 517 compressed objects within 6 object streams
- 127 named destinations out of 1000 (max. 500000)
- 19489 words of extra memory for PDF output out of 20736 (max. 10000000)
+ 598 PDF objects out of 1000 (max. 8388607)
+ 525 compressed objects within 6 object streams
+ 129 named destinations out of 1000 (max. 500000)
+ 19497 words of extra memory for PDF output out of 20736 (max. 10000000)
 

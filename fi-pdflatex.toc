@@ -31,20 +31,21 @@
 \contentsline {section}{\numberline {5.2}\slshape Compensations}{11}{section.5.2}
 \contentsline {section}{\numberline {5.3}\slshape Current development support}{11}{section.5.3}
 \contentsline {subsection}{\numberline {5.3.1}\rmfamily Axon framework}{11}{subsection.5.3.1}
-\contentsline {subsection}{\numberline {5.3.2}\rmfamily Eventuate.io}{11}{subsection.5.3.2}
-\contentsline {subsection}{\numberline {5.3.3}\rmfamily Narayana LRA}{11}{subsection.5.3.3}
-\contentsline {chapter}{\numberline {6}\bfseries Saga implementations comparison example}{12}{chapter.6}
-\contentsline {section}{\numberline {6.1}\slshape Invocation and interaction}{12}{section.6.1}
-\contentsline {section}{\numberline {6.2}\slshape The saga model}{13}{section.6.2}
-\contentsline {section}{\numberline {6.3}\slshape Axon service}{15}{section.6.3}
-\contentsline {subsection}{\numberline {6.3.1}\rmfamily Platform}{15}{subsection.6.3.1}
-\contentsline {subsection}{\numberline {6.3.2}\rmfamily Structure}{16}{subsection.6.3.2}
-\contentsline {chapter}{\numberline {7}\bfseries Conclusion}{18}{chapter.7}
-\contentsline {chapter}{Bibliography}{19}{section*.6}
-\contentsline {chapter}{\numberline {A}\bfseries The Command Query Responsibility Segregation pattern}{21}{appendix.A}
-\contentsline {chapter}{\numberline {B}\bfseries The example applications public APIs}{22}{appendix.B}
-\contentsline {section}{\numberline {B.1}\slshape Axon service}{22}{section.B.1}
-\contentsline {section}{\numberline {B.2}\slshape Eventuate service}{22}{section.B.2}
-\contentsline {section}{\numberline {B.3}\slshape LRA service}{23}{section.B.3}
-\contentsline {section}{\numberline {B.4}\slshape Eventuate Tram}{24}{section.B.4}
-\contentsline {chapter}{\numberline {C}\bfseries The saga scenarios}{25}{appendix.C}
+\contentsline {subsection}{\numberline {5.3.2}\rmfamily Saga development}{11}{subsection.5.3.2}
+\contentsline {subsection}{\numberline {5.3.3}\rmfamily Eventuate.io}{12}{subsection.5.3.3}
+\contentsline {subsection}{\numberline {5.3.4}\rmfamily Narayana LRA}{12}{subsection.5.3.4}
+\contentsline {chapter}{\numberline {6}\bfseries Saga implementations comparison example}{13}{chapter.6}
+\contentsline {section}{\numberline {6.1}\slshape Invocation and interaction}{13}{section.6.1}
+\contentsline {section}{\numberline {6.2}\slshape The saga model}{14}{section.6.2}
+\contentsline {section}{\numberline {6.3}\slshape Axon service}{16}{section.6.3}
+\contentsline {subsection}{\numberline {6.3.1}\rmfamily Platform}{16}{subsection.6.3.1}
+\contentsline {subsection}{\numberline {6.3.2}\rmfamily Structure}{17}{subsection.6.3.2}
+\contentsline {chapter}{\numberline {7}\bfseries Conclusion}{19}{chapter.7}
+\contentsline {chapter}{Bibliography}{20}{section*.6}
+\contentsline {chapter}{\numberline {A}\bfseries The Command Query Responsibility Segregation pattern}{22}{appendix.A}
+\contentsline {chapter}{\numberline {B}\bfseries The example applications public APIs}{23}{appendix.B}
+\contentsline {section}{\numberline {B.1}\slshape Axon service}{23}{section.B.1}
+\contentsline {section}{\numberline {B.2}\slshape Eventuate service}{23}{section.B.2}
+\contentsline {section}{\numberline {B.3}\slshape LRA service}{24}{section.B.3}
+\contentsline {section}{\numberline {B.4}\slshape Eventuate Tram}{25}{section.B.4}
+\contentsline {chapter}{\numberline {C}\bfseries The saga scenarios}{26}{appendix.C}
