@@ -111,4 +111,18 @@ B.~Porter, J.~Zyl, and O.~Lamy, ``Maven,'' 2018. [Online]. Available:
   \url{https://maven.apache.org/}
 \BIBentrySTDinterwordspacing
 
+\bibitem{axon_framework_reference_guide}
+\BIBentryALTinterwordspacing
+``Axon framework reference guide,'' 2018. [Online]. Available:
+  \url{https://docs.axonframework.org/v/3.1/}
+\BIBentrySTDinterwordspacing
+
+\bibitem{service_registration}
+``Netflix service registration and discovery.''
+
+\bibitem{rabbitmq}
+\BIBentryALTinterwordspacing
+``Rabbitmq,'' 2018. [Online]. Available: \url{https://www.rabbitmq.com/}
+\BIBentrySTDinterwordspacing
+
 \end{thebibliography}
