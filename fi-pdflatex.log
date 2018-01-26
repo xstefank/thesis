@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.9.30)  26 JAN 2018 14:17
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.9.30)  26 JAN 2018 19:13
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1949,7 +1949,7 @@ Package microtype Info: Character `029' is missing
 (microtype)             in font `T1/qpl/m/sc/17.28'.
 (microtype)             Ignoring protrusion settings for this character.
 
-<fithesis/logo/mu/fithesis-fi.pdf, id=234, 291.0875pt x 292.09125pt>
+<fithesis/logo/mu/fithesis-fi.pdf, id=238, 291.0875pt x 292.09125pt>
 File: fithesis/logo/mu/fithesis-fi.pdf Graphic file (type pdf)
 
 <use fithesis/logo/mu/fithesis-fi.pdf>
@@ -1963,7 +1963,7 @@ Package microtype Info: Character `029' is missing
 
 {/usr/share/texlive/texmf-dist/fonts/map/pdftex/updmap/pdftex.map} <./fithesis/
 logo/mu/fithesis-fi.pdf>]
-<fithesis/logo/mu/fithesis-fi-color.pdf, id=245, 291.0875pt x 292.09125pt>
+<fithesis/logo/mu/fithesis-fi-color.pdf, id=249, 291.0875pt x 292.09125pt>
 File: fithesis/logo/mu/fithesis-fi-color.pdf Graphic file (type pdf)
 
 <use fithesis/logo/mu/fithesis-fi-color.pdf>
@@ -2081,7 +2081,7 @@ Overfull \vbox (7.61726pt too high) has occurred while \output is active []
 
 ] [12]
 Chapter 6.
-<images/productInfoJSON.png, id=436, 316.18124pt x 101.37875pt>
+<images/productInfoJSON.png, id=441, 316.18124pt x 101.37875pt>
 File: images/productInfoJSON.png Graphic file (type png)
 
 <use images/productInfoJSON.png>
@@ -2090,7 +2090,7 @@ Package pdftex.def Info: images/productInfoJSON.png used on input line 265.
  [13
 
  <./images/productInfoJSON.png>]
-<images/sagaModel.pdf, id=448, 980.66376pt x 328.22626pt>
+<images/sagaModel.pdf, id=453, 980.66376pt x 328.22626pt>
 File: images/sagaModel.pdf Graphic file (type pdf)
 
 <use images/sagaModel.pdf>
@@ -2234,21 +2234,21 @@ Package catoptions Warning: Undefined options
 (catoptions)                fontenc.sty,T1,. 
 (catoptions)                Default action already taken in each case .
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 511.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 511.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 514.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 514.
 (./fi-pdflatex.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 511.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 511.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 514.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 514.
 Package rerunfilecheck Info: File `fi-pdflatex.out' has not changed.
-(rerunfilecheck)             Checksum: A94CF13F79C3E58BABA1FB11C55C090A;3541.
+(rerunfilecheck)             Checksum: 94DF49EA96341576A0DA618F1F490D3C;3607.
 runsystem(rm fi-pdflatex.pyg)...executed.
 
  ) 
 Here is how much of TeX's memory you used:
- 38017 strings out of 494946
- 689849 string characters out of 6180981
+ 38019 strings out of 494946
+ 689883 string characters out of 6180981
  824901 words of memory out of 5000000
- 40349 multiletter control sequences out of 15000+600000
+ 40350 multiletter control sequences out of 15000+600000
  66048 words of font info for 101 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  69i,8n,84p,10406b,646s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -2258,10 +2258,10 @@ fonts/enc/dvips/tex-gyre/q-ec-sc.enc}</usr/share/texlive/texmf-dist/fonts/type1
 /public/lm/lmtt12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/tex-gyr
 e/qplb.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/tex-gyre/qplr.pfb>
 </usr/share/texlive/texmf-dist/fonts/type1/public/tex-gyre/qplri.pfb>
-Output written on fi-pdflatex.pdf (35 pages, 262242 bytes).
+Output written on fi-pdflatex.pdf (35 pages, 263239 bytes).
 PDF statistics:
- 598 PDF objects out of 1000 (max. 8388607)
- 525 compressed objects within 6 object streams
- 129 named destinations out of 1000 (max. 500000)
- 19497 words of extra memory for PDF output out of 20736 (max. 10000000)
+ 603 PDF objects out of 1000 (max. 8388607)
+ 530 compressed objects within 6 object streams
+ 130 named destinations out of 1000 (max. 500000)
+ 19505 words of extra memory for PDF output out of 20736 (max. 10000000)
 

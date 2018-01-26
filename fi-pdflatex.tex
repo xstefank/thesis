@@ -326,8 +326,11 @@ The \texttt{query-service} is a specific microservice included for the purposes 
 
 Finally, the \texttt{service-model} is a Kotlin and Java Maven application providing the core API for the commands and events used by various business services. This is required as all classes must match in order for particular handlers to be invoked. Furthermore, it also provides common utilities and the logging support. It is mandatory to include this project on the classpath of the every other service.
 
+\subsection{Problems}
 
+The one substantial problem the saga processing in Axon has is the missing structure of the internal life cycle of the saga. Axon only provides ways to indicate the start and the stop of the saga. Actual invocation of the participants, collecting of the responses and handling of the compensations is up to developer as the only way of communication with the saga is through events.
 
+In this application the \texttt{OrderManagementSaga} contains two internal classes -- \texttt{OrderProcessing} and \texttt{OrderCompensationProcessing} which are responsible for keeping track of the saga execution and compensation respectively. As production ready sagas can be expected to run in a number of days, this can quickly become the bottleneck of the saga maintenance.
 
 
 \clearpage
