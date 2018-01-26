@@ -302,7 +302,17 @@ It is worth mentioning that both the Spring Cloud and the RabbitMQ message broke
 
 \subsection{Structure}
 
-The application is separated into four microservices -- the \newline \texttt{order-service}, the \texttt{shipment-service}, the \texttt{invoice-service} and the \texttt{query-service}. Furthermore it also contains a project \texttt{service-model} which serves as a support library for the microservices.
+The application is composed of five microservices -- the  \texttt{order-service}, the \texttt{shipment-service}, the \texttt{invoice-service}, the \texttt{query-service} and the \texttt{registration-server}. Furthermore it also contains a separated project \texttt{service-model} which serves as a support library for the other microservices.
+
+As it was stated in the previous section \texttt{registration-server} microservice is a Spring Boot application which function as a Netflix Eureka server. Other business services act as clients for this server, therefore it is required that this service is initialized by the time they try to register.
+
+The \texttt{order-service} project is a business microservice responsible for the saga handling. It contains the logic for the order request, the saga initiation and the saga compensation.
+
+Both \texttt{shipment-service} and \texttt{invoice-service} are business services functioning only as the saga participants. Their only obligation is to provide their respective computations.
+
+The \texttt{query-service} is a specific microservice included for the purposes of the CQRS pattern. It collects the information of the prepared orders, shipments and invoices and provides an external APIs for the querying of these resources. 
+
+Finally, the \texttt{service-model} is a Kotlin and Java Maven application providing the core API for the commands and events used by various business services. This is required as all classes must match in order for particular handlers to be invoked. Furthermore, it also provides common utilities and the logging support. It is mandatory to include this project on the classpath of the every other service.
 
 
 

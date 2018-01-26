@@ -39,12 +39,12 @@
 \contentsline {section}{\numberline {6.3}\slshape Axon service}{15}{section.6.3}
 \contentsline {subsection}{\numberline {6.3.1}\rmfamily Platform}{15}{subsection.6.3.1}
 \contentsline {subsection}{\numberline {6.3.2}\rmfamily Structure}{16}{subsection.6.3.2}
-\contentsline {chapter}{\numberline {7}\bfseries Conclusion}{17}{chapter.7}
-\contentsline {chapter}{Bibliography}{18}{section*.6}
-\contentsline {chapter}{\numberline {A}\bfseries The Command Query Responsibility Segregation pattern}{20}{appendix.A}
-\contentsline {chapter}{\numberline {B}\bfseries The example applications public APIs}{21}{appendix.B}
-\contentsline {section}{\numberline {B.1}\slshape Axon service}{21}{section.B.1}
-\contentsline {section}{\numberline {B.2}\slshape Eventuate service}{21}{section.B.2}
-\contentsline {section}{\numberline {B.3}\slshape LRA service}{22}{section.B.3}
-\contentsline {section}{\numberline {B.4}\slshape Eventuate Tram}{23}{section.B.4}
-\contentsline {chapter}{\numberline {C}\bfseries The saga scenarios}{24}{appendix.C}
+\contentsline {chapter}{\numberline {7}\bfseries Conclusion}{18}{chapter.7}
+\contentsline {chapter}{Bibliography}{19}{section*.6}
+\contentsline {chapter}{\numberline {A}\bfseries The Command Query Responsibility Segregation pattern}{21}{appendix.A}
+\contentsline {chapter}{\numberline {B}\bfseries The example applications public APIs}{22}{appendix.B}
+\contentsline {section}{\numberline {B.1}\slshape Axon service}{22}{section.B.1}
+\contentsline {section}{\numberline {B.2}\slshape Eventuate service}{22}{section.B.2}
+\contentsline {section}{\numberline {B.3}\slshape LRA service}{23}{section.B.3}
+\contentsline {section}{\numberline {B.4}\slshape Eventuate Tram}{24}{section.B.4}
+\contentsline {chapter}{\numberline {C}\bfseries The saga scenarios}{25}{appendix.C}
