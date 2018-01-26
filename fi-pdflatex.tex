@@ -292,13 +292,13 @@ Axon service is a Java Spring Boot microservices application. Each service is fu
 
 As a CQRS based quickstart, Axon service uses two different and separated communication channels to exchange information between services: the command bus and the event bus. By default, the Axon framework reduce both channels to one JVM\footnote{Java Virtual Machine} thus one microservice. Except from that, developers are also able to specify several specialized ways of the configuration to distribute messages between different services which is used in this Axon quickstart.
 
-\subsubsection{Command bus}
-
 The quickstart uses a motion of the distributed command bus which is based upon a different approach then the one used in the traditional single JVM Axon applications. The distributed command bus forms a bridge between separated command bus implementations to transfer commands between different JVMs\cite{axon_framework_reference_guide}. Its main responsibility is the selection of the communication protocol and the choice of the target destination for each incoming command. 
 
 Axon provides two options for connecting different services through the distributed command bus -- \texttt{JGroupsConnector} and \texttt{Spring Cloud Connector}. The one used in this quickstart is the Spring Cloud method. The underlying implementation is based on the Netflix Eureka Discovery and Eureka Server combination \cite{service_registration}. Each business service as part of its initialization registers itself with the service \texttt{registration-server} which function as the Eureka server. Axon is then able to redirect commands to the right service chosen by the value of parameters in the command class annotated by the \texttt{@TargetAggregateIdentifier} annotation.
 
+For the distribution of the event bus Axon service uses an external messaging system based on the Spring AMQP\footnote{Advanced Message Queuing Protocol} protocol called RabbitMQ message broker \cite{rabbitmq}. The quickstart uses separated messaging queue for each business service and one separated queue for the \texttt{query-service} microservice which is subscribed to all of the processing events. Axon platform provides the direct support for the AMQP so no specific handling of the produced events is required -- Axon automatically distributes events to all connected queues.
 
+It is worth mentioning that both the Spring Cloud and the RabbitMQ message broker are required external providers that need to be started before the deployment of the business services. Unfortunaly, by the time of this writing there is no way to distribute commands or events directly by the Axon platform.
 
 \subsection{Structure}
 
