@@ -41,8 +41,10 @@
 \contentsline {subsection}{\numberline {6.3.1}\rmfamily Platform}{16}{subsection.6.3.1}
 \contentsline {subsection}{\numberline {6.3.2}\rmfamily Structure}{17}{subsection.6.3.2}
 \contentsline {subsection}{\numberline {6.3.3}\rmfamily Problems}{18}{subsection.6.3.3}
+\contentsline {paragraph}{ Maintenance of the saga structure}{18}{section*.6}
+\contentsline {paragraph}{ Distribution of events to sagas}{18}{section*.7}
 \contentsline {chapter}{\numberline {7}\bfseries Conclusion}{19}{chapter.7}
-\contentsline {chapter}{Bibliography}{20}{section*.6}
+\contentsline {chapter}{Bibliography}{20}{section*.8}
 \contentsline {chapter}{\numberline {A}\bfseries The Command Query Responsibility Segregation pattern}{22}{appendix.A}
 \contentsline {chapter}{\numberline {B}\bfseries The example applications public APIs}{23}{appendix.B}
 \contentsline {section}{\numberline {B.1}\slshape Axon service}{23}{section.B.1}
