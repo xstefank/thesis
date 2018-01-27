@@ -66,6 +66,9 @@ abstract
 \usepackage{minted}
 
 
+\newcommand{\newlinepar}[1]{\paragraph{#1}\mbox{}\\}
+
+
 \begin{document}
 \chapter{Introduction}
 
@@ -331,6 +334,10 @@ Finally, the \texttt{service-model} is a Kotlin and Java Maven application provi
 The one substantial problem the saga processing in Axon has is the missing structure of the internal life cycle of the saga. Axon only provides ways to indicate the start and the stop of the saga. Actual invocation of the participants, collecting of the responses and handling of the compensations is up to developer as the only way of communication with the saga is through events.
 
 In this application the \texttt{OrderManagementSaga} contains two internal classes -- \texttt{OrderProcessing} and \texttt{OrderCompensationProcessing} which are responsible for keeping track of the saga execution and compensation respectively. As production ready sagas can be expected to run in a number of days, this can quickly become the bottleneck of the saga maintenance.
+
+Another encountered problem is that by the time of this writing Axon does not provide an easy method for the configuration of the different event bus for saga events than is the one that is used by default. The \texttt{@Saga} annotation is preconfigured with the value of the local event bus which is not allowed to be changed. The workaround is to manually register a custom saga manager which is not straightforward from the user perspective when the saga needs to be distributed through different JVMs.
+
+
 
 
 \clearpage

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.9.30)  26 JAN 2018 19:13
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.9.30)  27 JAN 2018 08:13
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1808,8 +1808,8 @@ File: fithesis/style/mu/fithesis-12.clo 2016/01/07
 )) (./fithesis/style/mu/fithesis-fi.sty
 Package: fithesis/style/mu/fithesis-fi 2016/01/07
 )
-Package hyperref Info: Option `unicode' set `true' on input line 69.
-Package hyperref Info: Option `unicode' set `true' on input line 69.
+Package hyperref Info: Option `unicode' set `true' on input line 72.
+Package hyperref Info: Option `unicode' set `true' on input line 72.
 
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/stringenc.sty
 Package: stringenc 2016/05/16 v1.11 Convert strings between diff. encodings (HO
@@ -1845,24 +1845,24 @@ runsystem(rm fi-pdflatex.aex)...executed.
 (./fi-pdflatex.aux)
 \openout1 = `fi-pdflatex.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 69.
-LaTeX Font Info:    ... okay on input line 69.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 69.
-LaTeX Font Info:    ... okay on input line 69.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 69.
-LaTeX Font Info:    ... okay on input line 69.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 69.
-LaTeX Font Info:    ... okay on input line 69.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 69.
-LaTeX Font Info:    ... okay on input line 69.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 69.
-LaTeX Font Info:    ... okay on input line 69.
-LaTeX Font Info:    Checking defaults for T2A/cmr/m/n on input line 69.
-LaTeX Font Info:    ... okay on input line 69.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 69.
-LaTeX Font Info:    ... okay on input line 69.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 69.
-LaTeX Font Info:    ... okay on input line 69.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 72.
+LaTeX Font Info:    ... okay on input line 72.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 72.
+LaTeX Font Info:    ... okay on input line 72.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 72.
+LaTeX Font Info:    ... okay on input line 72.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 72.
+LaTeX Font Info:    ... okay on input line 72.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 72.
+LaTeX Font Info:    ... okay on input line 72.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 72.
+LaTeX Font Info:    ... okay on input line 72.
+LaTeX Font Info:    Checking defaults for T2A/cmr/m/n on input line 72.
+LaTeX Font Info:    ... okay on input line 72.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 72.
+LaTeX Font Info:    ... okay on input line 72.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 72.
+LaTeX Font Info:    ... okay on input line 72.
  ABD: EveryShipout initializing macros
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -1906,7 +1906,7 @@ Package: lscape 2000/10/22 v3.01 Landscape Pages (DPC)
 )
 Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
 )
-LaTeX Info: Redefining \microtypecontext on input line 69.
+LaTeX Info: Redefining \microtypecontext on input line 72.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
@@ -1921,7 +1921,7 @@ Package microtype Info: Redefining babel's language switching commands.
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-ppl.cfg
 File: mt-ppl.cfg 2005/11/16 v1.6 microtype config. file: Palatino (RS)
 )
-Package hyperref Info: Link coloring OFF on input line 69.
+Package hyperref Info: Link coloring OFF on input line 72.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
@@ -1931,9 +1931,9 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count288
 )
-LaTeX Info: Redefining \ref on input line 69.
-LaTeX Info: Redefining \pageref on input line 69.
-LaTeX Info: Redefining \nameref on input line 69.
+LaTeX Info: Redefining \ref on input line 72.
+LaTeX Info: Redefining \pageref on input line 72.
+LaTeX Info: Redefining \nameref on input line 72.
 
 (./fi-pdflatex.out) (./fi-pdflatex.out)
 \@outlinefile=\write8
@@ -1953,7 +1953,7 @@ Package microtype Info: Character `029' is missing
 File: fithesis/logo/mu/fithesis-fi.pdf Graphic file (type pdf)
 
 <use fithesis/logo/mu/fithesis-fi.pdf>
-Package pdftex.def Info: fithesis/logo/mu/fithesis-fi.pdf used on input line 69
+Package pdftex.def Info: fithesis/logo/mu/fithesis-fi.pdf used on input line 72
 .
 (pdftex.def)             Requested size: 113.81102pt x 114.20036pt.
 Package microtype Info: Character `029' is missing
@@ -1968,19 +1968,19 @@ File: fithesis/logo/mu/fithesis-fi-color.pdf Graphic file (type pdf)
 
 <use fithesis/logo/mu/fithesis-fi-color.pdf>
 Package pdftex.def Info: fithesis/logo/mu/fithesis-fi-color.pdf used on input l
-ine 69.
+ine 72.
 (pdftex.def)             Requested size: 113.81102pt x 114.20036pt.
 pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
 een already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.69 \begin{document}
+l.72 \begin{document}
                       [2 <./fithesis/logo/mu/fithesis-fi-color.pdf>]pdfTeX warn
 ing (ext4): destination with the same identifier (name{page.}) has been already
  used, duplicate ignored
 <to be read again> 
                    \relax 
-l.69 \begin{document}
+l.72 \begin{document}
                       [0] [1] [2] [3] [4] (./fi-pdflatex.toc
 LaTeX Font Info:    Try loading font information for OT1+ppl on input line 2.
 
@@ -2053,7 +2053,7 @@ Chapter 3.
 [6
 
 ] [7]
-Overfull \hbox (1.17848pt too wide) in paragraph at lines 187--188
+Overfull \hbox (1.17848pt too wide) in paragraph at lines 190--191
 []\T1/qpl/b/n/12 Decentralization \T1/qpl/m/n/12 (-20) -- Mi-croser-vice ar-chi
 -tec-ture is build around
  []
@@ -2064,7 +2064,7 @@ Chapter 4.
 
 ]
 Chapter 5.
-LaTeX Font Info:    Try loading font information for T1+lmtt on input line 238.
+LaTeX Font Info:    Try loading font information for T1+lmtt on input line 241.
 
 (/usr/share/texlive/texmf-dist/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
@@ -2081,26 +2081,26 @@ Overfull \vbox (7.61726pt too high) has occurred while \output is active []
 
 ] [12]
 Chapter 6.
-<images/productInfoJSON.png, id=441, 316.18124pt x 101.37875pt>
+<images/productInfoJSON.png, id=440, 316.18124pt x 101.37875pt>
 File: images/productInfoJSON.png Graphic file (type png)
 
 <use images/productInfoJSON.png>
-Package pdftex.def Info: images/productInfoJSON.png used on input line 265.
+Package pdftex.def Info: images/productInfoJSON.png used on input line 268.
 (pdftex.def)             Requested size: 266.22244pt x 85.35826pt.
  [13
 
  <./images/productInfoJSON.png>]
-<images/sagaModel.pdf, id=453, 980.66376pt x 328.22626pt>
+<images/sagaModel.pdf, id=452, 980.66376pt x 328.22626pt>
 File: images/sagaModel.pdf Graphic file (type pdf)
 
 <use images/sagaModel.pdf>
-Package pdftex.def Info: images/sagaModel.pdf used on input line 282.
+Package pdftex.def Info: images/sagaModel.pdf used on input line 285.
 (pdftex.def)             Requested size: 340.03522pt x 113.81102pt.
 
 Underfull \vbox (badness 4634) has occurred while \output is active []
 
  [14]
-Overfull \hbox (6.52922pt too wide) in paragraph at lines 293--294
+Overfull \hbox (6.52922pt too wide) in paragraph at lines 296--297
 []\T1/qpl/m/n/12 (-20) To ini-ti-ate the fail-ures sce-nar-ios in ex-am-ples bo
 th \T1/lmtt/m/n/12 shipment-service
  []
@@ -2109,13 +2109,13 @@ th \T1/lmtt/m/n/12 shipment-service
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [15 <./images/sagaModel.pdf>]
-Overfull \hbox (4.80833pt too wide) in paragraph at lines 309--310
+Overfull \hbox (4.80833pt too wide) in paragraph at lines 312--313
 []\T1/qpl/m/n/12 (-20) Axon pro-vides two op-tions for con-nect-ing dif-fer-ent
  ser-vices through
  []
 
 
-Overfull \hbox (6.58896pt too wide) in paragraph at lines 309--310
+Overfull \hbox (6.58896pt too wide) in paragraph at lines 312--313
 \T1/qpl/m/n/12 (-20) of its ini-tial-iza-tion reg-is-ters it-self with the ser-
 vice \T1/lmtt/m/n/12 registration-server
  []
@@ -2125,7 +2125,7 @@ Overfull \vbox (4.94179pt too high) has occurred while \output is active []
 
 
 [16]
-Overfull \hbox (0.81178pt too wide) in paragraph at lines 317--318
+Overfull \hbox (0.81178pt too wide) in paragraph at lines 320--321
 \T1/qpl/m/n/12 (-20) The ap-pli-ca-tion is com-posed of five mi-croser-vices --
  the \T1/lmtt/m/n/12 order-service\T1/qpl/m/n/12 (-20) ,
  []
@@ -2234,34 +2234,44 @@ Package catoptions Warning: Undefined options
 (catoptions)                fontenc.sty,T1,. 
 (catoptions)                Default action already taken in each case .
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 514.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 514.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 521.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 521.
 (./fi-pdflatex.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 514.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 514.
-Package rerunfilecheck Info: File `fi-pdflatex.out' has not changed.
-(rerunfilecheck)             Checksum: 94DF49EA96341576A0DA618F1F490D3C;3607.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 521.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 521.
+
+
+Package rerunfilecheck Warning: File `fi-pdflatex.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `fi-pdflatex.out':
+(rerunfilecheck)             Before: B58F68F545CB9884A1198CB71F54C475;3607
+(rerunfilecheck)             After:  94DF49EA96341576A0DA618F1F490D3C;3607.
 runsystem(rm fi-pdflatex.pyg)...executed.
 
  ) 
 Here is how much of TeX's memory you used:
- 38019 strings out of 494946
- 689883 string characters out of 6180981
- 824901 words of memory out of 5000000
- 40350 multiletter control sequences out of 15000+600000
+ 38021 strings out of 494946
+ 689903 string characters out of 6180981
+ 824885 words of memory out of 5000000
+ 40351 multiletter control sequences out of 15000+600000
  66048 words of font info for 101 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  69i,8n,84p,10406b,646s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texlive/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texli
-ve/texmf-dist/fonts/enc/dvips/tex-gyre/q-ec.enc}{/usr/share/texlive/texmf-dist/
-fonts/enc/dvips/tex-gyre/q-ec-sc.enc}</usr/share/texlive/texmf-dist/fonts/type1
-/public/lm/lmtt12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/tex-gyr
-e/qplb.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/tex-gyre/qplr.pfb>
-</usr/share/texlive/texmf-dist/fonts/type1/public/tex-gyre/qplri.pfb>
-Output written on fi-pdflatex.pdf (35 pages, 263239 bytes).
+pdfTeX warning (dest): name{section*.8} has been referenced but does not exis
+t, replaced by a fixed one
+
+{/usr/share/texlive/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texlive
+/texmf-dist/fonts/enc/dvips/tex-gyre/q-ec.enc}{/usr/share/texlive/texmf-dist/fo
+nts/enc/dvips/tex-gyre/q-ec-sc.enc}</usr/share/texlive/texmf-dist/fonts/type1/p
+ublic/lm/lmtt12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/tex-gyre/
+qplb.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/tex-gyre/qplr.pfb></
+usr/share/texlive/texmf-dist/fonts/type1/public/tex-gyre/qplri.pfb>
+Output written on fi-pdflatex.pdf (35 pages, 263681 bytes).
 PDF statistics:
  603 PDF objects out of 1000 (max. 8388607)
  530 compressed objects within 6 object streams
- 130 named destinations out of 1000 (max. 500000)
+ 131 named destinations out of 1000 (max. 500000)
  19505 words of extra memory for PDF output out of 20736 (max. 10000000)
 

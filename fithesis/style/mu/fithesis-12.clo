@@ -213,7 +213,7 @@
   3.25ex plus1ex minus.2ex}{-1em}{%
   \reset@font\normalsize\bfseries}}
 
-\setcounter{secnumdepth}{5}
+\setcounter{secnumdepth}{3}
 
 \leftmargini 2.5em
 \leftmarginii 2.2em     % > \labelsep + width of '(m)'
