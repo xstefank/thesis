@@ -47,12 +47,13 @@
 \contentsline {paragraph}{ CQRS restrictions}{19}{section*.9}
 \contentsline {section}{\numberline {6.4}\slshape Eventuate service}{19}{section.6.4}
 \contentsline {subsection}{\numberline {6.4.1}\rmfamily Platform}{19}{subsection.6.4.1}
-\contentsline {chapter}{\numberline {7}\bfseries Conclusion}{21}{chapter.7}
-\contentsline {chapter}{Bibliography}{22}{section*.10}
-\contentsline {chapter}{\numberline {A}\bfseries The Command Query Responsibility Segregation pattern}{24}{appendix.A}
-\contentsline {chapter}{\numberline {B}\bfseries The example applications public APIs}{25}{appendix.B}
-\contentsline {section}{\numberline {B.1}\slshape Axon service}{25}{section.B.1}
-\contentsline {section}{\numberline {B.2}\slshape Eventuate service}{25}{section.B.2}
-\contentsline {section}{\numberline {B.3}\slshape LRA service}{26}{section.B.3}
-\contentsline {section}{\numberline {B.4}\slshape Eventuate Tram}{27}{section.B.4}
-\contentsline {chapter}{\numberline {C}\bfseries The saga scenarios}{28}{appendix.C}
+\contentsline {subsection}{\numberline {6.4.2}\rmfamily Structure}{21}{subsection.6.4.2}
+\contentsline {chapter}{\numberline {7}\bfseries Conclusion}{22}{chapter.7}
+\contentsline {chapter}{Bibliography}{23}{section*.10}
+\contentsline {chapter}{\numberline {A}\bfseries The Command Query Responsibility Segregation pattern}{25}{appendix.A}
+\contentsline {chapter}{\numberline {B}\bfseries The example applications public APIs}{26}{appendix.B}
+\contentsline {section}{\numberline {B.1}\slshape Axon service}{26}{section.B.1}
+\contentsline {section}{\numberline {B.2}\slshape Eventuate service}{26}{section.B.2}
+\contentsline {section}{\numberline {B.3}\slshape LRA service}{27}{section.B.3}
+\contentsline {section}{\numberline {B.4}\slshape Eventuate Tram}{28}{section.B.4}
+\contentsline {chapter}{\numberline {C}\bfseries The saga scenarios}{29}{appendix.C}

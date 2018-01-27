@@ -368,7 +368,9 @@ The SQL database used in this application for the event persistence is the MySQL
 The last support service is the change data capture (CDC) component. The CDC service has two main responsibilities -- it follows the transaction log and it publishes each event which is inserted into the \texttt{EVENTS} table to the Kafka topic that corresponds to the aggregate for which the event is intended. Eventutate Local supports two options of the execution of the CDC -- internally in each business service or as a standalone application. This quickstart applies the Eventuate CDC service  \texttt{eventuateio/eventuateio-local-cdc-service} as a standalone Docker container.
 
 
+\subsection{Structure}
 
+ Services are??? based on the Gradle \cite{gradle} build system. Each microservice is represented as a separated module capable to be separately built and deployed.
 
 \clearpage
 \chapter{Conclusion}
