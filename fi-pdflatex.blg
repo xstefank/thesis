@@ -9,7 +9,7 @@ Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Database file #1: IEEEabrv.bib
 Database file #2: references.bib
-I was expecting a `,' or a `}'---line 120 of file references.bib
+I was expecting a `,' or a `}'---line 107 of file references.bib
  :     
  :     url={https://spring.io/guides/gs/service-registration-and-discovery/},
 (Error may have been on previous line)
@@ -19,45 +19,45 @@ I'm skipping whatever remains of this entry
 -- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
 
 Done.
-You've used 19 entries,
+You've used 22 entries,
             4087 wiz_defined-function locations,
-            1436 strings with 19562 characters,
-and the built_in function-call counts, 7852 in all, are:
-= -- 604
-> -- 108
+            1448 strings with 19772 characters,
+and the built_in function-call counts, 8828 in all, are:
+= -- 677
+> -- 114
 < -- 20
-+ -- 59
-- -- 21
-* -- 321
-:= -- 1378
-add.period$ -- 38
-call.type$ -- 19
-change.case$ -- 18
++ -- 63
+- -- 22
+* -- 356
+:= -- 1554
+add.period$ -- 44
+call.type$ -- 22
+change.case$ -- 21
 chr.to.int$ -- 42
-cite$ -- 19
-duplicate$ -- 631
-empty$ -- 744
-format.name$ -- 26
-if$ -- 1738
+cite$ -- 22
+duplicate$ -- 717
+empty$ -- 848
+format.name$ -- 27
+if$ -- 1953
 int.to.chr$ -- 0
-int.to.str$ -- 19
-missing$ -- 135
-newline$ -- 110
-num.names$ -- 14
-pop$ -- 414
+int.to.str$ -- 22
+missing$ -- 154
+newline$ -- 125
+num.names$ -- 15
+pop$ -- 480
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 2
-skip$ -- 606
+skip$ -- 682
 stack$ -- 0
-substring$ -- 116
-swap$ -- 376
+substring$ -- 119
+swap$ -- 418
 text.length$ -- 6
 text.prefix$ -- 0
 top$ -- 5
-type$ -- 19
+type$ -- 22
 warning$ -- 0
-while$ -- 20
-width$ -- 21
-write$ -- 202
+while$ -- 21
+width$ -- 24
+write$ -- 230
 (There was 1 error message)

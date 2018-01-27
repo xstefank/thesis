@@ -105,6 +105,12 @@ Narayana, ``{Narayana LRA},'' 2017. [Online]. Available:
   \url{https://docs.docker.com/compose/}
 \BIBentrySTDinterwordspacing
 
+\bibitem{spring_boot}
+\BIBentryALTinterwordspacing
+{Spring community}, ``{Spring Boot},'' 2018. [Online]. Available:
+  \url{http://projects.spring.io/spring-boot/}
+\BIBentrySTDinterwordspacing
+
 \bibitem{maven}
 \BIBentryALTinterwordspacing
 B.~Porter, J.~Zyl, and O.~Lamy, ``Maven,'' 2018. [Online]. Available:
@@ -123,6 +129,17 @@ B.~Porter, J.~Zyl, and O.~Lamy, ``Maven,'' 2018. [Online]. Available:
 \bibitem{rabbitmq}
 \BIBentryALTinterwordspacing
 ``Rabbitmq,'' 2018. [Online]. Available: \url{https://www.rabbitmq.com/}
+\BIBentrySTDinterwordspacing
+
+\bibitem{apache_zookeeper}
+\BIBentryALTinterwordspacing
+``Apache zookeeper,'' 2018. [Online]. Available:
+  \url{https://zookeeper.apache.org/}
+\BIBentrySTDinterwordspacing
+
+\bibitem{gradle}
+\BIBentryALTinterwordspacing
+``Gradle,'' 2018. [Online]. Available: \url{https://gradle.org/}
 \BIBentrySTDinterwordspacing
 
 \end{thebibliography}

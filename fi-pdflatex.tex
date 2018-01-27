@@ -303,7 +303,7 @@ As it was stated in the previous chapter, the Axon framework is based upon the C
 
 \subsection{Platform}
 
-Axon service is a Java Spring Boot microservices application. Each service is fully separated and independent Maven\cite{maven} project. Every project is standalone runnable application (fat jar\footnote{Java Archive}) as the Spring Boot does not use any underlying platform to run microservices.
+Axon service is a Java Spring Boot \cite{spring_boot} microservices application. Each service is fully separated and independent Maven  project \cite{maven}. Every project is standalone runnable application (fat jar\footnote{Java Archive}) as the Spring Boot does not use any underlying platform to run microservices.
 
 As a CQRS based quickstart, Axon service uses two different and separated communication channels to exchange information between services: the command bus and the event bus. By default, the Axon framework reduce both channels to one JVM\footnote{Java Virtual Machine} thus one microservice. Except from that, developers are also able to specify several specialized ways of the configuration to distribute messages between different services which is used in this Axon quickstart.
 
@@ -344,6 +344,30 @@ Another encountered problem is that by the time of this writing Axon does not pr
 \newlinepar{AMQP usage with sagas}
 
 When the distributed event bus is processing events from an AMQP queue which the saga class is listening to, the framework does not deliver events correctly to the attached handlers. This may be caused by the incorrect configuration from the previous problem. The workaround used in the quickstart is to artificially wait 1000 milliseconds before delivering the event from the queue to the framework.
+
+\newlinepar{CQRS restrictions}
+
+As CQRS is a pattern that manages the domain formation of the application, Axon can place a hard requirements for the projects that do not follow the CQRS domain separation. Like it was already presented, sagas in Axon are only a specialized type of the event listener. The only way Axon produces events is trough an interaction with the aggregate instance - events are produced purely as a response to the received command. Therefore the use of Axon sagas in not CQRS environment may be too restrictive for an implementation.
+
+\section{Eventuate service}
+
+Similarly to Axon, Eventuate service is also based on the event sourcing and the CQRS pattern. For this reason, the business execution is managed in the aggregates which correspond to the respective microservices projects. The communication is as a result restricted to the command processing and the event appliance.
+
+\subsection{Platform}
+
+Eventuate service is a microservices application consisting of a set of Spring Boot \cite{spring_boot} business services, one backing module and a number of support services provided by the Eventuate platform. In this section, I will focus on the Eventuate platform and the services it provides, the business part of the application is described in the following section.
+
+This quickstart is established as a Eventuate Local version of the platform. This means that it uses underlying SQL database for the event persistence and the Kafka streaming platform for the event distribution. Eventuate Local provides four services managed by the platform, namely Apache Zookeeper, Apache Kafka, MySQL database and the change data capture component. The example employs these services as a Docker images included in the provided docker-compose configuration.
+
+Apache Zookeeper is an open-source project which enables highly reliable distributed coordination \cite{apache_zookeeper}. It maintains a centralized service which supervise various functionalities like handling of the configuration information, synchronization, naming or grouping. The Eventuate Local platform provides its own Docker image tagged as \texttt{eventuateio/eventuateio-local-zookeeper}.
+
+The Apache Kafka streaming platform is the service which is responsible for the administration of subscription and publishing mechanisms controlling the event processing for the business microservices. As it is based on the Streams API it allows the platform to react to events in real time. Eventuate manipulates Kafka as the notification service for the event propagation. Eventuate ships its own Kafka version in the \texttt{eventuateio/eventuateio-local-kafka} docker image.
+
+The SQL database used in this application for the event persistence is the MySQL open-source database which is currently the only database supported by the platform. The Eventuate Local maintains two tables -- \texttt{EVENTS} and \texttt{ENTITIES}. This database serves also as a transaction log maintained as a mean for the event sourcing. The containerized version is located under \texttt{eventuateio/eventuateio-local-mysql} tag.
+
+The last support service is the change data capture (CDC) component. The CDC service has two main responsibilities -- it follows the transaction log and it publishes each event which is inserted into the \texttt{EVENTS} table to the Kafka topic that corresponds to the aggregate for which the event is intended. Eventutate Local supports two options of the execution of the CDC -- internally in each business service or as a standalone application. This quickstart applies the Eventuate CDC service  \texttt{eventuateio/eventuateio-local-cdc-service} as a standalone Docker container.
+
+
 
 
 \clearpage
