@@ -359,13 +359,21 @@ Eventuate service is a microservices application consisting of a set of Spring B
 
 This quickstart is established as a Eventuate Local version of the platform. This means that it uses underlying SQL database for the event persistence and the Kafka streaming platform for the event distribution. Eventuate Local provides four services managed by the platform, namely Apache Zookeeper, Apache Kafka, MySQL database and the change data capture component. The example employs these services as a Docker images included in the provided docker-compose configuration.
 
+\newlinepar{Apache Zookeeper service}
+
 Apache Zookeeper is an open-source project which enables highly reliable distributed coordination \cite{apache_zookeeper}. It maintains a centralized service which supervise various functionalities like handling of the configuration information, synchronization, naming or grouping. The Eventuate Local platform provides its own Docker image tagged as \texttt{eventuateio/eventuateio-local-zookeeper}.
+
+\newlinepar{Apache Kafka service}
 
 The Apache Kafka streaming platform is the service which is responsible for the administration of subscription and publishing mechanisms controlling the event processing for the business microservices. As it is based on the Streams API it allows the platform to react to events in real time. Eventuate manipulates Kafka as the notification service for the event propagation. Eventuate ships its own Kafka version in the \texttt{eventuateio/eventuateio-local-kafka} docker image.
 
+\newlinepar{MySQL database service}
+
 The SQL database used in this application for the event persistence is the MySQL open-source database which is currently the only database supported by the platform. The Eventuate Local maintains two tables -- \texttt{EVENTS} and \texttt{ENTITIES}. This database serves also as a transaction log maintained as a mean for the event sourcing. The containerized version is located under \texttt{eventuateio/eventuateio-local-mysql} tag.
 
-The last support service is the change data capture (CDC) component. The CDC service has two main responsibilities -- it follows the transaction log and it publishes each event which is inserted into the \texttt{EVENTS} table to the Kafka topic that corresponds to the aggregate for which the event is intended. Eventutate Local supports two options of the execution of the CDC -- internally in each business service or as a standalone application. This quickstart applies the Eventuate CDC service  \texttt{eventuateio/eventuateio-local-cdc-service} as a standalone Docker container.
+\newlinepar{CDC service}
+
+The last support service represents the change data capture (CDC) component. The CDC service has two main responsibilities -- it follows the transaction log and it publishes each event which is inserted into the \texttt{EVENTS} table to the Kafka topic that corresponds to the aggregate for which the event is intended. Eventutate Local supports two options of the execution of the CDC -- internally in each business service or as a standalone application. This quickstart applies the Eventuate CDC service  \texttt{eventuateio/eventuateio-local-cdc-service} as a standalone Docker container.
 
 
 \subsection{Structure}
