@@ -250,6 +250,8 @@ As many instances of the saga class may exist at the same time, there is a need 
 
 \subsection{Eventuate.io}
 
+
+
 \subsection{Narayana LRA}
 
 \clearpage
@@ -357,7 +359,7 @@ Similarly to Axon, Eventuate service is also based on the event sourcing and the
 
 Eventuate service is a microservices application consisting of a set of Spring Boot \cite{spring_boot} business services, one backing module and a number of support services provided by the Eventuate platform. In this section, I will focus on the Eventuate platform and the services it provides, the business part of the application is described in the following section.
 
-This quickstart is established as a Eventuate Local version of the platform. This means that it uses underlying SQL database for the event persistence and the Kafka streaming platform for the event distribution. Eventuate Local provides four services managed by the platform, namely Apache Zookeeper, Apache Kafka, MySQL database and the change data capture component. The example employs these services as a Docker images included in the provided docker-compose configuration.
+This quickstart is established as a Eventuate Local version of the platform. This means that it uses underlying SQL database for the event persistence and the Kafka streaming platform for the event distribution. Eventuate Local provides five services used by the quickstart that are managed by the platform, namely Apache Zookeeper, Apache Kafka, MySQL database, the change data capture component and the Eventuate console service. The example employs these services as a Docker images included in the provided docker-compose configuration.
 
 \newlinepar{Apache Zookeeper service}
 
@@ -373,14 +375,20 @@ The SQL database used in this application for the event persistence is the MySQL
 
 \newlinepar{CDC service}
 
-The last support service represents the change data capture (CDC) component. The CDC service has two main responsibilities -- it follows the transaction log and it publishes each event which is inserted into the \texttt{EVENTS} table to the Kafka topic that corresponds to the aggregate for which the event is intended. Eventutate Local supports two options of the execution of the CDC -- internally in each business service or as a standalone application. This quickstart applies the Eventuate CDC service  \texttt{eventuateio/eventuateio-local-cdc-service} as a standalone Docker container.
+This service represents the change data capture (CDC) component. The CDC service has two main responsibilities -- it follows the transaction log and it publishes each event which is inserted into the \texttt{EVENTS} table to the Kafka topic that corresponds to the aggregate for which the event is intended. Eventutate Local supports two options of the execution of the CDC -- internally in each business service or as a standalone application. This quickstart applies the Eventuate CDC service \texttt{eventuateio/eventuateio-local-cdc-service} as a standalone Docker container.
+
+\newlinepar{Eventuate console}
+
+The last support service is the \texttt{consoleserver}. It provides a simple interface for accessing the information about created aggregate types and the event log. The supplied  Docker container image is \texttt{eventuateio/eventuateio-local-console}.
 
 
 \subsection{Structure}
 
-This section describes the set of services composing the business side of the application. This set contains four services that cover the saga execution and data processing (\texttt{order-service}, \texttt{shipment-service}, \texttt{invoice-service}) and \texttt{query-service} and one service (\texttt{mongodb}) representing the persistent storage.
+This section describes the set of services composing the business side of the application. This set contains four services that cover the saga execution and data processing (\texttt{order-service}, \texttt{shipment-service}, \texttt{invoice-service} and \texttt{query-service}), one service (\texttt{mongodb}) representing the persistent storage and one additional support module (\texttt{service-model}).
 
- Services are??? based on the Gradle \cite{gradle} build system. Each microservice is represented as a separated module capable to be separately built and deployed.
+All of the business services are a Spring Boot applications based on the Gradle \cite{gradle} build system. Each microservice is represented as a independent module capable of being separately built and deployed. Even if Spring Boot projects can be executed directly from the command line as ordinary Java applications, this quickstart leverages the Docker approach of the Eventuate Local platform and containerize all of its services.
+
+The Eventuate service define the set of environment variables in the Docker container specification for each individual business service.
 
 \clearpage
 \chapter{Conclusion}

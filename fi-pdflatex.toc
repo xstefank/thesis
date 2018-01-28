@@ -51,9 +51,10 @@
 \contentsline {paragraph}{ Apache Kafka service}{20}{section*.11}
 \contentsline {paragraph}{ MySQL database service}{20}{section*.12}
 \contentsline {paragraph}{ CDC service}{21}{section*.13}
+\contentsline {paragraph}{ Eventuate console}{21}{section*.14}
 \contentsline {subsection}{\numberline {6.4.2}\rmfamily Structure}{21}{subsection.6.4.2}
 \contentsline {chapter}{\numberline {7}\bfseries Conclusion}{22}{chapter.7}
-\contentsline {chapter}{Bibliography}{23}{section*.14}
+\contentsline {chapter}{Bibliography}{23}{section*.15}
 \contentsline {chapter}{\numberline {A}\bfseries The Command Query Responsibility Segregation pattern}{25}{appendix.A}
 \contentsline {chapter}{\numberline {B}\bfseries The example applications public APIs}{26}{appendix.B}
 \contentsline {section}{\numberline {B.1}\slshape Axon service}{26}{section.B.1}
