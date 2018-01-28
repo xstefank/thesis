@@ -378,6 +378,8 @@ The last support service represents the change data capture (CDC) component. The
 
 \subsection{Structure}
 
+This section describes the set of services composing the business side of the application. This set contains four services that cover the saga execution and data processing (\texttt{order-service}, \texttt{shipment-service}, \texttt{invoice-service}) and \texttt{query-service} and one service (\texttt{mongodb}) representing the persistent storage.
+
  Services are??? based on the Gradle \cite{gradle} build system. Each microservice is represented as a separated module capable to be separately built and deployed.
 
 \clearpage
