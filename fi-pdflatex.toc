@@ -33,32 +33,32 @@
 \contentsline {subsection}{\numberline {5.3.1}\rmfamily Axon framework}{11}{subsection.5.3.1}
 \contentsline {subsection}{\numberline {5.3.2}\rmfamily Saga development}{11}{subsection.5.3.2}
 \contentsline {subsection}{\numberline {5.3.3}\rmfamily Eventuate.io}{12}{subsection.5.3.3}
-\contentsline {subsection}{\numberline {5.3.4}\rmfamily Narayana LRA}{12}{subsection.5.3.4}
-\contentsline {chapter}{\numberline {6}\bfseries Saga implementations comparison example}{13}{chapter.6}
-\contentsline {section}{\numberline {6.1}\slshape Invocation and interaction}{13}{section.6.1}
-\contentsline {section}{\numberline {6.2}\slshape The saga model}{14}{section.6.2}
-\contentsline {section}{\numberline {6.3}\slshape Axon service}{16}{section.6.3}
-\contentsline {subsection}{\numberline {6.3.1}\rmfamily Platform}{16}{subsection.6.3.1}
-\contentsline {subsection}{\numberline {6.3.2}\rmfamily Structure}{17}{subsection.6.3.2}
-\contentsline {subsection}{\numberline {6.3.3}\rmfamily Problems}{18}{subsection.6.3.3}
-\contentsline {paragraph}{ Maintenance of the saga structure}{18}{section*.6}
-\contentsline {paragraph}{ Distribution of events to sagas}{18}{section*.7}
-\contentsline {paragraph}{ AMQP usage with sagas}{19}{section*.8}
-\contentsline {paragraph}{ CQRS restrictions}{19}{section*.9}
-\contentsline {section}{\numberline {6.4}\slshape Eventuate service}{19}{section.6.4}
-\contentsline {subsection}{\numberline {6.4.1}\rmfamily Platform}{19}{subsection.6.4.1}
-\contentsline {paragraph}{ Apache Zookeeper service}{20}{section*.10}
-\contentsline {paragraph}{ Apache Kafka service}{20}{section*.11}
-\contentsline {paragraph}{ MySQL database service}{20}{section*.12}
-\contentsline {paragraph}{ CDC service}{21}{section*.13}
-\contentsline {paragraph}{ Eventuate console}{21}{section*.14}
-\contentsline {subsection}{\numberline {6.4.2}\rmfamily Structure}{21}{subsection.6.4.2}
-\contentsline {chapter}{\numberline {7}\bfseries Conclusion}{22}{chapter.7}
-\contentsline {chapter}{Bibliography}{23}{section*.15}
-\contentsline {chapter}{\numberline {A}\bfseries The Command Query Responsibility Segregation pattern}{25}{appendix.A}
-\contentsline {chapter}{\numberline {B}\bfseries The example applications public APIs}{26}{appendix.B}
-\contentsline {section}{\numberline {B.1}\slshape Axon service}{26}{section.B.1}
-\contentsline {section}{\numberline {B.2}\slshape Eventuate service}{26}{section.B.2}
-\contentsline {section}{\numberline {B.3}\slshape LRA service}{27}{section.B.3}
-\contentsline {section}{\numberline {B.4}\slshape Eventuate Tram}{28}{section.B.4}
-\contentsline {chapter}{\numberline {C}\bfseries The saga scenarios}{29}{appendix.C}
+\contentsline {subsection}{\numberline {5.3.4}\rmfamily Narayana LRA}{13}{subsection.5.3.4}
+\contentsline {chapter}{\numberline {6}\bfseries Saga implementations comparison example}{14}{chapter.6}
+\contentsline {section}{\numberline {6.1}\slshape Invocation and interaction}{14}{section.6.1}
+\contentsline {section}{\numberline {6.2}\slshape The saga model}{15}{section.6.2}
+\contentsline {section}{\numberline {6.3}\slshape Axon service}{17}{section.6.3}
+\contentsline {subsection}{\numberline {6.3.1}\rmfamily Platform}{17}{subsection.6.3.1}
+\contentsline {subsection}{\numberline {6.3.2}\rmfamily Structure}{18}{subsection.6.3.2}
+\contentsline {subsection}{\numberline {6.3.3}\rmfamily Problems}{19}{subsection.6.3.3}
+\contentsline {paragraph}{ Maintenance of the saga structure}{19}{section*.6}
+\contentsline {paragraph}{ Distribution of events to sagas}{19}{section*.7}
+\contentsline {paragraph}{ AMQP usage with sagas}{20}{section*.8}
+\contentsline {paragraph}{ CQRS restrictions}{20}{section*.9}
+\contentsline {section}{\numberline {6.4}\slshape Eventuate service}{20}{section.6.4}
+\contentsline {subsection}{\numberline {6.4.1}\rmfamily Platform}{20}{subsection.6.4.1}
+\contentsline {paragraph}{ Apache Zookeeper service}{21}{section*.10}
+\contentsline {paragraph}{ Apache Kafka service}{21}{section*.11}
+\contentsline {paragraph}{ MySQL database service}{21}{section*.12}
+\contentsline {paragraph}{ CDC service}{22}{section*.13}
+\contentsline {paragraph}{ Eventuate console}{22}{section*.14}
+\contentsline {subsection}{\numberline {6.4.2}\rmfamily Structure}{22}{subsection.6.4.2}
+\contentsline {chapter}{\numberline {7}\bfseries Conclusion}{23}{chapter.7}
+\contentsline {chapter}{Bibliography}{24}{section*.15}
+\contentsline {chapter}{\numberline {A}\bfseries The Command Query Responsibility Segregation pattern}{26}{appendix.A}
+\contentsline {chapter}{\numberline {B}\bfseries The example applications public APIs}{27}{appendix.B}
+\contentsline {section}{\numberline {B.1}\slshape Axon service}{27}{section.B.1}
+\contentsline {section}{\numberline {B.2}\slshape Eventuate service}{27}{section.B.2}
+\contentsline {section}{\numberline {B.3}\slshape LRA service}{28}{section.B.3}
+\contentsline {section}{\numberline {B.4}\slshape Eventuate Tram}{29}{section.B.4}
+\contentsline {chapter}{\numberline {C}\bfseries The saga scenarios}{30}{appendix.C}
