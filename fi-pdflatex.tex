@@ -388,7 +388,9 @@ This section describes the set of services composing the business side of the ap
 
 All of the business services are a Spring Boot applications based on the Gradle \cite{gradle} build system. Each microservice is represented as a independent module capable of being separately built and deployed. Even if Spring Boot projects can be executed directly from the command line as ordinary Java applications, this quickstart leverages the Docker approach of the Eventuate Local platform and containerize all of its services.
 
-The Eventuate service define the set of environment variables in the Docker container specification for each individual business service.
+To connect to the Eventuate platform each service defines the set of environment variables. This information includes the connection and authentication details for the MySQL database, the CDC component and the connection URLs\footnote{Uniform Resource Locator} for the Kafka and the Zookeeper services. These variables are specified in the container specification for each individual business service in the \texttt{docker-compose.yml} file.
+
+
 
 \clearpage
 \chapter{Conclusion}
