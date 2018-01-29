@@ -392,7 +392,15 @@ All of the business services are a Spring Boot applications based on the Gradle 
 
 To connect to the Eventuate platform each service defines a set of environment variables. This information includes the connection and authentication details for the MySQL database, the CDC component and the connection URLs\footnote{Uniform Resource Locator} for the Kafka and the Zookeeper services. These variables are specified in the container specification for each individual business service in the \texttt{docker-compose.yml} file.
 
-The actual saga execution is managed in the \texttt{order-service} microservice. The saga realization implementation is contained in three classes -- the \texttt{OrderSagaAggregate}, the \texttt{SagaEventSubscriber} and the \texttt{OrderSagaService}. The first class is an ordinary CQRS aggregate that handles the commands for the saga initialization and the participants outcomes. Conversely, the latter one is the event processor listening for the events produced by the aggregate which is basically a wrapper around the \texttt{OrderSagaService} - the class responsible for the remote REST calls to the other services and the command dispatching for the \texttt{OrderSagaAggregate}.
+The actual saga execution is managed in the \texttt{order-service} microservice. The saga realization implementation is contained in three classes -- the \texttt{OrderSagaAggregate}, the \texttt{SagaEventSubscriber} and the \texttt{OrderSagaService}. The first class is an ordinary CQRS aggregate that handles the commands for the saga initialization and the participants outcomes. Conversely, the latter one is the event processor listening for the events produced by the aggregate which is basically a wrapper around the \texttt{OrderSagaService} - the class responsible for the remote REST calls to the other services and the command dispatching for the \texttt{OrderSagaAggregate}. The usage of the separated event listener is required because Eventuate does not allow aggregates to be declared as Spring components. The reason of this defect is described in more detail in the following section.
+
+Except for the normal order API, the \texttt{order-service} also provides a management API for the participants to be able to share the information about their processing. This endpoints are hardcoded in the application which may not be acceptable for a production realization.
+
+The \texttt{shipment-service} and the \texttt{invoice-service} both contain a simple aggregate together with its associated event listener which control the participant interaction with the saga. Each service also accommodate the REST endpoint for the saga request and its possible compensation.
+
+Similarly to Axon service, the \texttt{service-model} project acts as a support library for other services. It contains a core API for each business service which needs to be shared and the utilization classes.
+
+The last microservice is the \texttt{query-service}. It performs as a response service providing the information about persisted orders, shipemtns and invoices. It contains an event listener for each designated microservice which in turn preserve the achieved information in the Mongo NoSQL database. This service also provides a simple Swagger interface to ease the user application interaction.
 
 
 \clearpage
