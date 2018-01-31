@@ -404,6 +404,16 @@ The last business microservice is the \texttt{query-service}. It performs as a r
 
 \subsection{Problems}
 
+\newlinepar{Complexity}
+
+As this project represents a plain CQRS based example it completely demonstrates the background process required for the saga execution. 
+
+The first complexity problem is that the project contains a great number of the command and event classes. The aggregates are only able to consume commands and produce events so the communication between components often demands a few additional steps.
+
+The full saga administration is handled from the very beginning. That covers the support of starting, stopping and following the saga execution as well as saga compensations. Before the Eventuate Tram framework, the Eventuate platform did not provide any saga support.
+
+This quickstart uses the REST architectural style for the remote communication between services. Even if all of microservices are connected to the same MySQL database, they cannot directly propagate commands between each other. The reason for that is the way Eventuate dispatches commands through the aggregate repository which needs to be injected by the platform. Because of this, it needs to declare the target aggregate class and the command type. The sharing of the aggregate class may be very restrictive especially for microservices applications.
+
 \newlinepar{Aggregate instantiation}
 
 The Eventuate framework creates the instances of the aggregate classes by a call to the default constructor. This effectively prohibits the use of aggregate instance managed by the underlying server container. 
