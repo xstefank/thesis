@@ -400,7 +400,7 @@ The \texttt{shipment-service} and the \texttt{invoice-service} both contain a si
 
 Similarly to Axon service, the \texttt{service-model} project acts as a support library for other services. It contains a core API for each business service which needs to be shared and the utilization classes.
 
-The last microservice is the \texttt{query-service}. It performs as a response service providing the information about persisted orders, shipemtns and invoices. It contains an event listener for each designated microservice which in turn preserve the achieved information in the Mongo NoSQL database. This service also provides a simple Swagger interface to ease the user application interaction.
+The last business microservice is the \texttt{query-service}. It performs as a response service providing the information about persisted orders, shipemtns and invoices. It contains an event listener for each designated microservice which in turn preserve the achieved information in the Mongo NoSQL database. This service also provides a simple Swagger interface to ease the user application interaction.
 
 
 \clearpage
