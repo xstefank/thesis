@@ -335,7 +335,7 @@ Finally, the \texttt{service-model} is a Kotlin and Java Maven application provi
 
 \newlinepar{Maintenance of the saga structure}
 
-The one substantial problem the saga processing in Axon has is the missing structure of the internal life cycle of the saga. Axon only provides ways to indicate the start and the stop of the saga. Actual invocation of the participants, collecting of the responses and handling of the compensations is up to developer as the only way of communication with the saga is through events.
+The one substantial problem the saga processing in Axon has is the missing structure of the internal life cycle of the saga. Axon only provides ways to indicate the start and the stop of the saga. The actual invocation of the participants, collecting of the responses and handling of the compensations is up to developer as the only way of communication with the saga is through events.
 
 In this application the \texttt{OrderManagementSaga} contains two internal classes -- \texttt{OrderProcessing} and \texttt{OrderCompensationProcessing} which are responsible for keeping track of the saga execution and compensation respectively. As production ready sagas can be expected to run in a number of days, this can quickly become the bottleneck of the saga maintenance.
 
@@ -400,7 +400,23 @@ The \texttt{shipment-service} and the \texttt{invoice-service} both contain a si
 
 Similarly to Axon service, the \texttt{service-model} project acts as a support library for other services. It contains a core API for each business service which needs to be shared and the utilization classes.
 
-The last business microservice is the \texttt{query-service}. It performs as a response service providing the information about persisted orders, shipemtns and invoices. It contains an event listener for each designated microservice which in turn preserve the achieved information in the Mongo NoSQL database. This service also provides a simple Swagger interface to ease the user application interaction.
+The last business microservice is the \texttt{query-service}. It performs as a response service providing the information about persisted orders, shipmetns and invoices. It contains an event listener for each designated microservice which in turn preserve the achieved information in the Mongo NoSQL database. This service also provides a simple Swagger interface to ease the user application interaction.
+
+\subsection{Problems}
+
+\newlinepar{Aggregate instantiation}
+
+The Eventuate framework creates the instances of the aggregate classes by a call to the default constructor. This effectively prohibits the use of aggregate instance managed by the underlying server container. 
+
+For this reason, each aggregate in this project is separated into two classes -- the actual aggregate responsible for the command processing and the event subscriber instance managing the incoming events. The  aggregate class is required to extend the \texttt{ReflectiveMutableCommand\\ProcessingAggregate} specifying the type of the command interface which allows the classpath instantiation. The event listener is defined by the \texttt{@EventSubscriber} annotation which permits it to be constructed as a Spring container component for the dependency injection employment. 
+
+This restriction is seconded by the rule stating that each produced event from the aggregate's command processing method must also be applied by the different method of the same aggregate. This limitation exists because of the event sourcing feature providing the ability to replay already executed commands to reconstruct the aggregate's state in the case of failure. The aggregate then may contain unnecessary empty methods as the saga also requires the propagation of the information to different components (e. g. the REST controller).
+
+
+
+
+
+As Eventuate service is a pure CQRS saga example it has a few problems which has been reduced or removed in the later Eventuate Tram implementation which is described in the following section. 
 
 
 \clearpage
