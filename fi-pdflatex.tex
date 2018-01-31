@@ -413,10 +413,17 @@ For this reason, each aggregate in this project is separated into two classes --
 This restriction is seconded by the rule stating that each produced event from the aggregate's command processing method must also be applied by the different method of the same aggregate. This limitation exists because of the event sourcing feature providing the ability to replay already executed commands to reconstruct the aggregate's state in the case of failure. The aggregate then may contain unnecessary empty methods as the saga also requires the propagation of the information to different components (e. g. the REST controller).
 
 
+\newlinepar{Event entity specification}
+
+As well as the command type, Eventuate also requires the definition of the event type each aggregate is able to produce. The event class is defined as a value of the \texttt{entity} attribute of the \texttt{@EventEntity} annotation. This annotation is usually placed on the event interface which implementation represents produced events.
+
+The problem rises when the events needs to be shared between several modules. This is a common requirement as the CQRS pattern requires the query domain to be separated. The event interfaces are therefore included in the common library module as the \texttt{service-model} used in this project. The hard coded information of the full name of the aggregate class used in the \texttt{@EventEntity} annotation then may become hard to maintain.
 
 
+\hfill \break
 
-As Eventuate service is a pure CQRS saga example it has a few problems which has been reduced or removed in the later Eventuate Tram implementation which is described in the following section. 
+
+As Eventuate service is a pure CQRS saga example it has a few problems which has been reduced or removed in the later Eventuate Tram implementation which is in detail described in the following section. 
 
 
 \clearpage
