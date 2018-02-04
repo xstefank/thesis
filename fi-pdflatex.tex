@@ -437,6 +437,22 @@ The platform structure places the obligation on each developed microservice to c
 
 In the end it is worth mentioning that as the Eventuate service is the pure CQRS saga example it has a few problems which has been reduced or removed in the later Eventuate Tram implementation that is in detail described in the following section. 
 
+\section{LRA service}
+
+The LRA service is the first example which in the contradiction with previous quickstarts do not restrict its services to any particular conventions. Individual services are connected through the exposed REST routes.
+
+\subsection{Platform}
+
+This quickstart is composed as a set of WildFly Swarm microservices applications. Every microservice is designed to be easily deployed to the OpenShift container application platform provided by Red Hat, Inc. Both of these platforms are described in the following sections.
+
+Each service uses the \texttt{fabric8-maven-plugin} for the build and the deployment to the OpenShift platform. This plugin provides a straightforward way of declaring the necessary description information the platform requires to orchestrate the service according to the user demands. This project applies the source to image (S2I) toolkit that builds imminent Docker images which can by immediately deployed to the OpenShift. 
+
+\subsubsection{WildFly Swarm}
+
+WildFly Swarm is Red Hat microservices initiative designed to enable deconstructing the WildFly application server and pasting just enough of it back together with the application to create self-contained executable jar \cite{gupta_2018}. 
+
+The traditional Java EE\footnote{Enterprise Edition} approach follows the development of the application and its successive deployment to the application server which includes necessary dependencies which the application requires to run. On the other hand, Wildfly Swarm creates a fat Java archive which packages all needed dependencies inside itself. This emulates the packaging of only requisite parts of the application server. The result jar is a standalone runnable Java application which can be executed by the \texttt{java -jar} command.
+
 
 
 

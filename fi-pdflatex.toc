@@ -58,12 +58,15 @@
 \contentsline {paragraph}{ Aggregate instantiation}{25}{section*.16}
 \contentsline {paragraph}{ Event entity specification}{25}{section*.17}
 \contentsline {paragraph}{ Platform structure}{26}{section*.18}
-\contentsline {chapter}{\numberline {7}\bfseries Conclusion}{27}{chapter.7}
-\contentsline {chapter}{Bibliography}{28}{section*.19}
-\contentsline {chapter}{\numberline {A}\bfseries The Command Query Responsibility Segregation pattern}{30}{appendix.A}
-\contentsline {chapter}{\numberline {B}\bfseries The example applications public APIs}{31}{appendix.B}
-\contentsline {section}{\numberline {B.1}\slshape Axon service}{31}{section.B.1}
-\contentsline {section}{\numberline {B.2}\slshape Eventuate service}{31}{section.B.2}
-\contentsline {section}{\numberline {B.3}\slshape LRA service}{32}{section.B.3}
-\contentsline {section}{\numberline {B.4}\slshape Eventuate Tram}{33}{section.B.4}
-\contentsline {chapter}{\numberline {C}\bfseries The saga scenarios}{34}{appendix.C}
+\contentsline {section}{\numberline {6.5}\slshape LRA service}{26}{section.6.5}
+\contentsline {subsection}{\numberline {6.5.1}\rmfamily Platform}{26}{subsection.6.5.1}
+\contentsline {subsubsection}{\numberline {6.5.1.1} WildFly Swarm}{27}{subsubsection.6.5.1.1}
+\contentsline {chapter}{\numberline {7}\bfseries Conclusion}{28}{chapter.7}
+\contentsline {chapter}{Bibliography}{29}{section*.19}
+\contentsline {chapter}{\numberline {A}\bfseries The Command Query Responsibility Segregation pattern}{31}{appendix.A}
+\contentsline {chapter}{\numberline {B}\bfseries The example applications public APIs}{32}{appendix.B}
+\contentsline {section}{\numberline {B.1}\slshape Axon service}{32}{section.B.1}
+\contentsline {section}{\numberline {B.2}\slshape Eventuate service}{32}{section.B.2}
+\contentsline {section}{\numberline {B.3}\slshape LRA service}{33}{section.B.3}
+\contentsline {section}{\numberline {B.4}\slshape Eventuate Tram}{34}{section.B.4}
+\contentsline {chapter}{\numberline {C}\bfseries The saga scenarios}{35}{appendix.C}
