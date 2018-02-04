@@ -55,10 +55,11 @@
 \contentsline {subsection}{\numberline {6.4.2}\rmfamily Structure}{22}{subsection.6.4.2}
 \contentsline {subsection}{\numberline {6.4.3}\rmfamily Problems}{24}{subsection.6.4.3}
 \contentsline {paragraph}{ Complexity}{24}{section*.15}
-\contentsline {paragraph}{ Aggregate instantiation}{24}{section*.16}
+\contentsline {paragraph}{ Aggregate instantiation}{25}{section*.16}
 \contentsline {paragraph}{ Event entity specification}{25}{section*.17}
+\contentsline {paragraph}{ Platform structure}{26}{section*.18}
 \contentsline {chapter}{\numberline {7}\bfseries Conclusion}{27}{chapter.7}
-\contentsline {chapter}{Bibliography}{28}{section*.18}
+\contentsline {chapter}{Bibliography}{28}{section*.19}
 \contentsline {chapter}{\numberline {A}\bfseries The Command Query Responsibility Segregation pattern}{30}{appendix.A}
 \contentsline {chapter}{\numberline {B}\bfseries The example applications public APIs}{31}{appendix.B}
 \contentsline {section}{\numberline {B.1}\slshape Axon service}{31}{section.B.1}

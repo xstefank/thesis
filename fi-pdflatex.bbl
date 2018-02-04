@@ -142,4 +142,11 @@ B.~Porter, J.~Zyl, and O.~Lamy, ``Maven,'' 2018. [Online]. Available:
 ``Gradle,'' 2018. [Online]. Available: \url{https://gradle.org/}
 \BIBentrySTDinterwordspacing
 
+\bibitem{gupta_2018}
+\BIBentryALTinterwordspacing
+A.~Gupta, ``Wildfly swarm: Building microservices with java ee,'' 2018.
+  [Online]. Available:
+  \url{http://blog.arungupta.me/wildfly-swarm-microservices-javaee/}
+\BIBentrySTDinterwordspacing
+
 \end{thebibliography}

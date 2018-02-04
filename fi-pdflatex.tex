@@ -406,13 +406,13 @@ The last business microservice is the \texttt{query-service}. It performs as a r
 
 \newlinepar{Complexity}
 
-As this project represents a plain CQRS based example it completely demonstrates the background process required for the saga execution. 
+As this project represents a plain CQRS based example it completely demonstrates the background process required for the saga execution. Therefore the complexity of this quickstart may appear more critical than in other projects as the background saga execution often contains many optimizations.
 
-The first complexity problem is that the project contains a great number of the command and event classes. The aggregates are only able to consume commands and produce events so the communication between components often demands a few additional steps.
+The first complexity problem is that the project contains a great number of the command and event classes. This is required as aggregate classes are only able to consume commands and produce events. For that reason,  the communication between components often demands a few additional steps.
 
-The full saga administration is handled from the very beginning. That covers the support of starting, stopping and following the saga execution as well as saga compensations. Before the Eventuate Tram framework, the Eventuate platform did not provide any saga support.
+The full saga administration is handled by the project from the very beginning. That covers the support of starting, stopping and following the saga execution as well as saga compensations. The restrictions placed by the CQRS pattern furthermore put additional requirements on the saga processing which may not be demanded by other frameworks. Before the Eventuate Tram framework, the Eventuate platform did not provide any saga support.
 
-This quickstart uses the REST architectural style for the remote communication between services. Even if all of microservices are connected to the same MySQL database, they cannot directly propagate commands between each other. The reason for that is the way Eventuate dispatches commands through the aggregate repository which needs to be injected by the platform. Because of this, it needs to declare the target aggregate class and the command type. The sharing of the aggregate class may be very restrictive especially for microservices applications.
+This quickstart uses the REST architectural style for the remote communication between services. Even if all of microservices are connected to the same MySQL database, they cannot directly propagate commands between each other. This is due to the way Eventuate dispatches commands through the aggregate repository. The aggregate repository represents the database table that is restricted to one aggregate and consequently, it needs to be injected by the platform. For this reason, it needs to declare the target aggregate class and the command type. The sharing of the aggregate class may be very restrictive, especially for microservices applications.
 
 \newlinepar{Aggregate instantiation}
 
@@ -429,11 +429,15 @@ As well as the command type, Eventuate also requires the definition of the event
 
 The problem rises when the events needs to be shared between several modules. This is a common requirement as the CQRS pattern requires the query domain to be separated. The event interfaces are therefore included in the common library module as the \texttt{service-model} used in this project. The hard coded information of the full name of the aggregate class used in the \texttt{@EventEntity} annotation then may become hard to maintain.
 
+\newlinepar{Platform structure}
+
+The platform structure places the obligation on each developed microservice to conduct with the connecting specification. This means that every service must provide linking information for the Eventuate platform services described in the previous section, namely MySql database, Apache Kafka, Apache Zookeeper and CDC component. This information is manually replicated in each service (restricted to system properties) and therefore predisposed to errors.
 
 \hfill \break
 
+In the end it is worth mentioning that as the Eventuate service is the pure CQRS saga example it has a few problems which has been reduced or removed in the later Eventuate Tram implementation that is in detail described in the following section. 
 
-As Eventuate service is a pure CQRS saga example it has a few problems which has been reduced or removed in the later Eventuate Tram implementation which is in detail described in the following section. 
+
 
 
 \clearpage
