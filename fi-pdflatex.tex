@@ -451,14 +451,17 @@ Each service uses the \texttt{fabric8-maven-plugin} for the build and the deploy
 
 As it was already presented in the previous chapter Narayana's long running actions are not composed as a platform, rather as a standalone library. This project builds upon the use of the Narayana LRA coordinator which is same as the other services constructed as a WildFly Swarm microservice called \texttt{lra-coordinator}. 
 
-The traditional requirements placed on the microservices applications are handled by the OpenShift platform. That covers for instance the service discovery, monitoring, logging and resiliency.
+The traditional requirements placed on the microservices applications are handled by the OpenShift platform. That for instance covers service discovery and location transparency, monitoring, logging, resiliency and health checks (failure discovery). 
 
 \newlinepar{WildFly Swarm}
 
-WildFly Swarm is Red Hat microservices initiative designed to enable deconstructing the WildFly application server and pasting just enough of it back together with the application to create self-contained executable jar \cite{gupta_2018}. 
+WildFly Swarm is the Red Hat microservices initiative designed to enable deconstructing the WildFly application server and pasting just enough of it back together with the application to create a self-contained executable jar \cite{gupta_2018}. 
 
-The traditional Java EE\footnote{Enterprise Edition} approach follows the development of the application and its successive deployment to the application server which includes necessary dependencies which the application requires to run. On the other hand, Wildfly Swarm creates a fat Java archive which packages all needed dependencies inside itself. This emulates the packaging of only requisite parts of the application server. The result jar is a standalone runnable Java application which can be executed by the \texttt{java -jar} command.
+The traditional Java EE\footnote{Enterprise Edition} approach follows the development of the application and its successive deployment to the application server which includes necessary dependencies which the application requires to run. On the other hand, Wildfly Swarm creates a fat Java archive which packages all needed dependencies inside itself. This emulates the packaging of only requisite parts of the application server. The result jar is a standalone runnable Java application which can be executed by the \texttt{java -jar} command. It also provides Maven and Gradle plugins to ease the development of Swarm applications.
 
+The default fat jar (also called the uberjar) contains the user application and the needed parts of the WildFly server. Swarm also supports the packaging of the necessary server parts separately from the application. This method is know as the hollow jar and is particularly useful in the containerized environment as the server may be placed in the lower layers that do not require frequent rebuilds.
+
+The individual server parts are being delivered in the packages named fractions. The fraction represents a precise selection of capabilities that can be included in the application. It may denote the exact WildFly subsystem as JAX-RS\footnote{Java API for RESTful Web Services} or CDI\footnote{Context and Dependency Injection}, or a more sophisticated set of facilities to provide some additional functionality like RHSSO\footnote{Red Hat Single Sign-On}.
 
 
 
