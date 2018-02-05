@@ -31,9 +31,9 @@
 \contentsline {section}{\numberline {5.2}\slshape Compensations}{11}{section.5.2}
 \contentsline {section}{\numberline {5.3}\slshape Current development support}{11}{section.5.3}
 \contentsline {subsection}{\numberline {5.3.1}\rmfamily Axon framework}{11}{subsection.5.3.1}
-\contentsline {subsection}{\numberline {5.3.2}\rmfamily Saga development}{11}{subsection.5.3.2}
-\contentsline {subsection}{\numberline {5.3.3}\rmfamily Eventuate.io}{12}{subsection.5.3.3}
-\contentsline {subsection}{\numberline {5.3.4}\rmfamily Narayana LRA}{13}{subsection.5.3.4}
+\contentsline {subsubsection}{\numberline {5.3.1.1} Saga definition}{11}{subsubsection.5.3.1.1}
+\contentsline {subsection}{\numberline {5.3.2}\rmfamily Eventuate.io}{12}{subsection.5.3.2}
+\contentsline {subsection}{\numberline {5.3.3}\rmfamily Narayana LRA}{13}{subsection.5.3.3}
 \contentsline {chapter}{\numberline {6}\bfseries Saga implementations comparison example}{14}{chapter.6}
 \contentsline {section}{\numberline {6.1}\slshape Invocation and interaction}{14}{section.6.1}
 \contentsline {section}{\numberline {6.2}\slshape The saga model}{15}{section.6.2}
@@ -60,9 +60,9 @@
 \contentsline {paragraph}{ Platform structure}{26}{section*.18}
 \contentsline {section}{\numberline {6.5}\slshape LRA service}{26}{section.6.5}
 \contentsline {subsection}{\numberline {6.5.1}\rmfamily Platform}{26}{subsection.6.5.1}
-\contentsline {subsubsection}{\numberline {6.5.1.1} WildFly Swarm}{27}{subsubsection.6.5.1.1}
+\contentsline {paragraph}{ WildFly Swarm}{27}{section*.19}
 \contentsline {chapter}{\numberline {7}\bfseries Conclusion}{28}{chapter.7}
-\contentsline {chapter}{Bibliography}{29}{section*.19}
+\contentsline {chapter}{Bibliography}{29}{section*.20}
 \contentsline {chapter}{\numberline {A}\bfseries The Command Query Responsibility Segregation pattern}{31}{appendix.A}
 \contentsline {chapter}{\numberline {B}\bfseries The example applications public APIs}{32}{appendix.B}
 \contentsline {section}{\numberline {B.1}\slshape Axon service}{32}{section.B.1}
