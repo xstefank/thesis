@@ -155,4 +155,10 @@ A.~Gupta, ``Wildfly swarm: Building microservices with java ee,'' 2018.
   Available: \url{https://www.openshift.com/}
 \BIBentrySTDinterwordspacing
 
+\bibitem{openshift_io}
+\BIBentryALTinterwordspacing
+------, ``Openshift.io,'' 2018. [Online]. Available:
+  \url{https://openshift.io/}
+\BIBentrySTDinterwordspacing
+
 \end{thebibliography}
