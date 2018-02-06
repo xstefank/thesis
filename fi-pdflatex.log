@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.9.30)  6 FEB 2018 00:24
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.9.30)  6 FEB 2018 08:01
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1949,7 +1949,7 @@ Package microtype Info: Character `029' is missing
 (microtype)             in font `T1/qpl/m/sc/17.28'.
 (microtype)             Ignoring protrusion settings for this character.
 
-<fithesis/logo/mu/fithesis-fi.pdf, id=262, 291.0875pt x 292.09125pt>
+<fithesis/logo/mu/fithesis-fi.pdf, id=270, 291.0875pt x 292.09125pt>
 File: fithesis/logo/mu/fithesis-fi.pdf Graphic file (type pdf)
 
 <use fithesis/logo/mu/fithesis-fi.pdf>
@@ -1963,7 +1963,7 @@ Package microtype Info: Character `029' is missing
 
 {/usr/share/texlive/texmf-dist/fonts/map/pdftex/updmap/pdftex.map} <./fithesis/
 logo/mu/fithesis-fi.pdf>]
-<fithesis/logo/mu/fithesis-fi-color.pdf, id=273, 291.0875pt x 292.09125pt>
+<fithesis/logo/mu/fithesis-fi-color.pdf, id=281, 291.0875pt x 292.09125pt>
 File: fithesis/logo/mu/fithesis-fi-color.pdf Graphic file (type pdf)
 
 <use fithesis/logo/mu/fithesis-fi-color.pdf>
@@ -2081,7 +2081,7 @@ Overfull \vbox (7.61726pt too high) has occurred while \output is active []
 
 ] [12] [13]
 Chapter 6.
-<images/productInfoJSON.png, id=474, 316.18124pt x 101.37875pt>
+<images/productInfoJSON.png, id=484, 316.18124pt x 101.37875pt>
 File: images/productInfoJSON.png Graphic file (type png)
 
 <use images/productInfoJSON.png>
@@ -2090,7 +2090,7 @@ Package pdftex.def Info: images/productInfoJSON.png used on input line 272.
  [14
 
  <./images/productInfoJSON.png>]
-<images/sagaModel.pdf, id=485, 980.66376pt x 328.22626pt>
+<images/sagaModel.pdf, id=495, 980.66376pt x 328.22626pt>
 File: images/sagaModel.pdf Graphic file (type pdf)
 
 <use images/sagaModel.pdf>
@@ -2125,112 +2125,103 @@ Overfull \vbox (4.94179pt too high) has occurred while \output is active []
 
 
 [17]
-Overfull \hbox (0.81178pt too wide) in paragraph at lines 324--325
+Overfull \hbox (0.81178pt too wide) in paragraph at lines 326--327
 \T1/qpl/m/n/12 (-20) The ap-pli-ca-tion is com-posed of five mi-croser-vices --
  the \T1/lmtt/m/n/12 order-service\T1/qpl/m/n/12 (-20) ,
  []
 
 [18]
-Underfull \hbox (badness 10000) in paragraph at lines 338--339
+Underfull \hbox (badness 10000) in paragraph at lines 340--341
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 344--345
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 348--349
+Underfull \hbox (badness 10000) in paragraph at lines 346--347
 
  []
 
 [19]
-Overfull \hbox (0.25385pt too wide) in paragraph at lines 350--351
+Underfull \hbox (badness 10000) in paragraph at lines 350--351
+
+ []
+
+
+Overfull \hbox (0.25385pt too wide) in paragraph at lines 352--353
 []\T1/qpl/m/n/12 (-20) When the dis-tributed event bus is pro-cess-ing events f
 rom an AMQP
  []
 
 
-Overfull \hbox (6.14897pt too wide) in paragraph at lines 350--351
+Overfull \hbox (6.14897pt too wide) in paragraph at lines 352--353
 \T1/qpl/m/n/12 (-20) the in-cor-rect con-fig-u-ra-tion from the pre-vi-ous prob
 -lem. The workaround
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 352--353
+Underfull \hbox (badness 10000) in paragraph at lines 354--355
+
+ []
+
+[20]
+Underfull \hbox (badness 10000) in paragraph at lines 370--371
 
  []
 
 
-Underfull \vbox (badness 7151) has occurred while \output is active []
-
- [20]
-Underfull \hbox (badness 10000) in paragraph at lines 368--369
+Underfull \hbox (badness 10000) in paragraph at lines 374--375
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 372--373
+Underfull \hbox (badness 10000) in paragraph at lines 378--379
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 376--377
-
- []
-
-
-Overfull \hbox (2.52023pt too wide) in paragraph at lines 378--379
+[21]
+Overfull \hbox (2.52023pt too wide) in paragraph at lines 380--381
 \T1/qpl/m/n/12 (-20) ized ver-sion is lo-cated un-der \T1/lmtt/m/n/12 eventuate
 io/eventuateio-local-mysql
  []
 
-[21]
-Underfull \hbox (badness 10000) in paragraph at lines 380--381
+
+Underfull \hbox (badness 10000) in paragraph at lines 382--383
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 384--385
+Underfull \hbox (badness 10000) in paragraph at lines 386--387
 
  []
 
-[22] [23]
-Underfull \hbox (badness 10000) in paragraph at lines 409--410
+[22]
+Underfull \vbox (badness 1789) has occurred while \output is active []
 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 419--420
+ [23]
+Underfull \hbox (badness 10000) in paragraph at lines 411--412
 
  []
 
 [24]
-Underfull \hbox (badness 10000) in paragraph at lines 428--429
+Underfull \hbox (badness 10000) in paragraph at lines 421--422
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 434--435
+Underfull \hbox (badness 10000) in paragraph at lines 430--431
 
  []
 
 [25]
-Underfull \hbox (badness 10000) in paragraph at lines 438--439
-
- []
-
-[26]
-Underfull \hbox (badness 10000) in paragraph at lines 456--457
+Underfull \hbox (badness 10000) in paragraph at lines 436--437
 
  []
 
 
-Underfull \vbox (badness 1275) has occurred while \output is active []
+Underfull \hbox (badness 10000) in paragraph at lines 440--441
 
- [27]
-[28]
+ []
+
+[26] [27] [28]
 Chapter 7.
 [29
 
@@ -2334,21 +2325,21 @@ Package catoptions Warning: Undefined options
 (catoptions)                fontenc.sty,T1,. 
 (catoptions)                Default action already taken in each case .
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 646.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 646.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 648.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 648.
 (./fi-pdflatex.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 646.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 646.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 648.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 648.
 Package rerunfilecheck Info: File `fi-pdflatex.out' has not changed.
-(rerunfilecheck)             Checksum: 94655B7D1047A81F9E42852063537E3D;4018.
+(rerunfilecheck)             Checksum: 124E4A20CEC1F13C9175F01606FAEEFC;4186.
 runsystem(rm fi-pdflatex.pyg)...executed.
 
  ) 
 Here is how much of TeX's memory you used:
- 38073 strings out of 494946
- 690522 string characters out of 6180981
- 825011 words of memory out of 5000000
- 40361 multiletter control sequences out of 15000+600000
+ 38076 strings out of 494946
+ 690579 string characters out of 6180981
+ 825012 words of memory out of 5000000
+ 40363 multiletter control sequences out of 15000+600000
  66314 words of font info for 103 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  69i,8n,84p,10406b,646s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -2358,10 +2349,10 @@ fonts/enc/dvips/tex-gyre/q-ec-sc.enc}</usr/share/texlive/texmf-dist/fonts/type1
 /public/lm/lmtt12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/tex-gyr
 e/qplb.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/tex-gyre/qplr.pfb>
 </usr/share/texlive/texmf-dist/fonts/type1/public/tex-gyre/qplri.pfb>
-Output written on fi-pdflatex.pdf (45 pages, 287339 bytes).
+Output written on fi-pdflatex.pdf (45 pages, 287891 bytes).
 PDF statistics:
- 723 PDF objects out of 1000 (max. 8388607)
- 639 compressed objects within 7 object streams
- 169 named destinations out of 1000 (max. 500000)
- 19553 words of extra memory for PDF output out of 20736 (max. 10000000)
+ 732 PDF objects out of 1000 (max. 8388607)
+ 648 compressed objects within 7 object streams
+ 170 named destinations out of 1000 (max. 500000)
+ 19569 words of extra memory for PDF output out of 20736 (max. 10000000)
 

@@ -319,7 +319,9 @@ For the distribution of the event bus Axon service uses an external messaging sy
 
 It is worth mentioning that both the Spring Cloud and the RabbitMQ message broker are required external providers that need to be started before the deployment of the business services. Unfortunaly, by the time of this writing there is no way to distribute commands or events directly by the Axon platform.
 
-\subsection{Structure}
+\subsection{Spring Boot}
+
+\subsection{Project structure}
 
 The application is composed of five microservices -- the  \texttt{order-service}, the \texttt{shipment-service}, the \texttt{invoice-service}, the \texttt{query-service} and the \texttt{registration-server}. Furthermore it also contains a separated project \texttt{service-model} which serves as a support library for the other microservices.
 
@@ -386,7 +388,7 @@ This service represents the change data capture (CDC) component. The CDC service
 The last support service is the \texttt{consoleserver}. It provides a simple interface for accessing the information about created aggregate types and the event log. The supplied  Docker container image is \texttt{eventuateio/eventuateio-local-console}.
 
 
-\subsection{Structure}
+\subsection{Project structure}
 
 This section describes the set of services composing the business side of the application. This set contains four services that cover the saga execution and data processing (\texttt{order-service}, \texttt{shipment-service}, \texttt{invoice-service} and \texttt{query-service}), one service (\texttt{mongodb}) representing the persistent storage and one additional support module (\texttt{service-model}).
 
@@ -453,7 +455,7 @@ As it was already presented in the previous chapter Narayana's long running acti
 
 The traditional requirements placed on the microservices applications are handled by the OpenShift platform. That for instance covers service discovery and location transparency, monitoring, logging, resiliency and health checks (failure discovery). 
 
-\newlinepar{WildFly Swarm}
+\subsection{WildFly Swarm}
 
 WildFly Swarm is the Red Hat microservices initiative designed to enable deconstructing the WildFly application server and pasting just enough of it back together with the application to create a self-contained executable jar \cite{gupta_2018}. 
 

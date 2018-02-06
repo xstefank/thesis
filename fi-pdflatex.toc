@@ -39,8 +39,9 @@
 \contentsline {section}{\numberline {6.2}\slshape The saga model}{15}{section.6.2}
 \contentsline {section}{\numberline {6.3}\slshape Axon service}{17}{section.6.3}
 \contentsline {subsection}{\numberline {6.3.1}\rmfamily Platform}{17}{subsection.6.3.1}
-\contentsline {subsection}{\numberline {6.3.2}\rmfamily Structure}{18}{subsection.6.3.2}
-\contentsline {subsection}{\numberline {6.3.3}\rmfamily Problems}{19}{subsection.6.3.3}
+\contentsline {subsection}{\numberline {6.3.2}\rmfamily Spring Boot}{18}{subsection.6.3.2}
+\contentsline {subsection}{\numberline {6.3.3}\rmfamily Project structure}{18}{subsection.6.3.3}
+\contentsline {subsection}{\numberline {6.3.4}\rmfamily Problems}{19}{subsection.6.3.4}
 \contentsline {paragraph}{ Maintenance of the saga structure}{19}{section*.6}
 \contentsline {paragraph}{ Distribution of events to sagas}{19}{section*.7}
 \contentsline {paragraph}{ AMQP usage with sagas}{20}{section*.8}
@@ -49,10 +50,10 @@
 \contentsline {subsection}{\numberline {6.4.1}\rmfamily Platform}{21}{subsection.6.4.1}
 \contentsline {paragraph}{ Apache Zookeeper service}{21}{section*.10}
 \contentsline {paragraph}{ Apache Kafka service}{21}{section*.11}
-\contentsline {paragraph}{ MySQL database service}{21}{section*.12}
+\contentsline {paragraph}{ MySQL database service}{22}{section*.12}
 \contentsline {paragraph}{ CDC service}{22}{section*.13}
 \contentsline {paragraph}{ Eventuate console}{22}{section*.14}
-\contentsline {subsection}{\numberline {6.4.2}\rmfamily Structure}{22}{subsection.6.4.2}
+\contentsline {subsection}{\numberline {6.4.2}\rmfamily Project structure}{22}{subsection.6.4.2}
 \contentsline {subsection}{\numberline {6.4.3}\rmfamily Problems}{24}{subsection.6.4.3}
 \contentsline {paragraph}{ Complexity}{24}{section*.15}
 \contentsline {paragraph}{ Aggregate instantiation}{25}{section*.16}
@@ -60,9 +61,9 @@
 \contentsline {paragraph}{ Platform structure}{26}{section*.18}
 \contentsline {section}{\numberline {6.5}\slshape LRA service}{26}{section.6.5}
 \contentsline {subsection}{\numberline {6.5.1}\rmfamily Platform}{26}{subsection.6.5.1}
-\contentsline {paragraph}{ WildFly Swarm}{27}{section*.19}
+\contentsline {subsection}{\numberline {6.5.2}\rmfamily WildFly Swarm}{27}{subsection.6.5.2}
 \contentsline {chapter}{\numberline {7}\bfseries Conclusion}{29}{chapter.7}
-\contentsline {chapter}{Bibliography}{30}{section*.20}
+\contentsline {chapter}{Bibliography}{30}{section*.19}
 \contentsline {chapter}{\numberline {A}\bfseries The Command Query Responsibility Segregation pattern}{32}{appendix.A}
 \contentsline {chapter}{\numberline {B}\bfseries The example applications public APIs}{33}{appendix.B}
 \contentsline {section}{\numberline {B.1}\slshape Axon service}{33}{section.B.1}
