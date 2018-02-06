@@ -161,4 +161,10 @@ A.~Gupta, ``Wildfly swarm: Building microservices with java ee,'' 2018.
   \url{https://openshift.io/}
 \BIBentrySTDinterwordspacing
 
+\bibitem{kubernetes}
+\BIBentryALTinterwordspacing
+Kubernetes, ``Kubernetes,'' 2018. [Online]. Available:
+  \url{https://kubernetes.io/}
+\BIBentrySTDinterwordspacing
+
 \end{thebibliography}

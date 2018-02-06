@@ -19,45 +19,45 @@ I'm skipping whatever remains of this entry
 -- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
 
 Done.
-You've used 25 entries,
+You've used 26 entries,
             4087 wiz_defined-function locations,
-            1462 strings with 20078 characters,
-and the built_in function-call counts, 9918 in all, are:
-= -- 763
-> -- 126
+            1465 strings with 20120 characters,
+and the built_in function-call counts, 10282 in all, are:
+= -- 792
+> -- 130
 < -- 20
-+ -- 69
-- -- 25
-* -- 395
-:= -- 1763
-add.period$ -- 50
-call.type$ -- 25
-change.case$ -- 24
++ -- 71
+- -- 26
+* -- 408
+:= -- 1833
+add.period$ -- 52
+call.type$ -- 26
+change.case$ -- 25
 chr.to.int$ -- 42
-cite$ -- 25
-duplicate$ -- 807
-empty$ -- 956
-format.name$ -- 30
-if$ -- 2190
+cite$ -- 26
+duplicate$ -- 837
+empty$ -- 992
+format.name$ -- 31
+if$ -- 2269
 int.to.chr$ -- 0
-int.to.str$ -- 25
-missing$ -- 175
-newline$ -- 140
-num.names$ -- 18
-pop$ -- 546
+int.to.str$ -- 26
+missing$ -- 182
+newline$ -- 145
+num.names$ -- 19
+pop$ -- 568
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 2
-skip$ -- 766
+skip$ -- 794
 stack$ -- 0
-substring$ -- 122
-swap$ -- 466
+substring$ -- 123
+swap$ -- 482
 text.length$ -- 6
 text.prefix$ -- 0
 top$ -- 5
-type$ -- 25
+type$ -- 26
 warning$ -- 0
-while$ -- 24
-width$ -- 27
-write$ -- 260
+while$ -- 25
+width$ -- 28
+write$ -- 270
 (There was 1 error message)
