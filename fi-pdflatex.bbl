@@ -149,4 +149,10 @@ A.~Gupta, ``Wildfly swarm: Building microservices with java ee,'' 2018.
   \url{http://blog.arungupta.me/wildfly-swarm-microservices-javaee/}
 \BIBentrySTDinterwordspacing
 
+\bibitem{openshift}
+\BIBentryALTinterwordspacing
+{Red Hat}, ``{OpenShift container application platform},'' 2018. [Online].
+  Available: \url{https://www.openshift.com/}
+\BIBentrySTDinterwordspacing
+
 \end{thebibliography}

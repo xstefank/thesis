@@ -53,8 +53,9 @@
 \contentsline {paragraph}{ MySQL database service}{22}{section*.12}
 \contentsline {paragraph}{ CDC service}{22}{section*.13}
 \contentsline {paragraph}{ Eventuate console}{22}{section*.14}
-\contentsline {subsection}{\numberline {6.4.2}\rmfamily Project structure}{22}{subsection.6.4.2}
-\contentsline {subsection}{\numberline {6.4.3}\rmfamily Problems}{24}{subsection.6.4.3}
+\contentsline {subsection}{\numberline {6.4.2}\rmfamily Docker}{22}{subsection.6.4.2}
+\contentsline {subsection}{\numberline {6.4.3}\rmfamily Project structure}{22}{subsection.6.4.3}
+\contentsline {subsection}{\numberline {6.4.4}\rmfamily Problems}{24}{subsection.6.4.4}
 \contentsline {paragraph}{ Complexity}{24}{section*.15}
 \contentsline {paragraph}{ Aggregate instantiation}{25}{section*.16}
 \contentsline {paragraph}{ Event entity specification}{25}{section*.17}
@@ -62,6 +63,7 @@
 \contentsline {section}{\numberline {6.5}\slshape LRA service}{26}{section.6.5}
 \contentsline {subsection}{\numberline {6.5.1}\rmfamily Platform}{26}{subsection.6.5.1}
 \contentsline {subsection}{\numberline {6.5.2}\rmfamily WildFly Swarm}{27}{subsection.6.5.2}
+\contentsline {subsection}{\numberline {6.5.3}\rmfamily OpenShift platform}{28}{subsection.6.5.3}
 \contentsline {chapter}{\numberline {7}\bfseries Conclusion}{29}{chapter.7}
 \contentsline {chapter}{Bibliography}{30}{section*.19}
 \contentsline {chapter}{\numberline {A}\bfseries The Command Query Responsibility Segregation pattern}{32}{appendix.A}

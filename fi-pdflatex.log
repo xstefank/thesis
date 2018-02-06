@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.9.30)  6 FEB 2018 08:01
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.9.30)  6 FEB 2018 21:32
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1949,7 +1949,7 @@ Package microtype Info: Character `029' is missing
 (microtype)             in font `T1/qpl/m/sc/17.28'.
 (microtype)             Ignoring protrusion settings for this character.
 
-<fithesis/logo/mu/fithesis-fi.pdf, id=270, 291.0875pt x 292.09125pt>
+<fithesis/logo/mu/fithesis-fi.pdf, id=278, 291.0875pt x 292.09125pt>
 File: fithesis/logo/mu/fithesis-fi.pdf Graphic file (type pdf)
 
 <use fithesis/logo/mu/fithesis-fi.pdf>
@@ -1963,7 +1963,7 @@ Package microtype Info: Character `029' is missing
 
 {/usr/share/texlive/texmf-dist/fonts/map/pdftex/updmap/pdftex.map} <./fithesis/
 logo/mu/fithesis-fi.pdf>]
-<fithesis/logo/mu/fithesis-fi-color.pdf, id=281, 291.0875pt x 292.09125pt>
+<fithesis/logo/mu/fithesis-fi-color.pdf, id=289, 291.0875pt x 292.09125pt>
 File: fithesis/logo/mu/fithesis-fi-color.pdf Graphic file (type pdf)
 
 <use fithesis/logo/mu/fithesis-fi-color.pdf>
@@ -2081,7 +2081,7 @@ Overfull \vbox (7.61726pt too high) has occurred while \output is active []
 
 ] [12] [13]
 Chapter 6.
-<images/productInfoJSON.png, id=484, 316.18124pt x 101.37875pt>
+<images/productInfoJSON.png, id=494, 316.18124pt x 101.37875pt>
 File: images/productInfoJSON.png Graphic file (type png)
 
 <use images/productInfoJSON.png>
@@ -2090,7 +2090,7 @@ Package pdftex.def Info: images/productInfoJSON.png used on input line 272.
  [14
 
  <./images/productInfoJSON.png>]
-<images/sagaModel.pdf, id=495, 980.66376pt x 328.22626pt>
+<images/sagaModel.pdf, id=505, 980.66376pt x 328.22626pt>
 File: images/sagaModel.pdf Graphic file (type pdf)
 
 <use images/sagaModel.pdf>
@@ -2197,31 +2197,37 @@ Underfull \hbox (badness 10000) in paragraph at lines 386--387
 Underfull \vbox (badness 1789) has occurred while \output is active []
 
  [23]
-Underfull \hbox (badness 10000) in paragraph at lines 411--412
+Underfull \hbox (badness 10000) in paragraph at lines 413--414
 
  []
 
 [24]
-Underfull \hbox (badness 10000) in paragraph at lines 421--422
+Underfull \hbox (badness 10000) in paragraph at lines 423--424
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 430--431
+Underfull \hbox (badness 10000) in paragraph at lines 432--433
 
  []
 
 [25]
-Underfull \hbox (badness 10000) in paragraph at lines 436--437
+Underfull \hbox (badness 10000) in paragraph at lines 438--439
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 440--441
+Underfull \hbox (badness 10000) in paragraph at lines 442--443
 
  []
 
-[26] [27] [28]
+[26] [27]
+Overfull \hbox (1.05869pt too wide) in paragraph at lines 474--475
+\T1/qpl/m/n/12 (-20) container-based en-vi-ron-ment and the au-toma-tion of ap-
+pli-ca-tion builds,
+ []
+
+[28]
 Chapter 7.
 [29
 
@@ -2325,21 +2331,21 @@ Package catoptions Warning: Undefined options
 (catoptions)                fontenc.sty,T1,. 
 (catoptions)                Default action already taken in each case .
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 648.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 648.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 660.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 660.
 (./fi-pdflatex.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 648.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 648.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 660.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 660.
 Package rerunfilecheck Info: File `fi-pdflatex.out' has not changed.
-(rerunfilecheck)             Checksum: 124E4A20CEC1F13C9175F01606FAEEFC;4186.
+(rerunfilecheck)             Checksum: 9A2DDDEBB4306DCC3254DAB24C59ABF9;4329.
 runsystem(rm fi-pdflatex.pyg)...executed.
 
  ) 
 Here is how much of TeX's memory you used:
- 38076 strings out of 494946
- 690579 string characters out of 6180981
- 825012 words of memory out of 5000000
- 40363 multiletter control sequences out of 15000+600000
+ 38082 strings out of 494946
+ 690672 string characters out of 6180981
+ 825045 words of memory out of 5000000
+ 40366 multiletter control sequences out of 15000+600000
  66314 words of font info for 103 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  69i,8n,84p,10406b,646s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -2349,10 +2355,10 @@ fonts/enc/dvips/tex-gyre/q-ec-sc.enc}</usr/share/texlive/texmf-dist/fonts/type1
 /public/lm/lmtt12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/tex-gyr
 e/qplb.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/tex-gyre/qplr.pfb>
 </usr/share/texlive/texmf-dist/fonts/type1/public/tex-gyre/qplri.pfb>
-Output written on fi-pdflatex.pdf (45 pages, 287891 bytes).
+Output written on fi-pdflatex.pdf (45 pages, 289191 bytes).
 PDF statistics:
- 732 PDF objects out of 1000 (max. 8388607)
- 648 compressed objects within 7 object streams
- 170 named destinations out of 1000 (max. 500000)
- 19569 words of extra memory for PDF output out of 20736 (max. 10000000)
+ 745 PDF objects out of 1000 (max. 8388607)
+ 661 compressed objects within 7 object streams
+ 173 named destinations out of 1000 (max. 500000)
+ 19585 words of extra memory for PDF output out of 20736 (max. 10000000)
 

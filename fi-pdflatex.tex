@@ -387,6 +387,8 @@ This service represents the change data capture (CDC) component. The CDC service
 
 The last support service is the \texttt{consoleserver}. It provides a simple interface for accessing the information about created aggregate types and the event log. The supplied  Docker container image is \texttt{eventuateio/eventuateio-local-console}.
 
+\subsection{Docker}
+
 
 \subsection{Project structure}
 
@@ -464,6 +466,16 @@ The traditional Java EE\footnote{Enterprise Edition} approach follows the develo
 The default fat jar (also called the uberjar) contains the user application and the needed parts of the WildFly server. Swarm also supports the packaging of the necessary server parts separately from the application. This method is know as the hollow jar and is particularly useful in the containerized environment as the server may be placed in the lower layers that do not require frequent rebuilds.
 
 The individual server parts are being delivered in the packages named fractions. The fraction represents a precise selection of capabilities that can be included in the application. It may denote the exact WildFly subsystem as JAX-RS\footnote{Java API for RESTful Web Services} or CDI\footnote{Context and Dependency Injection}, or a more sophisticated set of facilities to provide some additional functionality like RHSSO\footnote{Red Hat Single Sign-On}.
+
+\subsection{OpenShift platform}
+
+Red Hat OpenShift is an open source container application platform that brings Docker and Kubernetes to the enterprise \cite{openshift}. It provides the deployment, management and monitoring of the containerized software. OpenShift provides automation in the cloud environment that enables simple development workflow including easy provisioning, building and deployment of enterprise applications allowing faster delivery to end customers.
+
+The platform provides extensive set of features like self-service maintenance, polyglot (language independent) application support, container-based environment and the automation of application builds, scaling and health management. It can also administer persistence capabilities, the application centric networking and multiple interaction models, e. g. command line tools or the web console.
+
+
+
+
 
 
 
