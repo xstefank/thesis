@@ -491,7 +491,9 @@ Kubernetes platform is suitable and portable to any cloud environment involving 
 
 \subsection{Project structure}
 
-This project consists of five WildFly Swarm microservices and one support module. Each service is designed and configured with the \texttt{fabric8-maven-plugin} providing simple deployment to the OpenShift platform. Additionally, services contain a customized Dockerfile specifying some environment properties and the target Swarm jar file which is used for the source-to-image (S2I) builds in OpenShift.
+This project consists of five WildFly Swarm microservices and one support module. Each service is designed and configured with the \texttt{fabric8-maven-plugin} providing simple deployment to the OpenShift platform. Additionally, services contain a customized Dockerfile specifying environment properties and the target Swarm uberjar file which is used for the source-to-image (S2I) builds in OpenShift.
+
+The support library module is \texttt{service-model}. This module is rosponsible for the definition of the LRA information, the specification of the exchanged JSON data formats, the specification of the communication model for the other services and the administration of common utilities.
 
 
 
