@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.9.30)  7 FEB 2018 21:33
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.9.30)  7 FEB 2018 22:39
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -2232,7 +2232,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 484--485
 
  []
 
-[29] [30]
+[29] <images/LRADefinition.png, id=637, 229.85875pt x 100.375pt>
+File: images/LRADefinition.png Graphic file (type png)
+
+<use images/LRADefinition.png>
+Package pdftex.def Info: images/LRADefinition.png used on input line 502.
+(pdftex.def)             Requested size: 195.48256pt x 85.35826pt.
+ [30 <./images/LRADefinition.png (PNG copy)>]
 Chapter 7.
 [31
 
@@ -2336,21 +2342,21 @@ Package catoptions Warning: Undefined options
 (catoptions)                fontenc.sty,T1,. 
 (catoptions)                Default action already taken in each case .
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 682.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 682.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 690.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 690.
 (./fi-pdflatex.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 682.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 682.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 690.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 690.
 Package rerunfilecheck Info: File `fi-pdflatex.out' has not changed.
 (rerunfilecheck)             Checksum: 80EEF3D80E88D29629C0EEE1C0C9DE20;4407.
 runsystem(rm fi-pdflatex.pyg)...executed.
 
  ) 
 Here is how much of TeX's memory you used:
- 38092 strings out of 494946
- 690801 string characters out of 6180981
+ 38098 strings out of 494946
+ 690943 string characters out of 6180981
  825113 words of memory out of 5000000
- 40369 multiletter control sequences out of 15000+600000
+ 40373 multiletter control sequences out of 15000+600000
  66314 words of font info for 103 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  69i,8n,84p,10406b,646s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -2360,10 +2366,10 @@ fonts/enc/dvips/tex-gyre/q-ec-sc.enc}</usr/share/texlive/texmf-dist/fonts/type1
 /public/lm/lmtt12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/tex-gyr
 e/qplb.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/tex-gyre/qplr.pfb>
 </usr/share/texlive/texmf-dist/fonts/type1/public/tex-gyre/qplri.pfb>
-Output written on fi-pdflatex.pdf (47 pages, 294861 bytes).
+Output written on fi-pdflatex.pdf (47 pages, 364103 bytes).
 PDF statistics:
- 771 PDF objects out of 1000 (max. 8388607)
- 685 compressed objects within 7 object streams
- 180 named destinations out of 1000 (max. 500000)
- 19593 words of extra memory for PDF output out of 20736 (max. 10000000)
+ 775 PDF objects out of 1000 (max. 8388607)
+ 688 compressed objects within 7 object streams
+ 181 named destinations out of 1000 (max. 500000)
+ 19598 words of extra memory for PDF output out of 20736 (max. 10000000)
 

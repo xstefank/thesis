@@ -495,7 +495,15 @@ This project consists of five WildFly Swarm microservices and one support module
 
 The support library project is called the \texttt{service-model}. This module is rosponsible for the definition of the LRA information, the specification of the exchanged JSON data formats, the characterization of the communication model used in other services and the administration of common utilities.
 
-The \texttt{LRADefinition} class denotes the JSON format of the LRA representation. It presents a simplified version of the LRA capabilities for the example purposes. The definition includes only required attributes -- the name of the LRA, a list of individual actions that form the LRA and the unspecified object containing the user defined information associated with the LRA. The example LRA definition JSON format is available in the figure NUM.
+The \texttt{LRADefinition} class denotes the JSON format of the LRA representation. It presents a simplified version of the LRA capabilities for the example purposes. The definition includes only required attributes -- the name of the LRA, a list of individual actions that form the LRA and the unspecified object containing the user defined information associated with the LRA. The example LRA definition JSON format is available in the figure 6.3.
+
+\begin{figure}
+    \begin{center}
+        \includegraphics[height=30mm]{images/LRADefinition.png}
+    \end{center}
+    \caption{LRA definition example JSON}
+\end{figure}
+
 
 The actual deployable microservices project consists of five services -- \texttt{order-service}, \texttt{shipment-service}, \texttt{invoice-service}, \texttt{api-gateway} and \texttt{lra-coordinator}.
 
