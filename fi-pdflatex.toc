@@ -65,6 +65,7 @@
 \contentsline {subsection}{\numberline {6.5.2}\rmfamily WildFly Swarm}{27}{subsection.6.5.2}
 \contentsline {subsection}{\numberline {6.5.3}\rmfamily OpenShift platform}{28}{subsection.6.5.3}
 \contentsline {paragraph}{ Kubernetes}{29}{section*.19}
+\contentsline {subsection}{\numberline {6.5.4}\rmfamily Project structure}{30}{subsection.6.5.4}
 \contentsline {chapter}{\numberline {7}\bfseries Conclusion}{31}{chapter.7}
 \contentsline {chapter}{Bibliography}{32}{section*.20}
 \contentsline {chapter}{\numberline {A}\bfseries The Command Query Responsibility Segregation pattern}{34}{appendix.A}

@@ -489,7 +489,9 @@ The features of Kubernetes include the service discovery, load balancing, automa
 
 Kubernetes platform is suitable and portable to any cloud environment involving public, private, hybrid clouds and multi-cloud. It allows application containers to be run in the clusters of physical or virtual machines. Kubernetes is not a traditional PaaS (Platform as a Service) solution but it provides platform that many PaaS systems build upon, e. g. OpenShift or Deis.
 
+\subsection{Project structure}
 
+This project consists of five WildFly Swarm microservices and one support module. Each service is designed and configured with the \texttt{fabric8-maven-plugin} providing simple deployment to the OpenShift platform. Additionally, services contain a customized Dockerfile specifying some environment properties and the target Swarm jar file which is used for the source-to-image (S2I) builds in OpenShift.
 
 
 
