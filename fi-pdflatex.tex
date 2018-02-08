@@ -515,9 +515,13 @@ The action definition consists of the name, the action type and the service for 
     \caption{Action example JSON}
 \end{figure}
 
-The actual deployable microservices project consists of five services -- \texttt{api-gateway}, \texttt{order-service}, \texttt{shipment-service}, \texttt{invoice-service} and \texttt{lra-coordinator}. Every service is configured with the addresses of other services as they reflect the OpenShift/Kubernetes application names.
+The actual deployable microservices project consists of five services -- \texttt{api-gateway}, \texttt{order-service}, \texttt{shipment-service}, \texttt{invoice-service} and \texttt{lra-coordinator}. Every service is configured with the addresses of other services as they reflect the OpenShift/Kubernetes application names. All of exposed APIs are defined in the Appendix B.
 
-The services that provide the LRA execution capabilities are the \texttt{order-service}, the \texttt{shipment-service} and the \texttt{invoice-service}. Every one of these services provides a simple computation capability that contributes to the LRA realization. Additionally, \texttt{order-service} also provides a user invocation endpoint that can initiate the LRA. As all three services eventually subscribe to the LRA when they are called, they all provide REST endpoints annotated by the LRA annotations for the completion and compensation invocations. Each service is configured with an instance of H2 SQL database for the data persistence.
+The services that provide the LRA execution capabilities are the \texttt{order-service}, the \texttt{shipment-service} and the \texttt{invoice-service}. Every one of these services provides a simple computation that contributes to the LRA realization. Additionally, \texttt{order-service} also provides a user invocation endpoint that can initiate the LRA. As all three services eventually subscribe to the LRA when they are called, they all provide REST endpoints annotated by the LRA annotations for the completion and compensation invocations. Each service is configured with an instance of H2 SQL database for the data persistence.
+
+The \texttt{lra-coordinator} project is provided by the Narayana framework. Although the LRA specification does not require the application of the REST architectural style, the \texttt{lra-coordinator} operates a set of REST endpoints maintaining the starting and managing of the LRA, gathering the information about active and recovering LRAs, the management of the nested LRAs and the ability of participants to join or leave the LRA. Narayana distributes this project already as a WildFly Swarm binary but this quickstart, for the investigation purposes, builds it still as a part of the S2I deployment.
+
+The last service is the \texttt{api-gateway}.
 
 
 
