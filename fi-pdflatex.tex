@@ -539,8 +539,9 @@ The only problem that may occur is that currently, the LRA framework provides on
 
 In the LRA service is this problem addressed by the \texttt{api-gateway} service which functions as a proxy for the \texttt{lra-coordinator} that handles the saga execution. This approach does not effect the Narayana LRA management. The only change from the traditional processing is that series of LRA actions are performed by the \texttt{api-gateway} instead of the initiating service. This allows the service to be immediately available for the subsequent user requests and to scale the LRA processing independently from the services that utilize the coordination.
 
+\section{Eventuate Sagas}
 
-
+The Eventuate Sagas quickstart is based on the new Eventuate Tram framework which is still, by the time of this writing, under pre-release development.
 
 
 \clearpage

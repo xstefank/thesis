@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.9.30)  14 FEB 2018 11:04
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.9.30)  14 FEB 2018 12:15
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1949,7 +1949,7 @@ Package microtype Info: Character `029' is missing
 (microtype)             in font `T1/qpl/m/sc/17.28'.
 (microtype)             Ignoring protrusion settings for this character.
 
-<fithesis/logo/mu/fithesis-fi.pdf, id=286, 291.0875pt x 292.09125pt>
+<fithesis/logo/mu/fithesis-fi.pdf, id=290, 291.0875pt x 292.09125pt>
 File: fithesis/logo/mu/fithesis-fi.pdf Graphic file (type pdf)
 
 <use fithesis/logo/mu/fithesis-fi.pdf>
@@ -1963,7 +1963,7 @@ Package microtype Info: Character `029' is missing
 
 {/usr/share/texlive/texmf-dist/fonts/map/pdftex/updmap/pdftex.map} <./fithesis/
 logo/mu/fithesis-fi.pdf>]
-<fithesis/logo/mu/fithesis-fi-color.pdf, id=297, 291.0875pt x 292.09125pt>
+<fithesis/logo/mu/fithesis-fi-color.pdf, id=301, 291.0875pt x 292.09125pt>
 File: fithesis/logo/mu/fithesis-fi-color.pdf Graphic file (type pdf)
 
 <use fithesis/logo/mu/fithesis-fi-color.pdf>
@@ -2081,7 +2081,7 @@ Overfull \vbox (7.61726pt too high) has occurred while \output is active []
 
 ] [12] [13]
 Chapter 6.
-<images/productInfoJSON.png, id=504, 316.18124pt x 101.37875pt>
+<images/productInfoJSON.png, id=509, 316.18124pt x 101.37875pt>
 File: images/productInfoJSON.png Graphic file (type png)
 
 <use images/productInfoJSON.png>
@@ -2090,7 +2090,7 @@ Package pdftex.def Info: images/productInfoJSON.png used on input line 272.
  [14
 
  <./images/productInfoJSON.png>]
-<images/sagaModel.pdf, id=515, 980.66376pt x 328.22626pt>
+<images/sagaModel.pdf, id=520, 980.66376pt x 328.22626pt>
 File: images/sagaModel.pdf Graphic file (type pdf)
 
 <use images/sagaModel.pdf>
@@ -2232,14 +2232,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 484--485
 
  []
 
-[29] <images/LRADefinition.png, id=642, 229.85875pt x 100.375pt>
+[29] <images/LRADefinition.png, id=647, 229.85875pt x 100.375pt>
 File: images/LRADefinition.png Graphic file (type png)
 
 <use images/LRADefinition.png>
 Package pdftex.def Info: images/LRADefinition.png used on input line 502.
 (pdftex.def)             Requested size: 195.48256pt x 85.35826pt.
  [30 <./images/LRADefinition.png (PNG copy)>]
-<images/actionJSON.png, id=648, 390.45876pt x 104.39pt>
+<images/actionJSON.png, id=653, 390.45876pt x 104.39pt>
 File: images/actionJSON.png Graphic file (type png)
 
 <use images/actionJSON.png>
@@ -2352,21 +2352,21 @@ Package catoptions Warning: Undefined options
 (catoptions)                fontenc.sty,T1,. 
 (catoptions)                Default action already taken in each case .
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 724.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 724.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 725.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 725.
 (./fi-pdflatex.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 724.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 724.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 725.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 725.
 Package rerunfilecheck Info: File `fi-pdflatex.out' has not changed.
-(rerunfilecheck)             Checksum: CD9D669B8AEC05E298A2C2FDF5E72A20;4473.
+(rerunfilecheck)             Checksum: 8559453E62CC6A01BE35681DFCF713E8;4542.
 runsystem(rm fi-pdflatex.pyg)...executed.
 
  ) 
 Here is how much of TeX's memory you used:
- 38109 strings out of 494946
- 691125 string characters out of 6180981
+ 38111 strings out of 494946
+ 691149 string characters out of 6180981
  825115 words of memory out of 5000000
- 40378 multiletter control sequences out of 15000+600000
+ 40379 multiletter control sequences out of 15000+600000
  66314 words of font info for 103 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  69i,8n,84p,10406b,646s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -2376,10 +2376,10 @@ fonts/enc/dvips/tex-gyre/q-ec-sc.enc}</usr/share/texlive/texmf-dist/fonts/type1
 /public/lm/lmtt12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/tex-gyr
 e/qplb.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/tex-gyre/qplr.pfb>
 </usr/share/texlive/texmf-dist/fonts/type1/public/tex-gyre/qplri.pfb>
-Output written on fi-pdflatex.pdf (50 pages, 493204 bytes).
+Output written on fi-pdflatex.pdf (50 pages, 493477 bytes).
 PDF statistics:
- 796 PDF objects out of 1000 (max. 8388607)
- 704 compressed objects within 8 object streams
- 186 named destinations out of 1000 (max. 500000)
- 19611 words of extra memory for PDF output out of 20736 (max. 10000000)
+ 802 PDF objects out of 1000 (max. 8388607)
+ 710 compressed objects within 8 object streams
+ 187 named destinations out of 1000 (max. 500000)
+ 19619 words of extra memory for PDF output out of 20736 (max. 10000000)
 
