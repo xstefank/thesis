@@ -369,6 +369,7 @@ Similarly to Axon, Eventuate service is also based on the event sourcing and the
 This quickstart represents the pure CQRS approach to the saga processing. This means that the whole saga implementation is created by the developer using the platform only for the event and command distribution. For this reason, the Eventuate service is more complex than any other quickstart but for the example purposes, it distinctively demonstrates how sophisticated is the saga administration provided by all remaining platforms.
 
 \subsection{Platform}
+\label{sec:eventuate-platform}
 
 Eventuate service is a microservices application consisting of a set of Spring Boot \cite{spring_boot} business services, one backing module and a number of support services provided by the Eventuate platform. In this section, I will focus on the Eventuate platform and the services it provides, the business part of the application is described in the following section.
 
@@ -552,7 +553,7 @@ The Eventuate Sagas quickstart is based on the new Eventuate Tram framework whic
 
 \subsection{Platform}
 
-Similarly to the full Eventuate distribution, the Eventuate Tram establishes four services that form the Tram platform: Apache Zookeeper, Apache Kafka, MySQL database and CDC component. The fifth Console service is not present as the platform does not provide this functionality by the time of this writing. 
+Similarly to the full Eventuate distribution, the Eventuate Tram establishes four services that form the Tram platform: Apache Zookeeper, Apache Kafka, MySQL database and CDC component. The fifth Console service is not present as the platform does not provide this functionality by the time of this writing. As all mentioned services represent the same functionality as they are responsible for in the full Eventuate platform, the individual description of each service is defined in detail in the section \ref{sec:eventuate-platform}.  
 
 \subsection{Project structure}
 
