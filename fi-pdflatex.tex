@@ -533,7 +533,7 @@ As this module was designed for this particular LRA scenario, it is configured t
 
 \subsection{Problems}
 
-The Narayana Long running actions a very nice development model for the microservices applications. As it aims for the compatibility with the MicroProfile specification, it does not restrict services to essentially any particular implementation restrictions. Even if the MicroProfile is based on the REST invocations, Narayana does not require to use this architectural style for the communication with the coordinator.
+The Narayana Long running actions a very nice development model for the microservices applications. As it aims for the compatibility with the MicroProfile specification, it does not restrict services to essentially any particular implementation restrictions. Even if the MicroProfile is restricted on REST invocations, Narayana LRA specification does not require the usage this architectural style for the communication with the coordinator. However, the only implementation that is currently available is based on REST, but in can be efficiently extended to other communication protocols in the future.
 
 The only problem that may occur is that currently, the LRA framework provides only coordination and management capabilities, it does not handle the saga structuring and execution. This may be controversial as any of the previous frameworks did not exposed this functionality neither. The idea was introduced by the Eventuate Tram framework which is described in the following section. This concern may be troublesome for the enterprise ready reactive microservices, as it may place restrictions on their availability under substantial traffic. 
 

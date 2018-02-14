@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.9.30)  9 FEB 2018 11:13
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.9.30)  14 FEB 2018 11:04
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -2365,7 +2365,7 @@ runsystem(rm fi-pdflatex.pyg)...executed.
 Here is how much of TeX's memory you used:
  38109 strings out of 494946
  691125 string characters out of 6180981
- 825113 words of memory out of 5000000
+ 825115 words of memory out of 5000000
  40378 multiletter control sequences out of 15000+600000
  66314 words of font info for 103 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
@@ -2376,7 +2376,7 @@ fonts/enc/dvips/tex-gyre/q-ec-sc.enc}</usr/share/texlive/texmf-dist/fonts/type1
 /public/lm/lmtt12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/tex-gyr
 e/qplb.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/tex-gyre/qplr.pfb>
 </usr/share/texlive/texmf-dist/fonts/type1/public/tex-gyre/qplri.pfb>
-Output written on fi-pdflatex.pdf (50 pages, 493063 bytes).
+Output written on fi-pdflatex.pdf (50 pages, 493204 bytes).
 PDF statistics:
  796 PDF objects out of 1000 (max. 8388607)
  704 compressed objects within 8 object streams
