@@ -559,13 +559,16 @@ Similarly to the full Eventuate distribution, the Eventuate Tram establishes fou
 
 As Eventuate Tram does not restrict its services to the CQRS pattern, this project, in contrast to Eventutate service, contains only three business microservices and one support module. Every service is configured in the similar way as for the full platform containing the references and authentication details for the MySQL database, Kafka framework and Apache Zookeeper service. The quickstart is distributed with the predefined \texttt{docker-compose} configuration file that enables one command start up of all services.
 
-The last service which is not required for the saga execution and handling is the \texttt{mongodb} NoSQL server. This service is present only for the demonstration purposes to allow data retrieval on individual business services.
+The last service which is not required for the saga execution and handling is the \texttt{mongodb} NoSQL server. This service is present only for the demonstration purposes to allow the data retrieval on individual business services.
 
 The first microservice \texttt{order-service} is responsible for the order requests and saga processing. It also provides the ability to query persisted orders from the remote Mongo database.
 
-The most important element in the \texttt{order-service} is the saga definition that is located in the \texttt{OrderSaga} class. This definition use the declarative approach with the fluent API to denote the saga in steps of execution. Every step declares a handler method to be invoked when the step is reached by a reference to private methods in this class.
+The most important element in the \texttt{order-service} is the saga definition that is located in the \texttt{OrderSaga} class. This definition uses the declarative approach with the fluent API to denote the saga in steps of execution. Every step declares a handler method to be invoked when the step is reached by a reference to private methods in this class.
 
-The step provides an ability to advance the saga execution in three ways -- by invoking of the local function, by a call to the remote participant or by the definition of the compensation method for the saga. Furthermore, he participant is able to define individual actions that comprise its engagement in the saga, the compensation handler and separated reply handlers that are distinguished by the data object class that is received in the reply. This definition provides a simple and in one place saga specification which can by easier for maintenance and distribution. This declarative approach provides many advantages that will be detailed in the following chapter.
+The step provides an ability to advance the saga execution in three ways -- by invoking of the local function, by a call to the remote participant or by the definition of the compensation method for the saga. Furthermore, the participant is able to define individual actions that comprise its engagement in the saga, the compensation handler and several reply handlers that are distinguished by the data object class that is received in the reply. This definition provides a simple in one place saga specification which is suitable for easier maintenance and distribution. This declarative approach provides many advantages that will be detailed in the following chapter.
+
+
+\subsection{Problems}
 
 Handler methods that are referenced in the definition are restricted to the communication model provided by the platform.
 
