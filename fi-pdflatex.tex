@@ -567,6 +567,12 @@ The most important element in the \texttt{order-service} is the saga definition 
 
 The step provides an ability to advance the saga execution in three ways -- by invoking of the local function, by a call to the remote participant or by the definition of the compensation method for the saga. Furthermore, the participant is able to define individual actions that comprise its engagement in the saga, the compensation handler and several reply handlers that are distinguished by the data object class that is received in the reply. This definition provides a simple in one place saga specification which is suitable for easier maintenance and distribution. This declarative approach provides many advantages that will be detailed in the following chapter.
 
+The last two business services that contribute to the saga execution are \texttt{shipment-service} and \texttt{invoice-service}. Both of these microservices define several command handler methods associated with the channel that is dedicated to the service. 
+
+The channel is a main communication mechanism used in Eventuate Tram. It is denoted by a string name that needs to be specified in the command message as a target destination. The definition of channel associates commands that it is able to receive with command handling methods that are invoked when the corresponding commands are delivered. The command handler returns a \texttt{Message} object identifying the outcome of the invocation. The failure outcome of any participant will immediately result in the saga compensation.
+
+Both services are also connected to the Mongo database server in order to provide the browsing of the created shipments or invoices respectively.
+
 
 \subsection{Problems}
 
