@@ -553,7 +553,9 @@ The Eventuate Sagas quickstart is based on the new Eventuate Tram framework whic
 
 \subsection{Platform}
 
-Similarly to the full Eventuate distribution, the Eventuate Tram establishes four services that form the Tram platform: Apache Zookeeper, Apache Kafka, MySQL database and CDC component. The fifth Console service is not present as the platform does not provide this functionality by the time of this writing. As all mentioned services represent the same functionality as they are responsible for in the full Eventuate platform, the individual description of each service is defined in detail in the section \ref{sec:eventuate-platform}.  
+Similarly to the full Eventuate distribution, the Eventuate Tram establishes four services that form the Tram platform: Apache Zookeeper, Apache Kafka, MySQL database and CDC component. The fifth Console service is not present as the platform does not provide this functionality by the time of this writing. As all mentioned services represent the same functionality as they are responsible for in the full Eventuate platform, the individual descriptions of each service is defined in detail in the section \ref{sec:eventuate-platform}.  
+
+All services are deployed by the \texttt{docker-compose} configuration distributed with the framework. This setup is based on the same Eventuate docker images for \texttt{zookeeper} and \texttt{kafka} services, and with \texttt{mysql} and \texttt{cdcservice} redefined by Tram.
 
 \subsection{Project structure}
 
@@ -586,6 +588,9 @@ The destination channels in Tram are distinguished by a simple string which may 
 Handler methods that are referenced in the definition are restricted to the communication model provided by the platform. This allows a single command to be sent to the required destination. Unfortunately, platform does not allow the saga to perform any other operation without the participant invocation which may lead to unnecessary empty commands and channels declarations. 
 
 Similarly, the saga may need to interact with the same participant in several different commands. This may cause problems with definitions of compensation and reply handlers as the developer needs to mind the logical grouping of participant invocations.
+
+\clearpage
+\chapter{LRA execution extension}
 
 \clearpage
 \chapter{Conclusion}
