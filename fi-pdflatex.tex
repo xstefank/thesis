@@ -573,11 +573,19 @@ The channel is a main communication mechanism used in Eventuate Tram. It is deno
 
 Both services are also connected to the Mongo database server in order to provide the browsing of the created shipments or invoices respectively.
 
-In conclusion, Tram remarkably simplified the Eventuate platform for the usege of sagas. Most importantly, it introduced a simple fluent API for the saga definition and the loss of the CQRS restrictions. Altogether Tram platform makes a suitable saga solution for microservices based environment.
+In conclusion, Tram remarkably simplified the Eventuate platform for the usage of sagas. Most importantly, it introduced a simple fluent API for the saga definition and the loss of CQRS restrictions. Altogether, Tram platform makes a suitable saga solution for microservices based environment.
 
 \subsection{Problems}
 
-Handler methods that are referenced in the definition are restricted to the communication model provided by the platform.
+\newlinepar{Destination identification}
+
+The destination channels in Tram are distinguished by a simple string which may cause problems in the case of name conflicts. Currently, the choice of the handler to be invoked depends on two resources -- the name of the channel and the command dispatcher id. When both strings match the same destination even in different services, the platform delivers the commands between handlers in random fashion which may become a complex issue in larger projects.
+
+\newlinepar{Command handlers}
+
+Handler methods that are referenced in the definition are restricted to the communication model provided by the platform. This allows a single command to be sent to the required destination. Unfortunately, platform does not allow the saga to perform any other operation without the participant invocation which may lead to unnecessary empty commands and channels declarations. 
+
+Similarly, the saga may need to interact with the same participant in several different commands. This may cause problems with definitions of compensation and reply handlers as the developer needs to mind the logical grouping of participant invocations.
 
 \clearpage
 \chapter{Conclusion}
