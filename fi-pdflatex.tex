@@ -105,15 +105,25 @@ Unlike other transactional properties (A, I, D), consistency cannot be realized 
 
 \subsection{Isolation}
 
-The isolation property takes effect when multiple transactions can be executed concurrently on the same resources. That means concurrent transactions can not interfere one with another. Therefore each concurrent execution on the shared resource must be equivalent to some serial ordering of contained transactions which is why the isolation is often also referenced as serializability.
+The isolation property takes effect when multiple transactions can be executed concurrently on the same resources. It provides a guarantee that concurrent transactions can not interfere one with another. Therefore each concurrent execution on the shared resource must be equivalent to some serial ordering of contained transactions. This is why the isolation is often also referred to as a serializability.
 
-From the perspective of an external user the isolation property means that the transaction appears as it was executed entirely by itself. This means that even if there are multiple transactions in the system executed concurrently, this fact is hidden from the every external view.
+From the perspective of an external user the isolation property means that the transaction appears as it was executed entirely alone. This means that even if there are multiple transactions in the system executed concurrently, this fact is hidden from the every external view.
 
-As an instinctive extension of the consistency property, the serial execution of the transaction keeps the consistent state. The execution of the transactions in parallel therefore cannot result into the inconsistent system.
+As an instinctive extension of the consistency property, the serial execution of the transaction keeps the consistent state. The execution of the transactions in parallel therefore cannot result into inconsistent system.
 
 \newlinepar{Isolation levels}
 
-As transactions were firstly defined for the database environment, in practice we distinguish several levels that describe to which extent the isolation is guaranteed.
+In practice we distinguish several levels that describe to which extent the isolation guarantees are provided. Levels are distinguished by simplifications of the locking mechanism in exchange for the faster processing. These levels, in decreasing order, are serializable, repeatable read, snapshot isolation, read committed and read uncommitted isolation.
+
+\newlinepar{Read uncommitted}
+
+This is the lowest level which does not place any restrictions on the system. This means that it does not require any form of locking mechanisms to be implemented. It allows dirty reads which is that one transaction may read the not yet committed changes of other transaction.
+
+\newlinepar{Read committed}
+
+Read committed level differs from the previous level in that it prohibits dirty reads and dirty writes. The prevention from dirty reads as discussed in previous section means that the transaction is not allowed to read data that has not been committed by different transaction. 
+
+On the other hand, dirty writes mean that the transaction overwrites the uncommitted data. This can be easily described on an example depicted in the figure X.Y. In this execution the resulting storage contains different values for variables (x = A and y = B). However, in any serial execution of transaction the result would be consistent.
 
 
 \subsection{Durability}
