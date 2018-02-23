@@ -132,6 +132,18 @@ On the other hand, dirty writes mean that the transaction overwrites the uncommi
     \caption{Dirty writes}
 \end{figure}
 
+\newlinepar{Repeatable read and snapshot isolation}
+
+Both of these methods represent the same level of isolation preventing the anomaly called read skew which can appear in read committed.
+
+The read skew is a problem of reading the data values in different points of time in which the whole consistent data state may not be ensured. This means that the transaction may read the data change in later point in time which may invalidate already read information from a previous processing.\footnote{Imagine a bank system with two accounts both with starting balance 500 and a transfer of 100 from account 1 to 2 as a transaction. If an external system reads the balance of the account 2 prior to start of transaction, it will get 500. However, the subsequent read from the account 1 after the transaction has committed would output 400 which would result into inconsistent information.}
+
+Both repeatable read and snapshot isolation prevent read skews. From the user point of view they represent the same isolation level, but they differ in implementation. Repeatable read is based on the locking mechanisms which may be complex to maintain in bigger systems. The snapshot isolation is implemented as multi version concurrency control that allows each transaction to read the data as it was in one point of time -- the snapshot. The database is required to internally keep track of several states and provide each transaction with the snapshot that is appropriate for its time span.
+
+\newlinepar{Serializable}
+
+On top of the repeatable read, the serializable isolation prevents the system from one more race condition known as the write skew. The basic principle of a write skew is a transaction that reads data from the storage and then makes a decision based on this information. However, different transactions may write the result into different parts of the database which means they can not conflict. The problem is that by the time the transaction commits, the premise of the decision may no longer be true and the resulting state may break the integrity constraints of the database.
+
 \subsection{Durability}
 
 This property characterizes that all changes done by the transactions must be persistent, i. e. any state changes performed during the transaction must be preserved in case of any subsequent system failure. How the state is preserved usually depends on the particular implementation of the transaction system. Generally, to achieve this property the use of the persistent storage like a disk drive or a cloud is sufficient. Even if this kind of storage is acceptable, it still can not prevent data loss in the case of more critical catastrophic failures.
