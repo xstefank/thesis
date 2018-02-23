@@ -76,10 +76,10 @@
 \contentsline {chapter}{\numberline {7}\bfseries LRA execution extension}{37}{chapter.7}
 \contentsline {chapter}{\numberline {8}\bfseries Conclusion}{38}{chapter.8}
 \contentsline {chapter}{Bibliography}{39}{section*.23}
-\contentsline {chapter}{\numberline {A}\bfseries The Command Query Responsibility Segregation pattern}{41}{appendix.A}
-\contentsline {chapter}{\numberline {B}\bfseries The example applications public APIs}{42}{appendix.B}
-\contentsline {section}{\numberline {B.1}\slshape Axon service}{42}{section.B.1}
-\contentsline {section}{\numberline {B.2}\slshape Eventuate service}{42}{section.B.2}
-\contentsline {section}{\numberline {B.3}\slshape LRA service}{43}{section.B.3}
-\contentsline {section}{\numberline {B.4}\slshape Eventuate Tram}{44}{section.B.4}
-\contentsline {chapter}{\numberline {C}\bfseries The saga scenarios}{45}{appendix.C}
+\contentsline {chapter}{\numberline {A}\bfseries The Command Query Responsibility Segregation pattern}{42}{appendix.A}
+\contentsline {chapter}{\numberline {B}\bfseries The example applications public APIs}{43}{appendix.B}
+\contentsline {section}{\numberline {B.1}\slshape Axon service}{43}{section.B.1}
+\contentsline {section}{\numberline {B.2}\slshape Eventuate service}{43}{section.B.2}
+\contentsline {section}{\numberline {B.3}\slshape LRA service}{44}{section.B.3}
+\contentsline {section}{\numberline {B.4}\slshape Eventuate Tram}{45}{section.B.4}
+\contentsline {chapter}{\numberline {C}\bfseries The saga scenarios}{46}{appendix.C}

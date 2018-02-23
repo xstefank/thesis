@@ -35,6 +35,13 @@ M.~Musgrove, ``Narayana + wildfly,'' 2015. [Online]. Available:
 T.~Haerder and A.~Reuter, ``Principles of transaction-oriented database
   recovery,'' \emph{ACM Computing Surveys}, vol.~15, no.~4, pp. 287--317, 1983.
 
+\bibitem{brewer_2012}
+\BIBentryALTinterwordspacing
+E.~Brewer, ``Cap twelve years later: How the "rules" have changed,''
+  \emph{Computer}, vol.~45, no.~2, pp. 23--29, 2012. [Online]. Available:
+  \url{https://www3.nd.edu/~dthain/courses/cse40822/spring2016/papers/cap.pdf}
+\BIBentrySTDinterwordspacing
+
 \bibitem{soa}
 \BIBentryALTinterwordspacing
 D.~Barry, ``{Service-Oriented Architecture (SOA) Definition},'' 2016. [Online].
