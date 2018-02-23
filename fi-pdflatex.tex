@@ -64,9 +64,9 @@ abstract
 \usepackage{url}
 \usepackage{menukeys}
 \usepackage{minted}
+\usepackage{needspace}
 
-
-\newcommand{\newlinepar}[1]{\paragraph{#1}\mbox{}\\}
+\newcommand{\newlinepar}[1]{\paragraph{#1}\needspace{4\baselineskip}\mbox{}\\}
 
 
 \begin{document}
@@ -89,19 +89,19 @@ Generally the achieving of above features may differ. The most common pattern fo
 
 \section{ACID properties}
 
-A transaction can be viewed as a group of business logic statements with certain shared properties \cite{nar_wf}. Generally considered properties are one or more of atomicity, consistency, isolation and durability. These four properties are often referenced as ACID properties \cite{haerder_reuter_1983} and they describe the major points important for the transaction concepts.\footnote{Although ACID acronym has been associated with transactions since their beginning, Eric Brewer, the inventor of the CAP theorem discussed in the later section, stated in his article from 2012 that it is "more mnemonic than precise".\cite{brewer_2012}}
+A transaction can be viewed as a group of business logic statements with certain shared properties \cite{nar_wf}. Generally considered properties are one or more of atomicity, consistency, isolation and durability. These four properties are often referenced as ACID properties \cite{haerder_reuter_1983} and they describe the major points important for the transaction concepts.\footnote{Although, ACID acronym has been associated with transactions since their beginning, Eric Brewer, the inventor of the CAP theorem discussed in the later section, stated in his article from 2012 that it is "more mnemonic than precise".\cite{brewer_2012}}
 
 \subsection{Atomicity}
 
-The transaction consists of a sequence of operations performed on different resources or by different participants. Atomicity means that all operation in the transaction are performed as if they were a single operation. When the transaction commits successfully all of its participants are also required to perform a valid commit. Conversely, if the transaction fails and is aborted all performed operations and effects are forced to be undone. This defines a possibility to abort at any point so that all changes done by the transaction will be reverted to the state before the transaction start.
+The transaction consists of a sequence of operations performed on different resources or by different participants. Atomicity means that all operations in the transaction are performed as if they were a single operation. When the transaction commits successfully, all of its participants are also required to perform a valid commit. Conversely, if the transaction fails and is aborted, all performed operations and effects have to be undone. This defines a possibility to abort at any point so that all changes done by the transaction will be reverted to the state present before the transaction started.
 
-The atomicity is generally achieved by the usage of the consensus multi-phase protocols. Standardized protocol is the two phase commit protocol which is used by the majority of modern transaction systems. 
+The atomicity is commonly achieved by the usage of consensus multi-phase protocols. Standardized protocol is the two phase commit protocol which is used by the majority of modern transaction systems. This protocol, as well as other communication patterns, will be discussed in the later section. 
 
 \subsection{Consistency}
 
-The consistency describes that the transaction maintains the consistency of the system and resources that it is performed on. When the transaction is started on the consistent system this system must remain consistent when the transaction ends - it moves from one consistent state to another.
+The word consistency refers to restrictions placed on data changes that may happen only in allowed ways. When the data is persisted, it must be valid according to all defined rules which meet the application invariants. The consistency property describes that the transaction maintains the consistency of the system and resources that it is being performed on. When the transaction is started on the consistent system, this system must remain consistent when the transaction ends - it moves from one consistent state to another.
 
-Unlike other transactional properties (A, I, D), consistency cannot be realized by the transaction system as it does not hold any semantic knowledge about the resources it manipulates \cite{java_tran_processing}. Therefore achieving this property is the responsibility of the application code.
+Unlike other transactional properties (A, I, D), consistency cannot be realized by the transaction system as it does not hold any semantic knowledge about the resources it manipulates \cite{java_tran_processing}. Therefore, the achievement of this property is the responsibility of the application code.
 
 \subsection{Isolation}
 
@@ -118,7 +118,7 @@ As transactions were firstly defined for the database environment, in practice w
 
 \subsection{Durability}
 
-This property characterizes that all changes done by the transactions must be persistent, i. e. any state changes performed during the transaction must be preserved in case of any subsequent system failure. How the state is preserved usually depends on the particular implementation of the transaction system. Generally, to achieve this property the use of the persistent storage like a disk drive or a cloud is sufficient. Even if this kind of storage is acceptable, it still can not prevent data loss in the case of the catastrophic failure.
+This property characterizes that all changes done by the transactions must be persistent, i. e. any state changes performed during the transaction must be preserved in case of any subsequent system failure. How the state is preserved usually depends on the particular implementation of the transaction system. Generally, to achieve this property the use of the persistent storage like a disk drive or a cloud is sufficient. Even if this kind of storage is acceptable, it still can not prevent data loss in the case of more critical catastrophic failures.
 
 
 
