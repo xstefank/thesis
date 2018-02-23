@@ -42,6 +42,13 @@ E.~Brewer, ``Cap twelve years later: How the "rules" have changed,''
   \url{https://www3.nd.edu/~dthain/courses/cse40822/spring2016/papers/cap.pdf}
 \BIBentrySTDinterwordspacing
 
+\bibitem{isolation_levels}
+\BIBentryALTinterwordspacing
+M.~Kleppmann, ``Transactions: myths, surprises and opportunities,'' 2018.
+  [Online]. Available:
+  \url{https://martin.kleppmann.com/2015/09/26/transactions-at-strange-loop.html}
+\BIBentrySTDinterwordspacing
+
 \bibitem{soa}
 \BIBentryALTinterwordspacing
 D.~Barry, ``{Service-Oriented Architecture (SOA) Definition},'' 2016. [Online].
