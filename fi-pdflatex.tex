@@ -75,7 +75,7 @@ abstract
 \clearpage
 \chapter{Transaction concepts}
 
-This chapter introduces the basic notions of transactions, their properties and common problems of the management of transactions across multiple nodes in the distributed systems. 
+This chapter introduces the basic notions of transactions, their properties and common problems of their management across multiple nodes in the distributed systems. 
 
 \section{Transaction}
 
@@ -86,8 +86,6 @@ From the application point of view there exist several transaction models in whi
 The transaction can end in two forms: it can be either \textit{commited} or \textit{aborted}. The commit determines the successful outcome - all operations within the transaction have been performed and their results are permanently stored in a durable storage. The abort means that all performed operations have been undone and the system is in the same state as if the transaction have not been started.
 
 Generally the achieving of above features may differ. The most common pattern for the transaction processing is a two phase commit protocol with the ACID transactions. Other approaches are based on the relaxation of the one or more of ACID properties to adjust to the real world environments.
-
-\section{2PC protocol}
 
 \section{ACID properties}
 
@@ -113,9 +111,9 @@ From the perspective of an external user the isolation property means that the t
 
 As an instinctive extension of the consistency property, the serial execution of the transaction keeps the consistent state. The execution of the transactions in parallel therefore cannot result into the inconsistent system.
 
-\subsubsection{Isolation levels}
+\newlinepar{Isolation levels}
 
-As transactions were first defined only in the database environment, in practice we distinguish several levels that describe to which extent the isolation succeeds.
+As transactions were firstly defined for the database environment, in practice we distinguish several levels that describe to which extent the isolation is guaranteed.
 
 
 \subsection{Durability}

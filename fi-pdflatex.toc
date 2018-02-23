@@ -2,18 +2,17 @@
 \contentsline {chapter}{\numberline {1}\bfseries Introduction}{1}{chapter.1}
 \contentsline {chapter}{\numberline {2}\bfseries Transaction concepts}{2}{chapter.2}
 \contentsline {section}{\numberline {2.1}\slshape Transaction}{2}{section.2.1}
-\contentsline {section}{\numberline {2.2}\slshape 2PC protocol}{2}{section.2.2}
-\contentsline {section}{\numberline {2.3}\slshape ACID properties}{2}{section.2.3}
-\contentsline {subsection}{\numberline {2.3.1}\rmfamily Atomicity}{3}{subsection.2.3.1}
-\contentsline {subsection}{\numberline {2.3.2}\rmfamily Consistency}{3}{subsection.2.3.2}
-\contentsline {subsection}{\numberline {2.3.3}\rmfamily Isolation}{3}{subsection.2.3.3}
-\contentsline {subsubsection}{\numberline {2.3.3.1} Isolation levels}{4}{subsubsection.2.3.3.1}
-\contentsline {subsection}{\numberline {2.3.4}\rmfamily Durability}{4}{subsection.2.3.4}
-\contentsline {section}{\numberline {2.4}\slshape Transaction models}{4}{section.2.4}
-\contentsline {section}{\numberline {2.5}\slshape Distributed transactions}{4}{section.2.5}
-\contentsline {section}{\numberline {2.6}\slshape Transaction manager}{5}{section.2.6}
-\contentsline {subsection}{\numberline {2.6.1}\rmfamily Local transaction manager}{5}{subsection.2.6.1}
-\contentsline {section}{\numberline {2.7}\slshape Failure handling}{5}{section.2.7}
+\contentsline {section}{\numberline {2.2}\slshape ACID properties}{2}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}\rmfamily Atomicity}{3}{subsection.2.2.1}
+\contentsline {subsection}{\numberline {2.2.2}\rmfamily Consistency}{3}{subsection.2.2.2}
+\contentsline {subsection}{\numberline {2.2.3}\rmfamily Isolation}{3}{subsection.2.2.3}
+\contentsline {paragraph}{ Isolation levels}{4}{section*.6}
+\contentsline {subsection}{\numberline {2.2.4}\rmfamily Durability}{4}{subsection.2.2.4}
+\contentsline {section}{\numberline {2.3}\slshape Transaction models}{4}{section.2.3}
+\contentsline {section}{\numberline {2.4}\slshape Distributed transactions}{4}{section.2.4}
+\contentsline {section}{\numberline {2.5}\slshape Transaction manager}{5}{section.2.5}
+\contentsline {subsection}{\numberline {2.5.1}\rmfamily Local transaction manager}{5}{subsection.2.5.1}
+\contentsline {section}{\numberline {2.6}\slshape Failure handling}{5}{section.2.6}
 \contentsline {chapter}{\numberline {3}\bfseries Microservices architecture pattern}{6}{chapter.3}
 \contentsline {section}{\numberline {3.1}\slshape Architecture pattern}{6}{section.3.1}
 \contentsline {subsection}{\numberline {3.1.1}\rmfamily Monolithic architecture}{6}{subsection.3.1.1}
@@ -43,40 +42,40 @@
 \contentsline {subsection}{\numberline {6.3.2}\rmfamily Spring Boot}{18}{subsection.6.3.2}
 \contentsline {subsection}{\numberline {6.3.3}\rmfamily Project structure}{18}{subsection.6.3.3}
 \contentsline {subsection}{\numberline {6.3.4}\rmfamily Problems}{19}{subsection.6.3.4}
-\contentsline {paragraph}{ Maintenance of the saga structure}{19}{section*.6}
-\contentsline {paragraph}{ Distribution of events to sagas}{19}{section*.7}
-\contentsline {paragraph}{ AMQP usage with sagas}{20}{section*.8}
-\contentsline {paragraph}{ CQRS restrictions}{20}{section*.9}
+\contentsline {paragraph}{ Maintenance of the saga structure}{19}{section*.7}
+\contentsline {paragraph}{ Distribution of events to sagas}{19}{section*.8}
+\contentsline {paragraph}{ AMQP usage with sagas}{20}{section*.9}
+\contentsline {paragraph}{ CQRS restrictions}{20}{section*.10}
 \contentsline {section}{\numberline {6.4}\slshape Eventuate service}{20}{section.6.4}
 \contentsline {subsection}{\numberline {6.4.1}\rmfamily Platform}{21}{subsection.6.4.1}
-\contentsline {paragraph}{ Apache Zookeeper service}{21}{section*.10}
-\contentsline {paragraph}{ Apache Kafka service}{21}{section*.11}
-\contentsline {paragraph}{ MySQL database service}{22}{section*.12}
-\contentsline {paragraph}{ CDC service}{22}{section*.13}
-\contentsline {paragraph}{ Eventuate console}{22}{section*.14}
+\contentsline {paragraph}{ Apache Zookeeper service}{21}{section*.11}
+\contentsline {paragraph}{ Apache Kafka service}{21}{section*.12}
+\contentsline {paragraph}{ MySQL database service}{22}{section*.13}
+\contentsline {paragraph}{ CDC service}{22}{section*.14}
+\contentsline {paragraph}{ Eventuate console}{22}{section*.15}
 \contentsline {subsection}{\numberline {6.4.2}\rmfamily Docker}{22}{subsection.6.4.2}
 \contentsline {subsection}{\numberline {6.4.3}\rmfamily Project structure}{22}{subsection.6.4.3}
 \contentsline {subsection}{\numberline {6.4.4}\rmfamily Problems}{24}{subsection.6.4.4}
-\contentsline {paragraph}{ Complexity}{24}{section*.15}
-\contentsline {paragraph}{ Aggregate instantiation}{25}{section*.16}
-\contentsline {paragraph}{ Event entity specification}{25}{section*.17}
-\contentsline {paragraph}{ Platform structure}{26}{section*.18}
+\contentsline {paragraph}{ Complexity}{24}{section*.16}
+\contentsline {paragraph}{ Aggregate instantiation}{25}{section*.17}
+\contentsline {paragraph}{ Event entity specification}{25}{section*.18}
+\contentsline {paragraph}{ Platform structure}{26}{section*.19}
 \contentsline {section}{\numberline {6.5}\slshape LRA service}{26}{section.6.5}
 \contentsline {subsection}{\numberline {6.5.1}\rmfamily Platform}{26}{subsection.6.5.1}
 \contentsline {subsection}{\numberline {6.5.2}\rmfamily WildFly Swarm}{27}{subsection.6.5.2}
 \contentsline {subsection}{\numberline {6.5.3}\rmfamily OpenShift platform}{28}{subsection.6.5.3}
-\contentsline {paragraph}{ Kubernetes}{29}{section*.19}
+\contentsline {paragraph}{ Kubernetes}{29}{section*.20}
 \contentsline {subsection}{\numberline {6.5.4}\rmfamily Project structure}{30}{subsection.6.5.4}
 \contentsline {subsection}{\numberline {6.5.5}\rmfamily Problems}{32}{subsection.6.5.5}
 \contentsline {section}{\numberline {6.6}\slshape Eventuate Sagas}{33}{section.6.6}
 \contentsline {subsection}{\numberline {6.6.1}\rmfamily Platform}{33}{subsection.6.6.1}
 \contentsline {subsection}{\numberline {6.6.2}\rmfamily Project structure}{34}{subsection.6.6.2}
 \contentsline {subsection}{\numberline {6.6.3}\rmfamily Problems}{35}{subsection.6.6.3}
-\contentsline {paragraph}{ Destination identification}{35}{section*.20}
-\contentsline {paragraph}{ Command handlers}{35}{section*.21}
+\contentsline {paragraph}{ Destination identification}{35}{section*.21}
+\contentsline {paragraph}{ Command handlers}{35}{section*.22}
 \contentsline {chapter}{\numberline {7}\bfseries LRA execution extension}{37}{chapter.7}
 \contentsline {chapter}{\numberline {8}\bfseries Conclusion}{38}{chapter.8}
-\contentsline {chapter}{Bibliography}{39}{section*.22}
+\contentsline {chapter}{Bibliography}{39}{section*.23}
 \contentsline {chapter}{\numberline {A}\bfseries The Command Query Responsibility Segregation pattern}{41}{appendix.A}
 \contentsline {chapter}{\numberline {B}\bfseries The example applications public APIs}{42}{appendix.B}
 \contentsline {section}{\numberline {B.1}\slshape Axon service}{42}{section.B.1}
