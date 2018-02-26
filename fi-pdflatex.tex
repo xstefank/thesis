@@ -419,10 +419,17 @@ This service represents the change data capture (CDC) component. The CDC service
 
 \newlinepar{Eventuate console}
 
-The last support service is the \texttt{consoleserver}. It provides a simple interface for accessing the information about created aggregate types and the event log. The supplied  Docker container image is \texttt{eventuateio/eventuateio-local-console}.
+The last support service is the \texttt{consoleserver}. It provides a simple interface for accessing the information about created aggregate types and the event log. The supplied Docker container image is the \texttt{eventuateio/eventuateio-local-console}.
 
 \subsection{Docker}
 
+Docker is a container platform designed to make it easier to build, secure and manage the widest array of application from development to production both on premises and in the cloud \cite{docker}. Docker containers allow applications to run on top of the kernel services provided by the hosting system which considerably effects the application performance. However, it still builds containers on top of the generalized interface which warrants straightforward portability between different machines.
+
+A container image is a lightweight, stand-alone, executable package of a piece of software that includes everything needed to run it -- code, runtime, system tools, libraries or settings \cite{docker}. All docker containers that run on the same machine share the kernel services of the host. The images are build on the concept of layers. The layer provides an abstraction to share common filesystems, configuration and other data that can be reused by several docker containers.
+
+Containers isolate applications from the operating system their running on and also provide the separation from other docker containers running concurrently on the same computer. Instead of virtual machines which provide similar functionality, Docker virtualizes the operating system not the hardware. Docker provides abstraction at the application level.
+
+Docker as a tool is targeted for simple utilization. It provides an unified environment for both developers and administrators supporting the DevOps (development and operations) practices. Particularly, developers profit from portable code that is able to run on any operating platform supporting Docker, while operations gain visibility and management services from comprehensive control panel covering all containerized applications.
 
 \subsection{Project structure}
 
@@ -515,7 +522,7 @@ OpenShift Dedicated offers a managed private cluster which can be hosted on the 
 
 The last OpenShift variant it the OpenShift.io. It provides an open online end-to-end development environment for planning, creating and deploying hybrid cloud services \cite{openshift_io}. It supports an integrated approach to DevOps, including tools as one-click container management, machine learning system and integration of many projects like fabric8 or Eclipse Che.
 
-\newlinepar{Kubernetes}
+\subsection{Kubernetes}
 
 Kubernetes is an open source project providing automation, scaling and management of containerized applications \cite{kubernetes}. It groups the application containers into logical units for easier management and discovery.
 
