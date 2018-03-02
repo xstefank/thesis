@@ -34,10 +34,10 @@
 \contentsline {section}{\numberline {5.2}\slshape Compensations}{15}{section.5.2}
 \contentsline {section}{\numberline {5.3}\slshape Current development support}{15}{section.5.3}
 \contentsline {subsection}{\numberline {5.3.1}\rmfamily Axon framework}{15}{subsection.5.3.1}
-\contentsline {paragraph}{ Saga definition}{15}{section*.11}
-\contentsline {subsection}{\numberline {5.3.2}\rmfamily Eventuate.io}{16}{subsection.5.3.2}
-\contentsline {subsection}{\numberline {5.3.3}\rmfamily Narayana LRA}{16}{subsection.5.3.3}
-\contentsline {subsection}{\numberline {5.3.4}\rmfamily Eventuate Tram}{16}{subsection.5.3.4}
+\contentsline {paragraph}{ Saga definition}{16}{section*.11}
+\contentsline {subsection}{\numberline {5.3.2}\rmfamily Eventuate.io}{17}{subsection.5.3.2}
+\contentsline {subsection}{\numberline {5.3.3}\rmfamily Narayana LRA}{17}{subsection.5.3.3}
+\contentsline {subsection}{\numberline {5.3.4}\rmfamily Eventuate Tram}{17}{subsection.5.3.4}
 \contentsline {chapter}{\numberline {6}\bfseries Saga implementations comparison example}{18}{chapter.6}
 \contentsline {section}{\numberline {6.1}\slshape Invocation and interaction}{18}{section.6.1}
 \contentsline {section}{\numberline {6.2}\slshape The saga model}{19}{section.6.2}
