@@ -256,12 +256,14 @@ A saga participant represents a local transaction. Each saga can be split into a
 
 The ability to commit a local transaction breaks the atomicity property as we no longer endure the atomic operation of the saga. Furthermore, if distinct sagas may be executed in the system concurrently, the isolation (serializability) property is also violated. Although, intermediate saga states may introduce consistency contraventions, sagas guarantee that the state will become consistent after the saga completes. This principle is called eventual consistency. It guarantees that even if partial execution introduces inconsistent result, it will get consistent eventually -- there exist a distant point in future in which the system is consistent.
 
-As the definition in the original paper allows local transactions to interleave, it is not permitted to manage any form of dependencies between them. This would imply that participant cannot depend on the results committed by the previous transaction in the saga sequence. However, in modern systems the sequential execution of local transactions is possible to implement in expense of an utilization of a single saga coordinator process throughout the entire execution of the sequence. 
+As the definition in the original paper allows local transactions to interleave, it permits any form of dependencies between them. This would imply that the participant cannot depend on results committed by any previous transaction in the saga sequence. However, in modern systems the sequential execution of local transactions is possible to implement in expense of an utilization of a single saga coordinator process throughout the entire sequential execution of the sequence. 
 
 
 \section{Compensations}
 
-Backwards recovery
+Each sub-transaction in a saga needs to have an associated compensation transaction. The purpose of the compensation action is to semantically undo the work performed by the original transaction. This is not necessarily the contradictory action that puts the system into the same state as it was present before the sub-transaction or generally the saga started. 
+
+Imagine that the sub-transaction consists of the sending of an email. The saga compensation transaction cannot directly undo the email consignment. Instead it would send another email to the same destination which could explain why the previous action did fail. In this case, we can see that the system is in the state where it has two additional emails being send. However, the comprising system state is expected to be semantically consistent as both transaction and compensation have been defined by the participant. Therefore, the consistency guarantees must be ensured by individual participants at the sub-transaction level.
 
 \section{Current development support}
 
