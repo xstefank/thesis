@@ -250,25 +250,25 @@ A saga, as described in the original publication \cite{sagas_publ} from 1987, is
 
 In contrast to the traditional transaction approach, the Saga pattern relaxes some of the ACID properties (namely atomicity and isolation) to achieve availability and scalability with build-in failure management. In practice, applications are mostly not fully restricted to all of the transaction guarantees, so the saga pattern is emerging as a real alternative to traditional ACID transactions.
 
-\section{Participants}
+\section{Activity}
 
-A saga participant represents a local transaction. Each saga can be split into a sequence of transactions which each individually can be implemented with full ACID guarantees. When the local transaction completes, all results of the work performed by the participant are expected to be persisted in the durable storage. This means that the external observer may see the system in intermediate states of the saga execution, as well as it may also introduce the system into an inconsistent state between participant invocations.
+An activity represents a local transaction that is a part of the saga. Each saga can be split into a sequence of activities in which each individually can be implemented with full ACID guarantees. When the activity completes, all results of the performed work are expected to be persisted in the durable storage. This means that the external observer may see the system in intermediate states of the saga execution, as well as that it may also introduce the system into an inconsistent state between the individual activity invocations.
 
-The ability to commit a local transaction breaks the atomicity property as we no longer endure the atomic operation of the saga. Furthermore, if distinct sagas may be executed in the system concurrently, the isolation (serializability) property is also violated. Although, intermediate saga states may introduce consistency contraventions, sagas guarantee that the state will become consistent after the saga completes. This principle is called eventual consistency. It guarantees that even if partial execution introduces inconsistent result, it will get consistent eventually -- there exist a distant point in future in which the system is consistent.
+The ability to commit a local transaction breaks the atomicity property as we no longer endure the atomic unit that the enclosing transaction represents. Furthermore, if distinct sagas may be executed in the system concurrently, the isolation (serializability) property is also violated. Although, intermediate saga states may introduce consistency contraventions, sagas guarantee that the state will become consistent after the saga completes. This principle is called an eventual consistency. It guarantees that even if partial execution may result into the inconsistent state, the system state will get consistent eventually -- there exist a point in future in which the system is consistent.
 
-As the definition in the original paper allows local transactions to interleave, it does prohibits any form of dependencies between them. This would imply that the participant cannot depend on results committed by any previous transaction in the saga sequence. However, in modern systems the sequential execution of local transactions is possible to implement in expense of an utilization of a single saga coordinator process throughout the entire sequential execution of this sequence. 
+As the definition in the original paper allows local transactions to interleave, it prohibits any form of dependencies between them. This would imply that the participant cannot depend on results committed by any previous transaction in the saga sequence. However, in modern systems the sequential execution of local transactions is possible to implement in expense of an utilization of a single saga coordinator process throughout the entire sequential execution of this sequence. 
 
 \section{Compensations}
 
-Each sub-transaction in a saga needs to have an associated compensation transaction. The purpose of the compensation action is to semantically undo the work performed by the original transaction. This is not necessarily the contradictory action that puts the system into the same state as it was present before the sub-transaction or generally the saga started. 
+Each activity in a saga needs to have an associated compensation transaction. The purpose of the compensating transaction is to semantically undo the work performed by the original transaction. This is not necessarily the contradictory action that puts the system into the same state as it was present before the activity began or generally the saga started. 
 
-Imagine that the sub-transaction consists of the sending of an email. The saga compensation transaction cannot directly undo the email consignment. Instead it would send another email to the same destination which could explain why the previous action did fail. In this case, we can see that the system is in the state where it has two additional emails being send. However, the comprising system state is expected to be semantically consistent as both transaction and compensation have been defined by the participant. Therefore, the consistency guarantees must be ensured by individual participants at the sub-transaction level.
+Imagine that the activity consists of the sending of an email. The saga compensation transaction cannot directly undo the email consignment. Instead it would send another email to the same destination which could explain why the previous action did fail. In this case, we can see that the system is in the state where it has two additional emails being send. However, the comprising system state is expected to be semantically consistent as both transaction and compensation have been defined by the participant. Therefore, the consistency guarantees must be ensured by individual participants at the activity level.
 
 idempotent compensations!!!
 
 \section{Saga execution component and transaction log}
 
-When the saga management system applies the backward recovery mode, the associated transaction log is also used to recover from the crashes of the saga coordinator. After the recovery, once all sub-transactions has been completed (completed or aborted), the saga coordinator determines the status of each saga execution by the investigation of transaction log entries. If the transaction log contains both \texttt{start-saga} and ...
+
 
 \section{Recovery modes}
 
@@ -276,19 +276,25 @@ The saga paper distinguishes two options to handle the failure that interrupts t
 
 \newlinepar{Backward recovery}
 
-A backward recovery mode is the most common way of handling saga failure management as it was described in previous sections. It requires that all sub-transactions must define a compensation handler corresponding to individual sub-transactions.
+A backward recovery mode is the most common way of handling saga failure management as it was described in previous sections. It requires that all activities must define a compensation handler.
 
-When the SEC component receives an \texttt{abort-saga} command in the backward recovery mode it firstly abort the currently executed sub-transaction. Then for every previous sub-transaction in the reverse order of the original execution, it calls its respective compensation action. After the invocation of the compensation handler corresponding to the first sub-transaction is completed, the saga may end and the system is in semantically consistent state as it was before the saga began.
+When the SEC component receives an \texttt{abort-saga} command in the backward recovery mode, it firstly abort the currently executed activity. Then for every previous activity in the reverse order of the original execution, it calls its respective compensation action. After the invocation of the compensation handler corresponding to the first activity is completed, the saga may end and the system is in semantically consistent state as it was before the saga began.
+
+When the saga management system applies the backward recovery mode, the associated transaction log is also used to recover from the crashes of the saga coordinator. After the recovery, once all activities has been completed (committed or aborted), the saga coordinator determines the status of each saga execution by the investigation of transaction log entries. 
+
+If the log contains only both \texttt{start-activity} and \texttt{end-activity} entries for the activities comprised in the saga,  than the execution is safe to continue with the next activity which has not been started. Another safe state is when the transaction log contains the \texttt{abort-saga} entry. In this case, it calls all compensation handlers for the referenced saga. This is possible due to the fact that all compensating actions are required to be idempotent.
+
+The only unsafe state, that may be introduced after the saga coordinator recovers, is when the transaction log contains the \texttt{start-activity} entry without the corresponding \texttt{end-activity}. In this case, the saga coordinator selects the last successfully executed activity (contained in the transaction log) and invokes the compensation handler for this activity and all activities that have been executed before it.
 
 \newlinepar{Forward recovery}
 
 For the use of the forward recovery, the transaction management requires that the saga itself is predefined and that the system is able to produce a save point (checkpoint). The checkpoint represents a snapshot of the system state in the particular point in time into which the current state can be always restored.
 
-The pure forward recovery mode takes the checkpoint automatically at the beginning of each sub-transaction. Furthermore, it also disallows to abort the saga intermediate execution. This effectively eliminates the need to define any compensation actions. If the crash of the SEC occurs, it will abort the last executed sub-transaction and restart the saga from the last checkpoint.
+The pure forward recovery mode takes the checkpoint automatically at the beginning of each activity. Furthermore, it also disallows to abort the saga intermediate execution. This effectively eliminates the need to define any compensation actions. If the crash of the SEC occurs, it will abort the last executed activity and restart the saga from the last checkpoint.
 
 \hfill \break
 
-In addition to modes defined above, it is also possible to combine these two approaches into the backward / forward recovery mode. In this mode, the transaction system takes checkpoints in predefined intervals which may be periodical or based on a different criteria (e. g. the sub-transaction complexity). In case of the SEC failure, the system performs the backward recovery to the last defined checkpoint and then continues the saga execution in forward recovery mode.
+In addition to modes defined above, it is also possible to combine these two approaches into the backward / forward recovery mode. In this mode, the transaction system takes checkpoints in predefined intervals which may be periodical or based on a different criteria (e. g. the activity complexity). In case of the SEC failure, the system performs the backward recovery to the last defined checkpoint and then continues the saga execution in forward recovery mode.
 
 \section{Current development support}
 

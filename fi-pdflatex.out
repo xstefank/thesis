@@ -24,7 +24,7 @@
 \BOOKMARK [1][-]{section.4.2}{\040Event\040based\040protocols}{chapter.4}% 24
 \BOOKMARK [2][-]{subsection.4.2.1}{\040CQRS}{section.4.2}% 25
 \BOOKMARK [0][-]{chapter.5}{Saga\040pattern}{}% 26
-\BOOKMARK [1][-]{section.5.1}{\040Participants}{chapter.5}% 27
+\BOOKMARK [1][-]{section.5.1}{\040Activity}{chapter.5}% 27
 \BOOKMARK [1][-]{section.5.2}{\040Compensations}{chapter.5}% 28
 \BOOKMARK [1][-]{section.5.3}{\040Saga\040execution\040component\040and\040transaction\040log}{chapter.5}% 29
 \BOOKMARK [1][-]{section.5.4}{\040Recovery\040modes}{chapter.5}% 30
