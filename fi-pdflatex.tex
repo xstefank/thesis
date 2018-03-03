@@ -264,13 +264,14 @@ Each activity in a saga needs to have an associated compensation transaction. Th
 
 Imagine that the activity consists of the sending of an email. The saga compensation transaction cannot directly undo the email consignment. Instead it would send another email to the same destination which could explain why the previous action did fail. In this case, we can see that the system is in the state where it has two additional emails being send. However, the comprising system state is expected to be semantically consistent as both transaction and compensation have been defined by the participant. Therefore, the consistency guarantees must be ensured by individual participants at the activity level.
 
-idempotent compensations!!!
+The compensating actions for the individual activities are expected to be idempotent. The main reason for this requirement is the saga failure and recovery management which in detail described in section \ref{sec:recovery-modes}.
 
 \section{Saga execution component and transaction log}
 
 
 
 \section{Recovery modes}
+\label{sec:recovery-modes}
 
 The saga paper distinguishes two options to handle the failure that interrupts the saga. These two supported modes are backward and forward recovery.
 
@@ -286,11 +287,13 @@ If the log contains only both \texttt{start-activity} and \texttt{end-activity} 
 
 The only unsafe state, that may be introduced after the saga coordinator recovers, is when the transaction log contains the \texttt{start-activity} entry without the corresponding \texttt{end-activity}. In this case, the saga coordinator selects the last successfully executed activity (contained in the transaction log) and invokes the compensation handler for this activity and all activities that have been executed before it.
 
+As in the case of repetitive recovery for the same saga, the saga coordinator may call the corresponding compensation handlers repeatedly, the compensation actions are required to be idempotent. The original paper acknowledges that this constraint may be difficult to implement in some applications which is the reason for the introduction of the forward recovery mode discussed in the following section.
+
 \newlinepar{Forward recovery}
 
-For the use of the forward recovery, the transaction management requires that the saga itself is predefined and that the system is able to produce a save point (checkpoint). The checkpoint represents a snapshot of the system state in the particular point in time into which the current state can be always restored.
+For the use of the forward recovery mode, the transaction management requires that the saga itself is predefined and that the system is able to produce a check point. The check point represents a snapshot of the system state in the particular point in time into which the system can be always restored.
 
-The pure forward recovery mode takes the checkpoint automatically at the beginning of each activity. Furthermore, it also disallows to abort the saga intermediate execution. This effectively eliminates the need to define any compensation actions. If the crash of the SEC occurs, it will abort the last executed activity and restart the saga from the last checkpoint.
+The pure forward recovery mode takes the checkpoint automatically at the beginning of each activity. Furthermore, it also disallows to abort the saga intermediate execution. This effectively eliminates the need to define any compensation actions. If the crash of the SEC occurs, it will abort the last executed activity and restart the saga from the last checkpoint. This approach effectively degrades the saga execution component to a basic persistent transaction executor, therefore loosing most of the saga benefits.
 
 \hfill \break
 
