@@ -264,7 +264,11 @@ Each sub-transaction in a saga needs to have an associated compensation transact
 
 Imagine that the sub-transaction consists of the sending of an email. The saga compensation transaction cannot directly undo the email consignment. Instead it would send another email to the same destination which could explain why the previous action did fail. In this case, we can see that the system is in the state where it has two additional emails being send. However, the comprising system state is expected to be semantically consistent as both transaction and compensation have been defined by the participant. Therefore, the consistency guarantees must be ensured by individual participants at the sub-transaction level.
 
+idempotent compensations!!!
 
+\section{Saga execution component and transaction log}
+
+When the saga management system applies the backward recovery mode, the associated transaction log is also used to recover from the crashes of the saga coordinator. After the recovery, once all sub-transactions has been completed (completed or aborted), the saga coordinator determines the status of each saga execution by the investigation of transaction log entries. If the transaction log contains both \texttt{start-saga} and ...
 
 \section{Recovery modes}
 

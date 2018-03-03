@@ -32,15 +32,16 @@
 \contentsline {chapter}{\numberline {5}\bfseries Saga pattern}{14}{chapter.5}
 \contentsline {section}{\numberline {5.1}\slshape Participants}{14}{section.5.1}
 \contentsline {section}{\numberline {5.2}\slshape Compensations}{15}{section.5.2}
-\contentsline {section}{\numberline {5.3}\slshape Recovery modes}{15}{section.5.3}
+\contentsline {section}{\numberline {5.3}\slshape Saga execution component and transaction log}{15}{section.5.3}
+\contentsline {section}{\numberline {5.4}\slshape Recovery modes}{16}{section.5.4}
 \contentsline {paragraph}{ Backward recovery}{16}{section*.11}
 \contentsline {paragraph}{ Forward recovery}{16}{section*.12}
-\contentsline {section}{\numberline {5.4}\slshape Current development support}{16}{section.5.4}
-\contentsline {subsection}{\numberline {5.4.1}\rmfamily Axon framework}{16}{subsection.5.4.1}
+\contentsline {section}{\numberline {5.5}\slshape Current development support}{16}{section.5.5}
+\contentsline {subsection}{\numberline {5.5.1}\rmfamily Axon framework}{17}{subsection.5.5.1}
 \contentsline {paragraph}{ Saga definition}{17}{section*.13}
-\contentsline {subsection}{\numberline {5.4.2}\rmfamily Eventuate.io}{18}{subsection.5.4.2}
-\contentsline {subsection}{\numberline {5.4.3}\rmfamily Narayana LRA}{18}{subsection.5.4.3}
-\contentsline {subsection}{\numberline {5.4.4}\rmfamily Eventuate Tram}{18}{subsection.5.4.4}
+\contentsline {subsection}{\numberline {5.5.2}\rmfamily Eventuate.io}{18}{subsection.5.5.2}
+\contentsline {subsection}{\numberline {5.5.3}\rmfamily Narayana LRA}{18}{subsection.5.5.3}
+\contentsline {subsection}{\numberline {5.5.4}\rmfamily Eventuate Tram}{18}{subsection.5.5.4}
 \contentsline {chapter}{\numberline {6}\bfseries Saga implementations comparison example}{19}{chapter.6}
 \contentsline {section}{\numberline {6.1}\slshape Invocation and interaction}{19}{section.6.1}
 \contentsline {section}{\numberline {6.2}\slshape The saga model}{20}{section.6.2}
