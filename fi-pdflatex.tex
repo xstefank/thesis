@@ -268,7 +268,11 @@ The compensating actions for the individual activities are expected to be idempo
 
 \section{Saga execution component and transaction log}
 
+The saga paper describes the saga execution component (SEC) as a process that is responsible for the saga management. It communicates with the transaction manager which manages activities included in the saga. Both of these components require a transaction log to record their respective interactions\footnote{it is convenient to share the transaction log between both components}. The saga execution component does not require  concurrency control because the saga activities can be interleaved.
 
+The entries that may be written to the transaction log are usually associated with the saga or activity lifecycle. The saga log includes \texttt{start-saga} entry followed by one or more \texttt{start-activity} / \texttt{end-activity} entries and it is finished by the \texttt{end-saga}. Optionally, the transaction system may also provide an ability for users to cancel the saga execution with the \texttt{abort-saga} command. 
+
+Each saga operation is channeled through the saga execution component and it is recorded in to the transaction log before any action may be taken. The transaction log can also contain any parameters associated with the saga execution.
 
 \section{Recovery modes}
 \label{sec:recovery-modes}
