@@ -282,6 +282,14 @@ When the SEC component receives an \texttt{abort-saga} command in the backward r
 
 \newlinepar{Forward recovery}
 
+For the use of the forward recovery, the transaction management requires that the saga itself is predefined and that the system is able to produce a save point (checkpoint). The checkpoint represents a snapshot of the system state in the particular point in time into which the current state can be always restored.
+
+The pure forward recovery mode takes the checkpoint automatically at the beginning of each sub-transaction. Furthermore, it also disallows to abort the saga intermediate execution. This effectively eliminates the need to define any compensation actions. If the crash of the SEC occurs, it will abort the last executed sub-transaction and restart the saga from the last checkpoint.
+
+\hfill \break
+
+In addition to modes defined above, it is also possible to combine these two approaches into the backward / forward recovery mode. In this mode, the transaction system takes checkpoints in predefined intervals which may be periodical or based on a different criteria (e. g. the sub-transaction complexity). In case of the SEC failure, the system performs the backward recovery to the last defined checkpoint and then continues the saga execution in forward recovery mode.
+
 \section{Current development support}
 
 This section presents the current implementations of the saga pattern available for the enterprise use. The three explored frameworks are Axon \cite{axon_framework}, Eventuate \cite{eventuate.io} and Narayana LRA\footnote{Long Running Actions} \cite{narayana_lra}.
