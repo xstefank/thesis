@@ -250,6 +250,8 @@ A saga, as described in the original publication \cite{sagas_publ} from 1987, is
 
 In contrast to the traditional transaction approach, the Saga pattern relaxes some of the ACID properties (namely atomicity and isolation) to achieve availability and scalability with build-in failure management. In practice, applications are mostly not fully restricted to all of the transaction guarantees, so the saga pattern is emerging as a real alternative to traditional ACID transactions.
 
+In this chapter I describe the saga processing as it is defined by the initial publication \cite{sagas_publ}, describe how the activities and compensations works in sagas, how the saga can handle the failure recovery and present several modern frameworks that provide the support for the saga implementation.
+
 \section{Activity}
 
 An activity represents a local transaction that is a part of the saga. Each saga can be split into a sequence of activities in which each individually can be implemented with full ACID guarantees. When the activity completes, all results of the performed work are expected to be persisted in the durable storage. This means that the external observer may see the system in intermediate states of the saga execution, as well as that it may also introduce the system into an inconsistent state between the individual activity invocations.
@@ -304,6 +306,8 @@ The pure forward recovery mode takes the checkpoint automatically at the beginni
 \hfill \break
 
 In addition to modes defined above, it is also possible to combine these two approaches into the backward / forward recovery mode. In this mode, the transaction system takes checkpoints in predefined intervals which may be periodical or based on a different criteria (e. g. the activity complexity). In case of the SEC failure, the system performs the backward recovery to the last defined checkpoint and then continues the saga execution in forward recovery mode.
+
+\section{Distributed sagas}
 
 \section{Current development support}
 
