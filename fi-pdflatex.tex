@@ -252,7 +252,7 @@ In contrast to the traditional transaction approach, the Saga pattern relaxes so
 
 In this chapter I describe the saga processing as it is defined by the initial publication \cite{sagas_publ}, describe how the activities and compensations works in sagas, how the saga can handle the failure recovery and present several modern frameworks that provide the support for the saga implementation.
 
-\section{Activity}
+\section{Activities}
 
 An activity represents a local transaction that is a part of the saga. Each saga can be split into a sequence of activities in which each individually can be implemented with full ACID guarantees. When the activity completes, all results of the performed work are expected to be persisted in the durable storage. This means that the external observer may see the system in intermediate states of the saga execution, as well as that it may also introduce the system into an inconsistent state between the individual activity invocations.
 
@@ -308,6 +308,14 @@ The pure forward recovery mode takes the checkpoint automatically at the beginni
 In addition to modes defined above, it is also possible to combine these two approaches into the backward / forward recovery mode. In this mode, the transaction system takes checkpoints in predefined intervals which may be periodical or based on a different criteria (e. g. the activity complexity). In case of the SEC failure, the system performs the backward recovery to the last defined checkpoint and then continues the saga execution in forward recovery mode.
 
 \section{Distributed sagas}
+
+The notion of sagas can be naturally extended into distributed environments. The saga definition in distributed systems can redefined as a sequence of requests that are being placed on particular participants invocations. These requests may provide ACID guarantees, but this not restricted and it must ensured by individual participants. Similarly, each participant is also required to expose the idempotent compensating request which can semantically undo the request that is handled by the participant in the saga.
+
+Analogously to the non-distributed systems, the distributed saga management also requires a transaction log which needs to be durable and distributed. The examples of distributed database providers include e.g. Cassandra, RethinkDB or Apache Ignite.
+
+The saga execution coordinator (SEC) is spanned process across the participating services. This process manages and interprets the saga and it persists all processing information into the transaction log. The coordinator does not represent a single point of failure as it is allowed to fail. This is possible because the SEC process does not hold any state data, all of the saga state is held in the distributed log.
+
+As all of the above mentioned components are distributed, the saga management system needs to deal with a number of additional problems that are not present in the localized environment. The main problem is that the saga system is required to deal with network and participant failures that may happen between the remote invocations. There are four locations that can encounter the network failure -- writes for the beginning and end of the request to the transaction log and the request and response calls to the associated participant. This may introduce unnecessary saga aborts\footnote{if the SEC fails after it has written the \texttt{start-request} entry to the transaction log -- the recovery cannot determine whether the failure happened before the request, due to the network failure, or the participant response has been lost}, but generally the approaches from the non-distributed environment still apply.
 
 \section{Current development support}
 
