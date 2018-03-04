@@ -266,6 +266,8 @@ Imagine that the activity consists of the sending of an email. The saga compensa
 
 The compensating actions for the individual activities are expected to be idempotent. The main reason for this requirement is the saga failure and recovery management which in detail described in section \ref{sec:recovery-modes}.
 
+It is important to keep in mind that even the compensating transactions may fail. There are several options of how the saga management system can handle such situations. The first option is to retry the compensating transaction again, but as the reason of the failure may still be valid, the system can get caught in an infinite retry loop. Another option is to provide a recovery block -- a separated block of code which would get executed in place of the primary compensation in case of failure. The last option, which is not elegant but it is practical, is the manual intervention. This is possible to implement due to the saga nature -- it does not hold any locks on resources it is being performed on. When the compensation handler is manually repaired, the saga can continue its execution where it has left off.
+
 \section{Saga execution component and transaction log}
 
 The saga paper describes the saga execution component (SEC) as a process that is responsible for the saga management. It communicates with the transaction manager which manages activities included in the saga. Both of these components require a transaction log to record their respective interactions\footnote{it is convenient to share the transaction log between both components}. The saga execution component does not require  concurrency control because the saga activities can be interleaved.
