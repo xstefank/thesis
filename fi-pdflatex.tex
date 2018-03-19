@@ -227,6 +227,17 @@ This section is inspired by the talk delivered by Sam Newman \cite{principles_of
 
 \section{Reactive microservices}
 
+Before this section provides the explanation of what the reactive systems are in distributed environments, it is appropriate to start from the basics of what the reactivity means in general terms and how these principles may be applied in software architectures. This section will introduce the motion behind the reactive design and why it is suitable for the use in the microservices environment.
+
+By the definition in the Oxford dictionary, the word \textit{reactive} symbolizes an exposure of a response to a stimulus or an action in response to a situation rather than creating or controlling it. This definition naturally translates to software systems. However, the interpretation of what the stimuli is in software applications may differ. It might be, for instance, events, messages, requests or failures. The important common property of these momentums is that the developer is not able to control them. Such motion differs from the original style of programming thinking in which the program functioned as a sequence of commands that were always executed in the predefined order and controlled state.
+
+In software systems we distinguish three distinct classes of reactive concerns -- reactive systems, the reactive programming and reactive streams.
+
+Reactive systems are an architectural style that focuses on the responsiveness. By the definition provided in the Reactive Manifesto \cite{reactive_manifesto}, reactive systems are also resilient, elastic and message driven which makes them more flexible, loosely-coupled and scalable. Generally, this model provides a straightforward programming interactions and simplified dependency management that is required in modern applications. The following enumeration explains these essential properties in detail:
+
+\begin{itemize}
+    \item \textbf{Responsiveness}
+\end{itemize}
 
 \clearpage
 \chapter{Communication patterns}

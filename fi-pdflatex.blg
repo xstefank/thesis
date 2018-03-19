@@ -17,47 +17,49 @@ I'm skipping whatever remains of this entry
 -- IEEEtran.bst version 1.14 (2015/08/26) by Michael Shell.
 -- http://www.michaelshell.org/tex/ieeetran/bibtex/
 -- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
+Too many commas in name 1 of "Jonas Bonér, Dave Farley, Roland Kuhn, Martin Thompson" for entry reactive_manifesto
+while executing---line 2403 of file IEEEtran.bst
 
 Done.
-You've used 28 entries,
+You've used 29 entries,
             4087 wiz_defined-function locations,
-            1477 strings with 20447 characters,
-and the built_in function-call counts, 11419 in all, are:
-= -- 894
-> -- 143
+            1482 strings with 20593 characters,
+and the built_in function-call counts, 11783 in all, are:
+= -- 923
+> -- 147
 < -- 28
-+ -- 79
-- -- 28
-* -- 460
-:= -- 2038
-add.period$ -- 56
-call.type$ -- 28
-change.case$ -- 27
++ -- 81
+- -- 29
+* -- 473
+:= -- 2108
+add.period$ -- 58
+call.type$ -- 29
+change.case$ -- 28
 chr.to.int$ -- 57
-cite$ -- 28
-duplicate$ -- 921
-empty$ -- 1082
-format.name$ -- 33
-if$ -- 2526
+cite$ -- 29
+duplicate$ -- 951
+empty$ -- 1118
+format.name$ -- 34
+if$ -- 2605
 int.to.chr$ -- 0
-int.to.str$ -- 28
-missing$ -- 197
-newline$ -- 155
-num.names$ -- 21
-pop$ -- 600
+int.to.str$ -- 29
+missing$ -- 204
+newline$ -- 160
+num.names$ -- 22
+pop$ -- 622
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 2
-skip$ -- 885
+skip$ -- 913
 stack$ -- 0
-substring$ -- 160
-swap$ -- 546
+substring$ -- 161
+swap$ -- 562
 text.length$ -- 9
 text.prefix$ -- 0
 top$ -- 5
-type$ -- 28
+type$ -- 29
 warning$ -- 0
-while$ -- 30
-width$ -- 30
-write$ -- 294
-(There was 1 error message)
+while$ -- 31
+width$ -- 31
+write$ -- 304
+(There were 2 error messages)

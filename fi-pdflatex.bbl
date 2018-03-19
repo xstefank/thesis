@@ -86,6 +86,12 @@ M.~Fowler, ``Humaneregistry,'' 2008. [Online]. Available:
   \url{http://martinfowler.com/bliki/HumaneRegistry.html}
 \BIBentrySTDinterwordspacing
 
+\bibitem{reactive_manifesto}
+\BIBentryALTinterwordspacing
+R.~K. M.~T. Jonas~Bonér, Dave~Farley, ``Reactive manifesto,'' 2018. [Online].
+  Available: \url{https://www.reactivemanifesto.org/}
+\BIBentrySTDinterwordspacing
+
 \bibitem{sagas_publ}
 H.~Garcia-Molina and K.~Salem, ``Sagas,'' \emph{ACM SIGMOD Record}, vol.~16,
   no.~3, pp. 249--259, 1987.
