@@ -233,10 +233,18 @@ By the definition in the Oxford dictionary, the word \textit{reactive} symbolize
 
 In software systems we distinguish three distinct classes of reactive concerns -- reactive systems, the reactive programming and reactive streams.
 
+\subsection{Reactive systems}
+
 Reactive systems are an architectural style that focuses on the responsiveness. By the definition provided in the Reactive Manifesto \cite{reactive_manifesto}, reactive systems are also resilient, elastic and message driven which makes them more flexible, loosely-coupled and scalable. Generally, this model provides a straightforward programming interactions and simplified dependency management that is required in modern applications. The following enumeration explains these essential properties in detail:
 
 \begin{itemize}
-    \item \textbf{Responsiveness}
+    \item \textbf{Responsiveness} is the most important characteristic of reactive systems. It provides a guarantee of a timely response to normal user requests, as well as the rapid failure detection. Reactive systems are expected to establish a sufficient upper bound placed on the system response times to institute an end user assurance in the system usage.
+    
+    \item \textbf{Resilience} covers the responsiveness of the system in the case of the system failure. The manifesto states that the system is not resilient, if it becomes unresponsive after any failure. Resilience can be achieved by, e.g., replication, isolation, delegation and loose-coupling. This ensures that the failure in one part of the system cannot effect the system as whole which shadows the component clients from any form of the failure handling.
+    
+    \item \textbf{Elasticity} involves the system responsiveness in the case of alternating load. Reactive system is expected to be able to dynamically adjust and scale system resources according to the request traffic. Elasticity also implies that the system must be able to actively replicate and regulate its components and distribute user inputs among them by the scalable, predictive (and possibly reactive) algorithms.
+    
+    \item \textbf{Message driven} elaborates on the asynchronous message exchange between the system components that promotes the loose coupling, isolation and location transparency. Explicit message utilization has many advantages, e.g., flow control, load management or monitoring and engagement of the back pressure. The location transparency may serve as a failure management mechanism, in which case the service cannot distinguish between the communication with a single component or a cluster. The asynchronicity allows the system to utilize resources in a non blocking way, only when they are required for the request processing. 
 \end{itemize}
 
 \clearpage
