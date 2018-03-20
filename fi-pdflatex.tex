@@ -229,9 +229,9 @@ This section is inspired by the talk delivered by Sam Newman \cite{principles_of
 
 Before this section provides the explanation of what the reactive systems are in distributed environments, it is appropriate to start from the basics of what the reactivity means in general terms and how these principles may be applied in software architectures. This section will introduce the motion behind the reactive design and why it is suitable for the use in the microservices environment.
 
-By the definition in the Oxford dictionary, the word \textit{reactive} symbolizes an exposure of a response to a stimulus or an action in response to a situation rather than creating or controlling it. This definition naturally translates to software systems. However, the interpretation of what the stimuli is in software applications may differ. It might be, for instance, events, messages, requests or failures. The important common property of these momentums is that the developer is not able to control them. Such motion differs from the original style of programming thinking in which the program functioned as a sequence of commands that were always executed in the predefined order and controlled state.
+By the definition in the Oxford dictionary, the word \textit{reactive} symbolizes an exposure of a response to a stimulus or an action in response to a situation rather than creating or controlling it. This definition naturally translates to software systems. However, the interpretation of what the stimuli is in software applications may differ. It might be, for instance, events, messages, requests or failures. The important common property of these momentums is that the development model cannot be implemented in a way to control them. This motions differ from the traditional style of programming models in which the program functioned as a sequence of commands that were always executed in the predefined order and in the maintained, controlled state.
 
-In software systems we distinguish three distinct classes of reactive concerns -- reactive systems, the reactive programming and reactive streams.
+In software systems we distinguish two distinct classes of reactive concerns -- reactive systems and the reactive programming. 
 
 \subsection{Reactive systems}
 
@@ -244,8 +244,15 @@ Reactive systems are an architectural style that focuses on the responsiveness. 
     
     \item \textbf{Elasticity} involves the system responsiveness in the case of alternating load. Reactive system is expected to be able to dynamically adjust and scale system resources according to the request traffic. Elasticity also implies that the system must be able to actively replicate and regulate its components and distribute user inputs among them by the scalable, predictive (and possibly reactive) algorithms.
     
-    \item \textbf{Message driven} elaborates on the asynchronous message exchange between the system components that promotes the loose coupling, isolation and location transparency. Explicit message utilization has many advantages, e.g., flow control, load management or monitoring and engagement of the back pressure. The location transparency may serve as a failure management mechanism, in which case the service cannot distinguish between the communication with a single component or a cluster. The asynchronicity allows the system to utilize resources in a non blocking way, only when they are required for the request processing. 
+    \item \textbf{Message driven} elaborates on the asynchronous message exchange between the system components that promotes the loose coupling, isolation and location transparency. Explicit message utilization has many advantages, e.g., flow control, load management or monitoring and engagement of the back pressure. The location transparency, based on virtual addresses, decouples individual components. It may also provide a failure management mechanism, in which case the service cannot distinguish between the communication with a single component or a cluster. Additionally, the asynchronicity allows the system to utilize resources in a non blocking way, only when they are required for the request processing. 
 \end{itemize}
+
+\subsection{Reactive programming}
+
+Reactive programming is conceptually based on the streams of data called observables, and functions that may be applied on them. An observable is an object that contains dynamically versatile data that represent state which may be of interest to other object. 
+
+In practice, reactive programming distinguish three kinds of observable objects -- observable data streams, singles and completables. Observable, as a stream of data, represents an asynchronous reaction. It provides three handlers, namely, for the data result, error handling and the end of the data stream. The single is a special type of observable that depicts the stream of one value. It is associated with an execution of asynchronous operation which provides data and error callback handlers. The completable observable symbolizes the stream without any value. It contrast with the single, it do not return a data value. For this reason, the completable should be configured with the completion and error handlers.
+
 
 \clearpage
 \chapter{Communication patterns}
