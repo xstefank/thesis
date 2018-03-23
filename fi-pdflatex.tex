@@ -81,7 +81,7 @@ This chapter introduces the basic notions of transactions, their properties and 
 
 A transaction is an unit of processing that provides all-or-nothing property to the work that is conducted within its scope, also ensuring that shared resources are protected from multiple users \cite{java_tran_processing}. It represents an unified and inseparable sequence of operations that are either all provided or none of them take effect. 
 
-From the application point of view there exist several transaction models in which the transactions can be executed. The applicable models in the transaction management are local, programmatic and declarative transaction models. All three models will be described in detail in the following section.
+From the application point of view there exist several transaction models in which the transactions can be executed. The applicable models in the transaction management are local, programmatic and declarative transactions. All three models will be described in detail in the following section.
 
 The transaction can end in two forms: it can be either \textit{commited} or \textit{aborted}. The commit determines the successful outcome - all operations within the transaction have been performed and their results are permanently stored in a durable storage. The abort means that all performed operations have been undone and the system is in the same state as if the transaction have not been started.
 
@@ -151,6 +151,21 @@ This property characterizes that all changes done by the transactions must be pe
 
 
 \section{Transaction models}
+
+As it was already mentioned at the beginning of this chapter, there exist three types of transactions models available for transaction management that define how the transaction is composed. These models are local, programmatic and declarative transactions. This chapter discuss how these models can be applied in applications deployed in the Enterprise Java platform environment.
+
+\subsection{Local transaction model}
+
+The local transaction model derives its name from the fact that  transactions are managed by a local resource manager which will be described in the later section. With this approach the transaction is represents a connection to the individual resource.
+
+\subsection{Programmatic transaction model}
+
+This approach is based on the Java Transaction API (JTA) transaction service implementation. In this model, the developer handles the complete management of the transaction in the source code.
+
+\subsection{Declarative transaction model}
+
+The declarative transaction model is also referred to as the Container-Managed Transactions (CMT). In this model, the supplying, underlying container manages all transactions on the users behalf. This includes starting and the administration of the end phases (either commit or rollback) of transactions. The developer is only required to setup the container with the transaction configuration that declares, for instance, that the transaction should be rollbacked on any exception.
+
 
 
 \section{Distributed transactions}
