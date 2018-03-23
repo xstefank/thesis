@@ -16,84 +16,84 @@
 \contentsline {subsection}{\numberline {2.3.1}\rmfamily Local transaction model}{7}{subsection.2.3.1}
 \contentsline {subsection}{\numberline {2.3.2}\rmfamily Programmatic transaction model}{7}{subsection.2.3.2}
 \contentsline {subsection}{\numberline {2.3.3}\rmfamily Declarative transaction model}{7}{subsection.2.3.3}
-\contentsline {section}{\numberline {2.4}\slshape Distributed transactions}{7}{section.2.4}
+\contentsline {section}{\numberline {2.4}\slshape Distributed transactions}{8}{section.2.4}
 \contentsline {section}{\numberline {2.5}\slshape Transaction manager}{8}{section.2.5}
 \contentsline {subsection}{\numberline {2.5.1}\rmfamily Local transaction manager}{8}{subsection.2.5.1}
-\contentsline {section}{\numberline {2.6}\slshape Failure handling}{8}{section.2.6}
-\contentsline {chapter}{\numberline {3}\bfseries Microservices architecture pattern}{9}{chapter.3}
-\contentsline {section}{\numberline {3.1}\slshape Architecture pattern}{9}{section.3.1}
-\contentsline {subsection}{\numberline {3.1.1}\rmfamily Monolithic architecture}{9}{subsection.3.1.1}
-\contentsline {subsection}{\numberline {3.1.2}\rmfamily Microservice architecture}{9}{subsection.3.1.2}
-\contentsline {section}{\numberline {3.2}\slshape Principles of microservices}{10}{section.3.2}
-\contentsline {section}{\numberline {3.3}\slshape Reactive microservices}{13}{section.3.3}
-\contentsline {subsection}{\numberline {3.3.1}\rmfamily Reactive systems}{13}{subsection.3.3.1}
-\contentsline {subsection}{\numberline {3.3.2}\rmfamily Reactive programming}{14}{subsection.3.3.2}
-\contentsline {chapter}{\numberline {4}\bfseries Communication patterns}{17}{chapter.4}
-\contentsline {section}{\numberline {4.1}\slshape Consensus protocols}{17}{section.4.1}
-\contentsline {subsection}{\numberline {4.1.1}\rmfamily 2PC}{17}{subsection.4.1.1}
-\contentsline {subsection}{\numberline {4.1.2}\rmfamily 3PC raft paxos}{17}{subsection.4.1.2}
-\contentsline {section}{\numberline {4.2}\slshape Event based protocols}{17}{section.4.2}
-\contentsline {subsection}{\numberline {4.2.1}\rmfamily CQRS}{17}{subsection.4.2.1}
-\contentsline {chapter}{\numberline {5}\bfseries Saga pattern}{18}{chapter.5}
-\contentsline {section}{\numberline {5.1}\slshape Activities}{18}{section.5.1}
-\contentsline {section}{\numberline {5.2}\slshape Compensations}{19}{section.5.2}
-\contentsline {section}{\numberline {5.3}\slshape Saga execution component and transaction log}{20}{section.5.3}
-\contentsline {section}{\numberline {5.4}\slshape Recovery modes}{20}{section.5.4}
-\contentsline {paragraph}{ Backward recovery}{21}{section*.11}
-\contentsline {paragraph}{ Forward recovery}{22}{section*.12}
-\contentsline {section}{\numberline {5.5}\slshape Distributed sagas}{22}{section.5.5}
-\contentsline {section}{\numberline {5.6}\slshape Current development support}{23}{section.5.6}
-\contentsline {subsection}{\numberline {5.6.1}\rmfamily Axon framework}{23}{subsection.5.6.1}
-\contentsline {paragraph}{ Saga definition}{24}{section*.13}
-\contentsline {subsection}{\numberline {5.6.2}\rmfamily Eventuate.io}{25}{subsection.5.6.2}
-\contentsline {subsection}{\numberline {5.6.3}\rmfamily Narayana LRA}{25}{subsection.5.6.3}
-\contentsline {subsection}{\numberline {5.6.4}\rmfamily Eventuate Tram}{25}{subsection.5.6.4}
-\contentsline {chapter}{\numberline {6}\bfseries Saga implementations comparison example}{26}{chapter.6}
-\contentsline {section}{\numberline {6.1}\slshape Invocation and interaction}{26}{section.6.1}
-\contentsline {section}{\numberline {6.2}\slshape The saga model}{27}{section.6.2}
-\contentsline {section}{\numberline {6.3}\slshape Axon service}{29}{section.6.3}
-\contentsline {subsection}{\numberline {6.3.1}\rmfamily Platform}{29}{subsection.6.3.1}
-\contentsline {subsection}{\numberline {6.3.2}\rmfamily Spring Boot}{30}{subsection.6.3.2}
-\contentsline {subsection}{\numberline {6.3.3}\rmfamily Project structure}{30}{subsection.6.3.3}
-\contentsline {subsection}{\numberline {6.3.4}\rmfamily Problems}{31}{subsection.6.3.4}
-\contentsline {paragraph}{ Maintenance of the saga structure}{31}{section*.14}
-\contentsline {paragraph}{ Distribution of events to sagas}{31}{section*.15}
-\contentsline {paragraph}{ AMQP usage with sagas}{32}{section*.16}
-\contentsline {paragraph}{ CQRS restrictions}{32}{section*.17}
-\contentsline {section}{\numberline {6.4}\slshape Eventuate service}{32}{section.6.4}
-\contentsline {subsection}{\numberline {6.4.1}\rmfamily Platform}{33}{subsection.6.4.1}
-\contentsline {paragraph}{ Apache Zookeeper service}{33}{section*.18}
-\contentsline {paragraph}{ Apache Kafka service}{33}{section*.19}
-\contentsline {paragraph}{ MySQL database service}{34}{section*.20}
-\contentsline {paragraph}{ CDC service}{34}{section*.21}
-\contentsline {paragraph}{ Eventuate console}{34}{section*.22}
-\contentsline {subsection}{\numberline {6.4.2}\rmfamily Docker}{34}{subsection.6.4.2}
-\contentsline {subsection}{\numberline {6.4.3}\rmfamily Project structure}{35}{subsection.6.4.3}
-\contentsline {subsection}{\numberline {6.4.4}\rmfamily Problems}{37}{subsection.6.4.4}
-\contentsline {paragraph}{ Complexity}{37}{section*.23}
-\contentsline {paragraph}{ Aggregate instantiation}{38}{section*.24}
-\contentsline {paragraph}{ Event entity specification}{38}{section*.25}
-\contentsline {paragraph}{ Platform structure}{39}{section*.26}
-\contentsline {section}{\numberline {6.5}\slshape LRA service}{39}{section.6.5}
-\contentsline {subsection}{\numberline {6.5.1}\rmfamily Platform}{39}{subsection.6.5.1}
-\contentsline {subsection}{\numberline {6.5.2}\rmfamily WildFly Swarm}{40}{subsection.6.5.2}
-\contentsline {subsection}{\numberline {6.5.3}\rmfamily OpenShift platform}{41}{subsection.6.5.3}
-\contentsline {subsection}{\numberline {6.5.4}\rmfamily Kubernetes}{42}{subsection.6.5.4}
-\contentsline {subsection}{\numberline {6.5.5}\rmfamily Project structure}{42}{subsection.6.5.5}
-\contentsline {subsection}{\numberline {6.5.6}\rmfamily Problems}{45}{subsection.6.5.6}
-\contentsline {section}{\numberline {6.6}\slshape Eventuate Sagas}{46}{section.6.6}
-\contentsline {subsection}{\numberline {6.6.1}\rmfamily Platform}{46}{subsection.6.6.1}
-\contentsline {subsection}{\numberline {6.6.2}\rmfamily Project structure}{47}{subsection.6.6.2}
-\contentsline {subsection}{\numberline {6.6.3}\rmfamily Problems}{48}{subsection.6.6.3}
-\contentsline {paragraph}{ Destination identification}{48}{section*.27}
-\contentsline {paragraph}{ Command handlers}{49}{section*.28}
-\contentsline {chapter}{\numberline {7}\bfseries LRA execution extension}{50}{chapter.7}
-\contentsline {chapter}{\numberline {8}\bfseries Conclusion}{51}{chapter.8}
-\contentsline {chapter}{Bibliography}{52}{section*.29}
-\contentsline {chapter}{\numberline {A}\bfseries The Command Query Responsibility Segregation pattern}{55}{appendix.A}
-\contentsline {chapter}{\numberline {B}\bfseries The example applications public APIs}{56}{appendix.B}
-\contentsline {section}{\numberline {B.1}\slshape Axon service}{56}{section.B.1}
-\contentsline {section}{\numberline {B.2}\slshape Eventuate service}{56}{section.B.2}
-\contentsline {section}{\numberline {B.3}\slshape LRA service}{57}{section.B.3}
-\contentsline {section}{\numberline {B.4}\slshape Eventuate Tram}{58}{section.B.4}
-\contentsline {chapter}{\numberline {C}\bfseries The saga scenarios}{59}{appendix.C}
+\contentsline {section}{\numberline {2.6}\slshape Failure handling}{9}{section.2.6}
+\contentsline {chapter}{\numberline {3}\bfseries Microservices architecture pattern}{10}{chapter.3}
+\contentsline {section}{\numberline {3.1}\slshape Architecture pattern}{10}{section.3.1}
+\contentsline {subsection}{\numberline {3.1.1}\rmfamily Monolithic architecture}{10}{subsection.3.1.1}
+\contentsline {subsection}{\numberline {3.1.2}\rmfamily Microservice architecture}{10}{subsection.3.1.2}
+\contentsline {section}{\numberline {3.2}\slshape Principles of microservices}{11}{section.3.2}
+\contentsline {section}{\numberline {3.3}\slshape Reactive microservices}{14}{section.3.3}
+\contentsline {subsection}{\numberline {3.3.1}\rmfamily Reactive systems}{14}{subsection.3.3.1}
+\contentsline {subsection}{\numberline {3.3.2}\rmfamily Reactive programming}{15}{subsection.3.3.2}
+\contentsline {chapter}{\numberline {4}\bfseries Communication patterns}{18}{chapter.4}
+\contentsline {section}{\numberline {4.1}\slshape Consensus protocols}{18}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}\rmfamily 2PC}{18}{subsection.4.1.1}
+\contentsline {subsection}{\numberline {4.1.2}\rmfamily 3PC raft paxos}{18}{subsection.4.1.2}
+\contentsline {section}{\numberline {4.2}\slshape Event based protocols}{18}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}\rmfamily CQRS}{18}{subsection.4.2.1}
+\contentsline {chapter}{\numberline {5}\bfseries Saga pattern}{19}{chapter.5}
+\contentsline {section}{\numberline {5.1}\slshape Activities}{19}{section.5.1}
+\contentsline {section}{\numberline {5.2}\slshape Compensations}{20}{section.5.2}
+\contentsline {section}{\numberline {5.3}\slshape Saga execution component and transaction log}{21}{section.5.3}
+\contentsline {section}{\numberline {5.4}\slshape Recovery modes}{21}{section.5.4}
+\contentsline {paragraph}{ Backward recovery}{22}{section*.11}
+\contentsline {paragraph}{ Forward recovery}{23}{section*.12}
+\contentsline {section}{\numberline {5.5}\slshape Distributed sagas}{23}{section.5.5}
+\contentsline {section}{\numberline {5.6}\slshape Current development support}{24}{section.5.6}
+\contentsline {subsection}{\numberline {5.6.1}\rmfamily Axon framework}{24}{subsection.5.6.1}
+\contentsline {paragraph}{ Saga definition}{25}{section*.13}
+\contentsline {subsection}{\numberline {5.6.2}\rmfamily Eventuate.io}{26}{subsection.5.6.2}
+\contentsline {subsection}{\numberline {5.6.3}\rmfamily Narayana LRA}{26}{subsection.5.6.3}
+\contentsline {subsection}{\numberline {5.6.4}\rmfamily Eventuate Tram}{26}{subsection.5.6.4}
+\contentsline {chapter}{\numberline {6}\bfseries Saga implementations comparison example}{27}{chapter.6}
+\contentsline {section}{\numberline {6.1}\slshape Invocation and interaction}{27}{section.6.1}
+\contentsline {section}{\numberline {6.2}\slshape The saga model}{28}{section.6.2}
+\contentsline {section}{\numberline {6.3}\slshape Axon service}{30}{section.6.3}
+\contentsline {subsection}{\numberline {6.3.1}\rmfamily Platform}{30}{subsection.6.3.1}
+\contentsline {subsection}{\numberline {6.3.2}\rmfamily Spring Boot}{31}{subsection.6.3.2}
+\contentsline {subsection}{\numberline {6.3.3}\rmfamily Project structure}{31}{subsection.6.3.3}
+\contentsline {subsection}{\numberline {6.3.4}\rmfamily Problems}{32}{subsection.6.3.4}
+\contentsline {paragraph}{ Maintenance of the saga structure}{32}{section*.14}
+\contentsline {paragraph}{ Distribution of events to sagas}{32}{section*.15}
+\contentsline {paragraph}{ AMQP usage with sagas}{33}{section*.16}
+\contentsline {paragraph}{ CQRS restrictions}{33}{section*.17}
+\contentsline {section}{\numberline {6.4}\slshape Eventuate service}{33}{section.6.4}
+\contentsline {subsection}{\numberline {6.4.1}\rmfamily Platform}{34}{subsection.6.4.1}
+\contentsline {paragraph}{ Apache Zookeeper service}{34}{section*.18}
+\contentsline {paragraph}{ Apache Kafka service}{34}{section*.19}
+\contentsline {paragraph}{ MySQL database service}{35}{section*.20}
+\contentsline {paragraph}{ CDC service}{35}{section*.21}
+\contentsline {paragraph}{ Eventuate console}{35}{section*.22}
+\contentsline {subsection}{\numberline {6.4.2}\rmfamily Docker}{35}{subsection.6.4.2}
+\contentsline {subsection}{\numberline {6.4.3}\rmfamily Project structure}{36}{subsection.6.4.3}
+\contentsline {subsection}{\numberline {6.4.4}\rmfamily Problems}{38}{subsection.6.4.4}
+\contentsline {paragraph}{ Complexity}{38}{section*.23}
+\contentsline {paragraph}{ Aggregate instantiation}{39}{section*.24}
+\contentsline {paragraph}{ Event entity specification}{39}{section*.25}
+\contentsline {paragraph}{ Platform structure}{40}{section*.26}
+\contentsline {section}{\numberline {6.5}\slshape LRA service}{40}{section.6.5}
+\contentsline {subsection}{\numberline {6.5.1}\rmfamily Platform}{40}{subsection.6.5.1}
+\contentsline {subsection}{\numberline {6.5.2}\rmfamily WildFly Swarm}{41}{subsection.6.5.2}
+\contentsline {subsection}{\numberline {6.5.3}\rmfamily OpenShift platform}{42}{subsection.6.5.3}
+\contentsline {subsection}{\numberline {6.5.4}\rmfamily Kubernetes}{43}{subsection.6.5.4}
+\contentsline {subsection}{\numberline {6.5.5}\rmfamily Project structure}{43}{subsection.6.5.5}
+\contentsline {subsection}{\numberline {6.5.6}\rmfamily Problems}{46}{subsection.6.5.6}
+\contentsline {section}{\numberline {6.6}\slshape Eventuate Sagas}{47}{section.6.6}
+\contentsline {subsection}{\numberline {6.6.1}\rmfamily Platform}{47}{subsection.6.6.1}
+\contentsline {subsection}{\numberline {6.6.2}\rmfamily Project structure}{48}{subsection.6.6.2}
+\contentsline {subsection}{\numberline {6.6.3}\rmfamily Problems}{49}{subsection.6.6.3}
+\contentsline {paragraph}{ Destination identification}{49}{section*.27}
+\contentsline {paragraph}{ Command handlers}{50}{section*.28}
+\contentsline {chapter}{\numberline {7}\bfseries LRA execution extension}{51}{chapter.7}
+\contentsline {chapter}{\numberline {8}\bfseries Conclusion}{52}{chapter.8}
+\contentsline {chapter}{Bibliography}{53}{section*.29}
+\contentsline {chapter}{\numberline {A}\bfseries The Command Query Responsibility Segregation pattern}{56}{appendix.A}
+\contentsline {chapter}{\numberline {B}\bfseries The example applications public APIs}{57}{appendix.B}
+\contentsline {section}{\numberline {B.1}\slshape Axon service}{57}{section.B.1}
+\contentsline {section}{\numberline {B.2}\slshape Eventuate service}{57}{section.B.2}
+\contentsline {section}{\numberline {B.3}\slshape LRA service}{58}{section.B.3}
+\contentsline {section}{\numberline {B.4}\slshape Eventuate Tram}{59}{section.B.4}
+\contentsline {chapter}{\numberline {C}\bfseries The saga scenarios}{60}{appendix.C}
