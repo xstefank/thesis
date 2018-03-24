@@ -156,13 +156,15 @@ As it was already mentioned at the beginning of this chapter, there exist three 
 
 \subsection{Local transaction model}
 
-The local transaction model derives its name from the fact that  transactions are managed by a local resource manager which will be described in the later section. With this approach the transaction is represents a connection to the individual resource.
+The local transaction model derives its name from the fact that transactions are managed by a local resource manager which will be described in the later section. With this approach the transaction is represents a connection to the individual resource.
 
 \subsection{Programmatic transaction model}
 
 This approach is based on the Java Transaction API (JTA) transaction service implementation. In this model, the developer handles the complete management of the transaction in the source code.
 
 The JTA specification is a set of interfaces that allows developers to manage transactions. Another term associated with Enterprise transactions is the Java Transaction Service (JTS). The JTS is a specification for the implementation of the transaction manager which encompasses the JTA specification. It represents a Java mapping of the CORBA\footnote{Common Object Request Broker Architecture} OTS (Object Transaction Service) 1.1 specification. The JTA is required to support both JTS and non-JTS implementations of the transaction management.
+
+Although the JTA specification provides a range of APIs, the only required interface for the utilization of the programmatic transactions is the \texttt{javax.transaction.UserTransaction}. The full interface is available at the appendix \ref{sec:appendix-JTA}. The only concerned methods are \texttt{begin()}, \texttt{commit()}, \texttt{rollback()} and \texttt{getStatus()}. The call to the begin() will start a new transaction and associates it with the current thread. As the Java platform allows only one transaction to be associated with the thread, a call to the begin() method may result into exception in case the transaction has already been started in the current context. The transaction end methods (\texttt{commit()} and \texttt{rollback()}) perform their respective actions and disassociate the transaction with the thread. The \texttt{getStatus()} method returns an integer value representing the status of the current transaction derived from the \texttt{javax.transaction.Status} class (appendix \ref{sec:appendix-JTA}).
 
 \subsection{Declarative transaction model}
 
@@ -914,6 +916,53 @@ CQRS
 \end{minted}
 
 
+\chapter{JTA}
+\label{sec:appendix-JTA}
+
+\noindent
+\textbf{javax.transaction.UserTransaction}
+
+\begin{minted}{java}
+    void begin();
+    
+    void commit();
+    
+    void rollback();
+    
+    void setRollbackOnly();
+    
+    int getStatus();
+    
+    void setTransactionTimeout(int seconds);
+\end{minted}
+
+\hfill \break
+
+\noindent
+\textbf{javax.transaction.Status}
+
+\begin{minted}{java}
+
+    STATUS_ACTIVE = 0;
+
+    STATUS_MARKED_ROLLBACK = 1;
+
+    STATUS_PREPARED = 2;
+
+    STATUS_COMMITTED = 3;
+
+    STATUS_ROLLEDBACK = 4;
+
+    STATUS_UNKNOWN = 5;
+
+    STATUS_NO_TRANSACTION = 6;
+
+    STATUS_PREPARING = 7;
+
+    STATUS_COMMITTING = 8;
+
+    STATUS_ROLLING_BACK = 9;
+\end{minted}
 
 
 \chapter{The saga scenarios}
