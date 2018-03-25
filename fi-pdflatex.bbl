@@ -56,6 +56,10 @@ D.~Barry, ``{Service-Oriented Architecture (SOA) Definition},'' 2016. [Online].
   \url{http://www.service-architecture.com/articles/web-services/serviceoriented_architecture_soa_definition.html}
 \BIBentrySTDinterwordspacing
 
+\bibitem{reactive_ms_arch}
+J.~Bonér, \emph{Reactive microservices architecture}, 1st~ed.\hskip 1em plus
+  0.5em minus 0.4em\relax O'Reilly Media, Inc., 2016.
+
 \bibitem{microservices}
 \BIBentryALTinterwordspacing
 J.~Lewis and M.~Fowler, ``Microservices,'' 2014. [Online]. Available:
@@ -72,6 +76,12 @@ C.~Richardson, ``{Introduction to Microservices | NGINX},'' 2015. [Online].
 \BIBentryALTinterwordspacing
 S.~Newman, ``{Principles of Microservices},'' 2016. [Online]. Available:
   \url{http://samnewman.io/talks/principles-of-microservices/}
+\BIBentrySTDinterwordspacing
+
+\bibitem{conways_law}
+\BIBentryALTinterwordspacing
+M.~Conway, ``Conway's law,'' 2018. [Online]. Available:
+  \url{http://www.melconway.com/Home/Conways_Law.html}
 \BIBentrySTDinterwordspacing
 
 \bibitem{swagger}

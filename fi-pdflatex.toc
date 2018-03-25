@@ -23,11 +23,11 @@
 \contentsline {chapter}{\numberline {3}\bfseries Microservices architecture pattern}{10}{chapter.3}
 \contentsline {section}{\numberline {3.1}\slshape Architecture pattern}{10}{section.3.1}
 \contentsline {subsection}{\numberline {3.1.1}\rmfamily Monolithic architecture}{10}{subsection.3.1.1}
-\contentsline {subsection}{\numberline {3.1.2}\rmfamily Microservice architecture}{10}{subsection.3.1.2}
+\contentsline {subsection}{\numberline {3.1.2}\rmfamily Microservice architecture}{11}{subsection.3.1.2}
 \contentsline {section}{\numberline {3.2}\slshape Principles of microservices}{11}{section.3.2}
 \contentsline {section}{\numberline {3.3}\slshape Reactive microservices}{14}{section.3.3}
 \contentsline {subsection}{\numberline {3.3.1}\rmfamily Reactive systems}{14}{subsection.3.3.1}
-\contentsline {subsection}{\numberline {3.3.2}\rmfamily Reactive programming}{15}{subsection.3.3.2}
+\contentsline {subsection}{\numberline {3.3.2}\rmfamily Reactive programming}{16}{subsection.3.3.2}
 \contentsline {chapter}{\numberline {4}\bfseries Communication patterns}{18}{chapter.4}
 \contentsline {section}{\numberline {4.1}\slshape Consensus protocols}{18}{section.4.1}
 \contentsline {subsection}{\numberline {4.1.1}\rmfamily 2PC}{18}{subsection.4.1.1}
