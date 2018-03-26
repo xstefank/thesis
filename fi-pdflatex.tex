@@ -299,11 +299,19 @@ Eventual consistency
 \clearpage
 \chapter{Saga pattern}
 
-A saga, as described in the original publication \cite{sagas_publ} from 1987, is a long lived transaction that can be written as a sequence of transactions that can be interleaved with other transactions. Each operation that is a part of the saga represents an unit of work that can be undone by the compensation action. The saga guarantees that either all operations complete successfully, or the corresponding compensation actions are run for all executed operations to cancel the partial processing.
+A saga, as described in the original publication \cite{sagas_publ} from 1987, is a long lived transaction that can be written as a sequence of transactions that can be interleaved with other transactions. Each operation that is a part of the saga represents an unit of work that can be undone by the compensation action. The saga guarantees that either all operations complete successfully, or the corresponding compensation actions are run for all executed operations to cancel the partial processing (\ref{fig:tripExample}).
+
+\begin{figure}
+    \begin{center}
+        \includegraphics[height=60mm]{images/tripExample.png}
+    \end{center}
+    \caption{Example saga execution}
+    \label{fig:tripExample}
+\end{figure}
 
 In contrast to the traditional transaction approach, the Saga pattern relaxes some of the ACID properties (namely atomicity and isolation) to achieve availability and scalability with build-in failure management. In practice, applications are mostly not fully restricted to all of the transaction guarantees, so the saga pattern is emerging as a real alternative to traditional ACID transactions.
 
-In this chapter I describe the saga processing as it is defined by the initial publication \cite{sagas_publ}, describe how the activities and compensations works in sagas, how the saga can handle the failure recovery and present several modern frameworks that provide the support for the saga implementation.
+In this chapter, we will describe the saga processing as it is defined by the initial publication \cite{sagas_publ}, describe how the activities and compensations works in sagas, how the saga can handle the failure recovery and present several modern frameworks that provide the support for the saga implementation.
 
 \section{Activities}
 
