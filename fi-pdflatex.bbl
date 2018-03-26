@@ -102,6 +102,19 @@ R.~K. M.~T. Jonas~Bonér, Dave~Farley, ``Reactive manifesto,'' 2018. [Online].
   Available: \url{https://www.reactivemanifesto.org/}
 \BIBentrySTDinterwordspacing
 
+\bibitem{rxJava}
+\BIBentryALTinterwordspacing
+R.~community, ``Rxjava,'' 2018. [Online]. Available:
+  \url{https://github.com/ReactiveX/RxJava}
+\BIBentrySTDinterwordspacing
+
+\bibitem{5thingsAboutRP_RHDev}
+\BIBentryALTinterwordspacing
+C.~Escoffier, ``5 things to know about reactive programming,'' 2017. [Online].
+  Available:
+  \url{https://developers.redhat.com/blog/2017/06/30/5-things-to-know-about-reactive-programming/}
+\BIBentrySTDinterwordspacing
+
 \bibitem{sagas_publ}
 H.~Garcia-Molina and K.~Salem, ``Sagas,'' \emph{ACM SIGMOD Record}, vol.~16,
   no.~3, pp. 249--259, 1987.
