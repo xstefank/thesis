@@ -388,7 +388,7 @@ As all of the above mentioned components are distributed, the saga management sy
 
 \section{Current development support}
 
-This section presents the current implementations of the saga pattern available for the enterprise use. The three explored frameworks are Axon \cite{axon_framework}, Eventuate \cite{eventuate.io} and Narayana LRA\footnote{Long Running Actions} \cite{narayana_lra}.
+This section presents the current implementations of the saga pattern available for the enterprise use. The three explored frameworks are Axon \cite{axon_framework}, Eventuate \cite{eventuate.io} and Narayana Long Running Actions (LRA) \cite{narayana_lra}.
 
 \subsection{Axon framework}
 
@@ -426,19 +426,22 @@ the platform controls the information transfer. The base Eventuate platform buil
 \clearpage
 \chapter{Saga implementations comparison example}
 
-As a part of the investigation of the each discussed framework from the previous chapter, I created a sample application simulating the saga utilization. This application is a backend processing for orders with a simple REST\footnote{Representational State Transfer} interface. 
+As a part of the investigation of the each discussed framework from the previous chapter, I created a sample application simulating the saga utilization. The main goal of this quickstart projects is to compare the base attributes of the investigated saga solution frameworks. This includes the comparison of the development model, microservices feasibility, maintainability, scalability, performance and the applicability of the reactive principles within the saga execution. 
+
+The application represents a backend processing for orders with a simple REST\footnote{Representational State Transfer} user interface. Users are also allowed to query persisted information through the defined microservices APIs available in appendix \ref{sec:appendixAPI}.
 
 All examples are based on the microservices pattern. As every framework is suitable for the use in different environments, each example is achieving the same goal through the different portfolio of technologies. The exact mechanisms used is individual projects will be discussed in more detail in their respective sections.
 
-\section{Invocation and interaction}
+\section{Common scenario}
 
-An user is able to create the order by a REST call to the dedicated endpoint of the \texttt{order-service} microservice. The request must provide a product information JSON\footnote{JavaScript object notation} containing a product id, a commentary and a price. For the simplicity reasons, the order always consists only of the single product. The figure 6.1 shows the example of the input JSON format for the product data. The complete REST API\footnote{Application programming interface} for each individual example is provided in the Appendix B.
+A user is able to create the order by a REST call to the dedicated endpoint of the \texttt{order-service} microservice. The request must provide a product information JSON\footnote{JavaScript object notation} containing a product id, a commentary and a price. For the simplicity reasons, the order always consists only of the single product. The figure \ref{fig:inputJson} shows the example of the input JSON format for the product data. The complete REST API\footnote{Application programming interface} for each individual example is provided in the Appendix \ref{sec:appendixAPI}.
 
 \begin{figure}
     \begin{center}
         \includegraphics[height=30mm]{images/productInfoJSON.png}
     \end{center}
     \caption{Product Information example JSON}
+    \label{fig:inputJson}
 \end{figure}
 
 The setup of each example is described in detail in their respective repositories included in the Appendex B. Generally, each service is a standalone Java application that must run in a separated terminal instance by default located on the local computer address (localhost). Except for the LRA example, all examples are also able to run on the Docker\cite{docker} platform using the Docker compose project\cite{docker_compose}.
@@ -478,7 +481,7 @@ Axon service is a Java Spring Boot \cite{spring_boot} microservices application.
 
 As a CQRS based quickstart, Axon service uses two different and separated communication channels to exchange information between services: the command bus and the event bus. By default, the Axon framework reduce both channels to one JVM\footnote{Java Virtual Machine} thus one microservice. Except from that, developers are also able to specify several specialized ways of the configuration to distribute messages between different services which is used in this Axon quickstart.
 
-The quickstart uses a motion of the distributed command bus which is based upon a different approach then the one used in the traditional single JVM Axon applications. The distributed command bus forms a bridge between separated command bus implementations to transfer commands between different JVMs\cite{axon_framework_reference_guide}. Its main responsibility is the selection of the communication protocol and the choice of the target destination for each incoming command. 
+The quickstart uses a motion of the distributed command bus which is based upon a different approach then the one used in the traditional single JVM Axon applications. The distributed command bus forms a bridge between separated command bus implementations to transfer commands between different JVMs \cite{axon_framework_reference_guide}. Its main responsibility is the selection of the communication protocol and the choice of the target destination for each incoming command. 
 
 Axon provides two options for connecting different services through the distributed command bus -- \texttt{JGroupsConnector} and \texttt{Spring Cloud Connector}. The one used in this quickstart is the Spring Cloud method. The underlying implementation is based on the Netflix Eureka Discovery and Eureka Server combination \cite{service_registration}. Each business service as part of its initialization registers itself with the service \texttt{registration-server} which function as the Eureka server. Axon is then able to redirect commands to the right service chosen by the value of parameters in the command class annotated by the \texttt{@TargetAggregateIdentifier} annotation.
 
@@ -620,7 +623,7 @@ In the end it is worth mentioning that as the Eventuate service is the pure CQRS
 
 \section{LRA service}
 
-The LRA service is the first example which in the contradiction with previous quickstarts does not restrict its services to any particular conventions. Individual services are connected through the exposed REST routes.
+The LRA service is the first example in contradiction with previous quickstarts as it does not restrict its services to any particular conventions. Individual services are connected through the exposed REST routes.
 
 \subsection{Platform}
 
@@ -779,6 +782,7 @@ Similarly, the saga may need to interact with the same participant in several di
 CQRS
 
 \chapter{The example applications public APIs}
+\label{sec:appendixAPI}
 
 \section{Axon service}
 

@@ -40,7 +40,7 @@
 \BOOKMARK [2][-]{subsection.5.6.3}{\040Narayana\040LRA}{section.5.6}% 40
 \BOOKMARK [2][-]{subsection.5.6.4}{\040Eventuate\040Tram}{section.5.6}% 41
 \BOOKMARK [0][-]{chapter.6}{Saga\040implementations\040comparison\040example}{}% 42
-\BOOKMARK [1][-]{section.6.1}{\040Invocation\040and\040interaction}{chapter.6}% 43
+\BOOKMARK [1][-]{section.6.1}{\040Common\040scenario}{chapter.6}% 43
 \BOOKMARK [1][-]{section.6.2}{\040The\040saga\040model}{chapter.6}% 44
 \BOOKMARK [1][-]{section.6.3}{\040Axon\040service}{chapter.6}% 45
 \BOOKMARK [2][-]{subsection.6.3.1}{\040Platform}{section.6.3}% 46
