@@ -123,6 +123,12 @@ H.~Garcia-Molina and K.~Salem, ``Sagas,'' \emph{ACM SIGMOD Record}, vol.~16,
 U.~R. Sharma, \emph{Practical Microservices}, 1st~ed.\hskip 1em plus 0.5em
   minus 0.4em\relax Packt Publishing Ltd., 2017.
 
+\bibitem{applying_saga_pattern}
+\BIBentryALTinterwordspacing
+C.~McCaffrey, ``Applying the saga pattern,'' 2015. [Online]. Available:
+  \url{https://speakerdeck.com/caitiem20/applying-the-saga-pattern}
+\BIBentrySTDinterwordspacing
+
 \bibitem{axon_framework}
 \BIBentryALTinterwordspacing
 A.~framework, ``{Axon framework},'' 2017. [Online]. Available:

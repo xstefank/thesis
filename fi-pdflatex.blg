@@ -21,45 +21,45 @@ Too many commas in name 1 of "Jonas Bonér, Dave Farley, Roland Kuhn, Martin Tho
 while executing---line 2403 of file IEEEtran.bst
 
 Done.
-You've used 34 entries,
+You've used 35 entries,
             4087 wiz_defined-function locations,
-            1508 strings with 21136 characters,
-and the built_in function-call counts, 13663 in all, are:
-= -- 1058
-> -- 171
+            1512 strings with 21257 characters,
+and the built_in function-call counts, 14027 in all, are:
+= -- 1087
+> -- 175
 < -- 32
-+ -- 91
-- -- 34
-* -- 542
-:= -- 2443
-add.period$ -- 68
-call.type$ -- 34
-change.case$ -- 33
++ -- 93
+- -- 35
+* -- 555
+:= -- 2513
+add.period$ -- 70
+call.type$ -- 35
+change.case$ -- 34
 chr.to.int$ -- 69
-cite$ -- 34
-duplicate$ -- 1111
-empty$ -- 1326
-format.name$ -- 39
-if$ -- 3031
+cite$ -- 35
+duplicate$ -- 1141
+empty$ -- 1362
+format.name$ -- 40
+if$ -- 3110
 int.to.chr$ -- 0
-int.to.str$ -- 34
-missing$ -- 235
-newline$ -- 181
-num.names$ -- 27
-pop$ -- 722
+int.to.str$ -- 35
+missing$ -- 242
+newline$ -- 186
+num.names$ -- 28
+pop$ -- 744
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 2
-skip$ -- 1059
+skip$ -- 1087
 stack$ -- 0
-substring$ -- 174
-swap$ -- 642
+substring$ -- 175
+swap$ -- 658
 text.length$ -- 9
 text.prefix$ -- 0
 top$ -- 5
-type$ -- 34
+type$ -- 35
 warning$ -- 0
-while$ -- 38
-width$ -- 36
-write$ -- 348
+while$ -- 39
+width$ -- 37
+write$ -- 358
 (There were 2 error messages)
