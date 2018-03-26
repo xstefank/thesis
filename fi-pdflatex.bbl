@@ -119,6 +119,10 @@ C.~Escoffier, ``5 things to know about reactive programming,'' 2017. [Online].
 H.~Garcia-Molina and K.~Salem, ``Sagas,'' \emph{ACM SIGMOD Record}, vol.~16,
   no.~3, pp. 249--259, 1987.
 
+\bibitem{prac_ms}
+U.~R. Sharma, \emph{Practical Microservices}, 1st~ed.\hskip 1em plus 0.5em
+  minus 0.4em\relax Packt Publishing Ltd., 2017.
+
 \bibitem{axon_framework}
 \BIBentryALTinterwordspacing
 A.~framework, ``{Axon framework},'' 2017. [Online]. Available:
@@ -194,13 +198,13 @@ A.~Gupta, ``Wildfly swarm: Building microservices with java ee,'' 2018.
 
 \bibitem{openshift}
 \BIBentryALTinterwordspacing
-{Red Hat}, ``{OpenShift container application platform},'' 2018. [Online].
-  Available: \url{https://www.openshift.com/}
+{Red Hat, Inc.}, ``{OpenShift container application platform},'' 2018.
+  [Online]. Available: \url{https://www.openshift.com/}
 \BIBentrySTDinterwordspacing
 
 \bibitem{openshift_io}
 \BIBentryALTinterwordspacing
-------, ``Openshift.io,'' 2018. [Online]. Available:
+{{Red Hat, Inc.}}, ``Openshift.io,'' 2018. [Online]. Available:
   \url{https://openshift.io/}
 \BIBentrySTDinterwordspacing
 

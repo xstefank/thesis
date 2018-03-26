@@ -319,7 +319,7 @@ An activity represents a local transaction that is a part of the saga. Each saga
 
 The ability to commit a local transaction breaks the atomicity property as we no longer endure the atomic unit that the enclosing transaction represents. Furthermore, if distinct sagas may be executed in the system concurrently, the isolation (serializability) property is also violated. Although, intermediate saga states may introduce consistency contraventions, sagas guarantee that the state will become consistent after the saga completes. This principle is called an eventual consistency. It guarantees that even if partial execution may result into the inconsistent state, the system state will get consistent eventually -- there exist a point in future in which the system is consistent.
 
-As the definition in the original paper allows local transactions to interleave, it prohibits any form of dependencies between them. This would imply that the participant cannot depend on results committed by any previous transaction in the saga sequence. However, in modern systems the sequential execution of local transactions is possible to implement in expense of an utilization of a single saga coordinator process throughout the entire sequential execution of this sequence. 
+As the definition in the original paper by Garcia-Molina and Salem \cite{sagas_publ} allows local transactions to interleave, it prohibits any form of dependencies between them. This would imply that the participant cannot depend on results committed by any previous transaction in the saga sequence. However, in modern systems the sequential execution of local transactions is possible to implement in expense of an utilization of a single saga coordinator process throughout the entire sequential execution of this sequence. 
 
 \section{Compensations}
 
@@ -333,7 +333,7 @@ It is important to keep in mind that even the compensating transactions may fail
 
 \section{Saga execution component and transaction log}
 
-The saga paper describes the saga execution component (SEC) as a process that is responsible for the saga management. It communicates with the transaction manager which manages activities included in the saga. Both of these components require a transaction log to record their respective interactions\footnote{it is convenient to share the transaction log between both components}. The saga execution component does not require  concurrency control because the saga activities can be interleaved.
+The saga execution component (SEC) is a process that is responsible for the saga management. It communicates with the transaction manager which manages activities included in the saga. Both of these components require a transaction log to record their respective interactions\footnote{it is convenient to share the transaction log between both components}. The saga execution component does not require  concurrency control because the saga activities can be interleaved.
 
 The entries that may be written to the transaction log are usually associated with the saga or activity lifecycle. The saga log includes \texttt{start-saga} entry followed by one or more \texttt{start-activity} / \texttt{end-activity} entries and it is finished by the \texttt{end-saga}. Optionally, the transaction system may also provide an ability for users to cancel the saga execution with the \texttt{abort-saga} command. 
 
@@ -342,7 +342,7 @@ Each saga operation is channeled through the saga execution component and it is 
 \section{Recovery modes}
 \label{sec:recovery-modes}
 
-The saga paper distinguishes two options to handle the failure that interrupts the saga. These two supported modes are backward and forward recovery.
+The saga paper \cite{sagas_publ} distinguishes two options to handle the failure that interrupts the saga. These two supported modes are backward and forward recovery.
 
 \newlinepar{Backward recovery}
 
@@ -370,7 +370,7 @@ In addition to modes defined above, it is also possible to combine these two app
 
 \section{Distributed sagas}
 
-The notion of sagas can be naturally extended into distributed environments. The saga definition in distributed systems can redefined as a sequence of requests that are being placed on particular participants invocations. These requests may provide ACID guarantees, but this not restricted and it must ensured by individual participants. Similarly, each participant is also required to expose the idempotent compensating request which can semantically undo the request that is handled by the participant in the saga.
+The notion of sagas can be naturally extended into distributed environments. The Saga pattern is an architectural pattern that focuses on integrity, reliability, and quality, and it pertains to the communication patterns between services \cite{prac_ms}. This allows the saga definition in distributed systems to be redefined as a sequence of requests that are being placed on particular participants invocations. These requests may provide ACID guarantees, but this not restricted and it must ensured by individual participants. Similarly, each participant is also required to expose the idempotent compensating request which can semantically undo the request that is handled by the participant in the saga.
 
 Analogously to the non-distributed systems, the distributed saga management also requires a transaction log which needs to be durable and distributed. The examples of distributed database providers include e.g. Cassandra, RethinkDB or Apache Ignite.
 
