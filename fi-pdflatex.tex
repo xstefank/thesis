@@ -170,6 +170,8 @@ Although the JTA specification provides a range of APIs, the only required inter
 
 The declarative transaction model is also referred to as the Container-Managed Transactions (CMT). In this model, the supplying, underlying container manages all transactions on the users behalf. This includes starting and the administration of the end phases (either commit or rollback) of transactions. The developer is only required to setup the container with the transaction configuration that declares, for instance, that the transaction should be rollbacked on any exception.
 
+The main concerned interface used for declarative transactions is the \texttt{javax.transaction.TransactionManager}. Although this interface provides  same methods that are present in the \texttt{UserTransaction} interface used in the programmatic model, users are strongly encouraged to use it only in CMT. In addition to the \texttt{UserTransaction}, it introduces two methods that manage the transaction suspensions. The \texttt{suspend()} method suspends and  disassociates the transaction with the current thread. It returns an object that represents the identification of the running transaction. This transaction object can be afterwards used as an argument to the \texttt{resume()} method to associate the transaction again with the current thread and continue the transaction execution.
+
 
 
 \section{Distributed transactions}
@@ -986,6 +988,29 @@ CQRS
     STATUS_COMMITTING = 8;
 
     STATUS_ROLLING_BACK = 9;
+\end{minted}
+
+\noindent
+\textbf{javax.transaction.TransactionManager}
+
+\begin{minted}{java}
+    void begin();
+    
+    void commit();
+    
+    void rollback();
+    
+    void setRollbackOnly();
+    
+    int getStatus();
+    
+    Transaction getTransaction();
+    
+    void setTransactionTimeout(int seconds);
+    
+    Transaction suspend();
+    
+    void resume(Transaction tobj);
 \end{minted}
 
 

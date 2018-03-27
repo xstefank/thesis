@@ -17,7 +17,7 @@
 \contentsline {subsection}{\numberline {2.3.2}\rmfamily Programmatic transaction model}{7}{subsection.2.3.2}
 \contentsline {subsection}{\numberline {2.3.3}\rmfamily Declarative transaction model}{8}{subsection.2.3.3}
 \contentsline {section}{\numberline {2.4}\slshape Distributed transactions}{8}{section.2.4}
-\contentsline {section}{\numberline {2.5}\slshape Transaction manager}{8}{section.2.5}
+\contentsline {section}{\numberline {2.5}\slshape Transaction manager}{9}{section.2.5}
 \contentsline {subsection}{\numberline {2.5.1}\rmfamily Local transaction manager}{9}{subsection.2.5.1}
 \contentsline {section}{\numberline {2.6}\slshape Failure handling}{9}{section.2.6}
 \contentsline {chapter}{\numberline {3}\bfseries Microservices architecture pattern}{10}{chapter.3}
@@ -97,4 +97,4 @@
 \contentsline {section}{\numberline {B.3}\slshape LRA service}{59}{section.B.3}
 \contentsline {section}{\numberline {B.4}\slshape Eventuate Tram}{60}{section.B.4}
 \contentsline {chapter}{\numberline {C}\bfseries JTA}{61}{appendix.C}
-\contentsline {chapter}{\numberline {D}\bfseries The saga scenarios}{62}{appendix.D}
+\contentsline {chapter}{\numberline {D}\bfseries The saga scenarios}{63}{appendix.D}
