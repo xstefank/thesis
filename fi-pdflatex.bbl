@@ -49,6 +49,10 @@ M.~Kleppmann, ``Transactions: myths, surprises and opportunities,'' 2018.
   \url{https://martin.kleppmann.com/2015/09/26/transactions-at-strange-loop.html}
 \BIBentrySTDinterwordspacing
 
+\bibitem{java_transaction_design_strategies}
+M.~Richards, \emph{Java transaction design strategies}, 1st~ed.\hskip 1em plus
+  0.5em minus 0.4em\relax C4Media, 2006.
+
 \bibitem{soa}
 \BIBentryALTinterwordspacing
 D.~Barry, ``{Service-Oriented Architecture (SOA) Definition},'' 2016. [Online].
@@ -172,27 +176,32 @@ B.~Porter, J.~Zyl, and O.~Lamy, ``Maven,'' 2018. [Online]. Available:
 
 \bibitem{axon_framework_reference_guide}
 \BIBentryALTinterwordspacing
-``Axon framework reference guide,'' 2018. [Online]. Available:
-  \url{https://docs.axonframework.org/v/3.1/}
+{Axon community}, ``Axon framework reference guide,'' 2018. [Online].
+  Available: \url{https://docs.axonframework.org/v/3.1/}
 \BIBentrySTDinterwordspacing
 
 \bibitem{service_registration}
-``Netflix service registration and discovery.''
+\BIBentryALTinterwordspacing
+{Spring community}, ``Netflix service registration and discovery,'' 2018.
+  [Online]. Available:
+  \url{https://spring.io/guides/gs/service-registration-and-discovery/}
+\BIBentrySTDinterwordspacing
 
 \bibitem{rabbitmq}
 \BIBentryALTinterwordspacing
-``Rabbitmq,'' 2018. [Online]. Available: \url{https://www.rabbitmq.com/}
+{Pivotal software}, ``Rabbitmq,'' 2018. [Online]. Available:
+  \url{https://www.rabbitmq.com/}
 \BIBentrySTDinterwordspacing
 
 \bibitem{apache_zookeeper}
 \BIBentryALTinterwordspacing
-``Apache zookeeper,'' 2018. [Online]. Available:
+{Apache software foundation}, ``Apache zookeeper,'' 2018. [Online]. Available:
   \url{https://zookeeper.apache.org/}
 \BIBentrySTDinterwordspacing
 
 \bibitem{gradle}
 \BIBentryALTinterwordspacing
-``Gradle,'' 2018. [Online]. Available: \url{https://gradle.org/}
+{Gradle Inc.}, ``Gradle,'' 2018. [Online]. Available: \url{https://gradle.org/}
 \BIBentrySTDinterwordspacing
 
 \bibitem{gupta_2018}

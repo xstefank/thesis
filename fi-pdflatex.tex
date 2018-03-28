@@ -152,11 +152,11 @@ This property characterizes that all changes done by the transactions must be pe
 
 \section{Transaction models}
 
-As it was already mentioned at the beginning of this chapter, there exist three types of transactions models available for transaction management that define how the transaction is composed. These models are local, programmatic and declarative transactions. This chapter discuss how these models can be applied in applications deployed in the Enterprise Java platform environment.
+As it was already mentioned at the beginning of this chapter, there exist three types of transactions models available for transaction management that define how the transaction is composed. These models are local, programmatic and declarative transactions. This chapter discuss how these models can be applied in applications deployed in the Enterprise Java platform environment and it is inspired by the book \textit{Java Transaction Design Strategies} by Mark Richards \cite{java_transaction_design_strategies}.
 
 \subsection{Local transaction model}
 
-The local transaction model derives its name from the fact that transactions are managed by a local resource manager which will be described in the later section. With this approach the transaction is represents a connection to the individual resource.
+The local transaction model derives its name from the fact that transactions are managed by a local resource manager which will be described in the later section. This approach represents the transaction as a connection to the individual resource. Common use-cases include the database or the JMS\footnote{Java Message Service} connection providers.
 
 \subsection{Programmatic transaction model}
 

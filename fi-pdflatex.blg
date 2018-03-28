@@ -9,11 +9,6 @@ Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Database file #1: IEEEabrv.bib
 Database file #2: references.bib
-I was expecting a `,' or a `}'---line 107 of file references.bib
- :     
- :     url={https://spring.io/guides/gs/service-registration-and-discovery/},
-(Error may have been on previous line)
-I'm skipping whatever remains of this entry
 -- IEEEtran.bst version 1.14 (2015/08/26) by Michael Shell.
 -- http://www.michaelshell.org/tex/ieeetran/bibtex/
 -- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
@@ -21,45 +16,45 @@ Too many commas in name 1 of "Jonas Bonér, Dave Farley, Roland Kuhn, Martin Tho
 while executing---line 2403 of file IEEEtran.bst
 
 Done.
-You've used 35 entries,
+You've used 36 entries,
             4087 wiz_defined-function locations,
-            1512 strings with 21257 characters,
-and the built_in function-call counts, 14027 in all, are:
-= -- 1087
-> -- 175
-< -- 32
-+ -- 93
-- -- 35
-* -- 555
-:= -- 2513
-add.period$ -- 70
-call.type$ -- 35
-change.case$ -- 34
-chr.to.int$ -- 69
-cite$ -- 35
-duplicate$ -- 1141
-empty$ -- 1362
-format.name$ -- 40
-if$ -- 3110
+            1523 strings with 21497 characters,
+and the built_in function-call counts, 14781 in all, are:
+= -- 1158
+> -- 196
+< -- 34
++ -- 100
+- -- 41
+* -- 587
+:= -- 2683
+add.period$ -- 72
+call.type$ -- 36
+change.case$ -- 35
+chr.to.int$ -- 75
+cite$ -- 36
+duplicate$ -- 1187
+empty$ -- 1423
+format.name$ -- 46
+if$ -- 3273
 int.to.chr$ -- 0
-int.to.str$ -- 35
-missing$ -- 242
-newline$ -- 186
-num.names$ -- 28
-pop$ -- 744
+int.to.str$ -- 36
+missing$ -- 252
+newline$ -- 191
+num.names$ -- 34
+pop$ -- 763
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 2
-skip$ -- 1087
+skip$ -- 1140
 stack$ -- 0
-substring$ -- 175
-swap$ -- 658
+substring$ -- 180
+swap$ -- 692
 text.length$ -- 9
 text.prefix$ -- 0
 top$ -- 5
-type$ -- 35
+type$ -- 36
 warning$ -- 0
-while$ -- 39
-width$ -- 37
-write$ -- 358
-(There were 2 error messages)
+while$ -- 46
+width$ -- 38
+write$ -- 374
+(There was 1 error message)

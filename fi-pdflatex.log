@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.9.30)  27 MAR 2018 23:37
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.9.30)  28 MAR 2018 08:12
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -2109,7 +2109,7 @@ Overfull \hbox (4.97842pt too wide) in paragraph at lines 167--168
  []
 
 
-Overfull \vbox (5.86113pt too high) has occurred while \output is active []
+Overfull \vbox (3.36116pt too high) has occurred while \output is active []
 
 
 [7] [8] [9]
@@ -2142,7 +2142,7 @@ Chapter 4.
 
 ]
 Chapter 5.
-<images/tripExample.png, id=619, 738.76pt x 440.64626pt>
+<images/tripExample.png, id=623, 738.76pt x 440.64626pt>
 File: images/tripExample.png Graphic file (type png)
 
 <use images/tripExample.png>
@@ -2175,7 +2175,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 373--374
 
  []
 
-[23] <images/SEC.png, id=655, 1175.39125pt x 867.24pt>
+[23] <images/SEC.png, id=659, 1175.39125pt x 867.24pt>
 File: images/SEC.png Graphic file (type png)
  <use images/SEC.png>
 Package pdftex.def Info: images/SEC.png used on input line 387.
@@ -2188,7 +2188,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 405--406
 
 [26] [27]
 Chapter 6.
-<images/productInfoJSON.png, id=694, 316.18124pt x 101.37875pt>
+<images/productInfoJSON.png, id=698, 316.18124pt x 101.37875pt>
 File: images/productInfoJSON.png Graphic file (type png)
 
 <use images/productInfoJSON.png>
@@ -2200,7 +2200,7 @@ Overfull \vbox (9.69156pt too high) has occurred while \output is active []
 
 [28
 
-] <images/sagaModel.pdf, id=707, 980.66376pt x 328.22626pt>
+] <images/sagaModel.pdf, id=711, 980.66376pt x 328.22626pt>
 File: images/sagaModel.pdf Graphic file (type pdf)
 
 <use images/sagaModel.pdf>
@@ -2342,14 +2342,14 @@ pli-ca-tion builds,
 Overfull \vbox (7.04938pt too high) has occurred while \output is active []
 
 
-[43] [44] <images/LRADefinition.png, id=836, 229.85875pt x 100.375pt>
+[43] [44] <images/LRADefinition.png, id=841, 229.85875pt x 100.375pt>
 File: images/LRADefinition.png Graphic file (type png)
 
 <use images/LRADefinition.png>
 Package pdftex.def Info: images/LRADefinition.png used on input line 686.
 (pdftex.def)             Requested size: 195.48256pt x 85.35826pt.
  [45 <./images/LRADefinition.png (PNG copy)>]
-<images/actionJSON.png, id=844, 390.45876pt x 104.39pt>
+<images/actionJSON.png, id=848, 390.45876pt x 104.39pt>
 File: images/actionJSON.png Graphic file (type png)
 
 <use images/actionJSON.png>
@@ -2393,13 +2393,13 @@ Underfull \hbox (badness 1189) in paragraph at lines 30--33
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 54--58
+Underfull \hbox (badness 10000) in paragraph at lines 58--62
 \T1/qpl/m/n/12 (+11) com / articles / web-[]services / serviceoriented _ archit
 ecture _ soa _
  []
 
 [54]
-Underfull \hbox (badness 1107) in paragraph at lines 146--149
+Underfull \hbox (badness 1107) in paragraph at lines 150--153
 []\T1/qpl/m/n/12 (+20) Narayana, ``Narayana LRA,'' 2017. [On-line]. Avail-
  []
 
@@ -2521,10 +2521,10 @@ runsystem(rm fi-pdflatex.pyg)...executed.
 
  ) 
 Here is how much of TeX's memory you used:
- 38271 strings out of 494946
- 694360 string characters out of 6180981
- 826477 words of memory out of 5000000
- 40446 multiletter control sequences out of 15000+600000
+ 38274 strings out of 494946
+ 694447 string characters out of 6180981
+ 826533 words of memory out of 5000000
+ 40447 multiletter control sequences out of 15000+600000
  67607 words of font info for 109 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  69i,8n,84p,10406b,646s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -2537,10 +2537,10 @@ c/lm/lmtk10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/lm/lmtt10.pfb
 xlive/texmf-dist/fonts/type1/public/tex-gyre/qplb.pfb></usr/share/texlive/texmf
 -dist/fonts/type1/public/tex-gyre/qplr.pfb></usr/share/texlive/texmf-dist/fonts
 /type1/public/tex-gyre/qplri.pfb>
-Output written on fi-pdflatex.pdf (73 pages, 14406977 bytes).
+Output written on fi-pdflatex.pdf (73 pages, 14407777 bytes).
 PDF statistics:
- 1062 PDF objects out of 1200 (max. 8388607)
- 938 compressed objects within 10 object streams
- 249 named destinations out of 1000 (max. 500000)
+ 1068 PDF objects out of 1200 (max. 8388607)
+ 944 compressed objects within 10 object streams
+ 251 named destinations out of 1000 (max. 500000)
  20754 words of extra memory for PDF output out of 24883 (max. 10000000)
 
