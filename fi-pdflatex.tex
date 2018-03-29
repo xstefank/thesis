@@ -281,7 +281,7 @@ Reactive systems are an architectural style that focuses on the responsiveness. 
 
 \subsection{Reactive programming}
 
-Reactive programming is a development model based on the streams of data called observables, and functions that may be applied on them. An observable is an object that contains dynamically versatile data that represent state which may be of interest to other object. 
+Reactive programming is a development model focusing on the observation of data streams, reacting on changes, and propagating them \cite{building_reactive_ms_in_java}. In the rest of this section, we will be referencing these data streams in the Reactive Extensions methodology as \textit{observables}. An observable is an object that contains dynamically versatile data that represent state which may be of interest to other object. In order to consume the data emitted by an observarble, the interested object must \textit{subscribe} to it.
 
 In practice, reactive programming distinguishes three kinds of observable objects -- observable data streams, singles and completables. Observable, as a stream of data, represents an asynchronous reaction. It provides three handlers, namely, for the data result, error handling and the end of the data stream. The single is a special type of observable that depicts the stream of one value. It is associated with an execution of asynchronous operation which provides data and error callback handlers. The completable observable symbolizes the stream without any value. It contrast with the single, it do not return a data value. For this reason, the completable should be configured with the completion and error handlers.
 

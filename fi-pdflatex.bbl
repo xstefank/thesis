@@ -106,6 +106,10 @@ R.~K. M.~T. Jonas~Bonér, Dave~Farley, ``Reactive manifesto,'' 2018. [Online].
   Available: \url{https://www.reactivemanifesto.org/}
 \BIBentrySTDinterwordspacing
 
+\bibitem{building_reactive_ms_in_java}
+C.~Escoffier, \emph{Building Reactive Microservices in Java}, 1st~ed.\hskip 1em
+  plus 0.5em minus 0.4em\relax O'Reilly Media, Inc., 2017.
+
 \bibitem{rxJava}
 \BIBentryALTinterwordspacing
 R.~community, ``Rxjava,'' 2018. [Online]. Available:
