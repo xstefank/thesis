@@ -53,6 +53,13 @@ M.~Kleppmann, ``Transactions: myths, surprises and opportunities,'' 2018.
 M.~Richards, \emph{Java transaction design strategies}, 1st~ed.\hskip 1em plus
   0.5em minus 0.4em\relax C4Media, 2006.
 
+\bibitem{spring_transaction_management_documentation}
+\BIBentryALTinterwordspacing
+{Spring community}, ``{Spring documentation/Transaction Management},'' 2018.
+  [Online]. Available:
+  \url{https://docs.spring.io/spring/docs/current/spring-framework-reference/data-access.html#transaction}
+\BIBentrySTDinterwordspacing
+
 \bibitem{soa}
 \BIBentryALTinterwordspacing
 D.~Barry, ``{Service-Oriented Architecture (SOA) Definition},'' 2016. [Online].

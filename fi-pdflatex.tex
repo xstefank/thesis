@@ -178,6 +178,10 @@ The declarative transaction model is also referred to as the Container-Managed T
 
 The main concerned interface used for declarative transactions is the \texttt{javax.transaction.TransactionManager}. Although this interface provides  same methods that are present in the \texttt{UserTransaction} interface used in the programmatic model, users are strongly encouraged to use it only in CMT. In addition to the \texttt{UserTransaction}, it introduces two methods that manage the transaction suspensions. The \texttt{suspend()} method suspends and  disassociates the transaction with the current thread. It returns an object that represents the identification of the running transaction. This transaction object can be afterwards used as an argument to the \texttt{resume()} method to associate the transaction again with the current thread and continue the transaction execution.
 
+Another essential method that is often associated with the container transactions is the \texttt{setRollbackOnly()}. It declares that the only possible transaction result is to rollback and any consequent actions can not change it.
+
+With the declarative transaction model, the users are required to configure the container with the settings of how individual transactions should be managed. This can be set up through the transaction attribute represented by, for instance, \texttt{TransactionAttributeType}, \texttt{Transactional.TxType} or \texttt{TransactionDefinition} (Spring) classes. The supported values are -- Required, Mandatory, RequiresNew, Supports, NotSupported and Never\footnote{Spring adds one more transaction attribute called Nested which represents a single physical transaction with multiple savepoints that it can roll back to \cite{spring_transaction_management_documentation}}. 
+
 
 
 \section{Distributed transactions}

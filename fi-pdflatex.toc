@@ -17,7 +17,7 @@
 \contentsline {subsection}{\numberline {2.3.2}\rmfamily Programmatic transaction model}{7}{subsection.2.3.2}
 \contentsline {subsection}{\numberline {2.3.3}\rmfamily Declarative transaction model}{8}{subsection.2.3.3}
 \contentsline {section}{\numberline {2.4}\slshape Distributed transactions}{9}{section.2.4}
-\contentsline {section}{\numberline {2.5}\slshape Transaction manager}{9}{section.2.5}
+\contentsline {section}{\numberline {2.5}\slshape Transaction manager}{10}{section.2.5}
 \contentsline {subsection}{\numberline {2.5.1}\rmfamily Local transaction manager}{10}{subsection.2.5.1}
 \contentsline {subsection}{\numberline {2.5.2}\rmfamily XA resource}{10}{subsection.2.5.2}
 \contentsline {section}{\numberline {2.6}\slshape Failure handling}{10}{section.2.6}
@@ -91,11 +91,11 @@
 \contentsline {chapter}{\numberline {7}\bfseries LRA execution extension}{53}{chapter.7}
 \contentsline {chapter}{\numberline {8}\bfseries Conclusion}{54}{chapter.8}
 \contentsline {chapter}{Bibliography}{55}{section*.29}
-\contentsline {chapter}{\numberline {A}\bfseries The Command Query Responsibility Segregation pattern}{58}{appendix.A}
-\contentsline {chapter}{\numberline {B}\bfseries The example applications public APIs}{59}{appendix.B}
-\contentsline {section}{\numberline {B.1}\slshape Axon service}{59}{section.B.1}
-\contentsline {section}{\numberline {B.2}\slshape Eventuate service}{59}{section.B.2}
-\contentsline {section}{\numberline {B.3}\slshape LRA service}{60}{section.B.3}
-\contentsline {section}{\numberline {B.4}\slshape Eventuate Tram}{61}{section.B.4}
-\contentsline {chapter}{\numberline {C}\bfseries JTA}{62}{appendix.C}
-\contentsline {chapter}{\numberline {D}\bfseries The saga scenarios}{64}{appendix.D}
+\contentsline {chapter}{\numberline {A}\bfseries The Command Query Responsibility Segregation pattern}{59}{appendix.A}
+\contentsline {chapter}{\numberline {B}\bfseries The example applications public APIs}{60}{appendix.B}
+\contentsline {section}{\numberline {B.1}\slshape Axon service}{60}{section.B.1}
+\contentsline {section}{\numberline {B.2}\slshape Eventuate service}{60}{section.B.2}
+\contentsline {section}{\numberline {B.3}\slshape LRA service}{61}{section.B.3}
+\contentsline {section}{\numberline {B.4}\slshape Eventuate Tram}{62}{section.B.4}
+\contentsline {chapter}{\numberline {C}\bfseries JTA}{63}{appendix.C}
+\contentsline {chapter}{\numberline {D}\bfseries The saga scenarios}{65}{appendix.D}
