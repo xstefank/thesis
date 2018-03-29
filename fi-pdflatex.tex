@@ -180,7 +180,21 @@ The main concerned interface used for declarative transactions is the \texttt{ja
 
 Another essential method that is often associated with the container transactions is the \texttt{setRollbackOnly()}. It declares that the only possible transaction result is to rollback and any consequent actions can not change it.
 
-With the declarative transaction model, the users are required to configure the container with the settings of how individual transactions should be managed. This can be set up through the transaction attribute represented by, for instance, \texttt{TransactionAttributeType}, \texttt{Transactional.TxType} or \texttt{TransactionDefinition} (Spring) classes. The supported values are -- Required, Mandatory, RequiresNew, Supports, NotSupported and Never\footnote{Spring adds one more transaction attribute called Nested which represents a single physical transaction with multiple savepoints that it can roll back to \cite{spring_transaction_management_documentation}}. 
+With the declarative transaction model, the users are required to configure the container with the settings of how individual transactions should be managed. This can be set up through the transaction attribute represented by, for instance, \texttt{TransactionAttributeType}, \texttt{Transactional.TxType} or \texttt{TransactionDefinition} (Spring) classes. The supported values are -- Required, Mandatory, RequiresNew, Supports, NotSupported and Never\footnote{Spring adds one more transaction attribute called Nested which represents a single physical transaction with multiple savepoints that it can roll back to \cite{spring_transaction_management_documentation}}:
+
+\begin{itemize}
+    \item \textbf{Required} -- If the transaction context is already present on the invocation, it will be used. Otherwise a new transaction is started. This is the most characteristic attribute and it usually configured as a default value.
+    
+    \item \textbf{Mandatory} -- Similarly to the Required, mandatory transaction attribute represents that the transaction must be present on the execution. However, it requires that the transaction is already started prior to the invocation. Alternatively, it throws \texttt{TransactionRequiredException} if the transaction context can not be found.
+    
+    \item \textbf{RequiresNew} -- The container will begin a new transaction on every invocation. If there is already a transaction context present, it is suspended for the duration of the processing of the new transaction. This breaks the atomicity property of the former transaction.
+    
+    \item \textbf{Supports} -- This attribute represents an invocation that is not required to run under the transaction context. It tells the container to use the transaction context, if it exists before the call, or to execute the operation non-transactionally if the transaction is not present.
+    
+    \item \textbf{NotSupported} -- The method will not be executed within the transaction context. If the transaction exists prior to the invocation, it is suspended and the method is invoked. In other case, the method is immediately started without the initiation of a new transaction.
+    
+    \item \textbf{Never} -- The container is forbidden to invoke the method if there is a transaction context present.
+\end{itemize}
 
 
 
