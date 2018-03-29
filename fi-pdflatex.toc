@@ -18,7 +18,7 @@
 \contentsline {subsection}{\numberline {2.3.3}\rmfamily Declarative transaction model}{8}{subsection.2.3.3}
 \contentsline {section}{\numberline {2.4}\slshape Distributed transactions}{9}{section.2.4}
 \contentsline {section}{\numberline {2.5}\slshape Transaction manager}{9}{section.2.5}
-\contentsline {subsection}{\numberline {2.5.1}\rmfamily Local transaction manager}{9}{subsection.2.5.1}
+\contentsline {subsection}{\numberline {2.5.1}\rmfamily Local transaction manager}{10}{subsection.2.5.1}
 \contentsline {subsection}{\numberline {2.5.2}\rmfamily XA resource}{10}{subsection.2.5.2}
 \contentsline {section}{\numberline {2.6}\slshape Failure handling}{10}{section.2.6}
 \contentsline {chapter}{\numberline {3}\bfseries Microservices architecture pattern}{11}{chapter.3}
