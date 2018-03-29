@@ -193,7 +193,7 @@ With the declarative transaction model, the users are required to configure the 
     
     \item \textbf{NotSupported} -- The method will not be executed within the transaction context. If the transaction exists prior to the invocation, it is suspended and the method is invoked. In other case, the method is immediately started without the initiation of a new transaction.
     
-    \item \textbf{Never} -- The container is forbidden to invoke the method if there is a transaction context present.
+    \item \textbf{Never} -- The container is forbidden to invoke the method if there is a transaction context present. In contrast with the NotSupported attribute which only suspends former transaction, this attribute will throw a runtime exception when the transaction is present before the invocation.
 \end{itemize}
 
 

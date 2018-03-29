@@ -17,7 +17,7 @@
 \contentsline {subsection}{\numberline {2.3.2}\rmfamily Programmatic transaction model}{7}{subsection.2.3.2}
 \contentsline {subsection}{\numberline {2.3.3}\rmfamily Declarative transaction model}{8}{subsection.2.3.3}
 \contentsline {section}{\numberline {2.4}\slshape Distributed transactions}{10}{section.2.4}
-\contentsline {section}{\numberline {2.5}\slshape Transaction manager}{10}{section.2.5}
+\contentsline {section}{\numberline {2.5}\slshape Transaction manager}{11}{section.2.5}
 \contentsline {subsection}{\numberline {2.5.1}\rmfamily Local transaction manager}{11}{subsection.2.5.1}
 \contentsline {subsection}{\numberline {2.5.2}\rmfamily XA resource}{11}{subsection.2.5.2}
 \contentsline {section}{\numberline {2.6}\slshape Failure handling}{11}{section.2.6}
