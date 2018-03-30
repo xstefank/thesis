@@ -237,7 +237,7 @@ This chapter introduces the concept of microservices and it describes why modern
 
 \section{Architectural pattern}
 
-Microservices are an architectural pattern which offers an intuitive approach to common problems following a software development. They represent a subset of a Service Oriented Architecture (SOA) \cite{soa} that advocates creating a system from a collection of small, isolated services, each of which owns their data, and is independently isolated, scalable and resilient to failure \cite{reactive_ms_arch}. Instead of the SOA, which builds the applications around the system logical domain, microservices are built around the application business model. Each microservice represents the separated and independent part of the system that interacts with other components only through predefined communication interfaces.
+Microservices are an architectural pattern which offers an intuitive approach to common problems following a software development. They represent a subset of a Service Oriented Architecture (SOA) \cite{soa} that advocates creating a system from a collection of small, isolated services, each of which owns their data, and is independently isolated, scalable and resilient to failure \cite{reactive_ms_arch}. Instead of the SOA, which builds the applications around the system logical domain, microservices are built around the application business model. Each microservice represents the separated and independent part of the system that interacts with other components only through predefined communication interfaces\footnote{throughout the rest of this publication we will be using terms \textit{microservice} and \textit{service} interchangeably}.
 
 \subsection{Monolithic architecture}
 
@@ -248,9 +248,9 @@ Monolithic applications has a few advantages -- the development model is often e
 
 \subsection{Microservice architecture}
 
-Microservices introduced the application separation into the self-maintained units – services \cite{intro_to_microservices}. The service is a single scalable and deployable unit, which is not dependent on any context. This means that the service can be maintained apart from applications which use it. In addition, every microservice is being developed independently from other services. Each instance is managing its resources and is not able to directly access resources of any other service. This allows each request for data to be processed by the managing service. Service corresponds to component in monolithic architecture.
+Microservices introduced the application separation into the self-maintained units – services \cite{intro_to_microservices}. The service is a single scalable and deployable unit, which is not dependent on any context. This means that each service can be developed and maintained independently from other services with which it can interact. Every microservice is responsible for the management of its own resources and it is prohibited to directly access resources of any other service. This means that each data request must be processed by the operating microservice which can control the data access and computation requirements. Services often correspond to components in the monolithic architecture.
 
-One of the biggest advantages of microservices is the ability to be deployed to the server, not affecting other applications or services. This allows separated teams to develop and maintain services independently. Applications based on this architecture utilize services by remote procedure calls instead of in-process calls used in monolithic architecture.
+The separation and loose coupling of microservices provides an ability to deploy them to the server autonomously, not affecting other applications or services. This allows isolated teams to develop, maintain and upgrade services independently. Instead of in-process calls employed in the monolithic architecture, applications based on the microservices style utilize services by remote procedure calls which are frequently asynchronous.
 
 \section{Principles of microservices}
 
