@@ -77,10 +77,21 @@ J.~Lewis and M.~Fowler, ``Microservices,'' 2014. [Online]. Available:
   \url{http://martinfowler.com/articles/microservices.html}
 \BIBentrySTDinterwordspacing
 
+\bibitem{mvn_architecture}
+I.~H. Sarker and K.~Apu, ``Mvc architecture driven design and implementation of
+  java framework for developing desktop application,'' \emph{International
+  Journal of Hybrid Information Technology}, vol.~7, no.~5, pp. 317--322, 2014.
+
+\bibitem{monolithic_arch}
+\BIBentryALTinterwordspacing
+C.~Richardson, ``Pattern: Monolithic architecture,'' 2017. [Online]. Available:
+  \url{http://microservices.io/patterns/monolithic.html}
+\BIBentrySTDinterwordspacing
+
 \bibitem{intro_to_microservices}
 \BIBentryALTinterwordspacing
-C.~Richardson, ``{Introduction to Microservices | NGINX},'' 2015. [Online].
-  Available: \url{https://www.nginx.com/blog/introduction-to-microservices/}
+------, ``{Introduction to Microservices | NGINX},'' 2015. [Online]. Available:
+  \url{https://www.nginx.com/blog/introduction-to-microservices/}
 \BIBentrySTDinterwordspacing
 
 \bibitem{principles_of_microservices}
@@ -109,8 +120,8 @@ M.~Fowler, ``Humaneregistry,'' 2008. [Online]. Available:
 
 \bibitem{reactive_manifesto}
 \BIBentryALTinterwordspacing
-R.~K. M.~T. Jonas~Bonér, Dave~Farley, ``Reactive manifesto,'' 2018. [Online].
-  Available: \url{https://www.reactivemanifesto.org/}
+J.~Bonér, D.~Farley, R.~Kuhn, and M.~Thompson, ``Reactive manifesto,'' 2018.
+  [Online]. Available: \url{https://www.reactivemanifesto.org/}
 \BIBentrySTDinterwordspacing
 
 \bibitem{building_reactive_ms_in_java}
@@ -119,7 +130,7 @@ C.~Escoffier, \emph{Building Reactive Microservices in Java}, 1st~ed.\hskip 1em
 
 \bibitem{rxJava}
 \BIBentryALTinterwordspacing
-R.~community, ``Rxjava,'' 2018. [Online]. Available:
+{RxJava community}, ``Rxjava,'' 2018. [Online]. Available:
   \url{https://github.com/ReactiveX/RxJava}
 \BIBentrySTDinterwordspacing
 

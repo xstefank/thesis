@@ -233,15 +233,18 @@ CA CP theorem - CAP
 \clearpage
 \chapter{Microservices architecture pattern}
 
-This chapter introduces the basic concept of microservices and describes why modern scalable enterprise applications are to be developed implementing this pattern.
+This chapter introduces the concept of microservices and it describes why modern, scalable, enterprise applications should be build on top of  this pattern.
 
-\section{Architecture pattern}
+\section{Architectural pattern}
 
-Microservices as a subset of a service oriented architecture (SOA) \cite{soa} is an architectural pattern which offers an intuitive approach to common problems following the software development. Microservices architecture advocates creating a system from a collection of small, isolated services, each of which owns their data, and is independently isolated, scalable and resilient to failure \cite{reactive_ms_arch}. Instead of the SOA, which builds the applications around the logical domain, microservices are built around the business model. Each microservice represents the separated part of the system.
+Microservices are an architectural pattern which offers an intuitive approach to common problems following a software development. They represent a subset of a Service Oriented Architecture (SOA) \cite{soa} that advocates creating a system from a collection of small, isolated services, each of which owns their data, and is independently isolated, scalable and resilient to failure \cite{reactive_ms_arch}. Instead of the SOA, which builds the applications around the system logical domain, microservices are built around the application business model. Each microservice represents the separated and independent part of the system that interacts with other components only through predefined communication interfaces.
 
 \subsection{Monolithic architecture}
 
-When describing microservices, the common way is to start by defining the opposite pattern, the monolithic architecture. When the application is developed in a monolithic fashion, all of its content is being implemented and deployed as a single archive. Every component, i. e. "a unit of software that is independently replaceable and upgradeable" \cite{microservices}, is tightly coupled with the application, which is using it. Because of the easy development, scalability and deployment of monolithic software this approach is being preferred by the majority of modern enterprise applications. However, when the application needs to be extended or rebuild, it can become difficult to maintain. For instance, even because of the minor change or update in the single component, the scaling and the continuous deployment of the whole application can stagnate. 
+The effective way of describing why the microservice architecture is emerging as a practical development style is to begin by the definition of the opposite pattern -- the monolithic architecture. When the application is developed in the monolithic fashion, all of its content is being implemented and deployed as a single archive. Every component, i. e., a unit of software that is independently replaceable and upgradeable \cite{microservices}, is tightly coupled with the application. Because of the easy development of the monolithic software, this approach has been preferred by the majority of edging enterprise applications. However, when the application is required to add a new functionality or to fix a problem, any additional maintenance represents an issue. For instance, even because of the minor change or update in the single component, the scaling and the continuous deployment of the whole application can stagnate. 
+
+Monolithic applications has a few advantages -- the development model is often easy to adjust to the application requirements\footnote{the traditional development model represented as the client-server-database or the Model-View-Controller architecture \cite{mvn_architecture}}, the deployment is reduced to single archive (or a small number of archives) and it is easy to horizontally scale by adding more servers behind a shared load balancer. The problems arise when the system becomes large -- the monolith code base is complex and hard to understand which results into the continuous delivery (CD) deceleration. In order to update one component, it is required to redeploy the entire application \cite{monolithic_arch}.
+
 
 \subsection{Microservice architecture}
 
