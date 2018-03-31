@@ -60,6 +60,11 @@ M.~Richards, \emph{Java transaction design strategies}, 1st~ed.\hskip 1em plus
   \url{https://docs.spring.io/spring/docs/current/spring-framework-reference/data-access.html#transaction}
 \BIBentrySTDinterwordspacing
 
+\bibitem{bachelor_thesis}
+M.~Štefanko, ``Messaging providers in the silverware microservices platform,''
+  Bachelor's thesis, Masaryk University, Faculty of Informatics, Botanická
+  68a, Brno, Czech republic, 6 2016.
+
 \bibitem{soa}
 \BIBentryALTinterwordspacing
 D.~Barry, ``{Service-Oriented Architecture (SOA) Definition},'' 2016. [Online].

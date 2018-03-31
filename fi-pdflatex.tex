@@ -233,7 +233,7 @@ CA CP theorem - CAP
 \clearpage
 \chapter{Microservices architecture pattern}
 
-This chapter introduces the concept of microservices and it describes why modern, elastic and resilient enterprise systems should be designed an implemented according to this pattern.
+This chapter introduces the concept of microservices and it focuses on why modern, elastic and resilient enterprise systems should be designed an implemented according to this pattern. It also provides an updated microservices status overview from my previous work publication \cite{bachelor_thesis}.
 
 \section{Architectural pattern}
 
@@ -254,19 +254,19 @@ The important attribute of the microservices system is a service isolation. Each
 
 Microservices further extends the Law of Demeter which intents to organize and reduce dependencies between classes \cite{law_of_demeter}. As the service presumably requires to communicate with other services in order to provide system functionality, this law naturally applies to minimize such coupling among microservices on the distributed component level. 
 
-Another standard object-oriented rule that also applies in the microservices environment is the Single Responsibility Principle (SRP) as defined by Robert C. Martin -- a class should have only one reason to change \cite{agile_ppp_c}. This approach also corresponds to the Unix philosophy: Make each program do one thing well \cite{unix_time_sharing_foreword}. This is a common misconception associated with the microservice architecture -- the word \textit{micro} should conform to the service size. Although, this statement is true to some extent (there is no point in creating the microservice of a size of the monolith), the \textit{micro} should more resemble a scope of the service responsibility.
+Another standard object-oriented rule that also applies in the microservices environment is the Single Responsibility Principle (SRP) as defined by Robert C. Martin -- a class should have only one reason to change \cite{agile_ppp_c}. There is a common misconception associated with the microservice architecture -- the word \textit{micro} should conform to the service size. Although, this statement is true to some extent (there is no point in creating the microservice of the same size  as the monolith), the \textit{micro} should more resemble a scope of the service responsibility. This concept also corresponds to the Unix philosophy: Make each program do one thing well \cite{unix_time_sharing_foreword}.
 
-The separation and loose coupling of microservices provides an ability to deploy each individual service to the production environment autonomously, not affecting other applications or services. This allows isolated teams to develop, maintain and upgrade services independently. 
+The separation and loose coupling of microservices provide an ability to deploy each individual service to the production environment autonomously, not affecting other applications or services. This allows isolated teams to develop, maintain and upgrade services independently and to form these teams around the system problem domains. 
 
-As microservices represent a stateful entities, to achieve data isolation each service exposes an application programming interface (API) through which it is able to provide functionality to other services. These APIs are often technology-agnostic to ensure that the technology choices are not constrained \cite{building_ms}. Instead of in-process calls employed in the monolithic architecture, applications based on the microservices style utilize services by remote procedure calls which are often asynchronous.
+As microservices represent a stateful entities, to achieve data isolation each service exposes an application programming interface (API) through which it is exclusively able to provide functionality to other services. These APIs are often technology-agnostic to ensure that the technology choices are not constrained \cite{building_ms}. Instead of in-process calls employed in the monolithic architecture, applications based on the microservices style utilize services by remote procedure calls which are often asynchronous. This form of segregation also facilitates the system failure recovery or resilience as each particular microservice breakdown is less prone to influence the rest of the system.
 
 \section{Principles of microservices}
 
-This section is inspired by the talk delivered by Sam Newman \cite{principles_of_microservices} in 2015 on the Devoxx conference in Belgium. In this presentation he described microservices from the business perspective. By his definition microservices are "Small autonomous services that work together" and they are based on these eight principles.
+This section describes the microservices architecture from the perspective of the business use cases and the solution architecture. It is based on the work of Sam Newman \cite{building_ms, principles_of_microservices} in which he proposed to build each microservices system on a set of principles. This principles may differ for various systems (depending of the application and microservices use cases) but in general, they can reduced to these eight principles:
 
 \begin{enumerate}
 	
-	\item \textbf{Modeled around the business domain} -- As was stated in the beginning of this chapter, microservices, together with the teams that are responsible for their maintenance, correspond to the business model. This means that the requirements on their functionality do not change frequently. This architecture scales applications vertically -- changes processed in one microservice do not affect other services or the system itself. They allow developers to focus on the particular part of the system rather than some specific technology. 
+	\item \textbf{Modeled around the business concepts} -- When the  microservices applications, together with the teams that are responsible for their maintenance, correspond to the business domain, they are generally more stable -- the requirements on their functionality do not change frequently. This allows developers to focus on the particular system segment, rather than on some specific technology stack. Additionally, this permits services to directly reflect the business requirements.
 	
 	\item \textbf{Automation} -- The services are managed by teams. The team is responsible for development, administration, deployment and the life cycle of the service infrastructure. When the number of services is small it is possible to maintain them manually but when their number increases, this will became unacceptable. Automation processes like testing or continuous delivery then allow the enterprises to scale more efficiently and speed up the mechanism of the service coordination.
 	
@@ -816,7 +816,7 @@ Similarly, the saga may need to interact with the same participant in several di
 \addcontentsline{toc}{chapter}{Bibliography} %% table of contents.
 \printindex
 
-\bibliographystyle{IEEEtran}
+\bibliographystyle{myIEEEtran}
 \bibliography{IEEEabrv,references}
 
 \appendix %% Start the appendices.
