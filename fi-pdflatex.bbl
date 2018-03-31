@@ -94,9 +94,22 @@ C.~Richardson, ``Pattern: Monolithic architecture,'' 2017. [Online]. Available:
 
 \bibitem{intro_to_microservices}
 \BIBentryALTinterwordspacing
-------, ``{Introduction to Microservices | NGINX},'' 2015. [Online]. Available:
-  \url{https://www.nginx.com/blog/introduction-to-microservices/}
+{C. Richardson}, ``{Introduction to Microservices | NGINX},'' 2015. [Online].
+  Available: \url{https://www.nginx.com/blog/introduction-to-microservices/}
 \BIBentrySTDinterwordspacing
+
+\bibitem{ms_arch_ecommerce}
+W.~Hasselbring and G.~Steinacker, ``Microservice architectures for scalability,
+  agility and reliability in e-commerce,'' \emph{2017 IEEE International
+  Conference on Software Architecture Workshops (ICSAW)}, 2017.
+
+\bibitem{law_of_demeter}
+K.~Lieberherr and I.~Holland, ``Assuring good style for object-oriented
+  programs,'' \emph{IEEE Software}, vol.~6, no.~5, pp. 38--48, 1989.
+
+\bibitem{agile_ppp_c}
+R.~C. Martin and M.~Martin, \emph{Agile principles, patterns, and practices in
+  C#}, 1st~ed.\hskip 1em plus 0.5em minus 0.4em\relax Prentice Hall, 2006.
 
 \bibitem{principles_of_microservices}
 \BIBentryALTinterwordspacing

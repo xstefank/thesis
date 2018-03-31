@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.9.30)  30 MAR 2018 22:51
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.9.30)  31 MAR 2018 11:44
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -2122,8 +2122,12 @@ LaTeX Font Warning: Font shape `OMS/qpl/m/n' undefined
 Chapter 3.
 [12
 
-] [13] [14]
-Overfull \hbox (17.07565pt too wide) in paragraph at lines 270--271
+]
+Overfull \vbox (9.54932pt too high) has occurred while \output is active []
+
+
+[13] [14]
+Overfull \hbox (17.07565pt too wide) in paragraph at lines 276--277
 []\T1/qpl/m/n/12 (-20) Any or-ga-ni-za-tion that de-signs a sys-tem (de-fined b
 roadly)
  []
@@ -2134,11 +2138,11 @@ Chapter 4.
 
 ]
 Chapter 5.
-<images/tripExample.png, id=659, 738.76pt x 440.64626pt>
+<images/tripExample.png, id=665, 738.76pt x 440.64626pt>
 File: images/tripExample.png Graphic file (type png)
 
 <use images/tripExample.png>
-Package pdftex.def Info: images/tripExample.png used on input line 342.
+Package pdftex.def Info: images/tripExample.png used on input line 348.
 (pdftex.def)             Requested size: 286.21017pt x 170.71652pt.
  [22
 
@@ -2147,19 +2151,14 @@ Overfull \vbox (6.70673pt too high) has occurred while \output is active []
 
 
 [24]
-Underfull \hbox (badness 10000) in paragraph at lines 383--384
+Underfull \hbox (badness 10000) in paragraph at lines 389--390
 
  []
 
 [25]
-Overfull \hbox (4.30806pt too wide) in paragraph at lines 393--394
+Overfull \hbox (4.30806pt too wide) in paragraph at lines 399--400
 \T1/qpl/m/n/12 (-20) na-tor re-cov-ers, is when the trans-ac-tion log con-tains
  the \T1/lmtt/m/n/12 start-activity
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 397--398
-
  []
 
 
@@ -2167,24 +2166,29 @@ Underfull \hbox (badness 10000) in paragraph at lines 403--404
 
  []
 
-[26] <images/SEC.png, id=694, 1175.39125pt x 867.24pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 409--410
+
+ []
+
+[26] <images/SEC.png, id=700, 1175.39125pt x 867.24pt>
 File: images/SEC.png Graphic file (type png)
  <use images/SEC.png>
-Package pdftex.def Info: images/SEC.png used on input line 417.
+Package pdftex.def Info: images/SEC.png used on input line 423.
 (pdftex.def)             Requested size: 269.93973pt x 199.16928pt.
 
 [27] [28 <./images/SEC.png (PNG copy)>]
-Underfull \hbox (badness 10000) in paragraph at lines 435--436
+Underfull \hbox (badness 10000) in paragraph at lines 441--442
 
  []
 
 [29] [30]
 Chapter 6.
-<images/productInfoJSON.png, id=733, 316.18124pt x 101.37875pt>
+<images/productInfoJSON.png, id=739, 316.18124pt x 101.37875pt>
 File: images/productInfoJSON.png Graphic file (type png)
 
 <use images/productInfoJSON.png>
-Package pdftex.def Info: images/productInfoJSON.png used on input line 477.
+Package pdftex.def Info: images/productInfoJSON.png used on input line 483.
 (pdftex.def)             Requested size: 266.22244pt x 85.35826pt.
 
 Overfull \vbox (9.69156pt too high) has occurred while \output is active []
@@ -2192,17 +2196,17 @@ Overfull \vbox (9.69156pt too high) has occurred while \output is active []
 
 [31
 
-] <images/sagaModel.pdf, id=747, 980.66376pt x 328.22626pt>
+] <images/sagaModel.pdf, id=753, 980.66376pt x 328.22626pt>
 File: images/sagaModel.pdf Graphic file (type pdf)
 
 <use images/sagaModel.pdf>
-Package pdftex.def Info: images/sagaModel.pdf used on input line 495.
+Package pdftex.def Info: images/sagaModel.pdf used on input line 501.
 (pdftex.def)             Requested size: 340.03522pt x 113.81102pt.
 
 Underfull \vbox (badness 1755) has occurred while \output is active []
 
  [32 <./images/productInfoJSON.png>]
-Overfull \hbox (6.52922pt too wide) in paragraph at lines 506--507
+Overfull \hbox (6.52922pt too wide) in paragraph at lines 512--513
 []\T1/qpl/m/n/12 (-20) To ini-ti-ate the fail-ures sce-nar-ios in ex-am-ples bo
 th \T1/lmtt/m/n/12 shipment-service
  []
@@ -2211,83 +2215,83 @@ th \T1/lmtt/m/n/12 shipment-service
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [33 <./images/sagaModel.pdf>]
-Overfull \hbox (4.80833pt too wide) in paragraph at lines 522--523
+Overfull \hbox (4.80833pt too wide) in paragraph at lines 528--529
 []\T1/qpl/m/n/12 (-20) Axon pro-vides two op-tions for con-nect-ing dif-fer-ent
  ser-vices through
  []
 
 
-Overfull \hbox (6.58896pt too wide) in paragraph at lines 522--523
+Overfull \hbox (6.58896pt too wide) in paragraph at lines 528--529
 \T1/qpl/m/n/12 (-20) of its ini-tial-iza-tion reg-is-ters it-self with the ser-
 vice \T1/lmtt/m/n/12 registration-server
  []
 
 [34]
-Overfull \hbox (0.81178pt too wide) in paragraph at lines 532--533
+Overfull \hbox (0.81178pt too wide) in paragraph at lines 538--539
 \T1/qpl/m/n/12 (-20) The ap-pli-ca-tion is com-posed of five mi-croser-vices --
  the \T1/lmtt/m/n/12 order-service\T1/qpl/m/n/12 (-20) ,
  []
 
 [35]
-Underfull \hbox (badness 10000) in paragraph at lines 546--547
-
- []
-
-[36]
 Underfull \hbox (badness 10000) in paragraph at lines 552--553
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 556--557
+[36]
+Underfull \hbox (badness 10000) in paragraph at lines 558--559
 
  []
 
 
-Overfull \hbox (0.25385pt too wide) in paragraph at lines 558--559
+Underfull \hbox (badness 10000) in paragraph at lines 562--563
+
+ []
+
+
+Overfull \hbox (0.25385pt too wide) in paragraph at lines 564--565
 []\T1/qpl/m/n/12 (-20) When the dis-tributed event bus is pro-cess-ing events f
 rom an AMQP
  []
 
 
-Overfull \hbox (6.14897pt too wide) in paragraph at lines 558--559
+Overfull \hbox (6.14897pt too wide) in paragraph at lines 564--565
 \T1/qpl/m/n/12 (-20) the in-cor-rect con-fig-u-ra-tion from the pre-vi-ous prob
 -lem. The workaround
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 560--561
+Underfull \hbox (badness 10000) in paragraph at lines 566--567
 
  []
 
 [37]
-Underfull \hbox (badness 10000) in paragraph at lines 577--578
+Underfull \hbox (badness 10000) in paragraph at lines 583--584
 
  []
 
 [38]
-Underfull \hbox (badness 10000) in paragraph at lines 581--582
+Underfull \hbox (badness 10000) in paragraph at lines 587--588
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 585--586
+Underfull \hbox (badness 10000) in paragraph at lines 591--592
 
  []
 
 
-Overfull \hbox (2.52023pt too wide) in paragraph at lines 587--588
+Overfull \hbox (2.52023pt too wide) in paragraph at lines 593--594
 \T1/qpl/m/n/12 (-20) ized ver-sion is lo-cated un-der \T1/lmtt/m/n/12 eventuate
 io/eventuateio-local-mysql
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 589--590
+Underfull \hbox (badness 10000) in paragraph at lines 595--596
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 593--594
+Underfull \hbox (badness 10000) in paragraph at lines 599--600
 
  []
 
@@ -2296,27 +2300,27 @@ Underfull \vbox (badness 2119) has occurred while \output is active []
 
  [40]
 [41]
-Underfull \hbox (badness 10000) in paragraph at lines 627--628
+Underfull \hbox (badness 10000) in paragraph at lines 633--634
 
  []
 
 [42]
-Underfull \hbox (badness 10000) in paragraph at lines 637--638
+Underfull \hbox (badness 10000) in paragraph at lines 643--644
 
  []
 
 [43]
-Underfull \hbox (badness 10000) in paragraph at lines 646--647
-
- []
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 652--653
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 656--657
+Underfull \hbox (badness 10000) in paragraph at lines 658--659
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 662--663
 
  []
 
@@ -2325,7 +2329,7 @@ Overfull \vbox (5.63132pt too high) has occurred while \output is active []
 
 
 [45]
-Overfull \hbox (1.05869pt too wide) in paragraph at lines 688--689
+Overfull \hbox (1.05869pt too wide) in paragraph at lines 694--695
 \T1/qpl/m/n/12 (-20) container-based en-vi-ron-ment and the au-toma-tion of ap-
 pli-ca-tion builds,
  []
@@ -2334,18 +2338,18 @@ pli-ca-tion builds,
 Overfull \vbox (7.04938pt too high) has occurred while \output is active []
 
 
-[46] [47] <images/LRADefinition.png, id=877, 229.85875pt x 100.375pt>
+[46] [47] <images/LRADefinition.png, id=883, 229.85875pt x 100.375pt>
 File: images/LRADefinition.png Graphic file (type png)
 
 <use images/LRADefinition.png>
-Package pdftex.def Info: images/LRADefinition.png used on input line 716.
+Package pdftex.def Info: images/LRADefinition.png used on input line 722.
 (pdftex.def)             Requested size: 195.48256pt x 85.35826pt.
  [48 <./images/LRADefinition.png (PNG copy)>]
-<images/actionJSON.png, id=883, 390.45876pt x 104.39pt>
+<images/actionJSON.png, id=889, 390.45876pt x 104.39pt>
 File: images/actionJSON.png Graphic file (type png)
 
 <use images/actionJSON.png>
-Package pdftex.def Info: images/actionJSON.png used on input line 727.
+Package pdftex.def Info: images/actionJSON.png used on input line 733.
 (pdftex.def)             Requested size: 319.29051pt x 85.35826pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -2360,12 +2364,12 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 Underfull \vbox (badness 3343) has occurred while \output is active []
 
  [52]
-Underfull \hbox (badness 10000) in paragraph at lines 788--789
+Underfull \hbox (badness 10000) in paragraph at lines 794--795
 
  []
 
 [53]
-Underfull \hbox (badness 10000) in paragraph at lines 792--793
+Underfull \hbox (badness 10000) in paragraph at lines 798--799
 
  []
 
@@ -2397,19 +2401,33 @@ ecture _ soa _
  []
 
 [57]
-Underfull \hbox (badness 1688) in paragraph at lines 97--100
-[]\T1/qpl/m/n/12 (+20) ------, ``In-tro-duc-tion to Mi-croser-vices | NG-INX,''
+! Illegal parameter number in definition of \reserved@a.
+<to be read again> 
+                   }
+l.112   C#}
+           , 1st~ed.\hskip 1em plus 0.5em minus 0.4em\relax Prentice Hall, 2...
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
 
- []
+! You can't use `macro parameter character #' in horizontal mode.
+<argument> ...ples, patterns, and practices in C##
+                                                  
+l.112   C#}
+           , 1st~ed.\hskip 1em plus 0.5em minus 0.4em\relax Prentice Hall, 2...
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
 
 
-Underfull \hbox (badness 3158) in paragraph at lines 132--134
+Underfull \hbox (badness 3158) in paragraph at lines 145--147
 []\T1/qpl/m/n/12 (+20) C. Es-coffier, \T1/qpl/m/it/12 Build-ing Re-ac-tive Mi-c
 roser-vices in Java\T1/qpl/m/n/12 (+20) , 1st ed.
  []
 
 [58]
-Underfull \hbox (badness 1107) in paragraph at lines 176--179
+Underfull \hbox (badness 1107) in paragraph at lines 189--192
 []\T1/qpl/m/n/12 (+20) Narayana, ``Narayana LRA,'' 2017. [On-line]. Avail-
  []
 
@@ -2493,7 +2511,7 @@ Appendix C.
 
 (./_minted-fi-pdflatex/F8EC7E2C0BB0F216306CE25138DE52810BD8AFD35118F586B42828DB
 BD6ACEB2.pygtex)
-Underfull \hbox (badness 10000) in paragraph at lines 995--996
+Underfull \hbox (badness 10000) in paragraph at lines 1001--1002
 
  []
 
@@ -2515,11 +2533,11 @@ Package catoptions Warning: Undefined options
 (catoptions)                fontenc.sty,T1,. 
 (catoptions)                Default action already taken in each case .
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1050.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1050.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1056.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1056.
 (./fi-pdflatex.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1050.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1050.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1056.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1056.
 
 Package rerunfilecheck Info: File `fi-pdflatex.out' has not changed.
 (rerunfilecheck)             Checksum: 477D11F7359386BD4F21A9C06D99EECE;5499.
@@ -2531,10 +2549,10 @@ runsystem(rm fi-pdflatex.pyg)...executed.
 
  ) 
 Here is how much of TeX's memory you used:
- 38307 strings out of 494946
- 694993 string characters out of 6180981
- 826844 words of memory out of 5000000
- 40456 multiletter control sequences out of 15000+600000
+ 38313 strings out of 494946
+ 695098 string characters out of 6180981
+ 826955 words of memory out of 5000000
+ 40459 multiletter control sequences out of 15000+600000
  71183 words of font info for 115 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  69i,8n,84p,10406b,646s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -2547,10 +2565,10 @@ c/lm/lmtk10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/lm/lmtt10.pfb
 xlive/texmf-dist/fonts/type1/public/tex-gyre/qplb.pfb></usr/share/texlive/texmf
 -dist/fonts/type1/public/tex-gyre/qplr.pfb></usr/share/texlive/texmf-dist/fonts
 /type1/public/tex-gyre/qplri.pfb>
-Output written on fi-pdflatex.pdf (77 pages, 14418326 bytes).
+Output written on fi-pdflatex.pdf (77 pages, 14421333 bytes).
 PDF statistics:
- 1115 PDF objects out of 1200 (max. 8388607)
- 987 compressed objects within 10 object streams
- 264 named destinations out of 1000 (max. 500000)
+ 1122 PDF objects out of 1200 (max. 8388607)
+ 994 compressed objects within 10 object streams
+ 267 named destinations out of 1000 (max. 500000)
  22810 words of extra memory for PDF output out of 24883 (max. 10000000)
 

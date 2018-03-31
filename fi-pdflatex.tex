@@ -233,7 +233,7 @@ CA CP theorem - CAP
 \clearpage
 \chapter{Microservices architecture pattern}
 
-This chapter introduces the concept of microservices and it describes why modern, scalable, enterprise applications should be build on top of  this pattern.
+This chapter introduces the concept of microservices and it describes why modern, elastic and resilient enterprise systems should be designed an implemented according to this pattern.
 
 \section{Architectural pattern}
 
@@ -248,9 +248,15 @@ Monolithic applications has a few advantages -- the development model is often e
 
 \subsection{Microservice architecture}
 
-Microservices introduced the application separation into the self-maintained units – services \cite{intro_to_microservices}. The service is a single scalable and deployable unit, which is not dependent on any context. This means that each service can be developed and maintained independently from other services with which it can interact. Every microservice is responsible for the management of its own resources and it is prohibited to directly access resources of any other service. This means that each data request must be processed by the operating microservice which can control the data access and computation requirements. Services often correspond to components in the monolithic architecture.
+Microservices introduced the application separation into the self-maintained units – services \cite{intro_to_microservices}. The service is a single scalable and deployable unit, which is not dependent on any context. This means that services may be deployed and scaled independently of each other, and may employ different middleware   stacks for their implementation \cite{ms_arch_ecommerce}. 
 
-The separation and loose coupling of microservices provides an ability to deploy them to the server autonomously, not affecting other applications or services. This allows isolated teams to develop, maintain and upgrade services independently. Instead of in-process calls employed in the monolithic architecture, applications based on the microservices style utilize services by remote procedure calls which are frequently asynchronous.
+The important attribute of the microservices system is a service isolation. Each microservice is responsible for the management of its own resources and it is prohibited to directly access resources of any other service. This means that each data request must be processed by the operating microservice which is allowed to accordingly control the data access and computation requirements. Services often correspond to components in the monolithic architecture.
+
+Microservices further extends the Law of Demeter which intents to organize and reduce dependencies between classes \cite{law_of_demeter}. As the service presumably requires to communicate with other services in order to provide system functionality, this law naturally applies to minimize such coupling among microservices on the distributed component level. 
+
+The common misconception associated with the microservice architecture is that the workAnother standard object-oriented rule that also applies in the microservices environment is the Single Responsibility Principle (SRP) -- a class should have only one reason to change \cite{agile_ppp_c}.
+
+The separation and loose coupling of microservices provides an ability to deploy each individual service to the production environment autonomously, not affecting other applications or services. This allows isolated teams to develop, maintain and upgrade services independently. Instead of in-process calls employed in the monolithic architecture, applications based on the microservices style utilize services by remote procedure calls which are often asynchronous.
 
 \section{Principles of microservices}
 
