@@ -28,7 +28,7 @@
 \contentsline {section}{\numberline {3.2}\slshape Principles of microservices}{14}{section.3.2}
 \contentsline {section}{\numberline {3.3}\slshape Reactive microservices}{18}{section.3.3}
 \contentsline {subsection}{\numberline {3.3.1}\rmfamily Reactive systems}{18}{subsection.3.3.1}
-\contentsline {subsection}{\numberline {3.3.2}\rmfamily Reactive programming}{19}{subsection.3.3.2}
+\contentsline {subsection}{\numberline {3.3.2}\rmfamily Reactive programming}{20}{subsection.3.3.2}
 \contentsline {chapter}{\numberline {4}\bfseries Communication patterns}{22}{chapter.4}
 \contentsline {section}{\numberline {4.1}\slshape Consensus protocols}{22}{section.4.1}
 \contentsline {subsection}{\numberline {4.1.1}\rmfamily 2PC}{22}{subsection.4.1.1}
