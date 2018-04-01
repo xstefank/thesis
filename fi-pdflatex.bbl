@@ -141,6 +141,29 @@ M.~Conway, ``Conway's law,'' 2018. [Online]. Available:
   \url{http://www.melconway.com/Home/Conways_Law.html}
 \BIBentrySTDinterwordspacing
 
+\bibitem{chor_and_orch}
+N.~Busi, R.~Gorrieri, C.~Guidi, L.~roberto, and G.~Zavattaro, ``Choreography
+  and orchestration conformance for system design,'' \emph{Lecture Notes in
+  Computer Science}, p. 63–81, 2006.
+
+\bibitem{service_oriented_design}
+\BIBentryALTinterwordspacing
+R.~Dijkman and M.~Dumas, ``Service-oriented design: A multi-viewpoint
+  approach,'' \emph{International Journal of Cooperative Information Systems},
+  vol.~13, no.~04, pp. 337--368, dec 2004. [Online]. Available:
+  \url{https://doi.org/10.1142%2Fs0218843004001012}
+\BIBentrySTDinterwordspacing
+
+\bibitem{realtime_ws_orch}
+\BIBentryALTinterwordspacing
+K.~Benghazi, M.~Noguera, C.~Rodr\'{\i}guez-Dom\'{\i}nguez, A.~B. Pelegrina, and
+  J.~L. Garrido, ``Real-time web services orchestration and choreography,'' in
+  \emph{Proceedings of the 6th International Workshop on Enterprise \&
+  Organizational Modeling and Simulation}, ser. EOMAS '10.\hskip 1em plus 0.5em
+  minus 0.4em\relax Aachen, Germany, Germany: CEUR-WS.org, 2010, pp. 142--153.
+  [Online]. Available: \url{http://dl.acm.org/citation.cfm?id=1866939.1866952}
+\BIBentrySTDinterwordspacing
+
 \bibitem{swagger}
 \BIBentryALTinterwordspacing
 {Swagger community}, ``Swagger framework,'' 2016. [Online]. Available:
