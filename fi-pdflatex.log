@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.9.30)  1 APR 2018 08:29
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.9.30)  1 APR 2018 13:21
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -2130,11 +2130,7 @@ Overfull \vbox (7.70692pt too high) has occurred while \output is active []
 Overfull \vbox (9.54932pt too high) has occurred while \output is active []
 
 
-[13] [14]
-Overfull \vbox (2.03389pt too high) has occurred while \output is active []
-
-
-[15]
+[13] [14] [15]
 Overfull \hbox (17.07565pt too wide) in paragraph at lines 278--279
 []\T1/qpl/m/n/12 (-20) Any or-ga-ni-za-tion that de-signs a sys-tem (de-fined b
 roadly)
@@ -2409,13 +2405,13 @@ ecture _ soa _
  []
 
 [57] [58]
-Underfull \hbox (badness 3158) in paragraph at lines 159--161
+Underfull \hbox (badness 3158) in paragraph at lines 163--165
 []\T1/qpl/m/n/12 (+20) C. Es-coffier, \T1/qpl/m/it/12 Build-ing Re-ac-tive Mi-c
 roser-vices in Java\T1/qpl/m/n/12 (+20) , 1st ed.
  []
 
 
-Underfull \hbox (badness 1107) in paragraph at lines 203--206
+Underfull \hbox (badness 1107) in paragraph at lines 207--210
 []\T1/qpl/m/n/12 (+20) Narayana, ``Narayana LRA,'' 2017. [On-line]. Avail-
  []
 
@@ -2537,10 +2533,10 @@ runsystem(rm fi-pdflatex.pyg)...executed.
 
  ) 
 Here is how much of TeX's memory you used:
- 38319 strings out of 494946
- 695223 string characters out of 6180981
- 827074 words of memory out of 5000000
- 40462 multiletter control sequences out of 15000+600000
+ 38320 strings out of 494946
+ 695224 string characters out of 6180981
+ 827100 words of memory out of 5000000
+ 40463 multiletter control sequences out of 15000+600000
  71183 words of font info for 115 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  69i,8n,84p,10406b,646s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -2553,7 +2549,7 @@ c/lm/lmtk10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/lm/lmtt10.pfb
 xlive/texmf-dist/fonts/type1/public/tex-gyre/qplb.pfb></usr/share/texlive/texmf
 -dist/fonts/type1/public/tex-gyre/qplr.pfb></usr/share/texlive/texmf-dist/fonts
 /type1/public/tex-gyre/qplri.pfb>
-Output written on fi-pdflatex.pdf (77 pages, 14423795 bytes).
+Output written on fi-pdflatex.pdf (77 pages, 14424023 bytes).
 PDF statistics:
  1130 PDF objects out of 1200 (max. 8388607)
  1001 compressed objects within 11 object streams

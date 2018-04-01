@@ -131,6 +131,10 @@ S.~Newman, \emph{Building Microservices}, 1st~ed.\hskip 1em plus 0.5em minus
   \url{http://samnewman.io/talks/principles-of-microservices/}
 \BIBentrySTDinterwordspacing
 
+\bibitem{ddd}
+E.~Evans, \emph{Domain-driven design}.\hskip 1em plus 0.5em minus 0.4em\relax
+  Addison-Wesley, 2003.
+
 \bibitem{conways_law}
 \BIBentryALTinterwordspacing
 M.~Conway, ``Conway's law,'' 2018. [Online]. Available:
