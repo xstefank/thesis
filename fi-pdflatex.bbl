@@ -212,6 +212,12 @@ C.~Escoffier, ``5 things to know about reactive programming,'' 2017. [Online].
   \url{https://developers.redhat.com/blog/2017/06/30/5-things-to-know-about-reactive-programming/}
 \BIBentrySTDinterwordspacing
 
+\bibitem{reactive_streams}
+\BIBentryALTinterwordspacing
+R.~S. community, ``Reactive streams,'' 2018. [Online]. Available:
+  \url{http://www.reactive-streams.org/}
+\BIBentrySTDinterwordspacing
+
 \bibitem{sagas_publ}
 H.~Garcia-Molina and K.~Salem, ``Sagas,'' \emph{ACM SIGMOD Record}, vol.~16,
   no.~3, pp. 249--259, 1987.

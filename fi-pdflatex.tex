@@ -324,7 +324,15 @@ The most important concept of reactive programs is the asynchronicity. On the co
 
 One of the most popular implementations of the reactive programming principles in modern systems is the Reactive eXtension (RX). It represents a library for asynchronous and event-based programs by using observable sequences \cite{rxJava}. These extensions combine the observer and iterator patterns with a range of functional idioms to allow developers to easily adapt reactive methods. Reactive extensions provide a broad range of implementations for various programming languages as, for instance, Java (RxJava), C\# (Rx.NET) or Kotlin (RxKotlin). 
 
-To conclude, it is important to remember that reactive programming does not build a reactive system \cite{5thingsAboutRP_RHDev}. It only provides a development model that can be used for asynchronous processing, a task based concurrency model or the non-blocking I/O\footnote{Input/Ouput} that may be employed with other reactive principles to create responsive and reliable distributed systems as defined in the Reactive Manifesto.
+To conclude, it is important to remember that reactive programming does not build a reactive system \cite{5thingsAboutRP_RHDev}. It only provides a development model that can be used for asynchronous processing, a task based concurrency model or the non-blocking Input/Ouput (I/O) that may be employed with other reactive principles to create responsive and reliable distributed systems as defined in the Reactive Manifesto.
+
+\subsection{Reactive streams}
+
+Reactive streams represent an initiative to provide a standard for asynchronous stream processing with non-blocking back pressure \cite{reactive_streams}. It addresses the issue of controlling the load placed on the stream destination in case of the consumption overload. The main focus of reactive streams is placed on the mediating the stream of data among different API components without the requirement to buffer unreasonable amount of data on the receiver side. 
+
+This specification aims to provide a minimal set of interfaces and protocols that would describe the operations and entities to achieve asynchronous streams of data with non-blocking back pressure \cite{building_reactive_ms_in_java}. It mainly serves as an interoperability layer. The current provided Java virtual machine (JVM) implementation includes the Java API, the specification, the technology compatibility kit (TCK) and programming examples. 
+
+The API components that are required to be provided by the Reactive Streams implementations are publisher, subscriber, subscription and processor.
 
 
 \clearpage
