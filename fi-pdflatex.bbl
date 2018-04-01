@@ -164,6 +164,15 @@ K.~Benghazi, M.~Noguera, C.~Rodr\'{\i}guez-Dom\'{\i}nguez, A.~B. Pelegrina, and
   [Online]. Available: \url{http://dl.acm.org/citation.cfm?id=1866939.1866952}
 \BIBentrySTDinterwordspacing
 
+\bibitem{blue_green}
+V.~Farcic, \emph{The DevOps 2.0 Toolkit}.\hskip 1em plus 0.5em minus
+  0.4em\relax Packt Publishing Ltd., 2016, pp. 222--252.
+
+\bibitem{canary_deploy}
+J.~Humble and D.~Farley, \emph{Continuous Delivery: Reliable Software Releases
+  through Build, Test, and Deployment Automation}.\hskip 1em plus 0.5em minus
+  0.4em\relax Addison-Wesley, 2010, pp. 263--265.
+
 \bibitem{swagger}
 \BIBentryALTinterwordspacing
 {Swagger community}, ``Swagger framework,'' 2016. [Online]. Available:
