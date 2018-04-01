@@ -185,6 +185,10 @@ M.~Fowler, ``Humaneregistry,'' 2008. [Online]. Available:
   \url{http://martinfowler.com/bliki/HumaneRegistry.html}
 \BIBentrySTDinterwordspacing
 
+\bibitem{release_it}
+M.~T. Nygard, \emph{Release It!: Design and Deploy Production-Ready
+  Software}.\hskip 1em plus 0.5em minus 0.4em\relax Pragmatic Bookshelf, 2018.
+
 \bibitem{reactive_manifesto}
 \BIBentryALTinterwordspacing
 J.~Bonér, D.~Farley, R.~Kuhn, and M.~Thompson, ``Reactive manifesto,'' 2018.
