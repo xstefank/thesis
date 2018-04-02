@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.9.30)  2 APR 2018 09:28
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.9.30)  2 APR 2018 15:04
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -2140,6 +2140,11 @@ roadly)
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [20]
+Overfull \hbox (3.82455pt too wide) in paragraph at lines 335--336
+\T1/qpl/m/n/12 (-20) lisher to stop send-ing data at any time by a call to \T1/
+lmtt/m/n/12 Subscription.cancel
+ []
+
 [21] [22]
 Chapter 4.
 [23
@@ -2553,7 +2558,7 @@ c/lm/lmtk10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/lm/lmtt10.pfb
 xlive/texmf-dist/fonts/type1/public/tex-gyre/qplb.pfb></usr/share/texlive/texmf
 -dist/fonts/type1/public/tex-gyre/qplr.pfb></usr/share/texlive/texmf-dist/fonts
 /type1/public/tex-gyre/qplri.pfb>
-Output written on fi-pdflatex.pdf (80 pages, 14432096 bytes).
+Output written on fi-pdflatex.pdf (80 pages, 14432908 bytes).
 PDF statistics:
  1166 PDF objects out of 1200 (max. 8388607)
  1034 compressed objects within 11 object streams
