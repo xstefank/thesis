@@ -189,6 +189,12 @@ M.~Fowler, ``Humaneregistry,'' 2008. [Online]. Available:
 M.~T. Nygard, \emph{Release It!: Design and Deploy Production-Ready
   Software}.\hskip 1em plus 0.5em minus 0.4em\relax Pragmatic Bookshelf, 2018.
 
+\bibitem{reactive_landscape}
+\BIBentryALTinterwordspacing
+{C. Escoffier}, ``{The reactive landscape},'' 2018. [Online]. Available:
+  \url{https://www.slideshare.net/RedHatDevelopers/the-reactive-landscape}
+\BIBentrySTDinterwordspacing
+
 \bibitem{reactive_manifesto}
 \BIBentryALTinterwordspacing
 J.~Bonér, D.~Farley, R.~Kuhn, and M.~Thompson, ``Reactive manifesto,'' 2018.
@@ -249,6 +255,10 @@ Eventuate.io, ``{Eventuate.io},'' 2017. [Online]. Available:
 Narayana, ``{Narayana LRA},'' 2017. [Online]. Available:
   \url{https://github.com/eclipse/microprofile-sandbox/tree/master/proposals/0009-LRA}
 \BIBentrySTDinterwordspacing
+
+\bibitem{design_science}
+R.~J. Wieringa, \emph{Design Science Methodology for Information Systems and
+  Software Engineering}.\hskip 1em plus 0.5em minus 0.4em\relax Springer, 2014.
 
 \bibitem{docker}
 \BIBentryALTinterwordspacing

@@ -93,7 +93,7 @@ A transaction can be viewed as a group of business logic statements with certain
 
 \subsection{Atomicity}
 
-The transaction consists of a sequence of operations performed on different resources or by different participants. Atomicity means that all operations in the transaction are performed as if they were a single operation. When the transaction commits successfully, all of its participants are also required to perform a valid commit. Conversely, if the transaction fails and is aborted, all performed operations and effects have to be undone. This defines a possibility to abort at any point so that all changes done by the transaction will be reverted to the state present before the transaction started.
+The transaction consists of a sequence of operations performed on different resources or by different participants. Atomicity means that all operations in the transaction are performed as if they were a single unit. When the transaction commits successfully, all of its operations are also required to perform a valid commit. Conversely, if the transaction fails and is aborted, all performed operations and effects have to be undone. This defines a possibility to abort at any point so that all changes done by the transaction will be reverted to the state present before the transaction started.
 
 The atomicity is commonly achieved by the usage of consensus multi-phase protocols. Standardized protocol is the two phase commit protocol which is used by the majority of modern transaction systems. This protocol, as well as other communication patterns, will be discussed in the later section. 
 
@@ -272,10 +272,10 @@ This section describes the microservices architecture from the perspective of th
 	
 	\item \textbf{Hiding the internal implementation details} -- Every microservice generally needs to interact with other services or external systems to provide its functionality to the rest of the system. In order to keep the option of independent development, it is essential that each service hides its implementation details. This can be achieved through the motion of bounded contexts as defined for the Domain-Driven design (DDD) \cite{ddd}. The bounded context delimits the applicability of a particular model so that team members have a clear and shared understanding of what has to be consistent and how it relates to other contexts. The context is separated by an explicit interface represented as an API which allows teams to specify which utilities of the service can be shared and which must be hidden. Every request for the service data must be subsequently processed through this public interface.
 	
-	\item \textbf{Decentralizating all things} -- Microservice architecture is build around the idea of self-sustaining development which means that services are maintained autonomously. This allows to delegate decision making and authority to the team that is accountable for the service maintenance. The team is then able to take full ownership of the service which with the support of the independent deployment mechanism results into the convenient development, testing and life-cycle management. This principle accentuates that relevant business logic should be kept in services themselves and the communication between them must be as simple as possible. This permits to design systems in a way that adheres to the Conway's law  stated in 1967:
+	\item \textbf{Decentralizating all things} -- Microservice architecture is build around the idea of self-sustaining development which means that services are maintained autonomously. This allows to delegate decision making and authority to the team that is accountable for the service maintenance. The team is then able to take full ownership of the service which with the support of the independent deployment mechanism results into the convenient development, testing and life-cycle management. This principle accentuates that relevant business logic should be kept in services themselves and the communication between them must be as simple as possible. This permits to design systems in a way that adheres to the Conway's law  stated in 1967 \cite{conways_law}:
     
     \begin{displayquote}
-       Any organization that designs a system (defined broadly) will produce a design whose structure is a copy of the organization's communication structure. \cite{conways_law}
+       Any organization that designs a system (defined broadly) will produce a design whose structure is a copy of the organization's communication structure.
     \end{displayquote}
 
     This principle also affect the system architecture and design. The purpose is to avoid approaches like enterprise service bus (ESB) or other orchestration systems, which can lead to centralization of business logic \cite{building_ms}. In general, architectures build on the choreography patterns rather than orchestration are preferred. The comparison of these two approaches has been investigated in many research works \cite{chor_and_orch, service_oriented_design, realtime_ws_orch}.
@@ -296,7 +296,7 @@ Before the definition of what the reactivity means in distributed microservices 
 
 By the definition in the Oxford dictionary, the word \textit{reactive} symbolizes an exposure of a response to a stimulus or an action in response to a situation rather than creating or controlling it. This definition naturally translates to software systems. However, the interpretation of what the stimuli is in software applications may differ. It might be, for instance, events, messages, requests or failures. The important common property of these impulses is that the development model cannot be implemented in a way to control them. This motions differ from the traditional style of programming models in which the program functioned as a sequence of commands that were always executed in the predefined order and in the maintained, controlled state.
 
-In software systems we distinguish three distinct classes of reactive concerns -- reactive systems, reactive programming and reactive streams. 
+In software systems we distinguish three distinct classes of reactive concerns -- reactive systems, reactive programming and reactive streams \cite{reactive_landscape}. 
 
 \subsection{Reactive systems}
 
@@ -428,7 +428,7 @@ In addition to modes defined above, it is also possible to combine these two app
 
 \section{Distributed sagas}
 
-The notion of sagas can be naturally extended into distributed environments. The Saga pattern is an architectural pattern that focuses on integrity, reliability, and quality, and it pertains to the communication patterns between services \cite{prac_ms}. This allows the saga definition in distributed systems to be redefined as a sequence of requests that are being placed on particular participants invocations. These requests may provide ACID guarantees, but this not restricted and it must ensured by individual participants. Similarly, each participant is also required to expose the idempotent compensating request which can semantically undo the request that is handled by this participant in the saga.
+The notion of sagas can be naturally extended into distributed environments \cite{sagas_publ}. The saga pattern as an architectural pattern focuses on integrity, reliability, and quality, and it pertains to the communication patterns between services \cite{prac_ms}. This allows the saga definition in distributed systems to be redefined as a sequence of requests that are being placed on particular participants invocations. These requests may provide ACID guarantees, but this not restricted and it must ensured by individual participants. Similarly, each participant is also required to expose the idempotent compensating request which can semantically undo the request that is handled by this participant in the saga.
 
 Analogously to the non-distributed systems, the distributed saga management also requires a transaction log which needs to be durable and distributed. The examples of distributed database providers include e.g. Cassandra, RethinkDB or Apache Ignite.
 
@@ -484,7 +484,7 @@ the platform controls the information transfer. The base Eventuate platform buil
 \clearpage
 \chapter{Saga implementations comparison example}
 
-As a part of the investigation of the each discussed framework from the previous chapter, I created a sample application simulating the saga utilization. The main goal of this quickstart projects is to compare the base attributes of the investigated saga solution frameworks. This includes the comparison of the development model, microservices feasibility, maintainability, scalability, performance and the applicability of the reactive principles within the saga execution. 
+As a part of the investigation of the each discussed framework from the previous chapter, I created a sample application simulating the saga utilization. The main goal of this quickstart projects is to compare the base attributes of the investigated saga solution frameworks. This includes the comparison of the development model, microservices feasibility, maintainability, scalability, performance and the applicability of the reactive principles within the saga execution. The examples created for this thesis may be considered as artifacts of the one iteration of the design science research \cite{design_science}.
 
 The application represents a backend processing for orders with a simple REST\footnote{Representational State Transfer} user interface. Users are also allowed to query persisted information through the defined microservices APIs available in appendix \ref{sec:appendixAPI}.
 
