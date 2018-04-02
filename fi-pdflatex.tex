@@ -334,6 +334,10 @@ This specification aims to provide a minimal set of interfaces and protocols tha
 
 The API components that are required to be provided by the Reactive Streams implementations are publisher, subscriber, subscription and processor. The publisher provides potentially infinite number of elements in a sequence which are being published according to the subscribers demands. The subscriber subscribes to the data publisher with a call to \texttt{Publisher.subscribe(Subscriber)}. The outcome of this operation is signaled to the subscribing consumer by a call to the \texttt{Subscriber.onSubscribe(Subscription)} method. The subscriber is  able to request data delivery by a call to \texttt{Subscription.request(long)} in which it can specify the number of items it is able to consume. This call is then followed by a requested number of \texttt{Subscriber.onNext} calls that represent the delivery of the data item to the subscriber. If the requested number of items is \texttt{Long.MAX\_VALUE}, the request is treated as effectively unbounded. The termination of the data consumption is signaled to the subscriber by the call to one of the \texttt{onComplete} or the \texttt{onError} methods. The subscriber is also allowed to request the publisher to stop sending data at any time by a call to \texttt{Subscription.cancel} method, but there still may be some data received due to the asynchronous nature of the publisher. The processor represents the component which is both the publisher and the subscriber in one instance and it must follow the contract of both interfaces. The full API provided by the Reactive Streams in version 1.0.2 is available in the Appendix \ref{reactive_streams}.
 
+All of the API component interfaces discussed above has been already included in the Java development kit (JDK) 9 in the class \texttt{java.util.concurrent.Flow}. The reactive streams initiative is supported by the companies like Neflix, Pivotal, Red Hat, Twitter and many others.
+
+
+
 
 \clearpage
 \chapter{Communication patterns}
