@@ -342,6 +342,28 @@ As it is common with every architectural style, microservices bring together wit
 
 \subsection{Distributed systems}
 
+The service distribution supports the architecture by the inherent model of the service boundaries. However, the communication over the network brings a few complications that services need to account for.
+
+The first considerable issue is network failures. Because this is something that can not be controlled by the invoking service, it is required that each microservice call is treated with caution (e. g. by setting an explicit timeout). For this reason, services should be always designed in a resilient way with failure in mind.
+
+Another relevant problem presented by the network overhead is the performance. Remote calls, that are required for inter service invocations, represent additional complexity and time consumption that are not present in modular monolithic systems. There are several various techniques that may be employed to improve the general performance like, for instance, decreasing the number of calls or making the asynchronous.
+
+The above mentioned and other problems have been elaborated in the work of James Gosling who in 1997 extended the draft created by Peter Deutsch which stated wrong assumptions that are commonly being made about distributed systems. These assumptions are known as \textit{The 8 fallacies of distributed computing}:
+
+\begin{enumerate}
+    \item The network is reliable.
+    \item Latency is zero.
+    \item Bandwidth is infinite.
+    \item The network is secure.
+    \item Topology doesn't change.
+    \item There is one administrator.
+    \item Transport cost is zero.
+    \item The network is homogeneous.
+\end{enumerate}
+
+\noindent
+Unfortunately, the original work of authors is no longer available, but Arnon Rotem-Gal-Oz provides in his publication \cite{fallacies} a very detailed descriptions of each individual assumption.
+
 \subsection{Eventual consistency}
 
 \subsection{Operations}

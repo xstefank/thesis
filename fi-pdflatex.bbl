@@ -224,6 +224,12 @@ R.~S. community, ``Reactive streams,'' 2018. [Online]. Available:
   \url{http://www.reactive-streams.org/}
 \BIBentrySTDinterwordspacing
 
+\bibitem{fallacies}
+\BIBentryALTinterwordspacing
+A.~Rotem-Gal-Oz, ``Fallacies of distributed computing explained.'' [Online].
+  Available: \url{http://www.rgoarchitects.com/Files/fallacies.pdf}
+\BIBentrySTDinterwordspacing
+
 \bibitem{sagas_publ}
 H.~Garcia-Molina and K.~Salem, ``Sagas,'' \emph{ACM SIGMOD Record}, vol.~16,
   no.~3, pp. 249--259, 1987.
