@@ -1,0 +1,8 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+    \PYG{k+kd}{public} \PYG{k+kd}{interface} \PYG{n+nc}{Subscriber}\PYG{o}{\PYGZlt{}}\PYG{n}{T}\PYG{o}{\PYGZgt{}} \PYG{o}{\PYGZob{}}
+        \PYG{k+kd}{public} \PYG{k+kt}{void} \PYG{n+nf}{onSubscribe}\PYG{o}{(}\PYG{n}{Subscription} \PYG{n}{s}\PYG{o}{);}
+        \PYG{k+kd}{public} \PYG{k+kt}{void} \PYG{n+nf}{onNext}\PYG{o}{(}\PYG{n}{T} \PYG{n}{t}\PYG{o}{);}
+        \PYG{k+kd}{public} \PYG{k+kt}{void} \PYG{n+nf}{onError}\PYG{o}{(}\PYG{n}{Throwable} \PYG{n}{t}\PYG{o}{);}
+        \PYG{k+kd}{public} \PYG{k+kt}{void} \PYG{n+nf}{onComplete}\PYG{o}{();}
+    \PYG{o}{\PYGZcb{}}
+\end{Verbatim}

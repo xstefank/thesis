@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+    \PYG{k+kd}{public} \PYG{k+kd}{interface} \PYG{n+nc}{Subscription} \PYG{o}{\PYGZob{}}
+        \PYG{k+kd}{public} \PYG{k+kt}{void} \PYG{n+nf}{request}\PYG{o}{(}\PYG{k+kt}{long} \PYG{n}{n}\PYG{o}{);}
+        \PYG{k+kd}{public} \PYG{k+kt}{void} \PYG{n+nf}{cancel}\PYG{o}{();}
+    \PYG{o}{\PYGZcb{}}
+\end{Verbatim}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.9.30)  2 APR 2018 15:04
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.9.30)  2 APR 2018 15:21
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1952,7 +1952,7 @@ Package microtype Info: Character `029' is missing
 (microtype)             in font `T1/qpl/m/sc/17.28'.
 (microtype)             Ignoring protrusion settings for this character.
 
-<fithesis/logo/mu/fithesis-fi.pdf, id=346, 291.0875pt x 292.09125pt>
+<fithesis/logo/mu/fithesis-fi.pdf, id=350, 291.0875pt x 292.09125pt>
 File: fithesis/logo/mu/fithesis-fi.pdf Graphic file (type pdf)
 
 <use fithesis/logo/mu/fithesis-fi.pdf>
@@ -1966,7 +1966,7 @@ Package microtype Info: Character `029' is missing
 
 {/usr/share/texlive/texmf-dist/fonts/map/pdftex/updmap/pdftex.map} <./fithesis/
 logo/mu/fithesis-fi.pdf>]
-<fithesis/logo/mu/fithesis-fi-color.pdf, id=357, 291.0875pt x 292.09125pt>
+<fithesis/logo/mu/fithesis-fi-color.pdf, id=361, 291.0875pt x 292.09125pt>
 File: fithesis/logo/mu/fithesis-fi-color.pdf Graphic file (type pdf)
 
 <use fithesis/logo/mu/fithesis-fi-color.pdf>
@@ -2066,7 +2066,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 122--123
 
  []
 
-<images/dirtyWrite.png, id=517, 2308.625pt x 1561.835pt>
+<images/dirtyWrite.png, id=522, 2308.625pt x 1561.835pt>
 File: images/dirtyWrite.png Graphic file (type png)
 
 <use images/dirtyWrite.png>
@@ -2151,7 +2151,7 @@ Chapter 4.
 
 ]
 Chapter 5.
-<images/tripExample.png, id=698, 738.76pt x 440.64626pt>
+<images/tripExample.png, id=704, 738.76pt x 440.64626pt>
 File: images/tripExample.png Graphic file (type png)
 
 <use images/tripExample.png>
@@ -2184,7 +2184,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 421--422
 
  []
 
-[28] <images/SEC.png, id=734, 1175.39125pt x 867.24pt>
+[28] <images/SEC.png, id=740, 1175.39125pt x 867.24pt>
 File: images/SEC.png Graphic file (type png)
  <use images/SEC.png>
 Package pdftex.def Info: images/SEC.png used on input line 435.
@@ -2197,7 +2197,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 453--454
 
 [31] [32]
 Chapter 6.
-<images/productInfoJSON.png, id=773, 316.18124pt x 101.37875pt>
+<images/productInfoJSON.png, id=779, 316.18124pt x 101.37875pt>
 File: images/productInfoJSON.png Graphic file (type png)
 
 <use images/productInfoJSON.png>
@@ -2209,7 +2209,7 @@ Overfull \vbox (9.69156pt too high) has occurred while \output is active []
 
 [33
 
-] <images/sagaModel.pdf, id=787, 980.66376pt x 328.22626pt>
+] <images/sagaModel.pdf, id=793, 980.66376pt x 328.22626pt>
 File: images/sagaModel.pdf Graphic file (type pdf)
 
 <use images/sagaModel.pdf>
@@ -2351,14 +2351,14 @@ pli-ca-tion builds,
 Overfull \vbox (7.04938pt too high) has occurred while \output is active []
 
 
-[48] [49] <images/LRADefinition.png, id=916, 229.85875pt x 100.375pt>
+[48] [49] <images/LRADefinition.png, id=922, 229.85875pt x 100.375pt>
 File: images/LRADefinition.png Graphic file (type png)
 
 <use images/LRADefinition.png>
 Package pdftex.def Info: images/LRADefinition.png used on input line 734.
 (pdftex.def)             Requested size: 195.48256pt x 85.35826pt.
  [50 <./images/LRADefinition.png (PNG copy)>]
-<images/actionJSON.png, id=922, 390.45876pt x 104.39pt>
+<images/actionJSON.png, id=928, 390.45876pt x 104.39pt>
 File: images/actionJSON.png Graphic file (type png)
 
 <use images/actionJSON.png>
@@ -2519,21 +2519,42 @@ BD6ACEB2.pygtex)
 (./_minted-fi-pdflatex/73F3ED0C5944B8856EB10E119014957E0BD8AFD35118F586B42828DB
 BD6ACEB2.pygtex [68]) [69]
 Appendix D.
-[70]
+\openout6 = `fi-pdflatex.pyg'.
+
+
+(./_minted-fi-pdflatex/51EFD8A4103A9DC9C60C4012C59C065B0BD8AFD35118F586B42828DB
+BD6ACEB2.pygtex)
+\openout6 = `fi-pdflatex.pyg'.
+
+
+(./_minted-fi-pdflatex/77A879743EDB639E2B4FBC853764CBE00BD8AFD35118F586B42828DB
+BD6ACEB2.pygtex)
+\openout6 = `fi-pdflatex.pyg'.
+
+
+(./_minted-fi-pdflatex/C64C3942E820B46A1EFEA008A9B7794C0BD8AFD35118F586B42828DB
+BD6ACEB2.pygtex)
+\openout6 = `fi-pdflatex.pyg'.
+
+
+(./_minted-fi-pdflatex/6460CFF85A08AB82318A1CC4FCA23E660BD8AFD35118F586B42828DB
+BD6ACEB2.pygtex) [70]
+Appendix E.
+[71]
 
 Package catoptions Warning: Undefined options 
 (catoptions)                [Family, Option, Value]: 
 (catoptions)                fontenc.sty,T1,. 
 (catoptions)                Default action already taken in each case .
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1068.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1068.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1111.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1111.
 (./fi-pdflatex.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1068.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1068.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1111.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1111.
 
 Package rerunfilecheck Info: File `fi-pdflatex.out' has not changed.
-(rerunfilecheck)             Checksum: FE32B307F04429A271DB081DE65942BA;5576.
+(rerunfilecheck)             Checksum: F9B1693B853B57B4BECD413EEFDD0DFB;5649.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
@@ -2542,10 +2563,10 @@ runsystem(rm fi-pdflatex.pyg)...executed.
 
  ) 
 Here is how much of TeX's memory you used:
- 38337 strings out of 494946
- 695506 string characters out of 6180981
- 827381 words of memory out of 5000000
- 40471 multiletter control sequences out of 15000+600000
+ 38357 strings out of 494946
+ 696885 string characters out of 6180981
+ 827725 words of memory out of 5000000
+ 40477 multiletter control sequences out of 15000+600000
  71183 words of font info for 115 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  69i,8n,84p,10406b,646s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -2558,10 +2579,10 @@ c/lm/lmtk10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/lm/lmtt10.pfb
 xlive/texmf-dist/fonts/type1/public/tex-gyre/qplb.pfb></usr/share/texlive/texmf
 -dist/fonts/type1/public/tex-gyre/qplr.pfb></usr/share/texlive/texmf-dist/fonts
 /type1/public/tex-gyre/qplri.pfb>
-Output written on fi-pdflatex.pdf (80 pages, 14432908 bytes).
+Output written on fi-pdflatex.pdf (81 pages, 14437383 bytes).
 PDF statistics:
- 1166 PDF objects out of 1200 (max. 8388607)
- 1034 compressed objects within 11 object streams
- 279 named destinations out of 1000 (max. 500000)
- 22818 words of extra memory for PDF output out of 24883 (max. 10000000)
+ 1176 PDF objects out of 1200 (max. 8388607)
+ 1043 compressed objects within 11 object streams
+ 281 named destinations out of 1000 (max. 500000)
+ 22826 words of extra memory for PDF output out of 24883 (max. 10000000)
 

@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+    \PYG{k+kd}{public} \PYG{k+kd}{interface} \PYG{n+nc}{Processor}\PYG{o}{\PYGZlt{}}\PYG{n}{T}\PYG{o}{,} \PYG{n}{R}\PYG{o}{\PYGZgt{}}
+        \PYG{k+kd}{extends} \PYG{n}{Subscriber}\PYG{o}{\PYGZlt{}}\PYG{n}{T}\PYG{o}{\PYGZgt{},} \PYG{n}{Publisher}\PYG{o}{\PYGZlt{}}\PYG{n}{R}\PYG{o}{\PYGZgt{}} \PYG{o}{\PYGZob{}}
+    \PYG{o}{\PYGZcb{}}
+\end{Verbatim}

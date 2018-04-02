@@ -99,4 +99,5 @@
 \contentsline {section}{\numberline {B.3}\slshape LRA service}{66}{section.B.3}
 \contentsline {section}{\numberline {B.4}\slshape Eventuate Tram}{67}{section.B.4}
 \contentsline {chapter}{\numberline {C}\bfseries JTA}{68}{appendix.C}
-\contentsline {chapter}{\numberline {D}\bfseries The saga scenarios}{70}{appendix.D}
+\contentsline {chapter}{\numberline {D}\bfseries Reactive Streams v1.0.2 API}{70}{appendix.D}
+\contentsline {chapter}{\numberline {E}\bfseries The saga scenarios}{71}{appendix.E}

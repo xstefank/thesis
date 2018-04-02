@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+    \PYG{k+kd}{public} \PYG{k+kd}{interface} \PYG{n+nc}{Publisher}\PYG{o}{\PYGZlt{}}\PYG{n}{T}\PYG{o}{\PYGZgt{}} \PYG{o}{\PYGZob{}}
+        \PYG{k+kd}{public} \PYG{k+kt}{void} \PYG{n+nf}{subscribe}\PYG{o}{(}\PYG{n}{Subscriber}\PYG{o}{\PYGZlt{}?} \PYG{k+kd}{super} \PYG{n}{T}\PYG{o}{\PYGZgt{}} \PYG{n}{s}\PYG{o}{);}
+    \PYG{o}{\PYGZcb{}}
+\end{Verbatim}
