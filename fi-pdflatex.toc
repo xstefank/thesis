@@ -20,7 +20,12 @@
 \contentsline {section}{\numberline {2.5}\slshape Transaction manager}{11}{section.2.5}
 \contentsline {subsection}{\numberline {2.5.1}\rmfamily Local transaction manager}{11}{subsection.2.5.1}
 \contentsline {subsection}{\numberline {2.5.2}\rmfamily XA resource}{11}{subsection.2.5.2}
-\contentsline {section}{\numberline {2.6}\slshape Failure handling}{11}{section.2.6}
+\contentsline {section}{\numberline {2.6}\slshape Consensus protocols}{11}{section.2.6}
+\contentsline {subsection}{\numberline {2.6.1}\rmfamily 2PC}{11}{subsection.2.6.1}
+\contentsline {subsection}{\numberline {2.6.2}\rmfamily 3PC}{11}{subsection.2.6.2}
+\contentsline {subsection}{\numberline {2.6.3}\rmfamily Raft}{11}{subsection.2.6.3}
+\contentsline {subsection}{\numberline {2.6.4}\rmfamily Paxos}{11}{subsection.2.6.4}
+\contentsline {subsection}{\numberline {2.6.5}\rmfamily Ark}{11}{subsection.2.6.5}
 \contentsline {chapter}{\numberline {3}\bfseries Microservices architecture pattern}{12}{chapter.3}
 \contentsline {section}{\numberline {3.1}\slshape Architectural pattern}{12}{section.3.1}
 \contentsline {subsection}{\numberline {3.1.1}\rmfamily Monolithic architecture}{12}{subsection.3.1.1}
