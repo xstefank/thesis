@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.9.30)  3 APR 2018 22:34
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.9.30)  3 APR 2018 23:39
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -2427,7 +2427,11 @@ Underfull \hbox (badness 1107) in paragraph at lines 261--264
 
 [64] [65]) [66]
 Appendix A.
-[67]
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [67]
+[68]
 Appendix B.
 \openout6 = `fi-pdflatex.pyg'.
 
@@ -2458,7 +2462,7 @@ B2CA462F.pygtex)
 
 
 (./_minted-fi-pdflatex/59414BBEA25BFD0489321CE8C72016DAFC600DE6684BB3C58945898F
-B2CA462F.pygtex [68])
+B2CA462F.pygtex [69])
 \openout6 = `fi-pdflatex.pyg'.
 
 
@@ -2478,7 +2482,7 @@ B2CA462F.pygtex)
 
 
 (./_minted-fi-pdflatex/F9A48A8A0F37F75E7AC2FFA3FF979597FC600DE6684BB3C58945898F
-B2CA462F.pygtex [69])
+B2CA462F.pygtex [70])
 \openout6 = `fi-pdflatex.pyg'.
 
 
@@ -2498,14 +2502,14 @@ B2CA462F.pygtex)
 
 
 (./_minted-fi-pdflatex/B587EFE444458382F4F971730D264670FC600DE6684BB3C58945898F
-B2CA462F.pygtex) [70]
+B2CA462F.pygtex) [71]
 Appendix C.
 \openout6 = `fi-pdflatex.pyg'.
 
 
 (./_minted-fi-pdflatex/F8EC7E2C0BB0F216306CE25138DE52810BD8AFD35118F586B42828DB
 BD6ACEB2.pygtex)
-Underfull \hbox (badness 10000) in paragraph at lines 1058--1059
+Underfull \hbox (badness 10000) in paragraph at lines 1064--1065
 
  []
 
@@ -2518,7 +2522,7 @@ BD6ACEB2.pygtex)
 
 
 (./_minted-fi-pdflatex/73F3ED0C5944B8856EB10E119014957E0BD8AFD35118F586B42828DB
-BD6ACEB2.pygtex [71]) [72]
+BD6ACEB2.pygtex [72]) [73]
 Appendix D.
 \openout6 = `fi-pdflatex.pyg'.
 
@@ -2539,20 +2543,20 @@ BD6ACEB2.pygtex)
 
 
 (./_minted-fi-pdflatex/6460CFF85A08AB82318A1CC4FCA23E660BD8AFD35118F586B42828DB
-BD6ACEB2.pygtex) [73]
+BD6ACEB2.pygtex) [74]
 Appendix E.
-[74]
+[75]
 
 Package catoptions Warning: Undefined options 
 (catoptions)                [Family, Option, Value]: 
 (catoptions)                fontenc.sty,T1,. 
 (catoptions)                Default action already taken in each case .
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1156.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1156.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1162.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1162.
 (./fi-pdflatex.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1156.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1156.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1162.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1162.
 
 Package rerunfilecheck Info: File `fi-pdflatex.out' has not changed.
 (rerunfilecheck)             Checksum: 2F75793053DF818B6EA518A93B458341;5554.
@@ -2564,8 +2568,8 @@ runsystem(rm fi-pdflatex.pyg)...executed.
 
  ) 
 Here is how much of TeX's memory you used:
- 38382 strings out of 494946
- 697181 string characters out of 6180981
+ 38383 strings out of 494946
+ 697188 string characters out of 6180981
  827885 words of memory out of 5000000
  40482 multiletter control sequences out of 15000+600000
  71449 words of font info for 117 fonts, out of 8000000 for 9000
@@ -2580,10 +2584,10 @@ c/lm/lmtk10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/lm/lmtt10.pfb
 xlive/texmf-dist/fonts/type1/public/tex-gyre/qplb.pfb></usr/share/texlive/texmf
 -dist/fonts/type1/public/tex-gyre/qplr.pfb></usr/share/texlive/texmf-dist/fonts
 /type1/public/tex-gyre/qplri.pfb>
-Output written on fi-pdflatex.pdf (84 pages, 14447054 bytes).
+Output written on fi-pdflatex.pdf (85 pages, 14447992 bytes).
 PDF statistics:
- 1217 PDF objects out of 1440 (max. 8388607)
- 1081 compressed objects within 11 object streams
- 297 named destinations out of 1000 (max. 500000)
+ 1221 PDF objects out of 1440 (max. 8388607)
+ 1084 compressed objects within 11 object streams
+ 298 named destinations out of 1000 (max. 500000)
  22818 words of extra memory for PDF output out of 24883 (max. 10000000)
 

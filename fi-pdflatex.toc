@@ -92,11 +92,11 @@
 \contentsline {chapter}{\numberline {7}\bfseries Conclusion}{60}{chapter.7}
 \contentsline {chapter}{Bibliography}{61}{section*.29}
 \contentsline {chapter}{\numberline {A}\bfseries The CQRS pattern}{67}{appendix.A}
-\contentsline {chapter}{\numberline {B}\bfseries The example applications public APIs}{68}{appendix.B}
-\contentsline {section}{\numberline {B.1}\slshape Axon service}{68}{section.B.1}
-\contentsline {section}{\numberline {B.2}\slshape Eventuate service}{68}{section.B.2}
-\contentsline {section}{\numberline {B.3}\slshape LRA service}{69}{section.B.3}
-\contentsline {section}{\numberline {B.4}\slshape Eventuate Tram}{70}{section.B.4}
-\contentsline {chapter}{\numberline {C}\bfseries JTA}{71}{appendix.C}
-\contentsline {chapter}{\numberline {D}\bfseries Reactive Streams v1.0.2 API}{73}{appendix.D}
-\contentsline {chapter}{\numberline {E}\bfseries The saga scenarios}{74}{appendix.E}
+\contentsline {chapter}{\numberline {B}\bfseries The example applications public APIs}{69}{appendix.B}
+\contentsline {section}{\numberline {B.1}\slshape Axon service}{69}{section.B.1}
+\contentsline {section}{\numberline {B.2}\slshape Eventuate service}{69}{section.B.2}
+\contentsline {section}{\numberline {B.3}\slshape LRA service}{70}{section.B.3}
+\contentsline {section}{\numberline {B.4}\slshape Eventuate Tram}{71}{section.B.4}
+\contentsline {chapter}{\numberline {C}\bfseries JTA}{72}{appendix.C}
+\contentsline {chapter}{\numberline {D}\bfseries Reactive Streams v1.0.2 API}{74}{appendix.D}
+\contentsline {chapter}{\numberline {E}\bfseries The saga scenarios}{75}{appendix.E}
