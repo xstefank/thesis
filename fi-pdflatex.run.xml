@@ -82,5 +82,8 @@
     <requires type="dynamic">
       <file>fi-pdflatex.bcf</file>
     </requires>
+    <requires type="editable">
+      <file>references.bib</file>
+    </requires>
   </external>
 </requests>

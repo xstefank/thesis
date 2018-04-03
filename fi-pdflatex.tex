@@ -566,6 +566,17 @@ It is worth mentioning that both the Spring Cloud and the RabbitMQ message broke
 
 \subsection{Spring Boot}
 
+Spring Boot is a framework built on top of the Spring Framework \cite{spring_ms}. Its main focus is on the creation of standalone runnable applications that are easily employed in microservices architectures. It favors convention over configuration to allow the usage of Spring features with a little of the Spring configuration \cite{spring_boot}.
+
+The Spring Boot platform is composed into aggregate modules known as \textit{starters}. The starter is a dependency descriptor which contains dependencies that are required to provide some functionality to the application. In order to use Spring Boot, the \texttt{spring-boot-starter} core module must be incorporated. Other useful modules, for instance, \texttt{spring-boot-starter-web} or \texttt{spring-boot-starter-data-jpa} can be provided to support the microservice adoption. Starters can be packaged with the application using Maven or Gradle build configurations.
+
+Another responsibility of this framework is the packaging of the application. The preferable way for the microservice is to create an executable fat Java archive (jar) which contains all of the application dependencies. The application can then be simply excuted by a \texttt{java -jar} command.
+
+A spring Boot microservice must fulfill two requirements -- it must follow a Maven layout convention and it must provide an entry point. This can be any class annotated with the \texttt{@EnableAutoConfiguration} annotation that starts the Spring Boot context.
+
+Spring provides various ways for exposing available services. Registration servers like Eureka or Consul which are integrated within the Spring cloud \cite{spring_cloud} can be used as the service discovery mechanisms. For a manual approach, the microservices functionality can be exposed through the RESTful API.
+
+
 \subsection{Project structure}
 
 The application is composed of five microservices -- the  \texttt{order-service}, the \texttt{shipment-service}, the \texttt{invoice-service}, the \texttt{query-service} and the \texttt{registration-server}. Furthermore it also contains a separated project \texttt{service-model} which serves as a support library for the other microservices.
@@ -852,9 +863,22 @@ Similarly, the saga may need to interact with the same participant in several di
 
 \appendix %% Start the appendices.
 
-\chapter{The Command Query Responsibility Segregation pattern}
+\chapter{The CQRS pattern}
+\label{sec:appendix-cqrs}
 
-CQRS
+The Command Query Responsibility Segregation pattern describes the separation of the application domain into two distinct parts -- the command model which is responsible for the application processing and the query model that is managing the access to the persisted information. 
+
+This pattern extends a base given by the Command-query separation (CQS) which was introduced by Bertrand Meyer in his book \textit{Object-Oriented Software Construction}. The main idea is to split the object's methods into two categories -- queries which just return a value without changing the state, and commands that change the state of the object and do not return any result.
+
+The commands are typically illustrated as simple objects identified by their respective names which are always expected to be in an imperative tense. They contain all necessary information that is needed to perform the request. Each command is delivered to a specified aggregate's command handler method that matches its identifier. 
+
+The query segment is responsible for the presentation of data to the end user. This typically represent methods that return data transfer objects (DTOs) or other data model entities. It can also provide several representations of the presented information or prevent users from multiple round trips by the data accumulation.
+
+An aggregate represents a main building block in the CQRS architecture. It is an entity or a group of entities that is always kept in a consistent state \cite{axon_framework_reference_guide}. The state can be changed by a reaction to the published event. Events are produced (applied) by the aggregate as a reaction to the received command. 
+
+To create a more resilient systems, most of the CQRS frameworks also employ an event sourcing mechanism. Every published event is being persisted to the durable storage which allows the aggregate to rebuild its state in the case of failure. This can be done just by replaying (reapplying) of the already published events. It also allows to persist and redeliver events that cannot be transmitted to aggregate during the failed state.
+
+
 
 \chapter{The example applications public APIs}
 \label{sec:appendixAPI}

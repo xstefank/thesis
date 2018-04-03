@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.9.30)  3 APR 2018 00:09
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.9.30)  3 APR 2018 22:34
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -2131,24 +2131,12 @@ Overfull \vbox (9.54932pt too high) has occurred while \output is active []
 
 
 [13] [14] [15]
-Overfull \hbox (2.95137pt too wide) in paragraph at lines 275--276
-[]\T1/qpl/b/n/12 Decentralizating all things \T1/qpl/m/n/12 (-20) -- Mi-croser-
-vice ar-chi-tec-ture is build
+Overfull \hbox (17.07565pt too wide) in paragraph at lines 278--279
+[]\T1/qpl/m/n/12 (-20) Any or-ga-ni-za-tion that de-signs a sys-tem (de-fined b
+roadly)
  []
 
-[16]
-Overfull \hbox (1.89783pt too wide) in paragraph at lines 287--288
-\T1/qpl/m/n/12 (-20) lated de-vel-op-ment, the ar-chi-tec-ture still needs to p
-ro-tect against
- []
-
-[17] [18]
-Overfull \hbox (0.5705pt too wide) in paragraph at lines 312--313
-\T1/qpl/m/n/12 (-20) pres-sure. The lo-ca-tion trans-parency, based on vir-tual
- ad-dresses,
- []
-
-[19]
+[16] [17] [18] [19]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [20]
@@ -2249,163 +2237,163 @@ vice \T1/lmtt/m/n/12 registration-server
  []
 
 
-Overfull \hbox (0.81178pt too wide) in paragraph at lines 571--572
+Overfull \hbox (2.82336pt too wide) in paragraph at lines 571--572
+\T1/lmtt/m/n/12 spring-boot-starter-web \T1/qpl/m/n/12 (-20) or \T1/lmtt/m/n/12
+ spring-boot-starter-data-jpa \T1/qpl/m/n/12 (-20) can be
+ []
+
+[38]
+Overfull \hbox (0.81178pt too wide) in paragraph at lines 582--583
 \T1/qpl/m/n/12 (-20) The ap-pli-ca-tion is com-posed of five mi-croser-vices --
  the \T1/lmtt/m/n/12 order-service\T1/qpl/m/n/12 (-20) ,
  []
 
-
-Overfull \vbox (5.63132pt too high) has occurred while \output is active []
-
-
-[38]
-Underfull \hbox (badness 10000) in paragraph at lines 585--586
-
- []
-
 [39]
-Underfull \hbox (badness 10000) in paragraph at lines 591--592
+Underfull \hbox (badness 10000) in paragraph at lines 596--597
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 595--596
+Underfull \hbox (badness 10000) in paragraph at lines 602--603
+
+ []
+
+[40]
+Underfull \hbox (badness 10000) in paragraph at lines 606--607
 
  []
 
 
-Overfull \hbox (0.25385pt too wide) in paragraph at lines 597--598
+Overfull \hbox (0.25385pt too wide) in paragraph at lines 608--609
 []\T1/qpl/m/n/12 (-20) When the dis-tributed event bus is pro-cess-ing events f
 rom an AMQP
  []
 
 
-Overfull \hbox (6.14897pt too wide) in paragraph at lines 597--598
+Overfull \hbox (6.14897pt too wide) in paragraph at lines 608--609
 \T1/qpl/m/n/12 (-20) the in-cor-rect con-fig-u-ra-tion from the pre-vi-ous prob
 -lem. The workaround
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 599--600
-
- []
-
-[40]
-Underfull \hbox (badness 10000) in paragraph at lines 616--617
-
- []
-
-[41]
-Underfull \hbox (badness 10000) in paragraph at lines 620--621
+Underfull \hbox (badness 10000) in paragraph at lines 610--611
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 624--625
+Underfull \vbox (badness 7151) has occurred while \output is active []
+
+ [41]
+Underfull \hbox (badness 10000) in paragraph at lines 627--628
 
  []
 
 
-Overfull \hbox (2.52023pt too wide) in paragraph at lines 626--627
+Underfull \hbox (badness 10000) in paragraph at lines 631--632
+
+ []
+
+[42]
+Underfull \hbox (badness 10000) in paragraph at lines 635--636
+
+ []
+
+
+Overfull \hbox (2.52023pt too wide) in paragraph at lines 637--638
 \T1/qpl/m/n/12 (-20) ized ver-sion is lo-cated un-der \T1/lmtt/m/n/12 eventuate
 io/eventuateio-local-mysql
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 628--629
+Underfull \hbox (badness 10000) in paragraph at lines 639--640
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 632--633
+Underfull \hbox (badness 10000) in paragraph at lines 643--644
 
  []
 
-[42]
-Underfull \vbox (badness 2119) has occurred while \output is active []
+[43] [44]
+Underfull \vbox (badness 1789) has occurred while \output is active []
 
- [43]
-[44]
-Underfull \hbox (badness 10000) in paragraph at lines 666--667
-
- []
-
-[45]
-Underfull \hbox (badness 10000) in paragraph at lines 676--677
+ [45]
+Underfull \hbox (badness 10000) in paragraph at lines 677--678
 
  []
 
 [46]
-Underfull \hbox (badness 10000) in paragraph at lines 685--686
+Underfull \hbox (badness 10000) in paragraph at lines 687--688
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 691--692
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 695--696
+Underfull \hbox (badness 10000) in paragraph at lines 696--697
 
  []
 
 [47]
-Overfull \vbox (5.63132pt too high) has occurred while \output is active []
+Underfull \hbox (badness 10000) in paragraph at lines 702--703
 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 706--707
+
+ []
 
 [48]
-Overfull \hbox (1.05869pt too wide) in paragraph at lines 727--728
+Underfull \vbox (badness 1990) has occurred while \output is active []
+
+ [49]
+Overfull \hbox (1.05869pt too wide) in paragraph at lines 738--739
 \T1/qpl/m/n/12 (-20) container-based en-vi-ron-ment and the au-toma-tion of ap-
 pli-ca-tion builds,
  []
 
-
-Overfull \vbox (7.04938pt too high) has occurred while \output is active []
-
-
-[49] [50] <images/LRADefinition.png, id=938, 229.85875pt x 100.375pt>
+[50] [51] <images/LRADefinition.png, id=948, 229.85875pt x 100.375pt>
 File: images/LRADefinition.png Graphic file (type png)
 
 <use images/LRADefinition.png>
-Package pdftex.def Info: images/LRADefinition.png used on input line 755.
+Package pdftex.def Info: images/LRADefinition.png used on input line 766.
 (pdftex.def)             Requested size: 195.48256pt x 85.35826pt.
- [51 <./images/LRADefinition.png (PNG copy)>]
-<images/actionJSON.png, id=945, 390.45876pt x 104.39pt>
+
+<images/actionJSON.png, id=949, 390.45876pt x 104.39pt>
 File: images/actionJSON.png Graphic file (type png)
 
 <use images/actionJSON.png>
-Package pdftex.def Info: images/actionJSON.png used on input line 766.
+Package pdftex.def Info: images/actionJSON.png used on input line 777.
 (pdftex.def)             Requested size: 319.29051pt x 85.35826pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [52 <./images/actionJSON.png (PNG copy)>]
+ [52 <./images/LRADefinition.png (PNG copy)>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [53]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+ [53 <./images/actionJSON.png (PNG copy)>]
+Underfull \vbox (badness 2119) has occurred while \output is active []
 
  [54]
-Underfull \vbox (badness 3343) has occurred while \output is active []
+[55]
+Underfull \vbox (badness 2119) has occurred while \output is active []
 
- [55]
-Underfull \hbox (badness 10000) in paragraph at lines 827--828
-
- []
-
-[56]
-Underfull \hbox (badness 10000) in paragraph at lines 831--832
+ [56]
+Underfull \hbox (badness 10000) in paragraph at lines 838--839
 
  []
 
-[57]
+
+Underfull \hbox (badness 10000) in paragraph at lines 842--843
+
+ []
+
+[57] [58]
 Chapter 6.
-[58
+[59
 
 ]
 Chapter 7.
-[59
+[60
 
 ]
 No file fi-pdflatex.ind.
@@ -2426,7 +2414,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 70--74
 ecture _ soa _
  []
 
-[60] [61] [62]
+[61] [62] [63]
 Underfull \hbox (badness 3158) in paragraph at lines 205--207
 []\T1/qpl/m/n/12 (+20) C. Es-coffier, \T1/qpl/m/it/12 Build-ing Re-ac-tive Mi-c
 roser-vices in Java\T1/qpl/m/n/12 (+20) , 1st ed.
@@ -2437,9 +2425,9 @@ Underfull \hbox (badness 1107) in paragraph at lines 261--264
 []\T1/qpl/m/n/12 (+20) Narayana, ``Narayana LRA,'' 2017. [On-line]. Avail-
  []
 
-[63]) [64]
+[64] [65]) [66]
 Appendix A.
-[65]
+[67]
 Appendix B.
 \openout6 = `fi-pdflatex.pyg'.
 
@@ -2470,7 +2458,7 @@ B2CA462F.pygtex)
 
 
 (./_minted-fi-pdflatex/59414BBEA25BFD0489321CE8C72016DAFC600DE6684BB3C58945898F
-B2CA462F.pygtex [66])
+B2CA462F.pygtex [68])
 \openout6 = `fi-pdflatex.pyg'.
 
 
@@ -2490,7 +2478,7 @@ B2CA462F.pygtex)
 
 
 (./_minted-fi-pdflatex/F9A48A8A0F37F75E7AC2FFA3FF979597FC600DE6684BB3C58945898F
-B2CA462F.pygtex [67])
+B2CA462F.pygtex [69])
 \openout6 = `fi-pdflatex.pyg'.
 
 
@@ -2510,14 +2498,14 @@ B2CA462F.pygtex)
 
 
 (./_minted-fi-pdflatex/B587EFE444458382F4F971730D264670FC600DE6684BB3C58945898F
-B2CA462F.pygtex) [68]
+B2CA462F.pygtex) [70]
 Appendix C.
 \openout6 = `fi-pdflatex.pyg'.
 
 
 (./_minted-fi-pdflatex/F8EC7E2C0BB0F216306CE25138DE52810BD8AFD35118F586B42828DB
 BD6ACEB2.pygtex)
-Underfull \hbox (badness 10000) in paragraph at lines 1034--1035
+Underfull \hbox (badness 10000) in paragraph at lines 1058--1059
 
  []
 
@@ -2530,7 +2518,7 @@ BD6ACEB2.pygtex)
 
 
 (./_minted-fi-pdflatex/73F3ED0C5944B8856EB10E119014957E0BD8AFD35118F586B42828DB
-BD6ACEB2.pygtex [69]) [70]
+BD6ACEB2.pygtex [71]) [72]
 Appendix D.
 \openout6 = `fi-pdflatex.pyg'.
 
@@ -2551,23 +2539,23 @@ BD6ACEB2.pygtex)
 
 
 (./_minted-fi-pdflatex/6460CFF85A08AB82318A1CC4FCA23E660BD8AFD35118F586B42828DB
-BD6ACEB2.pygtex) [71]
+BD6ACEB2.pygtex) [73]
 Appendix E.
-[72]
+[74]
 
 Package catoptions Warning: Undefined options 
 (catoptions)                [Family, Option, Value]: 
 (catoptions)                fontenc.sty,T1,. 
 (catoptions)                Default action already taken in each case .
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1132.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1132.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1156.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1156.
 (./fi-pdflatex.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1132.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1132.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1156.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1156.
 
 Package rerunfilecheck Info: File `fi-pdflatex.out' has not changed.
-(rerunfilecheck)             Checksum: 98C526F9D1E0C7B676272E59606D8F29;5599.
+(rerunfilecheck)             Checksum: 2F75793053DF818B6EA518A93B458341;5554.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
@@ -2576,11 +2564,11 @@ runsystem(rm fi-pdflatex.pyg)...executed.
 
  ) 
 Here is how much of TeX's memory you used:
- 38379 strings out of 494946
- 697126 string characters out of 6180981
- 827806 words of memory out of 5000000
- 40479 multiletter control sequences out of 15000+600000
- 71715 words of font info for 119 fonts, out of 8000000 for 9000
+ 38382 strings out of 494946
+ 697181 string characters out of 6180981
+ 827885 words of memory out of 5000000
+ 40482 multiletter control sequences out of 15000+600000
+ 71449 words of font info for 117 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  69i,8n,84p,10406b,646s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texli
@@ -2592,10 +2580,10 @@ c/lm/lmtk10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/lm/lmtt10.pfb
 xlive/texmf-dist/fonts/type1/public/tex-gyre/qplb.pfb></usr/share/texlive/texmf
 -dist/fonts/type1/public/tex-gyre/qplr.pfb></usr/share/texlive/texmf-dist/fonts
 /type1/public/tex-gyre/qplri.pfb>
-Output written on fi-pdflatex.pdf (82 pages, 14442041 bytes).
+Output written on fi-pdflatex.pdf (84 pages, 14447054 bytes).
 PDF statistics:
- 1199 PDF objects out of 1200 (max. 8388607)
- 1065 compressed objects within 11 object streams
- 293 named destinations out of 1000 (max. 500000)
+ 1217 PDF objects out of 1440 (max. 8388607)
+ 1081 compressed objects within 11 object streams
+ 297 named destinations out of 1000 (max. 500000)
  22818 words of extra memory for PDF output out of 24883 (max. 10000000)
 

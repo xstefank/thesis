@@ -308,6 +308,18 @@ B.~Porter, J.~Zyl, and O.~Lamy, ``Maven,'' 2018. [Online]. Available:
   \url{https://www.rabbitmq.com/}
 \BIBentrySTDinterwordspacing
 
+\bibitem{spring_ms}
+\BIBentryALTinterwordspacing
+D.~Woods, ``{Building Microservices with Spring Boot},'' 2016. [Online].
+  Available: \url{http://www.infoq.com/articles/boot-microservices}
+\BIBentrySTDinterwordspacing
+
+\bibitem{spring_cloud}
+\BIBentryALTinterwordspacing
+I.~Pivotal~Software, ``Spring cloud,'' 2018. [Online]. Available:
+  \url{https://projects.spring.io/spring-cloud/}
+\BIBentrySTDinterwordspacing
+
 \bibitem{apache_zookeeper}
 \BIBentryALTinterwordspacing
 {Apache software foundation}, ``Apache zookeeper,'' 2018. [Online]. Available:

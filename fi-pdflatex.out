@@ -67,7 +67,7 @@
 \BOOKMARK [0][-]{chapter.6}{LRA\040execution\040extension}{}% 67
 \BOOKMARK [0][-]{chapter.7}{Conclusion}{}% 68
 \BOOKMARK [0][-]{section*.29}{Bibliography}{}% 69
-\BOOKMARK [0][-]{appendix.A}{The\040Command\040Query\040Responsibility\040Segregation\040pattern}{}% 70
+\BOOKMARK [0][-]{appendix.A}{The\040CQRS\040pattern}{}% 70
 \BOOKMARK [0][-]{appendix.B}{The\040example\040applications\040public\040APIs}{}% 71
 \BOOKMARK [1][-]{section.B.1}{\040Axon\040service}{appendix.B}% 72
 \BOOKMARK [1][-]{section.B.2}{\040Eventuate\040service}{appendix.B}% 73
