@@ -247,6 +247,11 @@ S.~Gilbert and N.~Lynch, ``Brewer's conjecture and the feasibility of
   consistent, available, partition-tolerant web services,'' \emph{{ACM}
   {SIGACT} News}, vol.~33, no.~2, p.~51, jun 2002.
 
+\bibitem{pacelc}
+D.~Abadi, ``Consistency tradeoffs in modern distributed database system design:
+  {CAP} is only part of the story,'' \emph{Computer}, vol.~45, no.~2, pp.
+  37--42, feb 2012.
+
 \bibitem{sagas_publ}
 H.~Garcia-Molina and K.~Salem, ``Sagas,'' \emph{ACM SIGMOD Record}, vol.~16,
   no.~3, pp. 249--259, 1987.

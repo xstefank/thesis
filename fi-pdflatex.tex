@@ -392,6 +392,8 @@ In practice, the general belief is that for wide-area systems, designers cannot 
 
 The CAP theorem has been formally proven in 2002 by Seth Gilbert and Nancy Lynch \cite{cap_prove}. The prove is surprisingly simple and can be modeled by just two nodes.
 
+In 2012, Daniel J. Abadi proposed an extension of the CAP theorem called PACELC theorem which is particularly applicable for distributed database systems (DDBSs). The theorem states -- if there is a partition (P), how does the system trade off availability and consistency (A and C) or else (E) when the system is running normally in the absence of partitions, how does the system trade off latency (L) and consistency (C) \cite{pacelc}. The ELC part applies only when the system replicates data -- this is why this model cannot describe all kinds of distributed systems.
+
 \subsection{Operations}
 
 \subsection{Human factor}
