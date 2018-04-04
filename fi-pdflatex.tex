@@ -380,9 +380,17 @@ Imagine a situation where the customer creates an order in a web interface. Afte
 
 If the system allows microservices to make decisions based on inconsistent information, the eventual consistency may lead also to problems in the service coordination. This kind of issues is hard to find as they are often discovered only after the inconsistent window has been closed.
 
-The propagation delay problems are also present in the monolithic systems, but as it was mentioned in the previous chapter, the remote calls are typically remarkably less performant than in process communication. However, in practice applications do not really depend on the strong consistency guarantees to the expected extent (as we will see in the later chapters, the saga pattern is based on the eventual consistency).
+The propagation delay problems are also present in the monolithic systems, but as it was mentioned in the previous chapter, the remote calls are typically remarkably less performant than in process communication. However, in practice applications do not really depend on the strong consistency guarantees to the expected extent (as we will see in the later chapters, the saga pattern is based on the eventual consistency). 
 
 \subsection{CAP theorem}
+
+In 2000, Eric Brewer introduced the idea that there is a fundamental trade-off between consistency, availability and partition tolerance \cite{persp_cap} in the distributed system. This proposal is known as \textit{the CAP theroem} and it states that distributed systems can provide at most two of these three properties.
+
+The consistency guarantee ensures that if some value has been written by a specific node, the query placed on any other node must return the same value or the later update. The availability states that if the node has not failed, it must be always able to respond. Finally, the partition tolerance is an ability of the system to continue functioning even if the communication access between two or more nodes has been lost. In other words, this means that services are still operating but they are not mutually reachable.
+
+In practice, the general belief is that for wide-area systems, designers cannot forfeit the partition tolerance and therefore have to make a choice between consistency and availability \cite{cap_12years}. The only effective way of how to guarantee that the partition can be avoided is to only a single service.
+
+The CAP theorem has been formally proven in 2002 by Seth Gilbert and Nancy Lynch \cite{cap_prove}. The prove is surprisingly easy and can be modeled by just two nodes.
 
 \subsection{Operations}
 

@@ -234,6 +234,19 @@ A.~Rotem-Gal-Oz, ``Fallacies of distributed computing explained.'' [Online].
 W.~Vogels, ``Eventually consistent,'' \emph{Communications of the {ACM}},
   vol.~52, no.~1, p.~40, jan 2009.
 
+\bibitem{persp_cap}
+S.~Gilbert and N.~Lynch, ``Perspectives on the {CAP} theorem,''
+  \emph{Computer}, vol.~45, no.~2, pp. 30--36, feb 2012.
+
+\bibitem{cap_12years}
+E.~Brewer, ``{CAP} twelve years later: How the "rules" have changed,''
+  \emph{Computer}, vol.~45, no.~2, pp. 23--29, feb 2012.
+
+\bibitem{cap_prove}
+S.~Gilbert and N.~Lynch, ``Brewer's conjecture and the feasibility of
+  consistent, available, partition-tolerant web services,'' \emph{{ACM}
+  {SIGACT} News}, vol.~33, no.~2, p.~51, jun 2002.
+
 \bibitem{sagas_publ}
 H.~Garcia-Molina and K.~Salem, ``Sagas,'' \emph{ACM SIGMOD Record}, vol.~16,
   no.~3, pp. 249--259, 1987.

@@ -38,8 +38,9 @@
 \contentsline {section}{\numberline {3.4}\slshape Challenges}{22}{section.3.4}
 \contentsline {subsection}{\numberline {3.4.1}\rmfamily Distributed systems}{23}{subsection.3.4.1}
 \contentsline {subsection}{\numberline {3.4.2}\rmfamily Eventual consistency}{24}{subsection.3.4.2}
-\contentsline {subsection}{\numberline {3.4.3}\rmfamily Operations}{25}{subsection.3.4.3}
-\contentsline {subsection}{\numberline {3.4.4}\rmfamily Human factor}{25}{subsection.3.4.4}
+\contentsline {subsection}{\numberline {3.4.3}\rmfamily CAP theorem}{25}{subsection.3.4.3}
+\contentsline {subsection}{\numberline {3.4.4}\rmfamily Operations}{25}{subsection.3.4.4}
+\contentsline {subsection}{\numberline {3.4.5}\rmfamily Human factor}{25}{subsection.3.4.5}
 \contentsline {chapter}{\numberline {4}\bfseries Saga pattern}{26}{chapter.4}
 \contentsline {section}{\numberline {4.1}\slshape Activities}{26}{section.4.1}
 \contentsline {section}{\numberline {4.2}\slshape Compensations}{27}{section.4.2}
