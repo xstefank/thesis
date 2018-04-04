@@ -258,6 +258,25 @@ M.~Fowler, ``Microservice trade-offs,'' 2015. [Online]. Available:
   \url{https://martinfowler.com/articles/microservice-trade-offs.html}
 \BIBentrySTDinterwordspacing
 
+\bibitem{openshift}
+\BIBentryALTinterwordspacing
+{Red Hat, Inc.}, ``{OpenShift container application platform},'' 2018.
+  [Online]. Available: \url{https://www.openshift.com/}
+\BIBentrySTDinterwordspacing
+
+\bibitem{kubernetes}
+\BIBentryALTinterwordspacing
+Kubernetes, ``Kubernetes,'' 2018. [Online]. Available:
+  \url{https://kubernetes.io/}
+\BIBentrySTDinterwordspacing
+
+\bibitem{ms_testing_strategies}
+\BIBentryALTinterwordspacing
+T.~Clemson, ``Testing strategies in a microservice architecture,'' 2014.
+  [Online]. Available:
+  \url{https://martinfowler.com/articles/microservice-testing/}
+\BIBentrySTDinterwordspacing
+
 \bibitem{sagas_publ}
 H.~Garcia-Molina and K.~Salem, ``Sagas,'' \emph{ACM SIGMOD Record}, vol.~16,
   no.~3, pp. 249--259, 1987.
@@ -366,22 +385,10 @@ A.~Gupta, ``Wildfly swarm: Building microservices with java ee,'' 2018.
   \url{http://blog.arungupta.me/wildfly-swarm-microservices-javaee/}
 \BIBentrySTDinterwordspacing
 
-\bibitem{openshift}
-\BIBentryALTinterwordspacing
-{Red Hat, Inc.}, ``{OpenShift container application platform},'' 2018.
-  [Online]. Available: \url{https://www.openshift.com/}
-\BIBentrySTDinterwordspacing
-
 \bibitem{openshift_io}
 \BIBentryALTinterwordspacing
 {{Red Hat, Inc.}}, ``Openshift.io,'' 2018. [Online]. Available:
   \url{https://openshift.io/}
-\BIBentrySTDinterwordspacing
-
-\bibitem{kubernetes}
-\BIBentryALTinterwordspacing
-Kubernetes, ``Kubernetes,'' 2018. [Online]. Available:
-  \url{https://kubernetes.io/}
 \BIBentrySTDinterwordspacing
 
 \end{thebibliography}

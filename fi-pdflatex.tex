@@ -404,6 +404,23 @@ All of above mentioned procedures remarkably accelerate the software life cycle 
 
 \subsection{Human factor}
 
+Previous sections discussed the complexities of microservices architecture from the technical point of view. This section focuses on teams that are creating individual services and discusses some of reasons which may influence how this mind shift may affect their end performance.
+
+\begin{itemize}
+    \item \textbf{Communication} -- The team communication is essential. The opinion and problem solution discussion capabilities inside a team directly influence the deliverability of the maintained service. Although, the service boundaries should prevent the requirement for inter service agreements, it is not always possible to avoid it entirely (version management). The commitment to the DevOps culture can also support the communication process.
+    
+    \item \textbf{Nonuniform technology} -- The possibility to choose the technology stack individually for each service may promote independence and exploring possibilities, but may also impose a maintenance overhead in a long duration.  
+    
+    \item \textbf{Design shift} -- As microservices still represent a relatively young architecture, the design composition change may be hard utilize. Even if there are a few successful employments of microservices (Netflix or Spotify), the inexperienced teams may be hesitant to make a move to the split of the working monolithic applications. Furthermore, the transition itself impose a complex task.
+    
+    \item \textbf{Monitoring} -- With the high number of services, collecting and processing of the monitoring information may become very complex task. It also affects the problem traceability and debbuging across services.
+    
+    \item \textbf{Tesing} -- Despite the fact that there exists several microservices testing strategies \cite{ms_testing_strategies} which may help with the test case definitions, the asynchronous communication and the service distribution may still impose significant problems associated with testing development and execution.
+\end{itemize}
+
+
+
+
 
 \clearpage
 \chapter{Saga pattern}
