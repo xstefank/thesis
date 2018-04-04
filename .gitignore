@@ -1,0 +1,12 @@
+
+# TeX
+
+*.log
+*.aux
+*.idx
+*.bbl
+*.toc
+*.out
+*.blg
+
+
