@@ -252,6 +252,12 @@ D.~Abadi, ``Consistency tradeoffs in modern distributed database system design:
   {CAP} is only part of the story,'' \emph{Computer}, vol.~45, no.~2, pp.
   37--42, feb 2012.
 
+\bibitem{ms_tradeoffs}
+\BIBentryALTinterwordspacing
+M.~Fowler, ``Microservice trade-offs,'' 2015. [Online]. Available:
+  \url{https://martinfowler.com/articles/microservice-trade-offs.html}
+\BIBentrySTDinterwordspacing
+
 \bibitem{sagas_publ}
 H.~Garcia-Molina and K.~Salem, ``Sagas,'' \emph{ACM SIGMOD Record}, vol.~16,
   no.~3, pp. 249--259, 1987.
