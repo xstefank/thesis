@@ -350,9 +350,9 @@ As it is common with every architectural style, microservices bring together wit
 
 The service distribution supports the architecture by the inherent model of the service boundaries. However, the communication over the network brings a few complications that services need to account for.
 
-The first considerable issue is network failures. Because this is something that can not be controlled by the invoking service, it is required that each microservice call is treated with caution (e. g. by setting an explicit timeout). For this reason, services should be always designed in a resilient way with failure in mind.
+The first considerable issue is network failures. Because this is something that can not be controlled by the invoking service, it is required that each microservice call is treated with caution (e. g. by setting an explicit timeout). Consequently, every service should be always designed in a resilient way with failure in mind. 
 
-Another relevant problem presented by the network overhead is the performance. Remote calls, that are required for inter service invocations, represent additional complexity and time consumption that are not present in modular monolithic systems. There are several various techniques that may be employed to improve the general performance like, for instance, decreasing the number of calls or making the asynchronous.
+Another relevant problem presented by the network overhead is the communication performance. Remote calls, that are required for inter service invocations, represent additional complexity and time consumption that are not present in modular monolithic systems. There are several various techniques that may be employed to improve the general performance like, for instance, decreasing the number of calls or making them asynchronous.
 
 The problems mentioned above have been elaborated in the work of James Gosling who in 1997 extended the draft created by Peter Deutsch which stated wrong assumptions that are commonly being made about distributed systems. These assumptions are known as \textit{The 8 fallacies of distributed computing}:
 
@@ -371,6 +371,18 @@ The problems mentioned above have been elaborated in the work of James Gosling w
 Unfortunately, the original work of authors is no longer available, but Arnon Rotem-Gal-Oz provides in his publication \cite{fallacies} a very detailed descriptions of each individual assumption.
 
 \subsection{Eventual consistency}
+
+The eventual consistency is a model where the system guarantees that if no new updates are made to the object, eventually all accesses (data reads) will return the last updated value \cite{event_consist}. It is a form of weak consistency -- the system do not provide any consistency guarantees for a limited time called inconsistency window. The advantage of this model is that the maximal size of the inconsistency window can be computed from system statistics if no failure occurs.
+
+The arguable problem with this model is the delay between the write of the data value and the its actual obtainable update. The reason is once more mainly caused by the service distribution. This may lead to the decrease system usability and customer satisfaction.
+
+Imagine a situation where the customer creates an order in a web interface. After the confirmation, the order request is sent to the service A which starts its processing. Right after the confirmation, the user wants to check if the order was created in the orders section which is provided by a service B. If the message about the order creation has not yet been propagated to the service B (the inconsistent window is still open), it can not respond with the actual updated system state. 
+
+If the system allows microservices to make decisions based on inconsistent information, the eventual consistency may lead also to problems in the service coordination. This kind of issues is hard to find as they are often discovered only after the inconsistent window has been closed.
+
+The propagation delay problems are also present in the monolithic systems, but as it was mentioned in the previous chapter, the remote calls are typically remarkably less performant than in process communication. However, in practice applications do not really depend on the strong consistency guarantees to the expected extent (as we will see in the later chapters, the saga pattern is based on the eventual consistency).
+
+\subsection{CAP theorem}
 
 \subsection{Operations}
 

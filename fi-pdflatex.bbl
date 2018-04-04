@@ -230,6 +230,10 @@ A.~Rotem-Gal-Oz, ``Fallacies of distributed computing explained.'' [Online].
   Available: \url{http://www.rgoarchitects.com/Files/fallacies.pdf}
 \BIBentrySTDinterwordspacing
 
+\bibitem{event_consist}
+W.~Vogels, ``Eventually consistent,'' \emph{Communications of the {ACM}},
+  vol.~52, no.~1, p.~40, jan 2009.
+
 \bibitem{sagas_publ}
 H.~Garcia-Molina and K.~Salem, ``Sagas,'' \emph{ACM SIGMOD Record}, vol.~16,
   no.~3, pp. 249--259, 1987.
