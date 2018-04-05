@@ -93,11 +93,11 @@ A transaction can be viewed as a group of business logic statements with certain
 
 \subsection{Atomicity}
 
-The transaction consists of a sequence of operations performed on different resources. Atomicity means that all operations in the transaction are performed as if they were a single unit. 
+The transaction consists of a sequence of operations performed on different resources. An atomicity property means that all operations in the transaction are performed as if they were a single unit. 
 
 As the word atomicity is an overloaded term in many computational science branches\footnote{typical example is the atomic operation in the thread context}, some authors prefer to reference it in the ACID context as the abortability property. The abortability is defined as  the ability to abort a transaction on error and have all writes from that transaction discarded \cite{design_data_intens_apps}. This implies that when the transaction commits successfully, all of its operations are also required to execute a valid commit. Conversely, when the transaction fails and needs to be aborted, all realized operations and effects must be undone.
 
-The atomicity is commonly achieved by the usage of consensus multi-phase protocols. Standardized protocol is the two phase commit protocol which is used by the majority of modern transaction systems. This protocol, as well as other communication patterns, will be discussed in the later section. 
+The atomicity is commonly achieved by the usage of consensus multi-phase protocols. The standardized protocol is the two phase commit protocol (2PC) which is used by the majority of modern transaction systems. The consensus protocols are discussed in detail in the section \ref{sec:consensus-protocols}.
 
 \subsection{Consistency}
 
@@ -223,6 +223,7 @@ The resource manager is required to provide a support for the participation in t
 \subsection{XA resource}
 
 \section{Consensus protocols}
+\label{sec:consensus-protocols}
 
 \subsection{2PC}
 
