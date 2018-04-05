@@ -530,7 +530,7 @@ This section presents the current implementations of the saga pattern available 
 
 \subsection{Axon framework}
 
-Axon is a lightweight Java framework that helps developers build scalable and extensible applications by addressing these concerns directly in the core  architecture \cite{axon_framework}. It is composed on the top of the Command Query Responsibility Segregation (CQRS) pattern which is described in more detail in the Appendix A.
+Axon is a lightweight Java framework that helps developers build scalable and extensible applications by addressing these concerns directly in the core  architecture \cite{axon_framework}. It is composed on the top of the Command Query Responsibility Segregation (CQRS) pattern which is described in more detail in the Appendix \ref{sec:appendix-cqrs}.
 
 The Axon framework is based upon the event processing including asynchronous message passing and event sourcing. This allows components to be loosely coupled and therefore easily developed in the the microservices manner.
 
@@ -586,7 +586,7 @@ The setup of each example is described in detail in their respective repositorie
 
 Every saga invocation is asynchronous - the REST call for the order request directly returns an order identification number in the response. All of the following interactions are documented in individual services by messages that are logged by the underlying platform. The overall saga process can be examined in the \texttt{order-service} or in the case of LRA in the \texttt{api-gateway} modules.
 
-Users are also allowed to query the persisted saga information (orders, shipments and invoices) by the respective REST endpoints described in the Appendix B. For the CQRS based examples this information is available at the \texttt{query-service} microservice, otherwise each service is expected to be responsible for maintaining its individual persistence solution which corresponds with the microservices pattern definition.
+Users are also allowed to query the persisted saga information (orders, shipments and invoices) by the respective REST endpoints described in the Appendix \ref{sec:appendixAPI}. For the CQRS based examples this information is available at the \texttt{query-service} microservice, otherwise each service is expected to be responsible for maintaining its individual persistence solution which corresponds with the microservices pattern definition.
 
 \section{The saga model}
 
@@ -607,7 +607,7 @@ The invoice failure scenario on the other hand validates that the saga compensat
 
 To initiate the failures scenarios in examples both \texttt{shipment-service} and \texttt{invoice-service} are equipped with injected failure conditions. To invoke the failure the quickstarts expect a product information containing a specialized product identification: \texttt{fail-shipment} or \texttt{fail-invoice} respectively. 
 
-The graphical representation in form of the sequence diagrams for corresponding scenarios is available in the Appendix C.
+The graphical representation in form of the sequence diagrams for corresponding scenarios is available in the Appendix \ref{sec:appendix-scenarios}.
 
 \section{Axon service}
 
@@ -825,7 +825,7 @@ The action definition consists of the name, the action type and the service for 
     \caption{Action example JSON}
 \end{figure}
 
-The actual deployable microservices project consists of five services -- \texttt{api-gateway}, \texttt{order-service}, \texttt{shipment-service}, \texttt{invoice-service} and \texttt{lra-coordinator}. Every service is configured with the addresses of other services as they reflect the OpenShift/Kubernetes application names. All of exposed APIs are defined in the Appendix B.
+The actual deployable microservices project consists of five services -- \texttt{api-gateway}, \texttt{order-service}, \texttt{shipment-service}, \texttt{invoice-service} and \texttt{lra-coordinator}. Every service is configured with the addresses of other services as they reflect the OpenShift/Kubernetes application names. All of exposed APIs are defined in the Appendix \ref{sec:appendixAPI}.
 
 The services that provide the LRA execution capabilities are the \texttt{order-service}, the \texttt{shipment-service} and the \texttt{invoice-service}. Every one of these services provides a simple computation that contributes to the LRA realization. Additionally, \texttt{order-service} also provides a user invocation endpoint that can initiate the LRA. As all three services eventually subscribe to the LRA when they are called, they all provide REST endpoints annotated by the LRA annotations for the completion and compensation invocations. Each service is configured with an instance of H2 SQL database for the data persistence.
 
@@ -974,161 +974,6 @@ To finalize, although the CQRS pattern has its benefits (ease of complexity and 
 
 
 
-\chapter{The example applications public APIs}
-\label{sec:appendixAPI}
-
-\section{Axon service}
-
-\textbf{Order service}
-
-\begin{minted}{python}
-        POST /api/order
-\end{minted}
-
-\noindent
-\textbf{Query service}
-
-\begin{minted}{python}
-        GET /api/orders
-        GET /api/order/{order_id}
-        GET /api/shipments
-        GET /api/shipment/{shipment_id}
-        GET /api/invoices
-        GET /api/invoice/{invoice_id}
-\end{minted}
-
-\section{Eventuate service}
-
-\textbf{Order service}
-
-\begin{minted}{python}
-        POST /api/order
-        POST /management/shipment
-        POST /management/shipment/fail
-        POST /management/shipment/compensation
-        POST /management/invoice
-        POST /management/invoice/fail
-        POST /management/invoice/compensation
-\end{minted}
-
-\noindent
-\textbf{Shipment service}
-
-\begin{minted}{python}
-        POST /api/request
-        POST /api/compensate
-\end{minted}
-
-\noindent
-\textbf{Invoice service}
-
-\begin{minted}{python}
-        POST /api/request
-        POST /api/compensate
-\end{minted}
-
-\noindent
-\textbf{Query service}
-
-\begin{minted}{python}
-        GET /api/orders
-        GET /api/order/{order_id}
-        GET /api/shipments
-        GET /api/shipment/{shipment_id}
-        GET /api/invoices
-        GET /api/invoice/{invoice_id}
-\end{minted}
-
-\section{LRA service}
-
-\textbf{Order service}
-
-\begin{minted}{python}
-        POST /api/order
-        GET  /api/health
-\end{minted}
-
-\noindent
-\textbf{Shipment service}
-
-\begin{minted}{python}
-        POST /api/request
-        PUT  /api/complete
-        PUT  /api/compensate
-        GET  /api/health
-\end{minted}
-
-\noindent
-\textbf{Invoice service}
-
-\begin{minted}{python}
-        POST /api/request
-        PUT  /api/complete
-        PUT  /api/compensate
-        GET  /api/health
-\end{minted}
-
-\noindent
-\textbf{LRA coordinator}
-
-\begin{minted}{python}
-        GET  /lra-coordinator
-        GET  /lra-coordinator/{LraId}
-        GET  /lra-coordinator/status/{LraId}
-        POST /lra-coordinator/start
-        PUT  /lra-coordinator/{LraId}/renew
-        GET  /lra-coordinator/{NestedLraId}/status
-        PUT  /lra-coordinator/{NestedLraId}/complete
-        PUT  /lra-coordinator/{NestedLraId}/compensate
-        PUT  /lra-coordinator/{NestedLraId}/forget
-        PUT  /lra-coordinator/{LraId}/close
-        PUT  /lra-coordinator/{LraId}/cancel
-        PUT  /lra-coordinator/{LraId}
-        PUT  /lra-coordinator/{LraId}/remove
-        GET  /api/health
-        GET  /lra-recovery-coordinator/{LRAId}/{RecCoordId}
-        PUT  /lra-recovery-coordinator/{LRAId}/{RecCoordId}
-        GET  /lra-recovery-coordinator/recovery
-\end{minted}
-
-\noindent
-\textbf{API gateway}
-
-\begin{minted}{python}
-        PUT  /api/complete
-        PUT  /api/compensate
-        GET  /api/health
-        POST /api/lra
-\end{minted}
-
-
-\section{Eventuate Tram}
-
-\textbf{Order service}
-
-\begin{minted}{python}
-        POST /api/order
-        GET  /api/orders
-        GET  /api/order/{orderId}
-\end{minted}
-
-\noindent
-\textbf{Shipment service}
-
-\begin{minted}{python}
-        GET /api/shipments
-        GET /api/shipment/{shipmentId}
-\end{minted}
-
-\noindent
-\textbf{Invoice service}
-
-\begin{minted}{python}
-        GET /api/invoices
-        GET /api/invoice/{invoiceId}
-\end{minted}
-
-
 \chapter{JTA}
 \label{sec:appendix-JTA}
 
@@ -1245,6 +1090,162 @@ To finalize, although the CQRS pattern has its benefits (ease of complexity and 
 
 
 \chapter{The saga scenarios}
+\label{sec:appendix-scenarios}
+
+\chapter{The example applications public APIs}
+\label{sec:appendixAPI}
+
+\section{Axon service}
+
+\textbf{Order service}
+
+\begin{minted}{python}
+    POST /api/order
+\end{minted}
+
+\noindent
+\textbf{Query service}
+
+\begin{minted}{python}
+    GET /api/orders
+    GET /api/order/{order_id}
+    GET /api/shipments
+    GET /api/shipment/{shipment_id}
+    GET /api/invoices
+    GET /api/invoice/{invoice_id}
+\end{minted}
+
+\section{Eventuate service}
+
+\textbf{Order service}
+
+\begin{minted}{python}
+    POST /api/order
+    POST /management/shipment
+    POST /management/shipment/fail
+    POST /management/shipment/compensation
+    POST /management/invoice
+    POST /management/invoice/fail
+    POST /management/invoice/compensation
+\end{minted}
+
+\noindent
+\textbf{Shipment service}
+
+\begin{minted}{python}
+    POST /api/request
+    POST /api/compensate
+\end{minted}
+
+\noindent
+\textbf{Invoice service}
+
+\begin{minted}{python}
+    POST /api/request
+    POST /api/compensate
+\end{minted}
+
+\noindent
+\textbf{Query service}
+
+\begin{minted}{python}
+    GET /api/orders
+    GET /api/order/{order_id}
+    GET /api/shipments
+    GET /api/shipment/{shipment_id}
+    GET /api/invoices
+    GET /api/invoice/{invoice_id}
+\end{minted}
+
+\section{LRA service}
+
+\textbf{Order service}
+
+\begin{minted}{python}
+    POST /api/order
+    GET  /api/health
+\end{minted}
+
+\noindent
+\textbf{Shipment service}
+
+\begin{minted}{python}
+    POST /api/request
+    PUT  /api/complete
+    PUT  /api/compensate
+    GET  /api/health
+\end{minted}
+
+\noindent
+\textbf{Invoice service}
+
+\begin{minted}{python}
+    POST /api/request
+    PUT  /api/complete
+    PUT  /api/compensate
+    GET  /api/health
+\end{minted}
+
+\noindent
+\textbf{LRA coordinator}
+
+\begin{minted}{python}
+    GET  /lra-coordinator
+    GET  /lra-coordinator/{LraId}
+    GET  /lra-coordinator/status/{LraId}
+    POST /lra-coordinator/start
+    PUT  /lra-coordinator/{LraId}/renew
+    GET  /lra-coordinator/{NestedLraId}/status
+    PUT  /lra-coordinator/{NestedLraId}/complete
+    PUT  /lra-coordinator/{NestedLraId}/compensate
+    PUT  /lra-coordinator/{NestedLraId}/forget
+    PUT  /lra-coordinator/{LraId}/close
+    PUT  /lra-coordinator/{LraId}/cancel
+    PUT  /lra-coordinator/{LraId}
+    PUT  /lra-coordinator/{LraId}/remove
+    GET  /api/health
+    GET  /lra-recovery-coordinator/{LRAId}/{RecCoordId}
+    PUT  /lra-recovery-coordinator/{LRAId}/{RecCoordId}
+    GET  /lra-recovery-coordinator/recovery
+\end{minted}
+
+\noindent
+\textbf{API gateway}
+
+\begin{minted}{python}
+    PUT  /api/complete
+    PUT  /api/compensate
+    GET  /api/health
+    POST /api/lra
+\end{minted}
+
+
+\section{Eventuate Tram}
+
+\textbf{Order service}
+
+\begin{minted}{python}
+    POST /api/order
+    GET  /api/orders
+    GET  /api/order/{orderId}
+\end{minted}
+
+\noindent
+\textbf{Shipment service}
+
+\begin{minted}{python}
+    GET /api/shipments
+    GET /api/shipment/{shipmentId}
+\end{minted}
+
+\noindent
+\textbf{Invoice service}
+
+\begin{minted}{python}
+    GET /api/invoices
+    GET /api/invoice/{invoiceId}
+\end{minted}
+
 
 
 \end{document}

@@ -1,0 +1,8 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+    \PYG{n}{GET} \PYG{o}{/}\PYG{n}{api}\PYG{o}{/}\PYG{n}{orders}
+    \PYG{n}{GET} \PYG{o}{/}\PYG{n}{api}\PYG{o}{/}\PYG{n}{order}\PYG{o}{/}\PYG{p}{\PYGZob{}}\PYG{n}{order\PYGZus{}id}\PYG{p}{\PYGZcb{}}
+    \PYG{n}{GET} \PYG{o}{/}\PYG{n}{api}\PYG{o}{/}\PYG{n}{shipments}
+    \PYG{n}{GET} \PYG{o}{/}\PYG{n}{api}\PYG{o}{/}\PYG{n}{shipment}\PYG{o}{/}\PYG{p}{\PYGZob{}}\PYG{n}{shipment\PYGZus{}id}\PYG{p}{\PYGZcb{}}
+    \PYG{n}{GET} \PYG{o}{/}\PYG{n}{api}\PYG{o}{/}\PYG{n}{invoices}
+    \PYG{n}{GET} \PYG{o}{/}\PYG{n}{api}\PYG{o}{/}\PYG{n}{invoice}\PYG{o}{/}\PYG{p}{\PYGZob{}}\PYG{n}{invoice\PYGZus{}id}\PYG{p}{\PYGZcb{}}
+\end{Verbatim}
