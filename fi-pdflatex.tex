@@ -198,22 +198,6 @@ With the declarative transaction model, the users are required to configure the 
     \item \textbf{Never} -- The container is forbidden to invoke the method if there is a transaction context present. In contrast with the NotSupported attribute which only suspends former transaction, this attribute will throw a runtime exception when the transaction is present before the invocation.
 \end{itemize}
 
-
-\section{Transaction manager}
-\label{sec:transaction-manager}
-
-Every transaction is associated with a transaction coordinator or transaction manager which is responsible for the control and supervision of the participants performing individual operations. It is a component liable for the coordination of transactions in the sequential or parallel execution across one or more resources. It provides proper and complete execution and it administers the comprehensive result of the transaction. Applications are often only required to contact the transaction manager when they need to start a new transaction.
-
-The main responsibilities of transaction manager are starting and ending (commit or abort) of the transaction, management of the transaction context, supervision of transactions scoped across multiple resources and the recovery from failure.
-
-\subsection{Local transaction manager}
-
-A local transaction manager or a resource manager is responsible for the coordination of transactions concerning only a single resource. Because of its scope it is often build in directly to the resource. The span of the resource is defined by its managing platform. 
-
-The resource manager is required to provide a support for the participation in the global transactions that span over several resources. This means that it is effectively capable to handle complete transaction processing to the different (global) transaction manager.
-
-\subsection{XA resource}
-
 \section{Distributed transactions}
 
 A distributed transaction is any situation where a single event results in the mutation of two separate sources of data which cannot be committed atomically \cite{dist_tran_icebergs}. It represents an extension of the ACID transaction that is executed over a number of independent devices connected through a communication network. The main disadvantage of these transactions is their liability to frequent failures of individual nodes or communication channels that connect them -- which is something that the distributed transaction processing (DTP) needs to account for. 
@@ -223,6 +207,24 @@ Each node is associated with a transaction manager (TM) that manages a local tra
 The accomplishment of ACID properties with the frequent partitions failures is very difficult to achieve. Even if the DTP system is able to provide the distributed consensus, it often comes with a performance cost. This lead to the general refusal of the DTP employment in distributed applications in the past. 
 
 However, recent network speeds and computational capacities are increasing. This allows consensus protocols (2PC, Paxos) and other DTP solutions (e.g. sagas) to be easily employed in modern, scalable distributed applications.
+
+
+\section{Transaction manager}
+\label{sec:transaction-manager}
+
+A transaction manager (TM) is a module responsible for the transaction processing, coordination and their sequential or parallel execution across one or more resources. It ensures the proper and valid completion of each transaction. It is also liable for making the final decision whether to commit or rollback the transaction. Clients often communicate with the transaction manager only when they need to start a new transaction.
+
+Main responsibilities of the transaction manager are starting and ending (commit or abort) of transactions, the supervision of transactions scoped across multiple resources and rollback capabilities ensuring the failure recovery. It also manages the transaction context which represents the identification and contains the state of the transaction.
+
+\subsection{TM types}
+
+A local transaction manager or a resource manager is responsible for the coordination of transactions concerning only a single resource. Because of the range of its scope, it is often built in directly into the resource. The span of the resource is defined by the managing platform, e. g. the JMS context or the TM provided with the database.  
+
+The restriction of the local TM scope prohibits its application across various resources. This means that it cannot provide ACID guarantees if the transaction contains, for instance, both the database update and the JMS message send as these resources are handled by different resource managers.
+
+The management of transactions over multiple resources is supported by a global transaction manager. It represents an operation external component that is able to coordinate several resource managers in order to provide ACID transactions spanning two or more different transactional resources.
+
+\subsection{XA specification}
 
 
 \section{Consensus protocols}
