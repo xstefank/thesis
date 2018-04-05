@@ -199,18 +199,10 @@ With the declarative transaction model, the users are required to configure the 
 \end{itemize}
 
 
-
-\section{Distributed transactions}
-
-A distributed transaction is the transaction performed in a distributed system.  
-The distributed system consists of a number of independent devices connected through a communication network. Such systems are liable to the frequent failures of individual participants or communication channels between them. 
-
-The transaction manager can be implemented as a separate service or being placed with some participant or the client. \textbf{TODO}
-
 \section{Transaction manager}
 \label{sec:transaction-manager}
 
-Every transaction is associated with a transaction coordinator or transaction manager which is responsible for the control and supervision of the participants performing individual operations. It is a component liable for coordinating transactions in the sequential or parallel execution across one or more resources. It provides proper and complete execution and it administers the comprehensive result of the transaction.  Applications are commonly required only to contact the transaction manager about the start of the transaction.
+Every transaction is associated with a transaction coordinator or transaction manager which is responsible for the control and supervision of the participants performing individual operations. It is a component liable for the coordination of transactions in the sequential or parallel execution across one or more resources. It provides proper and complete execution and it administers the comprehensive result of the transaction. Applications are often only required to contact the transaction manager when they need to start a new transaction.
 
 The main responsibilities of transaction manager are starting and ending (commit or abort) of the transaction, management of the transaction context, supervision of transactions scoped across multiple resources and the recovery from failure.
 
@@ -218,9 +210,20 @@ The main responsibilities of transaction manager are starting and ending (commit
 
 A local transaction manager or a resource manager is responsible for the coordination of transactions concerning only a single resource. Because of its scope it is often build in directly to the resource. The span of the resource is defined by its managing platform. 
 
-The resource manager is required to provide a support for the participation in the global transactions that span over several resources. This means that it is effectively capable to handle complete transaction processing to the different transaction manager.
+The resource manager is required to provide a support for the participation in the global transactions that span over several resources. This means that it is effectively capable to handle complete transaction processing to the different (global) transaction manager.
 
 \subsection{XA resource}
+
+\section{Distributed transactions}
+
+A distributed transaction is any situation where a single event results in the mutation of two separate sources of data which cannot be committed atomically \cite{dist_tran_icebergs}. It represents an extension of the ACID transaction that is executed over a number of independent devices connected through a communication network. The main disadvantage of these transactions is their liability to frequent failures of individual nodes or communication channels that connect them -- which is something that the distributed transaction processing (DTP) needs to account for. 
+
+Each node is associated with a transaction manager (TM) that manages a local transaction and communicates with other TMs in order to perform a global transaction. Generally, there is one TM selected as a global coordinator that administers TMs participating in the distributed transaction. The coordinator can be allocated with the participating node or can act as a standalone service.
+
+The accomplishment of ACID properties with the frequent partitions failures is very difficult to achieve. Even if the DTP system is able to provide the distributed consensus, it often comes with a performance cost. This lead to the general refusal of the DTP employment in distributed applications in the past. 
+
+However, recent network speeds and computational capacities are increasing. This allows consensus protocols (2PC, Paxos) and other DTP solutions (e.g. sagas) to be easily employed in modern, scalable distributed applications.
+
 
 \section{Consensus protocols}
 \label{sec:consensus-protocols}
@@ -418,7 +421,7 @@ Previous sections discussed the complexities of microservices architecture from 
     
     \item \textbf{Monitoring} -- With the high number of services, collecting and processing of the monitoring information may become very complex task. It also affects the problem traceability and debbuging across services.
     
-    \item \textbf{Tesing} -- Despite the fact that there exists several microservices testing strategies \cite{ms_testing_strategies} which may help with the test case definitions, the asynchronous communication and the service distribution may still impose significant problems associated with testing development and execution.
+    \item \textbf{Testing} -- Despite the fact that there exists several microservices testing strategies \cite{ms_testing_strategies} which may help with the test case definitions, the asynchronous communication and the service distribution may still impose significant problems associated with testing development and execution.
 \end{itemize}
 
 
