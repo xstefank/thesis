@@ -226,6 +226,10 @@ The management of transactions over multiple resources is supported by a global 
 
 \subsection{XA specification}
 
+The eXtended Architecture (XA) standard is the X/Open Common Applications Environment (CAE) specification published in 1991 which describes the bidirectional interface between a transaction manager and a resource manager \cite{xa_spec}. It maintains two types of components that clients can interact with: the transaction manager (TM) which defines the global TM in a sense described in the previous section and the XA resources that represent local resource managers.
+
+The resource manager implements the XA interface in order to provide a switch that effectively delagates the transaction control to the TM. The XA TM coordination is based on the two phase commit protocol (2PC) which means that the XA interface contains all necessary function calls that needs to available for 2PC -- \texttt{xa\_prepare}, \texttt{xa\_commit} and \texttt{xa\_rollback}. The Java mapping of the XA standard is present in the class \texttt{javax.transaction.xa.XAResource}.
+
 
 \section{Consensus protocols}
 \label{sec:consensus-protocols}
