@@ -75,7 +75,7 @@ abstract
 \clearpage
 \chapter{Transaction concepts}
 
-This chapter introduces the basic notions of transactions, their properties and common problems of their management across multiple nodes in the distributed systems. 
+This chapter introduces the basic notions of transactions, their properties and common problems with their management across multiple nodes in distributed systems. 
 
 \section{Transaction}
 
@@ -85,15 +85,17 @@ From the application point of view there exist several transaction models in whi
 
 The transaction can end in two forms: it can be either \textit{commited} or \textit{aborted}. The commit determines the successful outcome - all operations within the transaction have been performed and their results are permanently stored in a durable storage. The abort means that all performed operations have been undone and the system is in the same state as if the transaction have not been started.
 
-Generally the achieving of above features may differ. The most common pattern for the transaction processing is a two phase commit protocol with the ACID transactions. Other approaches are based on the relaxation of the one or more of ACID properties to adjust to the real world environments.
+Generally, the achievement of above features may differ. The most common pattern for the transaction processing is a two phase commit protocol with the ACID transactions. Other approaches are based on the relaxation of the one or more of ACID properties to adjust to the real world environments.
 
 \section{ACID properties}
 
-A transaction can be viewed as a group of business logic statements with certain shared properties \cite{nar_wf}. Generally considered properties are one or more of atomicity, consistency, isolation and durability. These four properties are often referenced as ACID properties \cite{haerder_reuter_1983} and they describe the major points important for the transaction concepts.\footnote{Although, ACID acronym has been associated with transactions since their beginning, Eric Brewer, the inventor of the CAP theorem discussed in the later section, stated in his article from 2012 that it is "more mnemonic than precise".\cite{brewer_2012}}
+A transaction can be viewed as a group of business logic statements with certain shared properties \cite{nar_wf}. Generally considered properties are one or more of atomicity, consistency, isolation and durability. These four properties are often referenced as ACID properties \cite{haerder_reuter_1983} and they describe the major points important for the transaction concepts.\footnote{Although, the ACID acronym has been associated with transactions since their beginning, Eric Brewer, the inventor of the CAP theorem, discussed in the later section, stated in his article from 2012 that it is "more mnemonic than precise".\cite{cap_12years}}
 
 \subsection{Atomicity}
 
-The transaction consists of a sequence of operations performed on different resources or by different participants. Atomicity means that all operations in the transaction are performed as if they were a single unit. When the transaction commits successfully, all of its operations are also required to perform a valid commit. Conversely, if the transaction fails and is aborted, all performed operations and effects have to be undone. This defines a possibility to abort at any point so that all changes done by the transaction will be reverted to the state present before the transaction started.
+The transaction consists of a sequence of operations performed on different resources. Atomicity means that all operations in the transaction are performed as if they were a single unit. 
+
+As the word atomicity is an overloaded term in many computational science branches\footnote{typical example is the atomic operation in the thread context}, some authors prefer to reference it in the ACID context as the abortability property. The abortability is defined as  the ability to abort a transaction on error and have all writes from that transaction discarded \cite{design_data_intens_apps}. This implies that when the transaction commits successfully, all of its operations are also required to execute a valid commit. Conversely, when the transaction fails and needs to be aborted, all realized operations and effects must be undone.
 
 The atomicity is commonly achieved by the usage of consensus multi-phase protocols. Standardized protocol is the two phase commit protocol which is used by the majority of modern transaction systems. This protocol, as well as other communication patterns, will be discussed in the later section. 
 
