@@ -627,19 +627,6 @@ For the distribution of the event bus Axon service uses an external messaging sy
 
 It is worth mentioning that both the Spring Cloud and the RabbitMQ message broker are required external providers that need to be started before the deployment of the business services. Unfortunately, by the time of this writing there is no way to distribute commands or events directly in the Axon platform.
 
-\subsection{Spring Boot}
-
-Spring Boot is a framework built on top of the Spring Framework \cite{spring_ms}. Its main focus is on the creation of standalone runnable applications that are easily employed in microservices architectures. It favors convention over configuration to allow the usage of Spring features with a little of the Spring configuration \cite{spring_boot}.
-
-The Spring Boot platform is composed into aggregate modules known as \textit{starters}. The starter is a dependency descriptor which contains dependencies that are required to provide some functionality to the application. In order to use Spring Boot, the \texttt{spring-boot-starter} core module must be incorporated. Other useful modules, for instance, \texttt{spring-boot-starter-web} or \texttt{spring-boot-starter-data-jpa} can be provided to support the microservice adoption. Starters can be packaged with the application using Maven or Gradle build configurations.
-
-Another responsibility of this framework is the packaging of the application. The preferable way for the microservice is to create an executable fat Java archive (jar) which contains all of the application dependencies. The application can then be simply excuted by a \texttt{java -jar} command.
-
-A spring Boot microservice must fulfill two requirements -- it must follow a Maven layout convention and it must provide an entry point. This can be any class annotated with the \texttt{@EnableAutoConfiguration} annotation that starts the Spring Boot context.
-
-Spring provides various ways for exposing available services. Registration servers like Eureka or Consul which are integrated within the Spring cloud \cite{spring_cloud} can be used as the service discovery mechanisms. For a manual approach, the microservices functionality can be exposed through the RESTful API.
-
-
 \subsection{Project structure}
 
 The application is composed of five microservices -- the  \texttt{order-service}, the \texttt{shipment-service}, the \texttt{invoice-service}, the \texttt{query-service} and the \texttt{registration-server}. Furthermore it also contains a separated project \texttt{service-model} which serves as a support library for the other microservices.
@@ -674,6 +661,25 @@ When the distributed event bus is processing events from an AMQP queue which the
 
 As CQRS is a pattern that manages the domain formation of the application, Axon can place a hard requirements for the projects that do not follow the CQRS domain separation. Like it was already presented, sagas in Axon are only a specialized type of the event listener. The only way Axon produces events is trough an interaction with the aggregate instance - events are produced purely as a response to the received command. Therefore the use of Axon sagas in not CQRS environment may be too restrictive for an implementation.
 
+\subsection{Technology}
+
+This example contains a set of Spring Boot applications which can be run directly from the command line. Additionally, it also contains docker and docker-compose configuration to ease the development and deployment operations. In this section we focus on the Spring platform, the Docker description is provided in the section \ref{sec:docker}.
+
+\newlinepar{Spring Boot}
+\label{sec:spring-boot}
+
+Spring Boot is a framework built on top of the Spring Framework \cite{spring_ms}. Its main focus is on the creation of standalone runnable applications that are easily employed in microservices architectures. It favors convention over configuration to allow the usage of Spring features with a little of the Spring configuration \cite{spring_boot}.
+
+The Spring Boot platform is composed into aggregate modules known as \textit{starters}. The starter is a dependency descriptor which contains dependencies that are required to provide some functionality to the application. In order to use Spring Boot, the \texttt{spring-boot-starter} core module must be incorporated. Other useful modules, for instance, \texttt{spring-boot-starter-web} or \texttt{spring-boot-starter-data-jpa} can be provided to support the microservice adoption. Starters can be packaged with the application using Maven or Gradle build configurations.
+
+Another responsibility of this framework is the packaging of the application. The preferable way for the microservice is to create an executable fat Java archive (jar) which contains all of the application dependencies. The application can then be simply excuted by a \texttt{java -jar} command.
+
+A spring Boot microservice must fulfill two requirements -- it must follow a Maven layout convention and it must provide an entry point. This can be any class annotated with the \texttt{@EnableAutoConfiguration} annotation that starts the Spring Boot context.
+
+Spring provides various ways for exposing available services. Registration servers like Eureka or Consul which are integrated within the Spring cloud \cite{spring_cloud} can be used as the service discovery mechanisms. For a manual approach, the microservices functionality can be exposed through the RESTful API.
+
+
+
 \section{Eventuate service}
 
 Similarly to Axon, Eventuate service is also based on the event sourcing and the CQRS pattern. For this reason, the business execution is managed in the aggregates which correspond to the respective microservices projects. The communication is as a result restricted to the command processing and the event appliance.
@@ -707,15 +713,6 @@ This service represents the change data capture (CDC) component. The CDC service
 
 The last support service is the \texttt{consoleserver}. It provides a simple interface for accessing the information about created aggregate types and the event log. The supplied Docker container image is the \texttt{eventuateio/eventuateio-local-console}.
 
-\subsection{Docker}
-
-Docker is an open source container platform designed to make it easier to build, secure and manage the widest array of application from development to production both on premises and in the cloud \cite{docker}. Docker containers allow applications to run on top of the kernel services provided by the hosting system which considerably effects the application performance. However, it still builds containers on top of the generalized interface which warrants straightforward portability between different machines.
-
-A container image is a lightweight, stand-alone, executable package of a piece of software that includes everything needed to run it -- code, runtime, system tools, libraries or settings \cite{docker}. All docker containers that run on the same machine share the kernel services of the host. The images are build on the concept of layers. The layer provides an abstraction to share common filesystems, configuration and other data that can be reused by several docker containers.
-
-Containers isolate applications from the operating system their running on and also provide the separation from other docker containers running concurrently on the same computer. Instead of virtual machines which provide similar functionality, Docker virtualizes the operating system not the hardware. Docker provides abstraction at the application level.
-
-Docker as a tool is targeted for simple utilization. It provides an unified environment for both developers and administrators supporting the DevOps (development and operations) practices. Particularly, developers profit from portable code that is able to run on any operating platform supporting Docker, while operations gain visibility and management services from comprehensive control panel covering all containerized applications.
 
 \subsection{Project structure}
 
@@ -770,6 +767,23 @@ The platform structure places the obligation on each developed microservice to c
 
 In the end it is worth mentioning that as the Eventuate service is the pure CQRS saga example it has a few problems which has been reduced or removed in the later Eventuate Tram implementation that is in detail described in the following section. 
 
+\subsection{Technology}
+\label{sec:eventuate-technology}
+
+This section provides a detailed view of the Docker platform, for the description of Spring Boot microservices please refer to the section \ref{sec:spring-boot}.
+
+\newlinepar{Docker}
+\label{sec:docker}
+
+Docker is an open source container platform designed to make it easier to build, secure and manage the widest array of application from development to production both on premises and in the cloud \cite{docker}. Docker containers allow applications to run on top of the kernel services provided by the hosting system which considerably effects the application performance. However, it still builds containers on top of the generalized interface which warrants straightforward portability between different machines.
+
+A container image is a lightweight, stand-alone, executable package of a piece of software that includes everything needed to run it -- code, runtime, system tools, libraries or settings \cite{docker}. All docker containers that run on the same machine share the kernel services of the host. The images are build on the concept of layers. The layer provides an abstraction to share common filesystems, configuration and other data that can be reused by several docker containers.
+
+Containers isolate applications from the operating system their running on and also provide the separation from other docker containers running concurrently on the same computer. Instead of virtual machines which provide similar functionality, Docker virtualizes the operating system not the hardware. Docker provides abstraction at the application level.
+
+Docker as a tool is targeted for simple utilization. It provides an unified environment for both developers and administrators supporting the DevOps (development and operations) practices. Particularly, developers profit from portable code that is able to run on any operating platform supporting Docker, while operations gain visibility and management services from comprehensive control panel covering all containerized applications.
+
+
 \section{LRA service}
 
 The LRA service is the first example in contradiction with previous quickstarts as it does not restrict its services to any particular conventions. Individual services are connected through the exposed REST routes.
@@ -784,37 +798,6 @@ As it was already presented in the previous chapter Narayana's long running acti
 
 The traditional requirements placed on the microservices applications are handled by the OpenShift platform. That for instance covers service discovery and location transparency, monitoring, logging, resiliency and health checks (failure discovery). 
 
-\subsection{WildFly Swarm}
-
-WildFly Swarm is the Red Hat microservices initiative designed to enable deconstructing the WildFly application server and pasting just enough of it back together with the application to create a self-contained executable jar \cite{gupta_2018}. 
-
-The traditional Java EE\footnote{Enterprise Edition} approach follows the development of the application and its successive deployment to the application server which includes necessary dependencies which the application requires to run. On the other hand, Wildfly Swarm creates a fat Java archive which packages all needed dependencies inside itself. This emulates the packaging of only requisite parts of the application server. The result jar is a standalone runnable Java application which can be executed by the \texttt{java -jar} command. It also provides Maven and Gradle plugins to ease the development of Swarm applications.
-
-The default fat jar (also called the uberjar) contains the user application and the needed parts of the WildFly server. Swarm also supports the packaging of the necessary server parts separately from the application. This method is know as the hollow jar and is particularly useful in the containerized environment as the server may be placed in the lower layers that do not require frequent rebuilds.
-
-The individual server parts are being delivered in the packages named fractions. The fraction represents a precise selection of capabilities that can be included in the application. It may denote the exact WildFly subsystem as JAX-RS\footnote{Java API for RESTful Web Services} or CDI\footnote{Context and Dependency Injection}, or a more sophisticated set of facilities to provide some additional functionality like RHSSO\footnote{Red Hat Single Sign-On}.
-
-\subsection{OpenShift platform}
-
-Red Hat OpenShift is an open source container application platform that  brings Docker and Kubernetes to the enterprise \cite{openshift} generally build on top of the Red Hat Enterprise Linux. It provides the deployment, management and monitoring of the containerized software. OpenShift provides automation in the cloud environment that enables simple development workflow including easy provisioning, building and deployment of enterprise applications allowing faster delivery to end customers.
-
-The platform provides extensive set of features like self-service maintenance, polyglot (language independent) application support, container-based environment and the automation of application builds, scaling and health management. It can also administer persistence capabilities, the application centric networking and multiple interaction models, e. g. command line tools or the web console.
-
-OpenShift is being developed in several variants. The upstream community project is OpenShift Origin which is a distribution of Kubernetes optimized for continuous application development and multi-tenant deployment \cite{openshift}. On top of the Kubernetes platform, Origin provides the developer and operations centric tooling, security, logging or pipelining and many other capabilities. Origin is also available as the all in one virtual machine called Minishift which utilizes a local single-node OpenShift cluster. 
-
-The second alternative is the OpenShift Online. Currently distributed in version 3, it serves as a Red Hat public cloud application development and hosting service. OpenShift Online provides an integrated environment that allows developers to focus on the application development instead of its management through the set of facilities like source-to-image builds eliminating the Dockerfiles creation, one click deployments through git hooks, automatic scaling according to the traffic and integration with the Eclipse IDE\footnote{Integrated Development Environment}.
-
-OpenShift Dedicated offers a managed private cluster which can be hosted on the public cloud like Amazon Web Services or Google Cloud platform. It provides OpenShift services as an isolated platform that aims for the simple and faster transition of user applications to the container based and native cloud environments.
-
-The last OpenShift variant it the OpenShift.io. It provides an open online end-to-end development environment for planning, creating and deploying hybrid cloud services \cite{openshift_io}. It supports an integrated approach to DevOps, including tools as one-click container management, machine learning system and integration of many projects like fabric8 or Eclipse Che.
-
-\subsection{Kubernetes}
-
-Kubernetes is an open source project providing automation, scaling and management of containerized applications \cite{kubernetes}. It groups the application containers into logical units for easier management and discovery.
-
-The features of Kubernetes include the service discovery, load balancing, automatic container placement or the self-healing for the automated failure recovery and rollbacks. It also manages the storage orchestration, scaling of containers, secrets, container configuration and batch capabilities.
-
-Kubernetes platform is suitable and portable to any cloud environment involving public, private, hybrid clouds and multi-cloud. It allows application containers to be run in the clusters of physical or virtual machines. Kubernetes is not a traditional PaaS (Platform as a Service) solution but it provides platform that many PaaS systems build upon, e. g. OpenShift or Deis.
 
 \subsection{Project structure}
 
@@ -866,6 +849,43 @@ The only problem that may occur is that currently, the LRA framework provides on
 
 In the LRA service is this problem addressed by the \texttt{api-gateway} service which functions as a proxy for the \texttt{lra-coordinator} that handles the saga execution. This approach does not effect the Narayana LRA management. The only change from the traditional processing is that series of LRA actions are performed by the \texttt{api-gateway} instead of the initiating service. This allows the service to be immediately available for the subsequent user requests and to scale the LRA processing independently from the services that utilize the coordination.
 
+\subsection{Technology}
+
+This section describes technologies included in the LRA example -- the WildFly Swarm project as underlying microservices provider and the OpenShift and Kubernetes containerization platforms as the quickstart has been designed for the deployment to these environments.
+
+\newlinepar{WildFly Swarm}
+
+WildFly Swarm is the Red Hat microservices initiative designed to enable deconstructing the WildFly application server and pasting just enough of it back together with the application to create a self-contained executable jar \cite{gupta_2018}. 
+
+The traditional Java Enterprise Edition (EE) approach follows the development of the application and its successive deployment to the application server which includes necessary dependencies which the application requires to run. On the other hand, Wildfly Swarm creates a fat Java archive which packages all needed dependencies inside itself. This emulates the packaging of only requisite parts of the application server. The result jar is a standalone runnable Java application which can be executed by the \texttt{java -jar} command. It also provides Maven and Gradle plugins to ease the development of Swarm applications.
+
+The default fat jar (also called the uberjar) contains the user application and the needed parts of the WildFly server. Swarm also supports the packaging of the necessary server parts separately from the application. This method is know as the hollow jar and is particularly useful in the containerized environment as the server may be placed in the lower layers that do not require frequent rebuilds.
+
+The individual server parts are being delivered in the packages named fractions. The fraction represents a precise selection of capabilities that can be included in the application. It may denote the exact WildFly subsystem as JAX-RS\footnote{Java API for RESTful Web Services} or CDI\footnote{Context and Dependency Injection}, or a more sophisticated set of facilities to provide some additional functionality like RHSSO\footnote{Red Hat Single Sign-On}.
+
+\newlinepar{OpenShift platform}
+
+Red Hat OpenShift is an open source container application platform that  brings Docker and Kubernetes to the enterprise \cite{openshift} generally build on top of the Red Hat Enterprise Linux. It provides the deployment, management and monitoring of the containerized software. OpenShift provides automation in the cloud environment that enables simple development workflow including easy provisioning, building and deployment of enterprise applications allowing faster delivery to end customers.
+
+The platform provides extensive set of features like self-service maintenance, polyglot (language independent) application support, container-based environment and the automation of application builds, scaling and health management. It can also administer persistence capabilities, the application centric networking and multiple interaction models, e. g. command line tools or the web console.
+
+OpenShift is being developed in several variants. The upstream community project is OpenShift Origin which is a distribution of Kubernetes optimized for continuous application development and multi-tenant deployment \cite{openshift}. On top of the Kubernetes platform, Origin provides the developer and operations centric tooling, security, logging or pipelining and many other capabilities. Origin is also available as the all in one virtual machine called Minishift which utilizes a local single-node OpenShift cluster. 
+
+The second alternative is the OpenShift Online. Currently distributed in version 3, it serves as a Red Hat public cloud application development and hosting service. OpenShift Online provides an integrated environment that allows developers to focus on the application development instead of its management through the set of facilities like source-to-image builds eliminating the Dockerfiles creation, one click deployments through git hooks, automatic scaling according to the traffic and integration with the Eclipse IDE\footnote{Integrated Development Environment}.
+
+OpenShift Dedicated offers a managed private cluster which can be hosted on the public cloud like Amazon Web Services or Google Cloud platform. It provides OpenShift services as an isolated platform that aims for the simple and faster transition of user applications to the container based and native cloud environments.
+
+The last OpenShift variant it the OpenShift.io. It provides an open online end-to-end development environment for planning, creating and deploying hybrid cloud services \cite{openshift_io}. It supports an integrated approach to DevOps, including tools as one-click container management, machine learning system and integration of many projects like fabric8 or Eclipse Che.
+
+\newlinepar{Kubernetes}
+
+Kubernetes is an open source project providing automation, scaling and management of containerized applications \cite{kubernetes}. It groups the application containers into logical units for easier management and discovery.
+
+The features of Kubernetes include the service discovery, load balancing, automatic container placement or the self-healing for the automated failure recovery and rollbacks. It also manages the storage orchestration, scaling of containers, secrets, container configuration and batch capabilities.
+
+Kubernetes platform is suitable and portable to any cloud environment involving public, private, hybrid clouds and multi-cloud. It allows application containers to be run in the clusters of physical or virtual machines. Kubernetes is not a traditional PaaS (Platform as a Service) solution but it provides platform that many PaaS systems build upon, e. g. OpenShift or Deis.
+
+
 \section{Eventuate Sagas}
 
 The Eventuate Sagas quickstart is based on the new Eventuate Tram framework which is still, by the time of this writing, under pre-release development. This framework provides several solution to problems with saga management that are present in the Eventuate platform.
@@ -880,7 +900,7 @@ All services are deployed by the \texttt{docker-compose} configuration distribut
 
 As Eventuate Tram does not restrict its services to the CQRS pattern, this project, in contrast to Eventutate service, contains only three business microservices and one support module. Every service is configured in the similar way as for the full platform containing the references and authentication details for the MySQL database, Kafka framework and Apache Zookeeper service. The quickstart is distributed with the predefined \texttt{docker-compose} configuration file that enables one command start up of all services.
 
-The last service which is not required for the saga execution and handling is the \texttt{mongodb} NoSQL server. This service is present only for the demonstration purposes to allow the data retrieval on individual business services.
+The last service which is not required for the saga execution and handling is the \texttt{mongodb} NoSQL server. This service is present only for the demonstration purposes to allow the data retrieval on individual business services from different storage than the one that is used by the Eventuate platform.
 
 The first microservice \texttt{order-service} is responsible for the order requests and saga processing. It also provides the ability to query persisted orders from the remote Mongo database.
 
@@ -907,6 +927,11 @@ The destination channels in Tram are distinguished by a simple string which may 
 Handler methods that are referenced in the definition are restricted to the communication model provided by the platform. This allows a single command to be sent to the required destination. Unfortunately, platform does not allow the saga to perform any other operation without the participant invocation which may lead to unnecessary empty commands and channels declarations. 
 
 Similarly, the saga may need to interact with the same participant in several different commands. This may cause problems with definitions of compensation and reply handlers as the developer needs to mind the logical grouping of participant invocations.
+
+\subsection{Technology}
+
+Eventuate Tram is based on the same microservices platform structure as standard Eventuate framework and therefore the same technology. For the description of the technology employed in this quickstart please refer to the section \ref{sec:eventuate-technology}.
+
 
 \clearpage
 \chapter{LRA execution extension}
