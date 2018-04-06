@@ -115,7 +115,7 @@ As an instinctive extension of the consistency property, the serial execution of
 
 \newlinepar{Isolation levels}
 
-In practice we distinguish several levels that describe to which extent the isolation guarantees are provided. Levels are distinguished by simplifications of the locking mechanism in exchange for the faster processing. These levels, in decreasing order, are serializable, repeatable read, snapshot isolation, read committed and read uncommitted isolation. The definitions given in this section are based on the talk given be Martin Kleppmannp\cite{isolation_levels}.
+In practice we distinguish several levels that describe to which extent the isolation guarantees are provided. Levels are distinguished by simplifications of the locking mechanism in exchange for the faster processing. These levels, in decreasing order, are serializable, repeatable read, snapshot isolation, read committed and read uncommitted isolation. The definitions given in this section are based on the talk given be Martin Kleppmann \cite{isolation_levels}.
 
 \newlinepar{Read uncommitted}
 
@@ -233,6 +233,10 @@ The resource manager implements the XA interface in order to provide a switch th
 
 \section{Consensus protocols}
 \label{sec:consensus-protocols}
+
+The consensus problem represents the procedure of achieving the  agreement for the shared data value between several components. It has its application in many environments including transactions where the TM needs to conclude whether a distributed transaction can be committed depending on the participants consensus.
+
+This problem is also generally known as \textit{The Byzantine Generals Problem} which denotes the agreement of the battle strategy that generals have to conclude. The general in this model may also act as a traitor and provide misleading information which represents a failed system component. The paper proved that the consensus can be achieved if less than one third of the generals are traitors.
 
 \subsection{2PC}
 
@@ -931,6 +935,12 @@ Similarly, the saga may need to interact with the same participant in several di
 \subsection{Technology}
 
 Eventuate Tram is based on the same microservices platform structure as standard Eventuate framework and therefore the same technology. For the description of the technology employed in this quickstart please refer to the section \ref{sec:eventuate-technology}.
+
+\section{Performance test}
+
+%Fedora 27 x64, RAM 16GB, 6 vCPUs, SSD 320GB,
+
+%mvn 3.5.0, java 1_8_0_144
 
 
 \clearpage
