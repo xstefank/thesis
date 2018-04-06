@@ -234,9 +234,11 @@ The resource manager implements the XA interface in order to provide a switch th
 \section{Consensus protocols}
 \label{sec:consensus-protocols}
 
-The consensus problem represents the procedure of achieving the  agreement for the shared data value between several components. It has its application in many environments including transactions where the TM needs to conclude whether a distributed transaction can be committed depending on the participants consensus.
+The consensus problem represents the procedure of achieving the  agreement for the shared data value between several components. It has its application in many environments including transactions where the TM needs to conclude whether a transaction can be committed depending on the participants consensus.
 
-This problem is also generally known as \textit{The Byzantine Generals Problem} which denotes the agreement of the battle strategy that generals have to conclude. The general in this model may also act as a traitor and provide misleading information which represents a failed system component. The paper proved that the consensus can be achieved if less than one third of the generals are traitors.
+The instance of this problem, which solves it for the binary output, is also known as \textit{The Byzantine Generals Problem}. It denotes the agreement of the battle strategy that generals have to conclude. The general in this model may also act as a traitor providing misleading information which represents a failed system component. The original paper from 1982 \cite{byzantine-generals-problem} proved that the consensus can be achieved only if less than one third of the participants is malicious. 
+
+A consensus protocol describes a series of steps that solve the consensus problem. These steps can be typically divided into three phases -- the selection of candidate values, the exchange of values between participants and the agreement. The final decision of each participant is irreversible. The following sections describe some of the mostly widely used consensus protocols that may be employed in (potentially distributed) transactional systems.
 
 \subsection{2PC}
 
