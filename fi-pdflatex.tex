@@ -242,7 +242,7 @@ A consensus protocol describes a series of steps that solve the consensus proble
 
 \subsection{2PC}
 
-The \textit{Two phase commit protocol} is one of the most known employed consensus protocols used not only for the transaction processing. The procedure consists of two phases:
+The \textit{Two phase commit protocol} is one of the most known employed consensus protocols used not only in the transaction processing. The procedure consists of two phases:
 
 \begin{itemize}
     \item \textbf{The prepare phase} - All participants send their proposals to the coordinator (TM) in which each of them states either that it is able to proceed and commit its work segment or that the transaction needs to be aborted.
@@ -252,15 +252,36 @@ The \textit{Two phase commit protocol} is one of the most known employed consens
 
 The 2PC protocol is able to handle node failures to some extent through the use of transaction log. However, this do not cover every scenario and certain failures may require manual intervention.
 
-The algorithm expects one node to act as a coordinator. This does not necessarily need to be an elected participant. Any node can act as a coordinator and initiate 2PC prepare phase by asking other participants for their votes.
+The algorithm expects one node to act as a coordinator. This does not necessarily need to be an elected participant. Any node can act as a coordinator and initiate 2PC prepare phase by asking other participants for their votes. Furthermore, there also exits a decentralized variant but with higher massage complexity.
 
 The main disadvantage is that the 2PC is a blocking protocol. When the participant sends its prepare message, it will block until either a commit or rollback message is received. In case of the coordinator failure, this may oppose significant problems.
 
+% O(3n), aj async
+
 \subsection{3PC}
 
-\subsection{Raft}
+The \textit{Three phase commit protocol} is a consensus protocol introduced in 1982 by Dale Skeen \cite{3PC}. It extends the 2PC protocol in a non-blocking way -- it allows participants to place upper time bounds on the phases completion which assures that resources are not  held indefinitely. The three phases are:
+
+\begin{itemize}
+    \item \textbf{The prepare phase} -- Same as in the 2PC protocol.
+    
+    \item \textbf{The pre-commit phase} -- If all participants voted in the first phase to commit the transaction, the coordinator sends to every participant a \texttt{preCommit} massage. After the participant receives \texttt{preCommit}, it will proceed by preparing the commit by locking the required resources assuring that it is able to finish the commit. By this stage the participant can not execute any irreversible actions. If the preparation was successful, it responds to the coordinator with the acknowledgment message.
+    
+    \item \textbf{The commit phase} -- After the coordinator receives preparation confirmation from all participants (the original paper \cite{3PC} allows also to specify a majority vote count), it will commence the commit phase by sending the \texttt{commit} or \texttt{abort} messages, same as in the 2PC protocol.
+\end{itemize}
+
+The termination is achieved by the timeout boundaries set on every message expedition. If the coordinator timeouts, it always assumes the rollback outcome -- after the first phase it cannot proceed as it did not receive votes from every participant and after the second phase if the coordinator fails, the state of the protocol would not be recoverable. However, the participant behaves in the same way after phase one (as it did not receive the outcome from the coordinator, it must assume abort) but if it timeouts after the second phase, it proceeds with the commit. This is allowed as the \texttt{preCommit} message is sent by the coordinator only if all participants wanted to commit the transaction in the phase one.
+
+If the coordinator fails, the new coordinator is selected by any election algorithm. This recovery node can determine the outcome of the protocol based on the state of other nodes -- if any node received a \texttt{preCommit} message, the transaction can be committed (all other participants must have also received the \texttt{preCommit} message). If some node did not receive the \texttt{preCommit} message, the transaction can be aborted.
+
+By contrast to the 2PC protocol, the 3PC is resilient to any number of node failures. Nevertheless, it cannot withstand the network partition. If the partition disassociate nodes that did receive the \texttt{preCommit} message from those which did not, the newly selected coordinators on each side of the partition will result into opposite outcomes and thereby an inconsistent system. The resilience capabilities are at the expense of the performance cost which approximately two times higher that in the 2PC protocol \cite{3PC}.
+
+
+% O(5n)
 
 \subsection{Paxos}
+
+\subsection{Raft}
 
 \subsection{Ark}
 
