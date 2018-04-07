@@ -252,7 +252,9 @@ The \textit{Two phase commit protocol} is one of the most known employed consens
 
 The 2PC protocol is able to handle node failures to some extent through the use of transaction log. However, this do not cover every scenario and certain failures may require manual intervention.
 
-The main disadvantage is that the 2PC is a blocking protocol. When the participant sends its prepare message it will block until either commit or rollback message is received. In case of the coordinator failure, this may oppose significant problems.
+The algorithm expects one node to act as a coordinator. This does not necessarily need to be an elected participant. Any node can act as a coordinator and initiate 2PC prepare phase by asking other participants for their votes.
+
+The main disadvantage is that the 2PC is a blocking protocol. When the participant sends its prepare message, it will block until either a commit or rollback message is received. In case of the coordinator failure, this may oppose significant problems.
 
 \subsection{3PC}
 
