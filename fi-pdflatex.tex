@@ -238,9 +238,21 @@ The consensus problem represents the procedure of achieving the  agreement for t
 
 The instance of this problem, which solves it for the binary output, is also known as \textit{The Byzantine Generals Problem}. It denotes the agreement of the battle strategy that generals have to conclude. The general in this model may also act as a traitor providing misleading information which represents a failed system component. The original paper from 1982 \cite{byzantine-generals-problem} proved that the consensus can be achieved only if less than one third of the participants is malicious. 
 
-A consensus protocol describes a series of steps that solve the consensus problem. These steps can be typically divided into three phases -- the selection of candidate values, the exchange of values between participants and the agreement. The final decision of each participant is irreversible. The following sections describe some of the mostly widely used consensus protocols that may be employed in (potentially distributed) transactional systems.
+A consensus protocol describes a series of steps that solve the consensus problem. These steps can be typically divided into three phases -- the selection of candidate values, the exchange of values between participants and the agreement. The final decision of each participant is irreversible. In transactions environment, the consensus represents the shared decision whether to commit or rollback the transaction. The following sections describe some of the mostly widely used consensus protocols that may be employed in (potentially distributed) transactional systems.
 
 \subsection{2PC}
+
+The \textit{Two phase commit protocol} is one of the most known employed consensus protocols used not only for the transaction processing. The procedure consists of two phases:
+
+\begin{itemize}
+    \item \textbf{The prepare phase} - All participants send their proposals to the coordinator (TM) in which each of them states either that it is able to proceed and commit its work segment or that the transaction needs to be aborted.
+    
+    \item \textbf{The commit phase} -- After collecting all proposals, the transaction coordinator makes a final decision -- if all participants are able to commit, the transaction can be committed; conversely, if any participant stated that it needs to abort, the transaction is aborted. The final outcome is subsequently forwarded to every participant and the transaction can be finished.
+\end{itemize}
+
+The 2PC protocol is able to handle node failures to some extent through the use of transaction log. However, this do not cover every scenario and certain failures may require manual intervention.
+
+The main disadvantage is that the 2PC is a blocking protocol. When the participant sends its prepare message it will block until either commit or rollback message is received. In case of the coordinator failure, this may oppose significant problems.
 
 \subsection{3PC}
 
@@ -943,6 +955,10 @@ Eventuate Tram is based on the same microservices platform structure as standard
 %Fedora 27 x64, RAM 16GB, 6 vCPUs, SSD 320GB,
 
 %mvn 3.5.0, java 1_8_0_144
+
+
+%axon - 50 ms --> 5 min - sek na 2340 completed
+%axon - 100 ms --> 8 min - sek na 2259 completed
 
 
 \clearpage
