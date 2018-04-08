@@ -265,8 +265,6 @@ The algorithm expects one node to act as a coordinator. This does not necessaril
 
 The main disadvantage is that the 2PC is a blocking protocol. When the participant sends its prepare message, it will block until either a commit or rollback message is received. In case of the coordinator failure, this may oppose significant problems.
 
-% O(3n), aj async
-
 \subsection{3PC}
 
 The \textit{Three phase commit protocol} is a consensus protocol introduced in 1982 by Dale Skeen \cite{3PC}. It extends the 2PC protocol in a non-blocking way -- it allows participants to place upper time bounds on the phases completion which assures that resources are not  held indefinitely. The three phases are:
@@ -288,13 +286,11 @@ By contrast to the 2PC protocol, the 3PC is resilient to more types of failures.
 In 1998, Keidar and Dolev introduced an \textit{Enhanced three phase commit} protocol (E3PC) which maintains the consistency in the face of site failures and network partitions \cite{E3PC}. It is using two additional counters that impose linear order on the majorities of the system node while still preserving the same computational complexity as 3PC. 
 
 
-% O(5n)
-
 \subsection{Paxos}
 
-The Paxos represents a family of distributed algorithms designed to solve the consensus problem. It has been introduced by Leslie Lamport in 1998 \cite{Paxon}.
+The Paxos represents a family of distributed algorithms designed to solve the consensus problem. It has been introduced by Leslie Lamport in 1998 \cite{Paxos}.
 
-The idea of the basic variant of the algorithm is reasonably simple. The paxon distinguishes three types of system nodes: proposers, acceptors and learners. One node can be of more than one type, even act as all of them. Proposers act as client representatives proposing values that the client wants the system to agree on. Acceptors serves as the voting mechanism and all nodes must know the number of acceptors that form a majority. Learners serve as the representatives that can be queried for the decided value. The algorithm runs in two phases:
+The idea of the basic variant of the algorithm is reasonably simple. The Paxos distinguishes three types of system nodes: proposers, acceptors and learners. One node can be of more than one type, even act as all of them. Proposers act as client representatives proposing values that the client wants the system to agree on. Acceptors serves as the voting mechanism and all nodes must know the number of acceptors that form a majority. Learners serve as the representatives that can be queried for the decided value. The algorithm runs in two phases:
 
 \begin{itemize}
     \item \textbf{The promise phase} -- The proposer first sends its proposed value with a new unique identification number generated from a sequence to all acceptors (or the majority). For each acceptor: if the received id number is higher than the value the acceptor promised to ignore, it will respond with the \texttt{promise} message, otherwise it ignores the propose message.
@@ -306,7 +302,25 @@ If the acceptor already accepted a value, it appends the accepted id and value t
 
 Many variants of the Paxos algorithm allows it to sufficiently handle almost all types of failures which is why it is employed in the wide range of enterprise systems. In particular, even the basic variant solves  problems of the 3PC algorithm, namely, network partitions and the restriction to the fail-stop model. Instead, the Paxos protocol is resilient to the fail-recover model which allows individual nodes to recover and continue processing from the point of the failure -- which is expected in the modern distributed systems.
 
+\subsection{Conclusions}
 
+This section presented in detail three consensus protocols that can be employed to solve the transaction commit / abort consensus in the distributed systems. There also exists many other algorithms, for instance, the Raft or the Ark which can not be discussed due to the space limitations. The summary of the presented algorithms is available in the table \ref{tab:consensus-protocols-comparison} (this table represents scenarios without any failures).
+
+\begin{table}
+    \begin{tabularx}{\textwidth}{lllX}
+        \toprule
+        Protocol & Time (phases) & Message complexity & Client delay \\
+        \midrule
+        2PC & 2 & $3(n - 1)$ & 3 RTTs \\
+        3PC & 3 & $5(n - 1)$ & 5 RTTs \\
+        Paxos & 2 & $4(f + 1)$ ($f$ = majority) & 4 RTTs \\
+        \bottomrule
+    \end{tabularx}
+    \caption{Consensus protocols comparison}
+    \label{tab:consensus-protocols-comparison}
+\end{table}
+
+The consensus is a very sophisticated and complex problem particularly in distributed environments. As it will be presented in the following chapters, the saga pattern \cite{sagas_publ} provides a simple and elegant alternative to the distributed consensus for the long lived transaction commit.
 
 
 
