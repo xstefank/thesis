@@ -302,6 +302,8 @@ If the acceptor already accepted a value, it appends the accepted id and value t
 
 Many variants of the Paxos algorithm allows it to sufficiently handle almost all types of failures which is why it is employed in the wide range of enterprise systems. In particular, even the basic variant solves  problems of the 3PC algorithm, namely, network partitions and the restriction to the fail-stop model. Instead, the Paxos protocol is resilient to the fail-recover model which allows individual nodes to recover and continue processing from the point of the failure -- which is expected in the modern distributed systems.
 
+The problem that the algorithm can not solve is two proposers that actively compete for the highest proposal number. This happens between phases as the participants \texttt{accept-request} is rejected due to the higher \texttt{promise} issued to the other proposer. The system is blocked until the conflict can be resolved, e. g., by the exponential back off mechanisms which allows one proposer to wait sufficiently long for the other one to finish. Acceptors are also required to have a persistent storage to avoid providing misleading information in case of the fail-recovery.
+
 \subsection{Conclusions}
 
 This section presented in detail three consensus protocols that can be employed to solve the transaction commit / abort consensus in the distributed systems. There also exists many other algorithms, for instance, the Raft or the Ark which can not be discussed due to the space limitations. The summary of the presented algorithms is available in the table \ref{tab:consensus-protocols-comparison} (this table represents scenarios without any failures).
