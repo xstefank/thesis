@@ -238,7 +238,16 @@ The consensus problem represents the procedure of achieving the  agreement for t
 
 The instance of this problem, which solves it for the binary output, is also known as \textit{The Byzantine Generals Problem}. It denotes the agreement of the battle strategy that generals have to conclude. The general in this model may also act as a traitor providing misleading information which represents a failed system component. The original paper from 1982 \cite{byzantine-generals-problem} proved that the consensus can be achieved only if less than one third of the participants is malicious. 
 
-A consensus protocol describes a series of steps that solve the consensus problem. These steps can be typically divided into three phases -- the selection of candidate values, the exchange of values between participants and the agreement. The final decision of each participant is irreversible. In transactions environment, the consensus represents the shared decision whether to commit or rollback the transaction. The following sections describe some of the mostly widely used consensus protocols that may be employed in (potentially distributed) transactional systems.
+A consensus protocol describes a series of steps that solve the consensus problem. These steps can be typically divided into three phases -- the selection of candidate values, the exchange of values between participants and the agreement. The final decision of each participant is irreversible. The consensus protocol is correct, if it complies with these properties \cite{2PC}:
+
+\begin{itemize}
+    \item \textbf{Agreement} - all nodes decide on the same value
+    \item \textbf{Validity} - the decided value must have been proposed by some participant
+    \item \textbf{Termination} - all nodes eventually decide
+\end{itemize}
+
+
+In the transactions environment, the consensus represents the shared decision whether to commit or rollback the transaction. The following sections describe some of the mostly widely used consensus protocols that may be employed in (potentially distributed) transactional systems.
 
 \subsection{2PC}
 
