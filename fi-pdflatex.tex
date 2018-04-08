@@ -608,21 +608,25 @@ This section presents the current implementations of the saga pattern available 
 
 \subsection{Axon framework}
 
-Axon is a lightweight Java framework that helps developers build scalable and extensible applications by addressing these concerns directly in the core  architecture \cite{axon_framework}. It is composed on the top of the Command Query Responsibility Segregation (CQRS) pattern which is described in more detail in the Appendix \ref{sec:appendix-cqrs}.
+Axon is a lightweight Java framework that helps developers build scalable and extensible applications by addressing these concerns directly in the core architecture \cite{axon_framework}. It is composed on the top of the Command Query Responsibility Segregation (CQRS) pattern which is described in the Appendix \ref{sec:appendix-cqrs}.
 
-The Axon framework is based upon the event processing including asynchronous message passing and event sourcing. This allows components to be loosely coupled and therefore easily developed in the the microservices manner.
+The Axon framework is based upon the event processing including asynchronous message passing and event sourcing. To decouple the communication between system components, it employs the mechanisms of the asynchronous message buses. This allows to design components with well defined boundaries and therefore easy microservices development.
+
+The CQRS architecture is directly embedded in the framework. Developers are controlling distinct CQRS components (aggregates, repositories, commands) by annotations. 
+
+Axon supports two types of message buses -- the command bus and the event bus. This aligns with the CQRS pattern and allows to scale each part of the domain independently.
 
 \newlinepar{Saga definition}
 
-As the most of the Axon functionality, the easiest way to define sagas in an application is by the use annotations. The annotation \texttt{@Saga} marks the class as a saga implementation. In Axon sagas are a special type of event listeners. Each object instance of the saga class is responsible for managing a single business transaction. This includes the management of the saga state information, the execution and handling of the transaction (including start and stop) or the performing of the corresponding compensation actions.
+As the most of the Axon functionality, the easiest way to define sagas in an application is by annotations. The annotation \texttt{@Saga} marks the Java class as a saga implementation. In Axon sagas are a special type of event listeners. Each object instance of the saga class is responsible for the management of a single business transaction. This includes controlling the saga state information, execution and handling of the transaction (including start and stop) or performing the corresponding compensation actions.
 
-All interaction with the saga class happens only by triggering of events. The ordinary event handlers in saga instances are annotated with the annotation \texttt{@SagaEventHandler}. 
+All interaction with the saga class happens only by triggering of events. Event handlers in saga instances are annotated with the annotation \texttt{@SagaEventHandler}. 
 
-To start a saga execution the framework needs to receive the event with the special event handler annotated with \texttt{@StartSaga}. By default, the new instance will be created only if the corresponding saga can be found.
+To start a saga execution the framework needs to receive the event with the special event handler annotated with \texttt{@StartSaga}. By default, the new instance will be created only if the corresponding saga can not be found.
 
-Ending of the saga can be defined in two means -- by the event or by the API call. If the ending event is used, than the conforming event handler needs to be annotated with the \texttt{@EndSaga} annotation. Alternatively, the conditional end of the saga can be signaled by the call to the \texttt{SagaLifecycle.end()} from some method inside the saga class.
+Ending of the saga can be defined by two means -- by the event or by the API call. If the ending event is used, than the conforming event handler needs to be annotated with the \texttt{@EndSaga} annotation. Alternatively, the conditional end of the saga can be signaled by the call to the \texttt{SagaLifecycle.end()} from some method inside the saga class.
 
-As many instances of the saga class may exist at the same time, there is a need to publish events only to the saga for which they are intended. This is done by a definition of association values. The association value is a simple key-value pair where the key is a property present in the event which forms a connection to the saga instance. The \texttt{@SagaEventHandler} annotation contains a custom attribute called the \texttt{associationProperty} which denotes the key property in the incoming event. Axon also allows the definition of additional association values by a call to the \texttt{SagaLifecycle.associateWith(key, value)} and the \texttt{SagaLifecycle.removeAssociationWith(key, value)} inside the saga class.
+As many instances of the saga class may exist at the same time, there is a need to publish events only to the saga for which they are intended. This is done by a definition of association values. The association value is a simple key-value pair where the key is a property present in the event which forms a connection to the saga instance. The \texttt{@SagaEventHandler} annotation contains a custom attribute called the \texttt{associationProperty} which denotes the key property in the incoming event. Axon also allows the definition of additional association values by a call to the \texttt{SagaLifecycle.associateWith(key, value)} and the \texttt{SagaLifecycle.removeAssociationWith(key, value)} inside any method of the saga class.
 
 \subsection{Eventuate.io}
 
