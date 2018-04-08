@@ -630,6 +630,10 @@ As many instances of the saga class may exist at the same time, there is a need 
 
 \subsection{Eventuate.io}
 
+Eventuate is a platform for developing asynchronous microservices \cite{eventuate.io}. It focuses on the distributed data management allowing developers to focus on the business implementations. The platform consists of two products -- the Eventuate ES and the Evenetuate Tram. By the time of this writing, the Eventuate Tram was still in development and as it introduced the sophisticated saga processing to the platform, it is in detail described in the section \ref{sec:eventuate-tram}. This section presents the more general Eventuate ES product.
+
+The Eventuate ES provides application with the programming model based on the event sourcing. Event sourcing is a mechanism that tracks all changes to the data model as a sequence of events stored in the event log. Every model change is stored in the log and the sequence can be anytime replayed to restore the application state. This platform is also based on the CQRS pattern which allows natural employment of event sourcing capabilities for aggregate entities. It is provided in two versions -- as a service hosted on Amazon Web Services (AWS) or as open source local platform.
+
 To correctly connect to the Eventuate platform structure, services are required to specify a collection of the application properties. These options define connection and authentication details for Eventuate support services. The Spring Boot application can specify these attributes in an \texttt{application.properties} file or as environment variables.
 
 \subsection{Narayana LRA}
@@ -638,6 +642,7 @@ The coordinator is responsible for the LRA starting, progress tracking and eithe
 
 
 \subsection{Eventuate Tram}
+\label{sec:eventuate-tram}
 
 the platform controls the information transfer. The base Eventuate platform builds the communication exchange on top of the event processing. On the other hand, Tram handles the command responses as messages send trough dedicated channels. 
  
@@ -864,6 +869,7 @@ A container image is a lightweight, stand-alone, executable package of a piece o
 Containers isolate applications from the operating system their running on and also provide the separation from other docker containers running concurrently on the same computer. Instead of virtual machines which provide similar functionality, Docker virtualizes the operating system not the hardware. Docker provides abstraction at the application level.
 
 Docker as a tool is targeted for simple utilization. It provides an unified environment for both developers and administrators supporting the DevOps (development and operations) practices. Particularly, developers profit from portable code that is able to run on any operating platform supporting Docker, while operations gain visibility and management services from comprehensive control panel covering all containerized applications.
+
 
 
 \section{LRA service}
