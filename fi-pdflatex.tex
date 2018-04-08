@@ -870,6 +870,13 @@ Containers isolate applications from the operating system their running on and a
 
 Docker as a tool is targeted for simple utilization. It provides an unified environment for both developers and administrators supporting the DevOps (development and operations) practices. Particularly, developers profit from portable code that is able to run on any operating platform supporting Docker, while operations gain visibility and management services from comprehensive control panel covering all containerized applications.
 
+\newlinepar{Docker compose}
+
+Docker compose is a tool for the defining and running multi-container Docker applications \cite{docker_compose}. It allows to specify configuration for several containers as YAML file that can be passed as an argument to the command line tool to run all services with a single command.
+
+The YAML configuration includes the same options that are available as a switches to native Docker commands. Additionally, it also provides functionality to orchestrate the specified services once they are started through the \texttt{docker-compose} command line utility. These functions include the network definition which allows easy addressing and the location transparency of the employed containers, the preservation of the container volumes, recreation of only changed containers or the specification of environment variables directly in the configuration file. 
+
+Docker compose represents a simple way to provide container automation that may ease the development and support of the continuous delivery (CD) and integration (CI) pipelines.
 
 
 \section{LRA service}
