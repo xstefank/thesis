@@ -604,7 +604,7 @@ As all of the above mentioned components are distributed, the saga management sy
 
 \section{Current development support}
 
-This section presents the current implementations of the saga pattern available for the enterprise use. The three explored frameworks are Axon \cite{axon_framework}, Eventuate \cite{eventuate.io} and Narayana Long Running Actions (LRA) \cite{narayana_lra}.
+This section presents the current implementations of the saga pattern available for the enterprise use. The four explored frameworks are Axon \cite{axon_framework}, Eventuate \cite{eventuate.io}, Narayana Long Running Actions (LRA) \cite{narayana_lra} and Eventuate Tram \cite{eventuate-tram}.
 
 \subsection{Axon framework}
 
@@ -1011,6 +1011,21 @@ Similarly, the saga may need to interact with the same participant in several di
 Eventuate Tram is based on the same microservices platform structure as standard Eventuate framework and therefore the same technology. For the description of the technology employed in this quickstart please refer to the section \ref{sec:eventuate-technology}.
 
 \section{Performance test}
+
+To compare examples for their applicability in real systems from the performance perspective, a simple persistence test has been created to investigate how they behave under larger load.
+
+As these projects impose only the quickstart examples which were not adjusted for performance, this test serves only as a reference to inspect the behavior off the simplest starting application. It does not correspond to the real production environment, but it still references some of the performance improvement points present in each investigated framework.
+
+The test has been run in the cloud computing platform Digital Ocean \cite{digital-ocean}. The virtual machine specification:
+
+\usemintedstyle{bw}
+\begin{minted}{python}
+    OS: Fedora 21 x64
+    Kernel: 4.13.9-300.fc27.x86_64
+    CPU: 6 vCPUs
+    RAM: 16 GB
+    SSD: 320 GB
+\end{minted}
 
 %Fedora 27 x64, RAM 16GB, 6 vCPUs, SSD 320GB,
 
