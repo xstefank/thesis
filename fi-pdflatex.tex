@@ -292,9 +292,19 @@ In 1998, Keidar and Dolev introduced an \textit{Enhanced three phase commit} pro
 
 \subsection{Paxos}
 
-\subsection{Raft}
+The Paxos represents a family of distributed algorithms designed to solve the consensus problem. It has been introduced by Leslie Lamport in 1998 \cite{Paxon}.
 
-\subsection{Ark}
+The idea of the basic variant of the algorithm is reasonably simple. The paxon distinguishes three types of system nodes: proposers, acceptors and learners. One node can be of more than one type, even act as all of them. Proposers act as client representatives proposing values that the client wants the system to agree on. Acceptors serves as the voting mechanism and all nodes must know the number of acceptors that form a majority. Learners serve as the representatives that can be queried for the decided value. The algorithm runs in two phases:
+
+\begin{itemize}
+    \item \textbf{The promise phase} -- The proposer first sends its proposed value with a new unique identification number generated from a sequence to all acceptors (or the majority). For each acceptor: if the received id number is higher than the value the acceptor promised to ignore, it will respond with the \texttt{promise} message, otherwise it ignores the propose message.
+    
+    \item \textbf{The commit phase} -- If the proposer collects promises from the majority of acceptors, it sends the \texttt{accept-request} message to all acceptors (or the majority) with the same id and the proposed value. If the acceptor did not promise to ignore the received id, it decide on the value and send the \texttt{accept} message to all learners. If the id in the message is lower than the promised, the message is ignored. As the \texttt{accept-request} message is send to the majority of acceptors, the consensus is reached.
+\end{itemize}
+
+If the acceptor already accepted a value, it appends the accepted id and value to each \texttt{promise} message. In this case, the proposer knows that there is some value already decided in the system and it continues the processing with the value from the \texttt{promise} message with the highest id. If it wants to update this value, it needs to initiate a new run of the algorithm after the current one has ended. 
+
+Many variants of the Paxos algorithm allows it to sufficiently handle almost all types of failures which is why it is employed in the wide range of enterprise systems. In particular, even the basic variant solves  problems of the 3PC algorithm, namely, network partitions and the restriction to the fail-stop model. Instead, the Paxos protocol is resilient to the fail-recover model which allows individual nodes to recover and continue processing from the point of the failure -- which is expected in the modern distributed systems.
 
 
 
