@@ -604,7 +604,7 @@ As all of the above mentioned components are distributed, the saga management sy
 
 \section{Current development support}
 
-This section presents the current implementations of the saga pattern available for the enterprise use. The four explored frameworks are Axon \cite{axon_framework}, Eventuate \cite{eventuate.io}, Narayana Long Running Actions (LRA) \cite{narayana_lra} and Eventuate Tram \cite{eventuate-tram}.
+This section presents the current implementations of the saga pattern available for the enterprise use. The four explored frameworks are Axon \cite{axon_framework}, Eventuate Event Sourcing (ES) \cite{eventuate.io}, Eventuate Tram \cite{eventuate-tram} and Narayana Long Running Actions (LRA) \cite{narayana_lra}.
 
 \subsection{Axon framework}
 
@@ -641,15 +641,25 @@ The ES project is also based on CQRS principles which allows natural employment 
 
 The saga processing of the Eventuate platform is handled by Eventuate Tram project and therefore the ES product do not support saga implementation directly. However, the example \textit{Eventuate service}, which is presented in the following chapter, is based exclusively on the Eventuate ES local platform providing the complete CQRS saga solution. It represents the user saga handling implementation not supported by the platform. 
 
+\subsection{Eventuate Tram}
+\label{sec:eventuate-tram}
+
+The Eventuate Tram framework enables a Java/Spring application to send asynchronous messages as a part of a database transaction \cite{eventuate-tram}. It utilizes the traditional Java Database Connectivity (JDBC) and Java Persistence API (JPA) based persistence model to provide the transactional messaging. This enables microservices application to atomically update its state and to publish this information as a message or an event to other services.
+
+The Eventuate ES platform builds the communication exchange on top of the event sourcing. Conversely, Tram provides three types of transactional messaging abstractions -- messaging, events and commands. The messages are sent trough dedicated named channels. The platform still supports the application development according to the CQRS pattern but it does not enforce it.
+
+The Eventuate Tram Sagas is a framework that provides saga processing on top of the Eventuate Tram message passing. It introduced a very sophisticated saga model that allows to specify the saga definition as single point of reference. 
+
+\newlinepar{Saga definition}
+
+The saga is defined by the saga orchestrator -- the service responsible for the saga handling. It is identified as an implementation of the \texttt{io.eventuate.tram.sagas.orchestration.Saga} interface. The respective saga definition is represented as an instance of the class \texttt{io.eventuate.tram.sagas.orchestration.SagaDefinition}. This instance must be returned by the \texttt{Saga.getSagaDefinition} method. It can be specified with a simple fluent API that allows to define operations that should be executed when the saga fails, when it needs to invoke a participant or how to process participants compensations. 
+
+The saga is defined as a sequence of steps specified by a simple Domain Specific Language (DSL) available in the \texttt{StepBuilder} class. Each step represents a local invocation, a remote participant invocation or the compensation definition. The last two return a participant builder which allows to additionally specify more actions that needs to be processed when the participant is invoked or the handler method which will be called when the participant responds.
+
 \subsection{Narayana LRA}
 
 The coordinator is responsible for the LRA starting, progress tracking and either completion or compensation. 
 
-
-\subsection{Eventuate Tram}
-\label{sec:eventuate-tram}
-
-the platform controls the information transfer. The base Eventuate platform builds the communication exchange on top of the event processing. On the other hand, Tram handles the command responses as messages send trough dedicated channels. 
  
 
 
@@ -674,7 +684,7 @@ A user is able to create the order by a REST call to the dedicated endpoint of t
     \label{fig:inputJson}
 \end{figure}
 
-The setup of each example is described in detail in their respective repositories included in the Appendex B. Generally, each service is a standalone Java application that must run in a separated terminal instance by default located on the local computer address (localhost). Except for the LRA example, all examples are also able to run on the Docker\cite{docker} platform using the Docker compose project\cite{docker_compose}.
+The setup of each example is described in detail in their respective repositories. Generally, each service is a standalone Java application that must run in a separated terminal instance by default located on the local computer address (localhost). Except for the LRA example, all examples are also able to run on the Docker\cite{docker} platform using the Docker compose project\cite{docker_compose}.
 
 Every saga invocation is asynchronous - the REST call for the order request directly returns an order identification number in the response. All of the following interactions are documented in individual services by messages that are logged by the underlying platform. The overall saga process can be examined in the \texttt{order-service} or in the case of LRA in the \texttt{api-gateway} modules.
 
