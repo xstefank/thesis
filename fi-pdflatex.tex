@@ -526,7 +526,7 @@ A saga, as described in the original publication \cite{sagas_publ} from 1987, is
     \label{fig:tripExample}
 \end{figure}
 
-In contrast to the traditional transaction approach, the Saga pattern relaxes some of the ACID properties (namely atomicity and isolation) to achieve availability and scalability with build-in failure management. In practice, applications are mostly not fully restricted to all of the transaction guarantees, so the saga pattern is emerging as a real alternative to traditional ACID transactions.
+In contrast to the traditional transaction approach, the Saga pattern relaxes some of the ACID properties (namely isolation) to achieve availability and scalability with build-in failure management. In practice, applications are not always fully restricted to all of the transaction guarantees, so the saga pattern is emerging as a real alternative to traditional ACID transactions\footnote{sagas utilize also the BASE model (basic availability, soft state and eventual consistency) which values the availability over the consistency of ACID}.
 
 In this chapter, we will describe the saga processing as it is defined by the initial publication \cite{sagas_publ}, describe how the activities and compensations works in sagas, how the saga can handle the failure recovery and present several modern frameworks that provide the support for the saga implementation.
 
@@ -1071,7 +1071,7 @@ The test has been run in the cloud computing platform Digital Ocean \cite{digita
 \begin{minted}{python}
     OS: Fedora 21 x64
     Kernel: 4.13.9-300.fc27.x86_64
-    CPU: 6 vCPUs
+    CPU: 6 vCPUs (Intel(R) Xeon(R) CPU E5-2650 v4 2.20GHz)
     RAM: 16 GB
     SSD: 320 GB
 \end{minted}

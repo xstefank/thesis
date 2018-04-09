@@ -1,7 +1,7 @@
 \begin{Verbatim}[commandchars=\\\{\}]
     \PYG{n}{OS}\PYG{p}{:} \PYG{n}{Fedora} \PYG{l+m+mi}{21} \PYG{n}{x64}
     \PYG{n}{Kernel}\PYG{p}{:} \PYG{l+m+mf}{4.13}\PYG{o}{.}\PYG{l+m+mi}{9}\PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{300.}\PYG{n}{fc27}\PYG{o}{.}\PYG{n}{x86\PYGZus{}64}
-    \PYG{n}{CPU}\PYG{p}{:} \PYG{l+m+mi}{6} \PYG{n}{vCPUs}
+    \PYG{n}{CPU}\PYG{p}{:} \PYG{l+m+mi}{6} \PYG{n}{vCPUs} \PYG{p}{(}\PYG{n}{Intel}\PYG{p}{(}\PYG{n}{R}\PYG{p}{)} \PYG{n}{Xeon}\PYG{p}{(}\PYG{n}{R}\PYG{p}{)} \PYG{n}{CPU} \PYG{n}{E5}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{2650} \PYG{n}{v4} \PYG{l+m+mf}{2.20}\PYG{n}{GHz}\PYG{p}{)}
     \PYG{n}{RAM}\PYG{p}{:} \PYG{l+m+mi}{16} \PYG{n}{GB}
     \PYG{n}{SSD}\PYG{p}{:} \PYG{l+m+mi}{320} \PYG{n}{GB}
 \end{Verbatim}
