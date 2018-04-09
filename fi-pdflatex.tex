@@ -632,9 +632,14 @@ As many instances of the saga class may exist at the same time, there is a need 
 
 Eventuate is a platform for developing asynchronous microservices \cite{eventuate.io}. It focuses on the distributed data management allowing developers to focus on the business implementations. The platform consists of two products -- the Eventuate ES and the Evenetuate Tram. By the time of this writing, the Eventuate Tram was still in development and as it introduced the sophisticated saga processing to the platform, it is in detail described in the section \ref{sec:eventuate-tram}. This section presents the more general Eventuate ES product.
 
-The Eventuate ES provides application with the programming model based on the event sourcing. Event sourcing is a mechanism that tracks all changes to the data model as a sequence of events stored in the event log. Every model change is stored in the log and the sequence can be anytime replayed to restore the application state. This platform is also based on the CQRS pattern which allows natural employment of event sourcing capabilities for aggregate entities. It is provided in two versions -- as a service hosted on Amazon Web Services (AWS) or as open source local platform.
+The Eventuate ES provides application with the programming model based on the event sourcing. Event sourcing is a mechanism that tracks all changes to the data model as a sequence of events stored in the event log. Every model change is appended to the log and the sequence can be anytime replayed to restore the application state. The event log can also serve as an auditing solution and provide temporal queries to track application previous states. Another advantage is that the events can be replayed to the failed service after it reconnects.
 
-To correctly connect to the Eventuate platform structure, services are required to specify a collection of the application properties. These options define connection and authentication details for Eventuate support services. The Spring Boot application can specify these attributes in an \texttt{application.properties} file or as environment variables.
+
+The ES project is also based on CQRS principles which allows natural employment of event sourcing capabilities for aggregate entities. It is provided in two versions -- as a service hosted on Amazon Web Services (AWS) or as open source local platform.
+
+\newlinepar{Saga definition}
+
+The saga processing of the Eventuate platform is handled by Eventuate Tram project and therefore the ES product do not support saga implementation directly. However, the example \textit{Eventuate service}, which is presented in the following chapter, is based exclusively on the Eventuate ES local platform providing the complete CQRS saga solution. It represents the user saga handling implementation not supported by the platform. 
 
 \subsection{Narayana LRA}
 
@@ -776,7 +781,7 @@ This quickstart represents the pure CQRS approach to the saga processing. This m
 \subsection{Platform}
 \label{sec:eventuate-platform}
 
-Eventuate service is a microservices application consisting of a set of Spring Boot \cite{spring_boot} business services, one backing module and a number of support services provided by the Eventuate platform. In this section, I will focus on the Eventuate platform and the services it provides, the business part of the application is described in the following section.
+Eventuate service is a microservices application consisting of a set of Spring Boot \cite{spring_boot} business services, one backing module and a number of support services provided by the Eventuate platform. In this section, we will focus on the Eventuate platform and the services it provides, the business part of the application is described in the following section.
 
 This quickstart is established as a Eventuate Local version of the platform. This means that it uses underlying SQL database for the event persistence and the Kafka streaming platform for the event distribution. Eventuate Local provides five services used by the quickstart that are managed by the platform, namely Apache Zookeeper, Apache Kafka, MySQL database, the change data capture component and the Eventuate console service. The example employs these services as a Docker images included in the provided docker-compose configuration.
 
@@ -807,7 +812,7 @@ This section describes the set of services composing the business side of the ap
 
 All of the business services are a Spring Boot applications based on the Gradle \cite{gradle} build system. Each microservice is represented as a independent module capable of being separately built and deployed. Even if Spring Boot projects can be executed directly from the command line as ordinary Java applications, this quickstart leverages the Docker approach of the Eventuate Local platform and containerize all of its services.
 
-To connect to the Eventuate platform each service defines a set of environment variables. This information includes the connection and authentication details for the MySQL database, the CDC component and the connection URLs\footnote{Uniform Resource Locator} for the Kafka and the Zookeeper services. These variables are specified in the container specification for each individual business service in the \texttt{docker-compose.yml} file.
+To connect to the Eventuate platform each service defines a set of environment variables that are leveraged in their Spring Boot configuration. This information includes the connection and authentication details for the MySQL database, the CDC component and the connection URLs\footnote{Uniform Resource Locator} for the Kafka and the Zookeeper services. These variables are specified in the container specification for each individual business service in the \texttt{docker-compose.yml} file.
 
 The actual saga execution is managed in the \texttt{order-service} microservice. The saga realization implementation is contained in three classes -- the \texttt{OrderSagaAggregate}, the \texttt{SagaEventSubscriber} and the \texttt{OrderSagaService}. The first class is an ordinary CQRS aggregate that handles the commands for the saga initialization and the participants outcomes. Conversely, the latter one is the event processor listening for the events produced by the aggregate which is basically a wrapper around the \texttt{OrderSagaService} - the class responsible for the remote REST calls to the other services and the command dispatching for the \texttt{OrderSagaAggregate}. The usage of the separated event listener is required because Eventuate does not allow aggregates to be declared as Spring components. The reason of this defect is described in more detail in the following section.
 
