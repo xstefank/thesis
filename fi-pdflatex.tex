@@ -662,8 +662,13 @@ Narayana Long Running Actions is a specification developed by the Narayana team 
 
 The current reference implementation (RI) of the LRA specification is based on the Context and Dependency Injection (CDI) and Java API for RESTful Web services (JAX-RS) Java EE specifications. The communication is handled over HyperText Transfer Protocol (HTTP) by the Representational State Transfer (REST) protocol.
 
-The coordinator is responsible for the LRA starting, progress tracking and either completion or compensation. 
+The LRA is utilizing an orchestration saga model. One node is selected as dedicated LRA coordinator that manages the saga processing. Its main responsibilities are the LRA initialization, participant enlisting and either completion or compensation of the saga. 
 
+The coordinator can be a standalone service or it can be embedded within application service. For the second option, the coordinator communicates with the to the enclosing application by in-memory calls rather than REST.
+
+The second model component defined in the LRA processing is the saga participant. This may be any service that is involved in the LRA. Each participant is required to provide at least two REST endpoints that serve as completion and compensation handlers respectively.
+
+The execution of the LRA is started by the initiating service on the user request. The service calls the coordinator that in turn starts a new LRA and return its  unique identification to the initiating service. This id is used to enlist every participant within the saga. After the LRA id is received, the initiating service can optionally enlist itself and it continues the saga processing with other participants invocations where each call has to contain the acquired LRA id. When the participant is invoked, it will perform its work request, enlists itself within the received LRA and subsequently returns the processing outcome to the initiator. After all calls are completed, depending on the collected answers the initiating service calls the coordinator with one of the finalizing methods (\texttt{close} or \texttt{compensate}). The coordinator then performs the corresponding requested action for each of the enlisted participants.
  
 
 
@@ -723,7 +728,7 @@ As it was stated in the previous chapter, the Axon framework is based upon the C
 
 Axon service is a Java Spring Boot \cite{spring_boot} microservices application. Each service is fully separated and independent Maven  project \cite{maven}. Every project is standalone runnable application (fat java archive (jar)) as the Spring Boot does not use any underlying platform to run microservices.
 
-As a CQRS based quickstart, Axon service uses two different and separated communication channels to exchange information between services: the command bus and the event bus. By default, the Axon framework reduce both channels to one Java Virtual Machine (JVM) thus one microservice. However, developers are also able to specify several specialized ways of the configuration to distribute messages between different services which is used in this Axon quickstart.
+As a CQRS based quickstart, Axon service uses two different and separated communication channels to exchange information between services: the command bus and the event bus. By default, the Axon framework reduce both channels to one JVM therefore one microservice. However, developers are also able to specify several specialized ways of the configuration to distribute messages between different services which is used in this Axon quickstart.
 
 The quickstart uses a motion of the distributed command bus which is based upon a different approach then the one used in the traditional single JVM Axon applications. The distributed command bus forms a bridge between separated command bus implementations to transfer commands between different JVMs \cite{axon_framework_reference_guide}. Its main responsibility is the selection of the communication protocol and the choice of the target destination for each incoming command. 
 
