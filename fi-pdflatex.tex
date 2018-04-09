@@ -658,6 +658,10 @@ The saga is defined as a sequence of steps specified by a simple Domain Specific
 
 \subsection{Narayana LRA}
 
+Narayana Long Running Actions is a specification developed by the Narayana team in the collaboration with the Eclipse MicroProfile initiative \cite{saga-impl-comp}. It proposes a new API for the coordination of long running activities with the assurance of the globally consistent outcome and without any locking mechanisms.
+
+The current reference implementation (RI) of the LRA specification is based on the Context and Dependency Injection (CDI) and Java API for RESTful Web services (JAX-RS) Java EE specifications. The communication is handled over HyperText Transfer Protocol (HTTP) by the Representational State Transfer (REST) protocol.
+
 The coordinator is responsible for the LRA starting, progress tracking and either completion or compensation. 
 
  
