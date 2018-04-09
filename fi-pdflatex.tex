@@ -175,6 +175,7 @@ Although the JTA specification provides a range of APIs, the only required inter
 The most common problem introduced by the programmatic model is that the developer must ensure that the transaction is always terminated in the method that started the transaction \cite{java_transaction_design_strategies}. This is often the case when  the initiating method ends up with an uncaught exception and for this reason, the transaction needs to be committed or rollbacked before the method returns.
 
 \subsection{Declarative transaction model}
+\label{sec:decl-tran-model}
 
 The declarative transaction model is also referred to as the Container-Managed Transactions (CMT). In this model, the supplying, underlying container manages all transactions on the users behalf. This includes starting and the administration of the end phases (either commit or rollback) of transactions. The developer is only required to setup the container with the transaction configuration that declares, for instance, that the transaction should be rollbacked on any exception.
 
@@ -670,6 +671,13 @@ The second model component defined in the LRA processing is the saga participant
 
 The execution of the LRA is started by the initiating service on the user request. The service calls the coordinator that in turn starts a new LRA and return its  unique identification to the initiating service. This id is used to enlist every participant within the saga. After the LRA id is received, the initiating service can optionally enlist itself and it continues the saga processing with other participants invocations where each call has to contain the acquired LRA id. When the participant is invoked, it will perform its work request, enlists itself within the received LRA and subsequently returns the processing outcome to the initiator. After all calls are completed, depending on the collected answers the initiating service calls the coordinator with one of the finalizing methods (\texttt{close} or \texttt{compensate}). The coordinator then performs the corresponding requested action for each of the enlisted participants.
  
+\newlinepar{Saga Definition}
+
+The LRA do not require users to specify the saga in any explicit way. The saga execution is handled by the initiating service. Narayana provides \texttt{io.narayana.lra.client.NarayanaLRAClient} class that allows users to perform basic requests for the coordinator operations. On the background, it calls the coordinator through its REST interface which users are also allowed to use directly. The \texttt{NarayanaLRAClient} is provided by the CDI dependency injection.
+
+The participant is defined by annotations present on the JAX-RS resource class. The \texttt{@LRA} annotation declares the endpoint as saga participant. It takes as an argument the value of the transaction attribute which can have same values as for declarative transactions presented in section \ref{sec:decl-tran-model}. This JAX-RS endpoint must also expect the \texttt{NarayanaLRAClient.LRA\_HTTP\_HEADER} header parameter that contains the coordinator address and the LRA identification. Depending on the value of the transaction attribute, the participant can be automatically enlisted to the saga without any intervention.
+
+The participant is also required to expose at least two additional endpoints that handle the end phases of the execution. The specification where these endpoints are present needs to be propagated to the coordinator. If not specified, by default the coordinator expects them on the request endpoint with respective suffixes (\texttt{/complete} or \texttt{/compensate}). The participant is also allowed to specify these methods with annotations (\texttt{@Complete} or \texttt{@Compensate}) that define the handler outside of the JAX-RS context for the possible future implementations. The complete and compensate are required but not the only possible endpoints that the participant can expose. Other potential values are status, forget and leave where each has its respective handling inclinations to the LRA participant processing \cite{narayana_lra}.
 
 
 \clearpage
