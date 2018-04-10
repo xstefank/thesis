@@ -1061,22 +1061,23 @@ Eventuate Tram is based on the same microservices platform structure as standard
 
 \section{Performance test}
 
-To compare examples for their applicability in real systems from the performance perspective, a simple persistence test has been created to investigate how they behave under larger load.
+To compare examples for their applicability in real systems from the performance perspective, a simple performance test has been created to investigate how they behave under larger load.
 
-As these projects impose only the quickstart examples which were not adjusted for performance, this test serves only as a reference to inspect the behavior off the simplest starting application. It does not correspond to the real production environment, but it still references some of the performance improvement points present in each investigated framework.
+As these projects impose only as quickstart examples which were not adjusted for performance, this test serves only as a reference to inspect the behavior off the simplest starting application. It does not correspond to the real production environment, but it still references some of possible performance improvement points present in each investigated frameworks.
 
 The test has been run in the cloud computing platform Digital Ocean \cite{digital-ocean}. The virtual machine specification:
 
 \usemintedstyle{bw}
 \begin{minted}{python}
-    OS: Fedora 21 x64
+    OS: Fedora 27 x64
     Kernel: 4.13.9-300.fc27.x86_64
     CPU: 6 vCPUs (Intel(R) Xeon(R) CPU E5-2650 v4 2.20GHz)
     RAM: 16 GB
     SSD: 320 GB
+    Java: 
+    Maven: 
+    Gradle: 
 \end{minted}
-
-%Fedora 27 x64, RAM 16GB, 6 vCPUs, SSD 320GB,
 
 %mvn 3.5.0, java 1_8_0_144
 
@@ -1087,6 +1088,12 @@ The test has been run in the cloud computing platform Digital Ocean \cite{digita
 
 \clearpage
 \chapter{LRA execution extension}
+
+\section{Motivation}
+
+\section{Design}
+
+\section{Implementation}
 
 \clearpage
 \chapter{Conclusion}
