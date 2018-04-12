@@ -66,7 +66,7 @@ abstract
 \usepackage{minted}
 \usepackage{needspace}
 
-\newcommand{\newlinepar}[1]{\paragraph{#1}\needspace{4\baselineskip}\mbox{}\\}
+\newcommand{\newlinepar}[1]{\paragraph{#1}\needspace{3\baselineskip}\mbox{}\\}
 
 
 \begin{document}
@@ -81,11 +81,9 @@ This chapter introduces the basic notions of transactions, their properties and 
 
 A transaction is an unit of processing that provides all-or-nothing property to the work that is conducted within its scope, also ensuring that shared resources are protected from multiple users \cite{java_tran_processing}. It represents an unified and inseparable sequence of operations that are either all provided or none of them take effect. 
 
-From the application point of view there exist several transaction models in which the transactions can be executed. The applicable models in the transaction management are local, programmatic and declarative transactions. All three models will be described in detail in the following section.
+The transaction can end in two forms: it can be either \textit{commited} or \textit{aborted}. The commit determines a successful outcome - all operations within the transaction have been executed. The abort means that all performed operations have been undone and the system is in the same state as if the transaction have not been started.
 
-The transaction can end in two forms: it can be either \textit{commited} or \textit{aborted}. The commit determines the successful outcome - all operations within the transaction have been performed and their results are permanently stored in a durable storage. The abort means that all performed operations have been undone and the system is in the same state as if the transaction have not been started.
-
-Generally, the achievement of above features may differ. The most common pattern for the transaction processing is a two phase commit protocol with the ACID transactions. Other approaches are based on the relaxation of the one or more of ACID properties to adjust to the real world environments.
+Generally, the achievement of the above mentioned features may differ depending on the scope and utilization of the transaction concepts in the application.
 
 \section{ACID properties}
 
@@ -95,9 +93,9 @@ A transaction can be viewed as a group of business logic statements with certain
 
 The transaction consists of a sequence of operations performed on different resources. An atomicity property means that all operations in the transaction are performed as if they were a single unit. 
 
-As the word atomicity is an overloaded term in many computational science branches\footnote{typical example is the atomic operation in the thread context}, some authors prefer to reference it in the ACID context as the abortability property. The abortability is defined as  the ability to abort a transaction on error and have all writes from that transaction discarded \cite{design_data_intens_apps}. This implies that when the transaction commits successfully, all of its operations are also required to execute a valid commit. Conversely, when the transaction fails and needs to be aborted, all realized operations and effects must be undone.
+As the word atomicity is an overloaded term in many computational science branches, some authors prefer to reference it in the ACID context as the abortability property. The abortability is defined as  the ability to abort a transaction on error and have all writes from that transaction discarded \cite{design_data_intens_apps}. This implies that when the transaction commits successfully, all of its operations are also required to execute a valid commit. Conversely, when the transaction fails and needs to be aborted, all realized operations and effects must be undone.
 
-The atomicity is commonly achieved by the usage of consensus multi-phase protocols. The standardized protocol is the two phase commit protocol (2PC) which is used by the majority of modern transaction systems. The consensus protocols are discussed in detail in the section \ref{sec:consensus-protocols}.
+Particularly in the distributed environment, the atomicity property is commonly achieved by the usage of consensus multi-phase protocols. The standardized protocol is the two phase commit protocol (2PC) which is used by the majority of modern transaction systems. The consensus protocols are discussed in detail in the section \ref{sec:consensus-protocols}.
 
 \subsection{Consistency}
 
@@ -115,32 +113,32 @@ As an instinctive extension of the consistency property, the serial execution of
 
 \newlinepar{Isolation levels}
 
-In practice we distinguish several levels that describe to which extent the isolation guarantees are provided. Levels are distinguished by simplifications of the locking mechanism in exchange for the faster processing. These levels, in decreasing order, are serializable, repeatable read, snapshot isolation, read committed and read uncommitted isolation. The definitions given in this section are based on the talk given be Martin Kleppmann \cite{isolation_levels}.
+The ANSI SQL-92 \cite{sql-92} standard distinguishes several levels that describe to which extent the isolation guarantees are provided. Levels are differentiated by simplifications of the locking mechanism in exchange for the faster processing. These levels, in decreasing order, are serializable, repeatable read, snapshot isolation, read committed and read uncommitted isolation. The standard defines distinction between levels by the type of anomalies their are able to prevent\footnote{In practice, this approach is not always considered sufficient \cite{ansi-sql-critique}}.
 
 \newlinepar{Read uncommitted}
 
-This is the lowest level which does not place any restrictions on the system. This means that it does not require any form of locking mechanisms to be implemented. It allows dirty reads which is that one transaction may read the not yet committed changes of other transaction.
+This is the lowest level which releases every data item lock immediately after it has been read or written. This allows that one transaction may read or overwrite the not yet committed changes of other transaction which is phenomena referred to as the dirty read and the dirty write respectively.
 
 \newlinepar{Read committed}
 
-Read committed level differs from the previous level in that it prohibits dirty reads and dirty writes. The prevention from dirty reads as discussed in previous section means that the transaction is not allowed to read data that has not been committed by different transaction. 
+Read committed level differs from the previous level in that it prohibits dirty reads and dirty writes. It allows to read the data item only when it has been committed. This directly implies that dirty reads are impossible to occur by the definition.
 
-On the other hand, dirty writes mean that the transaction overwrites the uncommitted data. This can be easily described on an example depicted in the figure 2.1. In this execution the resulting data state contains different values for variables (x = B and y = A). However, in any serial execution of transaction the result would be consistent.
+Conversely, dirty writes represent a simple more complex problem as the transaction can overwrite the uncommitted data. This can be easily described on an example depicted in the figure 2.1. In this execution, the resulting data state contains different values for variables (x = B and y = A). However, in any serial execution of transaction the result would be consistent. The read committed level prevents this phenomena as it prohibits access to data items before the former transaction is committed.
 
 \begin{figure}
     \begin{center}
-        \includegraphics[height=45mm]{images/dirtyWrite.png}
+        \includegraphics[height=55mm]{images/dirtyWrite.png}
     \end{center}
     \caption{Dirty writes}
 \end{figure}
 
 \newlinepar{Repeatable read and snapshot isolation}
 
-Both of these methods represent the same level of isolation preventing the anomaly called read skew which can appear in read committed.
+Both of these methods represent the same level of isolation preventing the anomaly called the read skew which can appear in read committed.
 
 The read skew is a problem of reading the data values in different points of time in which the whole consistent data state may not be ensured. This means that the transaction may read the data change in later point in time which may invalidate already read information from a previous processing.\footnote{Imagine a bank system with two accounts both with starting balance 500 and a transfer of 100 from account 1 to 2 as a transaction. If an external system reads the balance of the account 2 prior to start of transaction, it will get 500. However, the subsequent read from the account 1 after the transaction has committed would output 400 which would result into inconsistent information.}
 
-Both repeatable read and snapshot isolation prevent read skews. From the user point of view they represent the same isolation level, but they differ in implementation. Repeatable read is based on the locking mechanisms which may be complex to maintain in bigger systems. The snapshot isolation is implemented as multi version concurrency control that allows each transaction to read the data as it was in one point of time -- the snapshot. The database is required to internally keep track of several states and provide each transaction with the snapshot that is appropriate for its time span.
+Both repeatable read and snapshot isolation prevent read skews. From the user point of view they represent the same isolation level, but they differ in implementation \cite{isolation_levels}. Repeatable read is based on the locking mechanisms which may be complex to maintain in bigger systems. The snapshot isolation \cite{ansi-sql-critique} is implemented as multi version concurrency control (MVCC) technique that allows each transaction to read the data as it was in one point of time -- the snapshot. The database is required to internally keep track of several states and provide each transaction with the snapshot that is appropriate for its time span.
 
 \newlinepar{Serializable}
 
@@ -154,7 +152,7 @@ This property characterizes that all changes done by the transactions must be pe
 
 \section{Transaction models}
 
-As it was already mentioned at the beginning of this chapter, there exist three types of transactions models available for transaction management that define how the transaction is composed -- local, programmatic and declarative transactions\footnote{some sources (e. g. Spring) distinguish only two types of transaction models -- the local model and  the global model that represents both programmatic and declarative approaches}. This chapter describes each model respectively and examines how it can be applied in applications deployed in the Enterprise Java platform environment.
+From the development point of view, there exist three distinct transaction models. The transaction model defines rules and semantics of how developers declare and work with transactions in the Java environment. These models are local, programmatic and declarative transactions\footnote{Spring framework distinguishes only two types of transaction models -- the local model and  the global model that represents both programmatic and declarative approaches}. This chapter describes each model respectively and examines how it can be applied in applications deployed in the Enterprise Java platform environment.
 
 \subsection{Local transaction model}
 
@@ -526,9 +524,7 @@ A saga, as described in the original publication \cite{sagas_publ} from 1987, is
     \label{fig:tripExample}
 \end{figure}
 
-In contrast to the traditional transaction approach, the Saga pattern relaxes some of the ACID properties (namely isolation) to achieve availability and scalability with build-in failure management. In practice, applications are not always fully restricted to all of the transaction guarantees, so the saga pattern is emerging as a real alternative to traditional ACID transactions\footnote{sagas utilize also the BASE model (basic availability, soft state and eventual consistency) which values the availability over the consistency of ACID}.
-
-In this chapter, we will describe the saga processing as it is defined by the initial publication \cite{sagas_publ}, describe how the activities and compensations works in sagas, how the saga can handle the failure recovery and present several modern frameworks that provide the support for the saga implementation.
+In this chapter, we will describe the saga processing as it is defined by the initial publication \cite{sagas_publ}, describe how the activities and compensations work in sagas, how the saga handles the failure recovery and present several modern frameworks that provide the support for the saga implementation.
 
 \section{Activities}
 
@@ -547,6 +543,12 @@ Imagine that the activity consists of the sending of an email. The saga compensa
 The compensating actions for the individual activities are expected to be idempotent. The main reason for this requirement is the saga failure and recovery management which in detail described in section \ref{sec:recovery-modes}.
 
 It is important to keep in mind that even the compensating transactions may fail. There are several options of how the saga management system can handle such situations. The first option is to retry the compensating transaction again, but as the reason of the failure may still be valid, the system can get caught in an infinite retry loop. Another option is to provide a recovery block -- a separated block of code which would get executed in place of the primary compensation in case of failure. The last option, which is not elegant but it is practical, is the manual intervention. This is possible to implement due to the saga nature -- it does not hold any locks on resources it is being performed on. When the compensation handler is manually repaired, the saga can continue its execution where it has left off.
+
+\section{Transactional properties}
+
+In contrast to the traditional transaction approach, the Saga pattern relaxes some of the ACID properties to achieve availability and scalability with build-in failure management. As the saga commits each activity separately, this means that the updates of uncommitted long-lived transaction are immediately visible to other parallel activities \cite{trans_concept} which breaks the isolation property.
+
+In practice, applications are not always fully restricted to all of the transaction guarantees, so the saga pattern is emerging as a real alternative to traditional ACID transactions\footnote{sagas utilize also the BASE model (basic availability, soft state and eventual consistency) which values the availability over the consistency of ACID}.
 
 \section{Saga execution component and transaction log}
 
