@@ -121,7 +121,7 @@ In practice, this approach is not always considered as sufficient due to its loc
 
 This is the lowest level in which the transaction sets the lock only when it needs to modify the data item and releases it immediately after the modification is complete. This allows that one transaction may read the not yet committed changes of any other transaction which is phenomena referred to as the dirty read.
 
-However, the read uncommitted isolation level already prevents the dirty write conflict. This problem can be easily described on an example depicted in the figure 2.1. In this execution, the resulting data state contains different values for variables (x = B and y = A). However, in any serial execution of transaction the result would be consistent. The read uncommitted level prevents this phenomena as it prohibits access to data items before the former write locks are released.
+However, the read uncommitted isolation level already prevents the dirty write conflict which represents the transaction the overwrite of the value previously written by another transaction that did not commit. This problem can be easily described on an example depicted in the figure 2.1. In this execution, the resulting data state contains different values for variables (x = B and y = A). However, in any serial execution of transaction the result would be consistent. The read uncommitted level prevents this phenomena as it prohibits access to data items before the former write locks are released.
 
 \begin{figure}
     \begin{center}
@@ -153,18 +153,40 @@ On top of the repeatable read, the serializable isolation prevents the system fr
 This property characterizes that all changes done by the transactions must be persistent, i. e. any state changes performed during the transaction must be preserved in case of any subsequent system failure. How the state is preserved usually depends on the particular implementation of the transaction system. Generally, to achieve this property the use of the persistent storage like a disk drive or a cloud is sufficient. Even if this kind of storage is acceptable, it still can not prevent data loss in the case of more critical catastrophic failures.
 
 
+\section{Transaction manager}
+\label{sec:transaction-manager}
+
+A transaction manager (TM) is a module responsible for the transaction processing, coordination and their sequential or parallel execution across one or more resources. It ensures the proper and valid completion of each transaction. It is also liable for making the final decision whether to commit or rollback the transaction. Clients often communicate with the transaction manager only when they need to start a new transaction.
+
+Main responsibilities of the transaction manager are starting and ending (commit or abort) of transactions, the supervision of transactions scoped across multiple resources and rollback capabilities ensuring the failure recovery. It also manages the transaction context which represents the identification and contains the state of the transaction.
+
+\subsection{TM types}
+
+A local transaction manager or a resource manager is responsible for the coordination of transactions concerning only a single resource. Because of the range of its scope, it is often built in directly into the resource. The span of the resource is defined by the managing platform, e. g. the JMS context or the TM provided with the database.  
+
+The restriction of the local TM scope prohibits its application across various resources. This means that it cannot provide ACID guarantees if the transaction contains, for instance, both the database update and the JMS message send as these resources are handled by different resource managers.
+
+The management of transactions over multiple resources is supported by a global transaction manager. It represents an operation external component that is able to coordinate several resource managers in order to provide ACID transactions spanning two or more different transactional resources.
+
+\subsection{XA specification}
+
+The eXtended Architecture (XA) standard is the X/Open Common Applications Environment (CAE) specification published in 1991 which describes the bidirectional interface between a transaction manager and a resource manager \cite{xa_spec}. It maintains two types of components that clients can interact with: the transaction manager (TM) which defines the global TM in a sense described in the previous section and the XA resources that represent local resource managers.
+
+The resource manager implements the XA interface in order to provide a switch that effectively delagates the transaction control to the TM. The XA TM coordination is based on the two phase commit protocol (2PC) which means that the XA interface contains all necessary function calls that needs to available for 2PC -- \texttt{xa\_prepare}, \texttt{xa\_commit} and \texttt{xa\_rollback}. The Java mapping of the XA standard is present in the class \texttt{javax.transaction.xa.XAResource}.
+
+
 
 \section{Transaction models}
 
-From the development point of view, there exist three distinct transaction models. The transaction model defines rules and semantics of how developers declare and work with transactions in the Java environment. These models are local, programmatic and declarative transactions\footnote{Spring framework distinguishes only two types of transaction models -- the local model and  the global model that represents both programmatic and declarative approaches}. This chapter describes each model respectively and examines how it can be applied in applications deployed in the Enterprise Java platform environment.
+From the development point of view, there exist three distinct transaction models that may be used in the Java environment. The transaction model defines rules and semantics of how developers declare and work with transactions. These models are local, programmatic and declarative transactions\footnote{Spring framework distinguishes only two types of transaction models -- the local model and  the global model that represents both programmatic and declarative approaches}. This chapter describes each model respectively and examines how it can be applied in Java applications.
 
 \subsection{Local transaction model}
 
-The local transaction model derives its name from the fact that transactions are managed by a local resource manager which will be described in the later section. This approach represents the transaction as a connection to the individual resource. Common use-cases for this model include the Java database connectivity (JDBC) or the Java Message Service (JMS) connection providers.
+The local transaction model derives its name from the fact that transactions are managed by a local resource manager described in the previous section. This approach represents the transaction as a connection to the individual resource. Common use-cases for this model include the Java database connectivity (JDBC) or the Java Message Service (JMS) connection providers.
 
-The connection is usually by default configured to commit or rollback the local transaction after each operation, e. g. a database query or sending a message to a queue. In order to control the transaction, it is required to set the boolean flag \texttt{setAutoCommit} on the \texttt{Connection} interface to false. In this case, the transaction needs to be manually committed or rollbacked with the respective methods of the \texttt{Connection} interface.
+The connection is usually by default configured to commit or in the case of failure to abort the local transaction after each operation, e. g. a database query or sending a message to a queue. The interaction with the local manager may differ depending on the underlying resource. For instance, the JMS \texttt{Session} interface provides both methods \texttt{commit} and \texttt{rollback} that process or destroy included message operations respectively.
 
-The major drawback of this model is that local transactions cannot exist concurrently when coordinating multiple resources using an XA\footnote{XA stands for \textit{eXtended Architecture}, and it is described in detail in section \ref{sec:transaction-manager}} global transaction \cite{java_transaction_design_strategies} (e. g. we need to update a database and propagate this information to the JMS topic).
+The major drawback of this model is that local transactions cannot be joined into the single ACID transaction that spans over multiple resources using an XA\footnote{XA stands for \textit{eXtended Architecture}, and it is described in detail in section \ref{sec:transaction-manager}} global transaction \cite{java_transaction_design_strategies} (e. g. we need to update a database and propagate this information to the JMS topic). Another important problem is the requirement of the manual transaction management in the user code base.
 
 \subsection{Programmatic transaction model}
 
@@ -211,27 +233,6 @@ The accomplishment of ACID properties with the frequent partitions failures is v
 
 However, recent network speeds and computational capacities are increasing. This allows consensus protocols (2PC, Paxos) and other DTP solutions (e.g. sagas) to be easily employed in modern, scalable distributed applications.
 
-
-\section{Transaction manager}
-\label{sec:transaction-manager}
-
-A transaction manager (TM) is a module responsible for the transaction processing, coordination and their sequential or parallel execution across one or more resources. It ensures the proper and valid completion of each transaction. It is also liable for making the final decision whether to commit or rollback the transaction. Clients often communicate with the transaction manager only when they need to start a new transaction.
-
-Main responsibilities of the transaction manager are starting and ending (commit or abort) of transactions, the supervision of transactions scoped across multiple resources and rollback capabilities ensuring the failure recovery. It also manages the transaction context which represents the identification and contains the state of the transaction.
-
-\subsection{TM types}
-
-A local transaction manager or a resource manager is responsible for the coordination of transactions concerning only a single resource. Because of the range of its scope, it is often built in directly into the resource. The span of the resource is defined by the managing platform, e. g. the JMS context or the TM provided with the database.  
-
-The restriction of the local TM scope prohibits its application across various resources. This means that it cannot provide ACID guarantees if the transaction contains, for instance, both the database update and the JMS message send as these resources are handled by different resource managers.
-
-The management of transactions over multiple resources is supported by a global transaction manager. It represents an operation external component that is able to coordinate several resource managers in order to provide ACID transactions spanning two or more different transactional resources.
-
-\subsection{XA specification}
-
-The eXtended Architecture (XA) standard is the X/Open Common Applications Environment (CAE) specification published in 1991 which describes the bidirectional interface between a transaction manager and a resource manager \cite{xa_spec}. It maintains two types of components that clients can interact with: the transaction manager (TM) which defines the global TM in a sense described in the previous section and the XA resources that represent local resource managers.
-
-The resource manager implements the XA interface in order to provide a switch that effectively delagates the transaction control to the TM. The XA TM coordination is based on the two phase commit protocol (2PC) which means that the XA interface contains all necessary function calls that needs to available for 2PC -- \texttt{xa\_prepare}, \texttt{xa\_commit} and \texttt{xa\_rollback}. The Java mapping of the XA standard is present in the class \texttt{javax.transaction.xa.XAResource}.
 
 
 \section{Consensus protocols}
