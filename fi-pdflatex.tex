@@ -66,7 +66,7 @@ abstract
 \usepackage{minted}
 \usepackage{needspace}
 
-\newcommand{\newlinepar}[1]{\paragraph{#1}\needspace{3\baselineskip}\mbox{}\\}
+\newcommand{\newlinepar}[1]{\paragraph{#1}\needspace{4\baselineskip}\mbox{}\\}
 
 
 \begin{document}
@@ -113,17 +113,15 @@ As an instinctive extension of the consistency property, the serial execution of
 
 \newlinepar{Isolation levels}
 
-The ANSI SQL-92 \cite{sql-92} standard distinguishes several levels that describe to which extent the isolation guarantees are provided. Levels are differentiated by simplifications of the locking mechanism in exchange for the faster processing. These levels, in decreasing order, are serializable, repeatable read, snapshot isolation, read committed and read uncommitted isolation. The standard defines distinction between levels by the type of anomalies their are able to prevent\footnote{In practice, this approach is not always considered sufficient \cite{ansi-sql-critique}}.
+The ANSI SQL-92 \cite{sql-92} standard distinguishes several levels that describe to which extent the isolation guarantees are provided. Levels are differentiated by simplifications of the locking mechanism in exchange for the faster processing. These levels, in decreasing order, are serializable, repeatable read, snapshot isolation, read committed and read uncommitted isolation. The standard defines distinction between levels by the type of anomalies their are able to prevent. 
+
+In practice, this approach is not always considered as sufficient due to its locking expectations \cite{ansi-sql-critique}. The alternative technique which is not based on locking mechanisms is called the Multi version concurrency control (MVCC). This section describes isolation levels based on the SQL-92 standard but the MVCC will be referenced where applicable.
 
 \newlinepar{Read uncommitted}
 
-This is the lowest level which releases every data item lock immediately after it has been read or written. This allows that one transaction may read or overwrite the not yet committed changes of other transaction which is phenomena referred to as the dirty read and the dirty write respectively.
+This is the lowest level in which the transaction sets the lock only when it needs to modify the data item and releases it immediately after the modification is complete. This allows that one transaction may read the not yet committed changes of any other transaction which is phenomena referred to as the dirty read.
 
-\newlinepar{Read committed}
-
-Read committed level differs from the previous level in that it prohibits dirty reads and dirty writes. It allows to read the data item only when it has been committed. This directly implies that dirty reads are impossible to occur by the definition.
-
-Conversely, dirty writes represent a simple more complex problem as the transaction can overwrite the uncommitted data. This can be easily described on an example depicted in the figure 2.1. In this execution, the resulting data state contains different values for variables (x = B and y = A). However, in any serial execution of transaction the result would be consistent. The read committed level prevents this phenomena as it prohibits access to data items before the former transaction is committed.
+However, the read uncommitted isolation level already prevents the dirty write conflict. This problem can be easily described on an example depicted in the figure 2.1. In this execution, the resulting data state contains different values for variables (x = B and y = A). However, in any serial execution of transaction the result would be consistent. The read uncommitted level prevents this phenomena as it prohibits access to data items before the former write locks are released.
 
 \begin{figure}
     \begin{center}
@@ -132,13 +130,19 @@ Conversely, dirty writes represent a simple more complex problem as the transact
     \caption{Dirty writes}
 \end{figure}
 
-\newlinepar{Repeatable read and snapshot isolation}
 
-Both of these methods represent the same level of isolation preventing the anomaly called the read skew which can appear in read committed.
+\newlinepar{Read committed}
 
-The read skew is a problem of reading the data values in different points of time in which the whole consistent data state may not be ensured. This means that the transaction may read the data change in later point in time which may invalidate already read information from a previous processing.\footnote{Imagine a bank system with two accounts both with starting balance 500 and a transfer of 100 from account 1 to 2 as a transaction. If an external system reads the balance of the account 2 prior to start of transaction, it will get 500. However, the subsequent read from the account 1 after the transaction has committed would output 400 which would result into inconsistent information.}
+Read committed level differs from the previous level in that it prohibits dirty reads. It allows to read the data item only when it has been committed. This directly implies that dirty reads are impossible to occur in this isolation level by the definition.
 
-Both repeatable read and snapshot isolation prevent read skews. From the user point of view they represent the same isolation level, but they differ in implementation \cite{isolation_levels}. Repeatable read is based on the locking mechanisms which may be complex to maintain in bigger systems. The snapshot isolation \cite{ansi-sql-critique} is implemented as multi version concurrency control (MVCC) technique that allows each transaction to read the data as it was in one point of time -- the snapshot. The database is required to internally keep track of several states and provide each transaction with the snapshot that is appropriate for its time span.
+
+\newlinepar{Repeatable read}
+
+This isolation level prevents the anomaly called the non-repeatable read which may still appear in read committed. The non-repeatable read is a problem of reading the data values in different points of time in which the whole consistent data state may not be ensured. This means that the transaction may read the data change in later point in time which may invalidate already read information from a previous processing.
+
+For example, imagine a bank system with two accounts -- both with starting balance 500 and a transfer of 100 from account 1 to 2 as a transaction. If another transaction reads the balance of the account 2 prior to start of transaction, it will get 500. However, the subsequent read from the account 1 after the transaction has committed would output 400 which would result into inconsistent information.
+
+The MVCC alternative to the repeatable read is the snapshot isolation. Both the repeatable read and the snapshot isolation prevent non-repeatable reads, but they differ in implementation \cite{isolation_levels}. Repeatable read is based on the locking mechanisms which may be complex to maintain. However, the snapshot isolation allows each transaction to read data from a snapshot of the (committed) data which is created at the time the transaction is started \cite{ansi-sql-critique}. The database is required to internally keep track of several states and provide each transaction with the snapshot that is appropriate for its time span.
 
 \newlinepar{Serializable}
 
