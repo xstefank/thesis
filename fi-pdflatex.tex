@@ -168,6 +168,12 @@ The restriction of the local TM scope prohibits its application across various r
 
 The management of transactions over multiple resources is supported by a global transaction manager. It represents an operation external component that is able to coordinate several resource managers in order to provide ACID transactions spanning two or more different transactional resources.
 
+\subsection{JTA and JTS}
+
+The Java Transaction API (JTA) is a specification which defines high-level interfaces between a transaction manager and the parties involved in a distributed transaction system: the application, the resource manager and the application server \cite{jta}. It also determines the Java mapping of the industry standard X/Open XA protocol which allows local resource managers to participate in the global transaction managed by an external transaction manager.
+
+The Java Transaction Service (JTS) represents a specification of the transaction manager implementation which supports the JTA specification at the high-level and implements the Java mapping of the Object Management group (OMG) Object Transaction Service (OTS) specification at the low-level \cite{jts}. It uses the Common Object Request Broker Architecture Object Transaction Service (CORBA OTS) interfaces for the interoperability and portability of the transaction context between different JTS transaction managers over the Internet InterORB Protocol (IIOP).
+
 \subsection{XA specification}
 
 The eXtended Architecture (XA) standard is the X/Open Common Applications Environment (CAE) specification published in 1991 which describes the bidirectional interface between a transaction manager and a resource manager \cite{xa_spec}. It maintains two types of components that clients can interact with: the transaction manager (TM) which defines the global TM in a sense described in the previous section and the XA resources that represent local resource managers.
@@ -178,23 +184,21 @@ The resource manager implements the XA interface in order to provide a switch th
 
 \section{Transaction models}
 
-From the development point of view, there exist three distinct transaction models that may be used in the Java environment. The transaction model defines rules and semantics of how developers declare and work with transactions. These models are local, programmatic and declarative transactions\footnote{Spring framework distinguishes only two types of transaction models -- the local model and  the global model that represents both programmatic and declarative approaches}. This chapter describes each model respectively and examines how it can be applied in Java applications.
+From the development point of view, there exist three distinct transaction models that may be used in the Java environment. The transaction model defines rules and semantics of how developers declare and work with transactions. These models are local, programmatic and declarative transactions. This chapter describes each model respectively and examines how it can be applied in Java applications.
 
 \subsection{Local transaction model}
 
 The local transaction model derives its name from the fact that transactions are managed by a local resource manager described in the previous section. This approach represents the transaction as a connection to the individual resource. Common use-cases for this model include the Java database connectivity (JDBC) or the Java Message Service (JMS) connection providers.
 
-The connection is usually by default configured to commit or in the case of failure to abort the local transaction after each operation, e. g. a database query or sending a message to a queue. The interaction with the local manager may differ depending on the underlying resource. For instance, the JMS \texttt{Session} interface provides both methods \texttt{commit} and \texttt{rollback} that process or destroy included message operations respectively.
+The connection is usually by default configured to commit or rollback the local transaction after each operation, e. g. a database query or sending a message to a queue. The interaction with the local manager may differ depending on the underlying resource. For instance, the JMS \texttt{Session} interface provides both methods \texttt{commit()} and \texttt{rollback()} that process or destroy included message operations respectively.
 
-The major drawback of this model is that local transactions cannot be joined into the single ACID transaction that spans over multiple resources using an XA\footnote{XA stands for \textit{eXtended Architecture}, and it is described in detail in section \ref{sec:transaction-manager}} global transaction \cite{java_transaction_design_strategies} (e. g. we need to update a database and propagate this information to the JMS topic). Another important problem is the requirement of the manual transaction management in the user code base.
+The major drawback of this model is that local transactions cannot be joined into the single ACID transaction that spans over multiple resources using the XA\footnote{XA stands for \textit{eXtended Architecture}, and it is described in detail in section \ref{sec:transaction-manager}} global transaction \cite{java_transaction_design_strategies} (e. g. we need to update a database and propagate this information to the JMS topic). Another important problem is the requirement of the manual transaction management in the application code base.
 
 \subsection{Programmatic transaction model}
 
-This approach is based on the Java Transaction API (JTA) transaction service implementation. In this model, the developer handles the complete management of the transaction in the source code.
+This approach is introduced by the Java Transaction API (JTA) transaction service implementation. In this model, the developer handles the complete management of the transaction in the source code.
 
-The JTA specification is a set of interfaces that allows developers to manage transactions. Another similar term associated with Enterprise transactions is the Java Transaction Service (JTS). The JTS is a specification for the implementation of the transaction manager which encompasses the JTA specification. It represents a Java mapping of the Common Object Request Broker Architecture Object Transaction Service (CORBA OTS) 1.1 specification. The JTA is required to support both JTS and non-JTS implementations of the transaction management.
-
-Although the JTA specification provides a range of APIs, the only required interface for the utilization of the programmatic transactions is the \texttt{javax.transaction.UserTransaction}. The full interface is available at the appendix \ref{sec:appendix-JTA}. The only concerned methods are \texttt{begin()}, \texttt{commit()}, \texttt{rollback()} and \texttt{getStatus()}. The call to the \texttt{begin()} will start a new transaction and associates it with the current thread. As the Java platform allows only one transaction to be associated with the thread, a call to the \texttt{begin()} method may result into exception in case the transaction has already been started in the current context. The transaction end methods (\texttt{commit()} and \texttt{rollback()}) perform their respective actions and disassociate the transaction with the thread. The \texttt{getStatus()} method returns an integer value representing the status of the current transaction derived from  \texttt{javax.transaction.Status} class (appendix \ref{sec:appendix-JTA}).
+Although the JTA specification provides a range of APIs, the only required interface for the utilization of the programmatic transactions is the \texttt{javax.transaction.UserTransaction} \cite{jta}. This interface represents an abstraction for the developer to programatically control transaction boundaries. The only concerned methods are \texttt{begin()}, \texttt{commit()}, \texttt{rollback()} and \texttt{getStatus()}. The call to the \texttt{begin()} will start a new transaction and associates it with the current thread. As the Java platform allows only one transaction to be associated with the thread, a call to the \texttt{begin()} method may result into exception in case the transaction has already been started in the current context. The transaction end methods (\texttt{commit()} and \texttt{rollback()}) perform their respective actions and disassociate the transaction with the thread. The \texttt{getStatus()} method returns an integer value representing the status of the current transaction derived from  \texttt{javax.transaction.Status} class (appendix \ref{sec:appendix-JTA}).
 
 The most common problem introduced by the programmatic model is that the developer must ensure that the transaction is always terminated in the method that started the transaction \cite{java_transaction_design_strategies}. This is often the case when  the initiating method ends up with an uncaught exception and for this reason, the transaction needs to be committed or rollbacked before the method returns.
 
@@ -1138,78 +1142,6 @@ The CQRS pattern may be particularly suitable for service (microservices) orient
 
 To finalize, although the CQRS pattern has its benefits (ease of complexity and performance support), the practice showed that systems usually need to share the model between command and query sides. If the systems is not build with this patter in mind, the CQRS may place a very hard restrictions that may not be applicable in every application.
 
-
-
-\chapter{JTA}
-\label{sec:appendix-JTA}
-
-\noindent
-\textbf{javax.transaction.UserTransaction}
-
-\begin{minted}{java}
-    void begin();
-    
-    void commit();
-    
-    void rollback();
-    
-    void setRollbackOnly();
-    
-    int getStatus();
-    
-    void setTransactionTimeout(int seconds);
-\end{minted}
-
-\hfill \break
-
-\noindent
-\textbf{javax.transaction.Status}
-
-\begin{minted}{java}
-
-    STATUS_ACTIVE = 0;
-
-    STATUS_MARKED_ROLLBACK = 1;
-
-    STATUS_PREPARED = 2;
-
-    STATUS_COMMITTED = 3;
-
-    STATUS_ROLLEDBACK = 4;
-
-    STATUS_UNKNOWN = 5;
-
-    STATUS_NO_TRANSACTION = 6;
-
-    STATUS_PREPARING = 7;
-
-    STATUS_COMMITTING = 8;
-
-    STATUS_ROLLING_BACK = 9;
-\end{minted}
-
-\noindent
-\textbf{javax.transaction.TransactionManager}
-
-\begin{minted}{java}
-    void begin();
-    
-    void commit();
-    
-    void rollback();
-    
-    void setRollbackOnly();
-    
-    int getStatus();
-    
-    Transaction getTransaction();
-    
-    void setTransactionTimeout(int seconds);
-    
-    Transaction suspend();
-    
-    void resume(Transaction tobj);
-\end{minted}
 
 \chapter{Reactive Streams v1.0.2 API}
 \label{reactive_streams}
