@@ -156,15 +156,17 @@ This property characterizes that all changes done by the transactions must be pe
 \section{Transaction manager}
 \label{sec:transaction-manager}
 
-A transaction manager (TM) is a module responsible for the transaction processing, coordination and their sequential or parallel execution across one or more resources. It ensures the proper and valid completion of each transaction. It is also liable for making the final decision whether to commit or rollback the transaction. Clients often communicate with the transaction manager only when they need to start a new transaction.
+A transaction manager (TM) is a component responsible for the transaction processing, coordination and their sequential or parallel execution across one or more resources. It ensures the proper and valid completion of each transaction. It is also liable for making the final decision whether to commit or rollback the transaction. Clients often communicate with the transaction manager only when they need to start or end the transaction.
 
-Main responsibilities of the transaction manager are starting and ending (commit or abort) of transactions, the supervision of transactions scoped across multiple resources and rollback capabilities ensuring the failure recovery. It also manages the transaction context which represents the identification and contains the state of the transaction.
+Main responsibilities of the transaction manager are starting and ending (commit or abort) of transactions, the supervision of transactions scoped across multiple resources and rollback capabilities ensuring the failure recovery. 
+
+%It also manages the transaction context which represents the identification and contains the state of the transaction.
 
 \subsection{TM types}
 
-A local transaction manager or a resource manager is responsible for the coordination of transactions concerning only a single resource. Because of the range of its scope, it is often built in directly into the resource. The span of the resource is defined by the managing platform, e. g. the JMS context or the TM provided with the database.  
+A local transaction manager or a resource manager is responsible for the coordination of transactions concerning only a single resource. Because of the range of its scope, it is often built in directly into the resource. The span of the resource is defined by the managing platform, e. g. the JMS context or the JDBC database connection.  
 
-The restriction of the local TM scope prohibits its application across various resources. This means that it cannot provide ACID guarantees if the transaction contains, for instance, both the database update and the JMS message send as these resources are handled by different resource managers.
+The restriction of the local TM scope does not intend its application across multiple resources. This means that it cannot provide ACID guarantees if the transaction contains, for instance, both the database update and the JMS message send as these resources are handled by different resource managers.
 
 The management of transactions over multiple resources is supported by a global transaction manager. It represents an operation external component that is able to coordinate several resource managers in order to provide ACID transactions spanning two or more different transactional resources.
 
