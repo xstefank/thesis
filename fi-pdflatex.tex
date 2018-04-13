@@ -248,14 +248,12 @@ However, recent network speeds and computational capacities are increasing. This
 
 The consensus problem represents the procedure of achieving the  agreement for the shared data value between several components. It has its application in many environments including transactions where the TM needs to conclude whether a transaction can be committed depending on the participants consensus.
 
-The instance of this problem, which solves it for the binary output, is also known as \textit{The Byzantine Generals Problem}. It denotes the agreement of the battle strategy that generals have to conclude. The general in this model may also act as a traitor providing misleading information which represents a failed system component. The original paper from 1982 \cite{byzantine-generals-problem} proved that the consensus can be achieved only if less than one third of the participants is malicious. 
-
-A consensus protocol describes a series of steps that solve the consensus problem. These steps can be typically divided into three phases -- the selection of candidate values, the exchange of values between participants and the agreement. The final decision of each participant is irreversible. The consensus protocol is correct, if it complies with these properties \cite{2PC}:
+A consensus protocol describes a series of steps that solve the consensus problem. These steps can be typically divided into three phases -- the selection of candidate values, the exchange of values between participants and the agreement. The final decision of each participant is irreversible. The consensus protocol is correct, if it complies with these conditions \cite{distributed-computing}:
 
 \begin{itemize}
-    \item \textbf{Agreement} - all nodes decide on the same value
-    \item \textbf{Validity} - the decided value must have been proposed by some participant
-    \item \textbf{Termination} - all nodes eventually decide
+    \item \textbf{Agreement} - all non-faulty\footnote{Some nodes may provide invalid or intentionally wrong information -- these are known as \textit{Byzantine failures} \cite{byzantine-generals-problem}} nodes decide on the same single value
+    \item \textbf{Validity} - if all non-faulty nodes have the same initial value, then the consensus must be reached on this value
+    \item \textbf{Termination} - all non-faulty nodes eventually decide
 \end{itemize}
 
 
@@ -275,7 +273,7 @@ The 2PC protocol is able to handle node failures to some extent through the use 
 
 The algorithm expects one node to act as a coordinator. This does not necessarily need to be an elected participant. Any node can act as a coordinator and initiate 2PC prepare phase by asking other participants for their votes. Furthermore, there also exits a decentralized variant but with higher massage complexity.
 
-The main disadvantage is that the 2PC is a blocking protocol. When the participant sends its prepare message, it will block until either a commit or rollback message is received. In case of the coordinator failure, this may oppose significant problems.
+The main disadvantage is that the 2PC is a blocking protocol as it can not proceed when the coordinator is unavailable. If the coordinator fails after the first phase is completed, all participants will block waiting for the coordinator's decision and can not progress (e. g. release locks) until it recovers.
 
 \subsection{3PC}
 
@@ -305,14 +303,14 @@ The Paxos represents a family of distributed algorithms designed to solve the co
 The idea of the basic variant of the algorithm is reasonably simple. The Paxos distinguishes three types of system nodes: proposers, acceptors and learners. One node can be of more than one type, even act as all of them. Proposers act as client representatives proposing values that the client wants the system to agree on. Acceptors serves as the voting mechanism and all nodes must know the number of acceptors that form a majority. Learners serve as the representatives that can be queried for the decided value. The algorithm runs in two phases:
 
 \begin{itemize}
-    \item \textbf{The promise phase} -- The proposer first sends its proposed value with a new unique identification number generated from a sequence to all acceptors (or the majority). For each acceptor: if the received id number is higher than the value the acceptor promised to ignore, it will respond with the \texttt{promise} message, otherwise it ignores the propose message.
+    \item \textbf{The promise phase} -- The proposer first sends its proposed value with a new unique identification number generated from a sequence to all acceptors (or the majority). When the acceptor receives a proposed value, it first checks whether the received id number is higher than the last id it promised to ignore. In that case it will respond to the proposer with the \texttt{promise} message which denotes that it will ignore any newly received messages with lower ids. Otherwise, it already promised to the higher proposed id and therefore no action is taken.
     
-    \item \textbf{The commit phase} -- If the proposer collects promises from the majority of acceptors, it sends the \texttt{accept-request} message to all acceptors (or the majority) with the same id and the proposed value. If the acceptor did not promise to ignore the received id, it decide on the value and send the \texttt{accept} message to all learners. If the id in the message is lower than the promised, the message is ignored. As the \texttt{accept-request} message is send to the majority of acceptors, the consensus is reached.
+    \item \textbf{The commit phase} -- If the proposer collects promises from the majority of acceptors, it sends the \texttt{accept-request} message to all acceptors (or the majority) with the same id and the proposed value. When the acceptor receives the \texttt{accept-request} message and it did not already promised to ignore the received id, it sends the \texttt{accept} message to the proposer and all learners. If the id in the message is lower than the promised id, the message is ignored. As the \texttt{accept-request} message is send to the majority of acceptors and all of them accept the value, the consensus is reached.
 \end{itemize}
 
-If the acceptor already accepted a value, it appends the accepted id and value to each \texttt{promise} message. In this case, the proposer knows that there is some value already decided in the system and it continues the processing with the value from the \texttt{promise} message with the highest id. If it wants to update this value, it needs to initiate a new run of the algorithm after the current one has ended. 
+If the acceptor accepts a value, it appends the accepted id and value to each subsequent \texttt{promise} message sent to new proposers. In this case, the proposer knows that there is some value already decided in the system and it continues the processing with the value received in the \texttt{promise} message containing the highest of all received ids. If it wants to update this value, it needs to initiate a new run of the algorithm after the current one has ended. 
 
-Many variants of the Paxos algorithm allows it to sufficiently handle almost all types of failures which is why it is employed in the wide range of enterprise systems. In particular, even the basic variant solves  problems of the 3PC algorithm, namely, network partitions and the restriction to the fail-stop model. Instead, the Paxos protocol is resilient to the fail-recover model which allows individual nodes to recover and continue processing from the point of the failure -- which is expected in the modern distributed systems.
+Many variants of the Paxos algorithm allows it to sufficiently handle various types of failures that may influence the achievement of the consensus. In particular, even the basic variant handles problems of the 3PC algorithm, namely, network partitions and the restriction to the fail-stop model. Instead, the Paxos protocol is resilient to the fail-recover model which allows individual nodes to recover and continue processing from the point of the failure -- which is expected in the modern distributed systems.
 
 The problem that the algorithm can not solve is two proposers that actively compete for the highest proposal number. This happens between phases as the participants \texttt{accept-request} is rejected due to the higher \texttt{promise} issued to the other proposer. The system is blocked until the conflict can be resolved, e. g., by the exponential back off mechanisms which allows one proposer to wait sufficiently long for the other one to finish. Acceptors are also required to have a persistent storage to avoid providing misleading information in case of the fail-recovery.
 
@@ -341,7 +339,7 @@ The consensus is a very sophisticated and complex problem particularly in distri
 \clearpage
 \chapter{Microservices architecture pattern}
 
-This chapter introduces the concept of microservices and it focuses on why modern, elastic and resilient enterprise systems should be designed an implemented according to this pattern. It also provides an updated microservices status overview from my previous work publication \cite{bachelor_thesis}.
+This chapter introduces the concept of microservices and it focuses on why modern, elastic and resilient enterprise systems should be designed and implemented according to this pattern. It provides an updated microservices status overview from my previous work publication \cite{bachelor_thesis}.
 
 \section{Architectural pattern}
 
