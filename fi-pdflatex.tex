@@ -1107,6 +1107,18 @@ One of the main goals of this thesis was the investigation of how the saga patte
 
 \section{Motivation}
 
+With the current LRA implementation, the LRA coordinator is an orchestrating service that manages the saga processing spanning multiple user services. When the service wants to start a new saga, it contacts the coordinator which creates and starts a new LRA and returns its identification (an URL combining coordinator address and transaction object unique identifier) to the initiating service. This service then starts the saga execution by invoking other services that perform individual operations passing them the saga identification in the HTTP header. The participant upon invocation contacts the coordinator to enlist itself within the received saga. After the processing is completed or an error occurs, the coordinator is requested by any (commonly initiating) service that knows the saga identification to complete or compensate the LRA execution.
+
+This approach is suitably employable in any application with a minimal impact on the existing code base. The coordinator ensures that the saga guarantee is preserved -- either all enlisted participants complete their operations successfully or their compensating actions are invoked. It does not influence the actual saga execution which is in full control of the initiating and other included services.
+
+The current LRA implementation expects at some point a certain system service to be able to make a decision of how the saga execution should be finished. This means that the system needs to track the saga execution in one or more of its services. The LRA coordinator maintains the information only about enlisted participants and has no further knowledge about the performed saga semantics. The LRA then commonly consists of a sequence of service invocations and making of the finalizing decision depending on the collected responses.
+
+Certainly, this is something that can be implemented by the user services, but as this is an expected use case in many applications the \textit{LRA executor extension} has been created to execute the LRA on the user's behalf. It extends the coordinator orchestrating capabilities with the actual saga execution based on the user description.
+
+Another advantage of this approach is the decrease of the number of exchanged messages required for the saga processing. As the coordinator / executor receives all participating services in the user's saga definition, it is possible to enlist each participant withing the LRA prior to its actual invocation. This means that the participating service is not required to contact the coordinator. It also allows the coordinator to manage participant invocations uniformly (number of retries, failure policies). After the coordinator collects responses from all specified participants, it makes the decision of whether to complete or compensate the LRA and optionally informs the initiating service about the result.
+
+Definitely, this approach is not appropriate for every user saga scenario. For instance, if the saga should be formed dynamically depending on certain intermediate results, some services may be only occasionally enlisted within the saga execution. However, LRA represents long running transactions with commonly well defined purpose which is why the \textit{LRA exector extension} may be effective in many applications utilizing the Narayana LRA implementation.
+
 \section{Design}
 
 \section{Implementation}
