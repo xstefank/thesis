@@ -1121,6 +1121,14 @@ Definitely, this approach is not appropriate for every user saga scenario. For i
 
 \section{Design}
 
+The \textit{LRA executor extension} project consists of two main modules -- the \texttt{lra-definitions} and the \texttt{lra-executor}. It is designed in a general way to ensure portability and the simplicity of further extensions. In particular, users are encouraged to customize most of the classes to accommodate executor to their specific communication requirements.
+
+This project does not have any direct dependencies on the Narayana project. However, this proof of concept includes custom code base changes that adjust the Narayana \texttt{lra-coordinator} project to the executor capabilities providing the implementation based on the REST protocol.
+
+\subsection{LRA definitions}
+
+\subsection{LRA executor}
+
 \section{Implementation}
 
 \section{Future work}
