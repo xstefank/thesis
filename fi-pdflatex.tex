@@ -1020,21 +1020,21 @@ The \texttt{lra-coordinator} project is provided by the Narayana framework. Alth
 
 Even if the \texttt{lra-coordinator} presents the REST endpoints for the LRA management, this quickstart invokes the coordinator by the client module provided by Narayana. The \texttt{lra-client} dependency provides the \texttt{LRAClient} class that is configured with the coordinator location and serves as a proxy separating the user from the actual REST invocations. This class is defined as a CDI bean to enable simple use through the dependency injection. The participant enlisting and invocations are defined by annotations present in the \texttt{io.narayana.lra.annotation} package.
 
-The last service is the \texttt{api-gateway}. This module functions as an interface that makes the LRA execution transparent for the invoking services. The current state of the Narayana handling of LRA calls will be described in the following section.
+The last service is the \texttt{api-gateway}. This module functions as an interface that makes the LRA execution transparent for the invoking services. The current state of the Narayana handling of LRA requests will be described in the following section.
 
-The \texttt{api-gateway} uses the LRA and action definition classes from the \texttt{service-module} to handle the LRA processing on the behalf of the initiating user. It exposes a REST interface that consumes the LRA definition JSON.
+The \texttt{api-gateway} uses the LRA and action definition classes from the \texttt{service-module} to handle the LRA processing on the behalf of the initiating service. It exposes a REST interface that consumes the LRA definition JSON.
 
-The actual LRA execution is managed in the \texttt{LRAExecutor} class. This class provides one public method \texttt{processLRA(LRADefinition lraDefinition, String initiatorUri) : void} that is responsible for starting and performing of the LRA, collecting the participants results and closing or compensating of the LRA. The \texttt{initiatorUri} attribute is present because the \texttt{api-gateway} service subscribes the initiating service to the started LRA automatically.
+The actual LRA execution is managed in the \texttt{LRAExecutor} class. This class provides one public method \texttt{processLRA(LRADefinition lraDefinition) : void} that is responsible for starting and performing of the LRA, collecting the participants results and closing or compensating of the LRA. This method processes the LRA asynchronously -- each execution is propagated to the new thread from the cached thread pool defined by the executor service present in the \texttt{LRAExecutor} class.
 
-As this module was designed for this particular LRA scenario, it is configured to execute the LRA actions (shipment and invoice requests) independently and in parallel. It collects the result of each action and eventually closes or cancels the LRA with methods provided by the \texttt{LRAClient}. Certainly, this is an area which could be in a more general execution module further extended with e.g. the sequential configuration or the LRA nesting.
+As this module was designed for this particular LRA scenario, it is configured to execute the LRA actions (order, shipment and invoice requests) independently and in parallel. It collects the result of each action and eventually closes or cancels the LRA with methods provided by the \texttt{LRAClient}. Certainly, this is an area which could be in a more general execution module further extended with e.g. the sequential configuration or the LRA nesting.
 
 \subsection{Problems}
 
-The Narayana Long running actions a very nice development model for the microservices applications. As it aims for the compatibility with the MicroProfile specification, it does not restrict services to essentially any particular implementation restrictions. Even if the MicroProfile is restricted on REST invocations, Narayana LRA specification does not require the usage this architectural style for the communication with the coordinator. However, the only implementation that is currently available is based on REST, but in can be efficiently extended to other communication protocols in the future.
+The Narayana Long running actions are a very efficient development model for the microservices applications. Although, it mainly aims for the compatibility with the MicroProfile specification (REST and CDI), it does not restrict microservices to essentially any other particular implementation restrictions. Even if the MicroProfile is restricted to REST invocations, Narayana LRA specification does not require the usage this architectural style for the communication with the coordinator. However, the only implementation that is currently available is based on REST, but it certainly can be extended to other communication protocols in the future.
 
-The only problem that may occur is that currently, the LRA framework provides only coordination and management capabilities, it does not handle the saga structuring and execution. This may be controversial as any of the previous frameworks did not exposed this functionality neither. The idea was introduced by the Eventuate Tram framework which is described in the following section. This concern may be troublesome for the enterprise ready reactive microservices, as it may place restrictions on their availability under substantial traffic. 
+The only problem that may occur in the current implementation is that the LRA framework provides only coordination and management capabilities, it does not handle the saga structuring and execution. Extraction of these capabilities directly to the LRA processing would be certainly applicable in many common specifically reactive applications use cases which can ease the development and orchestration of the saga execution. 
 
-In the LRA service is this problem addressed by the \texttt{api-gateway} service which functions as a proxy for the \texttt{lra-coordinator} that handles the saga execution. This approach does not effect the Narayana LRA management. The only change from the traditional processing is that series of LRA actions are performed by the \texttt{api-gateway} instead of the initiating service. This allows the service to be immediately available for the subsequent user requests and to scale the LRA processing independently from the services that utilize the coordination.
+In the LRA service is this problem addressed by the \texttt{api-gateway} service which functions as a proxy for the \texttt{lra-coordinator} that handles the saga execution. This approach does not effect the Narayana LRA management. The only change from the traditional processing is that series of LRA actions are performed by the \texttt{api-gateway} instead of the initiating service. This allows the service to be immediately available for the subsequent user requests and to scale the LRA processing independently from the application services that utilize the saga actions execution.
 
 \subsection{Technology}
 
@@ -1101,7 +1101,9 @@ The test has been run in the cloud computing platform Digital Ocean \cite{digita
 
 
 \clearpage
-\chapter{LRA execution extension}
+\chapter{LRA executor extension}
+
+One of the main goals of this thesis was the investigation of how the saga pattern implementation in the Narayana LRA can be updated for better support of the LRA employment in the reactive microservices environment. The \textit{LRA executor extension} has been created as a proof of concept implementation of the proposed solution which extends the saga orchestration capabilities of the LRA coordinator with the saga execution according to the specified user definition.
 
 \section{Motivation}
 
