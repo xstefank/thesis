@@ -1176,6 +1176,16 @@ The current implementation functions exclusively as the LRA executor. The actual
 \section{Narayana LRA integration}
 \label{sec:narayana-lra-integration}
 
+The \textit{LRA executor extension} solution provided in this thesis has been integrated and tested with the Narayana transaction manager 5.8.1.Final.
+
+The LRA definition extensions are present in the new module \texttt{lra-rest-definitions}. The \texttt{RESTLra} definition provides additionally only the specification of the callback endpoint which can be optionally notified about LRA completion. The \texttt{RESTAction} implementation is defined by the participant URL and optional callback resource address which specifies where the completion and compensation handlers are expected. If the callback is not defined, the target address is used. This module also provides builder classes and the JSON representation for both the LRA definition and the action respectfully.
+
+The executor implementation is contained in the \texttt{lra-coordinator} module which contains the main concerned class \texttt{RESTLRAExecutor}. It represents a \texttt{LRAExecutor} implementation based on the REST protocol. Internally, it utilizes the Narayana \texttt{LRAService} class to manage the saga lifecycle (start, complete and compensate of the LRA).
+
+Additionally, the \texttt{RESTLRAExecutor} also provides a capability to enlist saga participants prior to the invocation. This allows to lose the requirement of the enlisting call from participants and therefore the need to declare LRA processing on their endpoints. However, participants are still expected to expose endpoints for both completion and compensation handlers. For this reason, the \texttt{lra-rest-definitions} module contains a \texttt{ParticipantCallback} interface that declares the required methods for the RestEasy JAX-RS resource. The callback URL is be provided as a part of the \texttt{RESTAction} definition.
+
+The project also contains some minor modifications to ease the use of the definition within the coordinator. This mainly includes a separate starting endpoint which consumes the \texttt{RESTLra} and the corresponding method declaration in the \texttt{NarayanaLRAClient}.
+
 \section{Future work}
 
 \clearpage
