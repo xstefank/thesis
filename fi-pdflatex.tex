@@ -1096,16 +1096,41 @@ The test has been run in the cloud computing platform Digital Ocean \cite{digita
 
 The performance test is using the PerfCake \cite{perfcake} testing framework to generate requested number of order requests. As all investigated frameworks perform the saga execution asynchronously, the test first waits for the specified delay period and then performs the get orders call to the respective service in periodic intervals. The test ends when all orders are processed or the defined timeout is reached.
 
-Every example has been tested in two modes -- 1000 order requests with 10 threads and 10 000 order requests with 100 threads. The reason was that some of the frameworks are not able to handle the later test because of various problems discussed in following sections.
+Every example has been tested in two modes -- 1000 order requests with 10 threads (scenario 1) and 10 000 order requests with 100 threads (scenario 2). The reason was that some of the frameworks are not able to handle the later test because of various problems discussed in following sections.
 
 \newlinepar{Axon service}
 
-The major performance problem of this example was the artificial one second delay placed on the shipment and invoice response receival in the \texttt{order-service}. Another problem was synchronous REST calls for the inter-service command dispatching. Both of these issues have been reported and they have still been investigated by the time of this writing.
+The major performance problem of this example was the artificial one second delay placed on the shipment and invoice response receival in the \texttt{order-service}. Another problem was synchronous REST calls for the inter-service command dispatching. Both of these issues have been reported and still have been investigated by the time of this writing.
+
+The performance test in the scenario 1 has been executed successfully in 33 minutes and 47 seconds. Because of the time limits, the scenario 2 has been executed with the receive delay decreased to 100 milliseconds. Because of lost events, the test ended after 7 minutes and 45 seconds with only 2020 completed orders.
 
 
 %axon - 50 ms --> 5 min - sek na 2340 completed
 %axon - 100 ms --> 8 min - sek na 2259 completed
 
+\begin{table}[h]
+    \begin{tabularx}{\textwidth}{XXX}
+        \toprule
+        Project & Time & Completed requests \\
+        \midrule
+        Axon service & 33:47 & 1000 \\
+        \bottomrule
+    \end{tabularx}
+    \caption{Performance test -- scenario 1 (1000 request, 10 threads)}
+    \label{tab:performance-scenario-1}
+\end{table}
+
+\begin{table}[h]
+    \begin{tabularx}{\textwidth}{XXX}
+        \toprule
+        Project & Time & Completed requests \\
+        \midrule
+        Axon service & 7:45 & 2020 \\
+        \bottomrule
+    \end{tabularx}
+    \caption{Performance test -- scenario 2 (10000 request, 100 threads)}
+    \label{tab:performance-scenario-2}
+\end{table}
 
 \clearpage
 \chapter{LRA executor extension}
