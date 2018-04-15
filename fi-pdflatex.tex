@@ -1121,7 +1121,7 @@ Definitely, this approach is not appropriate for every user saga scenario. For i
 
 \section{Design}
 
-The \textit{LRA executor extension} project consists of two main modules -- the \texttt{lra-definitions} and the \texttt{lra-executor}. It is designed in a general way to ensure portability and the simplicity of further extensions. In particular, users are encouraged to customize most of the classes to accommodate executor to their specific communication requirements.
+The \textit{LRA executor extension} project consists of two main modules -- the \texttt{lra-definitions} and the \texttt{lra-executor}. It is designed in a general way to ensure the portability and the simplicity of further extensions. In particular, users are encouraged to customize most of the classes to accommodate executor to their specific communication requirements.
 
 This project does not have any direct dependencies on the Narayana project. However, this proof of concept includes custom code base changes that adjust the Narayana \texttt{lra-coordinator} project to the executor capabilities providing the implementation based on the REST protocol.
 
@@ -1138,6 +1138,15 @@ The current design also requires that the executor implementation specifies how 
 
 \section{Implementation}
 
+This section describes the implementation of both modules included in the \textit{LRA executor extension}. Each component contains a set of unit tests that verify the solution applicability and also present the basic usage examples. The class diagrams of individual modules are available for the reference in the appendix \ref{sec:appendix-class-diagrams}.
+
+\subsection{LRA definitions}
+
+The essential component of this module is the \texttt{LRADefinition} interface. It encapsulates all necessary information describing the saga execution. The full list of included properties is available in the appendix \ref{sec:appendix-class-diagrams}. 
+
+The \texttt{lra-definitions} module contains one implementation of this interface called the \texttt{LRADefinitionImpl} which represents the JSON representation of the \texttt{LRADefinition} interface. This is required as the automatic JSON object creation can be determined only from the Java classes, not interfaces. This representation has been included as the JSON format is commonly utilized in the microservices applications but certainly it is not applicable in every environment (e. g. in-JVM implementation).
+
+The main concerned segment of the \texttt{LRADefintion} interface for the saga executor is the list of \texttt{Action} objects that define individual saga participant invocations. The \texttt{Action} represents a functional interface\footnote{an interface with exactly one abstract method} with one included method \mintinline{java}{ActionResult invoke(LRAData lraData)}. This interface is intended to be implemented by the respective executor implementation to define the communication procedures required to invoke the participant (e. g. REST calls or JMS messages). It consumes a \texttt{LRAData} object that encapsulates the optional saga data provided by the initiating service which are to be included in invocations. The returned \texttt{ActionResult} class provides information about the outcome of the invocation with the potential failure description.
 
 
 \section{Narayana LRA integration}
@@ -1385,6 +1394,6 @@ To finalize, although the CQRS pattern has its benefits (ease of complexity and 
 
 
 \chapter{LRA executor extension class diagrams}
-\label{sec:class-diagrams}
+\label{sec:appendix-class-diagrams}
 
 \end{document}
