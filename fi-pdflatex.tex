@@ -1127,6 +1127,12 @@ This project does not have any direct dependencies on the Narayana project. Howe
 
 \subsection{LRA definitions}
 
+The \texttt{lra-definitions} module aims to provide an uniform interface for the user LRA definition. This definition is intended to fully describe the saga execution with all necessary information that the initiator needs to propagate to participating services. The definition can be supplied to the executing service as the Java class or as a provided JSON representation.
+
+This module also maintains a set of builder classes that focus on the ease of the saga development experience in a similar way as in the Eventuate Tram (\ref{sec:eventuate-tram}). It provides a fluent API that promotes the readability and the presentation of the LRA Domain specific language (DSL).  
+
+All of these components has been designed in a universal way that is intended for extension. This mainly includes the action invocation implementation that is associated with the utilized communication conventions.
+
 \subsection{LRA executor}
 
 \section{Implementation}
