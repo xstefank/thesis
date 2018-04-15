@@ -472,7 +472,7 @@ Unfortunately, the original work of authors is no longer available, but Arnon Ro
 
 \subsection{Eventual consistency}
 
-The eventual consistency is a model where the system guarantees that if no new updates are made to the object, eventually all accesses (data reads) will return the last updated value \cite{event_consist}. It is a form of weak consistency -- the system do not provide any consistency guarantees for a limited time called inconsistency window. The advantage of this model is that the maximal size of the inconsistency window can be computed from system statistics if no failure occurs.
+The eventual consistency is a model where after an update the system guarantees that if no new updates are made to the object, eventually all accesses (data reads) will return the last updated value \cite{event_consist}. It is a form of weak consistency -- the system do not provide any consistency guarantees for a limited time called inconsistency window. The advantage of this model is that the maximal size of the inconsistency window can be computed from system statistics if no failure occurs.
 
 The arguable problem with this model is the delay between the write of the data value and the its actual obtainable update. The reason is once more mainly caused by the service distribution. This may lead to the decrease system usability and customer satisfaction.
 
@@ -1161,7 +1161,17 @@ The main definition of the executor capabilities is defined by the \texttt{LRAEx
     \item \textbf{startLRA(LRADefinition lraDefinition)} -- This method starts a new LRA based on the information provided in the definition. This method can be removed once the \textit{LRA executor extension} is included in the Narayana project.
 \end{itemize}
 
-The \texttt{AbstractLRAExecutor} provides a default abstract implementation of the \texttt{LRAExecutor} interface.
+The \texttt{AbstractLRAExecutor} class represents a default abstract implementation of the \texttt{LRAExecutor} interface. Both execution methods process provided actions in order they are defined in the received LRA definition. This class provides three abstract protected methods:
+
+\begin{itemize}
+    \item \textbf{executeAction(Action action, LRAData data)} -- By default, it represents a wrapper around the action invocation. Users can override this method to customize the action processing.
+    
+    \item \textbf{completeLRA(LRAResult result)} -- Signalizes the successful LRA execution.
+    
+    \item \textbf{compensateLRA(LRAResult result)} -- Indicates that the LRA needs to be compensated.
+\end{itemize}
+
+The current implementation functions exclusively as the LRA executor. The actual orchestration and tracking is left to the implementations of the \texttt{LRAExecutor} interface. The following section describes how it is integrated on top of the current LRA implementation. The \texttt{LRAResult} class contains all information about the saga execution, namely, the LRA id, definition and optionally the cause of failure.
 
 \section{Narayana LRA integration}
 \label{sec:narayana-lra-integration}
