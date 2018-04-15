@@ -774,6 +774,7 @@ The \texttt{query-service} is a specific microservice included for the purposes 
 Finally, the \texttt{service-model} is a Kotlin and Java Maven application providing the core API for the commands and events used by various business services. This is required as all classes must match in order for particular handlers to be invoked. Furthermore, it also provides common utilities and the logging support. It is mandatory to include this project on the classpath of the every other service.
 
 \subsection{Problems}
+\label{sec:axon-problems}
 
 \newlinepar{Maintenance of the saga structure}
 
@@ -1077,7 +1078,7 @@ Kubernetes platform is suitable and portable to any cloud environment involving 
 
 To compare examples for their applicability in real systems from the performance perspective, a simple performance test has been created to investigate how they behave under larger load.
 
-As these projects impose only as quickstart examples which were not adjusted for performance, this test serves only as a reference to inspect the behavior off the simplest starting application. It does not correspond to the real production environment, but it still references some of possible performance improvement points present in each investigated frameworks.
+As these projects impose only as quickstart examples which were not adjusted for performance problems, this test serves only as a reference to inspect the behavior of the simple starting application. It does not correspond to the real production environment, but it still references some of possible performance improvement points present in each inspected framework.
 
 The test has been run in the cloud computing platform Digital Ocean \cite{digital-ocean}. The virtual machine specification:
 
@@ -1088,12 +1089,18 @@ The test has been run in the cloud computing platform Digital Ocean \cite{digita
     CPU: 6 vCPUs (Intel(R) Xeon(R) CPU E5-2650 v4 2.20GHz)
     RAM: 16 GB
     SSD: 320 GB
-    Java: 
-    Maven: 
-    Gradle: 
+    Java: OpenJDK 1.8.0_144
+    Maven: 3.5.0
+    Gradle: 2.13
 \end{minted}
 
-%mvn 3.5.0, java 1_8_0_144
+The performance test is using the PerfCake \cite{perfcake} testing framework to generate requested number of order requests. As all investigated frameworks perform the saga execution asynchronously, the test first waits for the specified delay period and then performs the get orders call to the respective service in periodic intervals. The test ends when all orders are processed or the defined timeout is reached.
+
+Every example has been tested in two modes -- 1000 order requests with 10 threads and 10 000 order requests with 100 threads. The reason was that some of the frameworks are not able to handle the later test because of various problems discussed in following sections.
+
+\newlinepar{Axon service}
+
+The major performance problem of this example was the artificial one second delay placed on the shipment and invoice response receival in the \texttt{order-service}. Another problem was synchronous REST calls for the inter-service command dispatching. Both of these issues have been reported and they have still been investigated by the time of this writing.
 
 
 %axon - 50 ms --> 5 min - sek na 2340 completed
