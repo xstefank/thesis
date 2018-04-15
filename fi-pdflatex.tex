@@ -1133,12 +1133,15 @@ The \texttt{lra-executor} module represents a simple executor definition and bot
 
 All of these components has been designed in a universal way that is intended for extension. This mainly includes the action invocation implementation that is associated with the utilized communication conventions. 
 
-The current design also requires that the executor implementation specifies how the LRA is started as the existing LRA orchestration logic is available in the Narayana's \texttt{lra-coordinator} module. The inclusion of this module in the \textit{LRA executor extension} would result into cyclic dependencies as the \texttt{lra-coordinator} has been modified as the presently only executor implementation. This problem can be easily resolved by a refactoring of the \texttt{lra-coordinator} module that would extract the LRA orchestration from the LRA REST processing to allow further extensions with different protocols.
+The current design also requires that the executor implementation specifies how the LRA is started as the existing LRA orchestration logic is available in the Narayana's \texttt{lra-coordinator} module. The inclusion of this module in the \textit{LRA executor extension} would result into cyclic dependencies as the \texttt{lra-coordinator} has been modified as the presently only executor implementation. This problem can be easily resolved by a refactoring of the \texttt{lra-coordinator} module that would extract the LRA orchestration from the LRA REST processing to allow further extensions with different protocols. The current implementation is described in the section \ref{sec:narayana-lra-integration}.
 
 
 \section{Implementation}
 
+
+
 \section{Narayana LRA integration}
+\label{sec:narayana-lra-integration}
 
 \section{Future work}
 
@@ -1381,5 +1384,7 @@ To finalize, although the CQRS pattern has its benefits (ease of complexity and 
 \end{minted}
 
 
+\chapter{LRA executor extension class diagrams}
+\label{sec:class-diagrams}
 
 \end{document}
