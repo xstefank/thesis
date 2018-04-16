@@ -1155,7 +1155,7 @@ Certainly, this processing is something that can be implemented by the user serv
 
 Another advantage of this approach is the decrease of the number of exchanged messages required for the saga processing. As the coordinator / executor receives all participating services in the user's saga definition, it is possible to enlist each participant within the LRA prior to its actual invocation. This means that the participating service is not required to contact the coordinator. It also allows the coordinator to manage participant invocations uniformly (number of retries, failure policies). After the coordinator collects responses from all specified participants, it makes the decision of whether to complete or compensate the LRA and optionally informs the initiating service about the result.
 
-Definitely, this approach is not appropriate for every user saga scenario. For instance, if the saga should be formed dynamically depending on certain intermediate results, some services may be only occasionally enlisted within the saga execution. However, long running transactions have commonly well defined purpose which is why the \textit{LRA exector extension} may be effective in many applications utilizing the Narayana LRA implementation.
+Definitely, this approach is not appropriate for every user saga scenario. For instance, if the saga should be formed dynamically depending on certain intermediate results, some services may be only occasionally enlisted within the saga execution. However, long running transactions have generally well defined purpose which is why the \textit{LRA exector extension} may be effective in many applications utilizing the Narayana LRA implementation.
 
 \section{Design}
 \label{sec:extension-design}
@@ -1225,6 +1225,14 @@ The \texttt{RESTLRAExecutor} provides a capability to enlist saga participants p
 The integration also includes some minor modifications to ease the use of the definition within the coordinator. This mainly concerns a separate starting endpoint in the \texttt{lra-coordinator} which consumes the \texttt{RESTLra} and the corresponding client method declaration in the \texttt{NarayanaLRAClient}.
 
 \section{Future work}
+
+The current implementation of the \texttt{LRA executor extension} discussed in the previous chapters provides a working proof of concept of potential Narayana LRA execution capabilities. However, there are still some tasks that need to be addressed before it can be included in the product.
+
+The first assignment would be the refactoring of the current LRA code base to extract the orchestration logic from the coordinator. This will allow to employ different communication patterns and protocols for the LRA processing on top of the same service layer.
+
+One of the features of this solution is the asynchronous LRA processing provided directly by the framework. The prototype executes each asynchronous LRA in a new thread from the employed cached thread pool. Nevertheless, this is the simplest solution that may not be sufficient in the long term.
+
+
 
 \clearpage
 \chapter{Conclusion}
