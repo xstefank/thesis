@@ -1232,11 +1232,19 @@ The integration also includes some minor modifications to ease the use of the de
 
 \section{Future work}
 
-The current implementation of the \texttt{LRA executor extension} discussed in the previous chapters provides a working proof of concept of potential Narayana LRA execution capabilities. However, there are still some tasks that need to be addressed before it can be included in the product.
+The current implementation of the \textit{LRA executor extension} discussed in previous chapters provides a working proof of concept of potential Narayana LRA execution capabilities. However, there are still some tasks that need to be addressed before it can be included in the project.
 
-The first assignment would be the refactoring of the current LRA code base to extract the orchestration logic from the coordinator. This will allow to employ different communication patterns and protocols for the LRA processing on top of the same service layer.
+\subsection{Narayana executor implementation}
 
-One of the features of this solution is the asynchronous LRA processing provided directly by the framework. The prototype executes each asynchronous LRA in a new thread from the employed cached thread pool. Nevertheless, this is the simplest solution that may not be sufficient in the long term.
+The first assignment of the executor inclusion would be the refactoring of the current LRA code base to extract the orchestration logic from the LRA coordinator. This will allow to employ different communication patterns and protocols for the LRA processing on top of the same service layer. 
+
+Apart from the refactoring, the main problem that needs to be addressed is the recovery capabilities of the executor. If the executor fails in the middle of the execution, there is currently no failure handling that may allow it to continue processing once it is recovered. One possible solution can be implemented by persisting the LRA definition before the execution starts and also by marking each participant invocation start and completion.
+
+As a part of the failure handling, it may be also useful to allow developers to declare a strategy that would handle the participant failures. These strategies can be mapped exactly to saga recovery modes. 
+
+Another issue that may present an improvement point is that currently the default implementation executes actions sequentially in the same order as they are specified in the definition. However, when the actions do not depend on each other, it may be effective to execute them in parallel. This information can be included directly in the LRA definition to permit users to specify the execution mode for separated parts of the saga execution.
+
+
 
 
 
