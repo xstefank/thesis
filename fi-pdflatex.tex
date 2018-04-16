@@ -1104,9 +1104,11 @@ The major performance problem of this example was the artificial one second dela
 
 The performance test in the scenario 1 has been executed successfully in 33 minutes and 47 seconds. Because of the time limits, the scenario 2 has been executed with the receive delay decreased to 100 milliseconds. Because of lost events, the test ended after 7 minutes and 45 seconds with only 2020 completed orders.
 
+\newlinepar{Eventutate service}
 
-%axon - 50 ms --> 5 min - sek na 2340 completed
-%axon - 100 ms --> 8 min - sek na 2259 completed
+\newlinepar{Eventutate sagas}
+
+The Eventuate Tram project performed exceptionally well at both scenarios where all order requests have been completed. The scenario 1 has been finished in 28 seconds and the scenario 2 in 3 minutes and 10 seconds. Overall, this framework provides a very suitable saga solution even from the performance perspective.
 
 \begin{table}[h]
     \begin{tabularx}{\textwidth}{XXX}
@@ -1114,6 +1116,7 @@ The performance test in the scenario 1 has been executed successfully in 33 minu
         Project & Time & Completed requests \\
         \midrule
         Axon service & 33:47 & 1000 \\
+        Eventuate sagas & 00:28 & 1000 \\
         \bottomrule
     \end{tabularx}
     \caption{Performance test -- scenario 1 (1000 request, 10 threads)}
@@ -1126,6 +1129,7 @@ The performance test in the scenario 1 has been executed successfully in 33 minu
         Project & Time & Completed requests \\
         \midrule
         Axon service & 7:45 & 2020 \\
+        Eventuate Sagas & 3:10 & 10 000 \\
         \bottomrule
     \end{tabularx}
     \caption{Performance test -- scenario 2 (10000 request, 100 threads)}
