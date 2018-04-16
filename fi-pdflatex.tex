@@ -1102,7 +1102,7 @@ Every example has been tested in two modes -- 1000 order requests with 10 thread
 
 The major performance problem of this example was the artificial one second delay placed on the shipment and invoice response receival in the \texttt{order-service}. Another problem was synchronous REST calls for the inter-service command dispatching. Both of these issues have been reported and still have been investigated by the time of this writing.
 
-The performance test in the scenario 1 has been executed successfully in 33 minutes and 47 seconds. Because of the time limits, the scenario 2 has been executed with the receive delay decreased to 100 milliseconds. Because of lost events, the test ended after 7 minutes and 45 seconds with only 2020 completed orders.
+The performance test in the scenario 1 has been executed successfully in 33 minutes and 46 seconds. Because of the time limits, the scenario 2 has been executed with the receive delay decreased to 100 milliseconds. Because of lost events, the test ended after 7 minutes and 45 seconds with only 2020 completed orders.
 
 \newlinepar{Eventutate service}
 
@@ -1110,15 +1110,17 @@ The performance test in the scenario 1 has been executed successfully in 33 minu
 
 The Eventuate Tram project performed exceptionally well at both scenarios where all order requests have been completed. The scenario 1 has been finished in 28 seconds and the scenario 2 in 3 minutes and 10 seconds. Overall, this framework provides a very suitable saga solution even from the performance perspective.
 
+\newlinepar{Summary}
+
 \begin{table}[h]
     \begin{tabularx}{\textwidth}{lXXX}
         \toprule
-        Project & Processing time & Total Time & Completed requests \\
+        Project & Processing delay & Total Time & Completed requests \\
         \midrule
-        Axon service & 33:47 & time & 1000 \\
+        Axon service & 33:40 & 33:46 & 1000 \\
         Eventuate service & 00:28 & time & 1000 \\
-        Eventuate sagas & 00:28 & time & 1000 \\
-        LRA service & 00:28 & time & 1000 \\
+        Eventuate sagas & 00:27 & 00:34 & 1000 \\
+        LRA service & 00:04 & 01:10 & 1000 \\
         \bottomrule
     \end{tabularx}
     \caption{Performance test -- scenario 1 (1000 request, 10 threads)}
