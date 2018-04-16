@@ -1111,12 +1111,14 @@ The performance test in the scenario 1 has been executed successfully in 33 minu
 The Eventuate Tram project performed exceptionally well at both scenarios where all order requests have been completed. The scenario 1 has been finished in 28 seconds and the scenario 2 in 3 minutes and 10 seconds. Overall, this framework provides a very suitable saga solution even from the performance perspective.
 
 \begin{table}[h]
-    \begin{tabularx}{\textwidth}{XXX}
+    \begin{tabularx}{\textwidth}{lXXX}
         \toprule
-        Project & Time & Completed requests \\
+        Project & Processing time & Total Time & Completed requests \\
         \midrule
-        Axon service & 33:47 & 1000 \\
-        Eventuate sagas & 00:28 & 1000 \\
+        Axon service & 33:47 & time & 1000 \\
+        Eventuate service & 00:28 & time & 1000 \\
+        Eventuate sagas & 00:28 & time & 1000 \\
+        LRA service & 00:28 & time & 1000 \\
         \bottomrule
     \end{tabularx}
     \caption{Performance test -- scenario 1 (1000 request, 10 threads)}
