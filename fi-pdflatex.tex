@@ -72,7 +72,7 @@ abstract
 \begin{document}
 \chapter{Introduction}
 
-A transaction processing is widely recognized as a critical technology for modern applications \cite{java_tran_processing}. It 
+Transaction processing is widely recognized as a critical technology for modern applications \cite{java_tran_processing}. The capability to group a sequence of operations into a logical unit of work represents a common business concept.
 
 Microservices architectural pattern represents an important emerging development technique. It separates the application domain into a set of isolated services that model product business concepts. Each service is autonomous and decoupled from other services to promote independent deployment and failure isolation.
 
@@ -226,7 +226,7 @@ With the declarative transaction model, the users are required to configure the 
     
     \item \textbf{Mandatory} -- Similarly to the Required, mandatory transaction attribute represents that the transaction must be present on the execution. However, it requires that the transaction is already started prior to the invocation. Alternatively, it throws \texttt{TransactionRequiredException} if the transaction context can not be found.
     
-    \item \textbf{RequiresNew} -- The container will begin a new transaction on every invocation. If there is already a transaction context present, it is suspended for the duration of the processing of the new transaction. This breaks the atomicity property of the former transaction.
+    \item \textbf{RequiresNew} -- The container will begin a new transaction on every invocation. If there is already a transaction context present, it is suspended for the duration of the processing of the new transaction. 
     
     \item \textbf{Supports} -- This attribute represents an invocation that is not required to run under the transaction context. It tells the container to use the transaction context, if it exists before the call, or to execute the operation non-transactionally if the transaction is not present.
     
@@ -316,7 +316,7 @@ If the acceptor accepts a value, it appends the accepted id and value to each su
 
 Many variants of the Paxos algorithm allows it to sufficiently handle various types of failures that may influence the achievement of the consensus. In particular, even the basic variant handles problems of the 3PC algorithm, namely, network partitions and the restriction to the fail-stop model. Instead, the Paxos protocol is resilient to the fail-recover model which allows individual nodes to recover and continue processing from the point of the failure -- which is expected in the modern distributed systems.
 
-The problem that the algorithm can not solve is two proposers that actively compete for the highest proposal number. This happens between phases as the participants \texttt{accept-request} is rejected due to the higher \texttt{promise} issued to the other proposer. The system is blocked until the conflict can be resolved, e. g., by the exponential back off mechanisms which allows one proposer to wait sufficiently long for the other one to finish. Acceptors are also required to have a persistent storage to avoid providing misleading information in case of the fail-recovery.
+The problem that the algorithm can not solve is two proposers that actively compete for the highest proposal number. This happens between phases as the participants \texttt{accept-request} is rejected due to the higher \texttt{promise} issued to the other proposer. The system is blocked until the conflict can be resolved.  e. g., by the exponential back off mechanisms which allows one proposer to wait sufficiently long for the other one to finish. Acceptors are also required to have a persistent storage to avoid providing misleading information in case of the fail-recovery.
 
 \subsection{Conclusions}
 
@@ -1114,13 +1114,15 @@ In the scenario 1 the 1000 request has been created in 58 seconds, but because o
 
 \newlinepar{Eventutate sagas}
 
-The Eventuate Tram project performed well at both scenarios where all order requests have been completed. The scenario 1 has been finished in 27 seconds and the scenario 2 in 3 minutes and 10 seconds. Overall, this framework provides a very suitable saga solution even from the performance perspective.
+The Eventuate Tram project performed well in the scenario 1 which has been finished in 34 seconds with all completed orders. However, the scenario 2 in some cases produced an exception in Kafka service that timed out on the \texttt{session.timeout.ms} -- a time out that is used to detect consumer failures. The default value for this property is hard coded in the Tram code base and cannot be customized. The representing successful run has been completed in 3 minutes and 56 seconds.
 
 \newlinepar{LRA service}
 
-This quickstart was for this test adjusted to be run directly in the Docker platform to simulate similar environment for all examples. The test presented that the LRA coordinator orchestration does not influence the processing performance. The scenario 1 has been finished with  exceptional overhead only 4 seconds and total time 1 minute and 10 seconds while the scenario 2 finished in 
+This quickstart was for this test adjusted to be run directly in the Docker platform to simulate similar environment for all examples. The test presented that the LRA coordinator orchestration does not influence the processing performance. The scenario 1 has been finished with  exceptional overhead only 4 seconds and total time 1 minute and 10 seconds while the scenario 2 finished in 8 minutes and 58 seconds with only 22 seconds spent on the saga processing. Both scenarios successfully completed all order requests.
 
 \newlinepar{Summary}
+
+Following tables present the summary of the performance test executions. The processing delay defines the time between the last sent request and the last processed order and the total time denotes time from the first request to the last completed order.
 
 \begin{table}[h]
     \begin{tabularx}{\textwidth}{lXXX}
@@ -1133,7 +1135,7 @@ This quickstart was for this test adjusted to be run directly in the Docker plat
         LRA service & 00:04 & 01:10 & 1 000 \\
         \bottomrule
     \end{tabularx}
-    \caption{Performance test -- scenario 1 (1000 request, 10 threads)}
+    \caption{Performance test -- scenario 1 (1000 requests, 10 threads)}
     \label{tab:performance-scenario-1}
 \end{table}
 
@@ -1144,10 +1146,11 @@ This quickstart was for this test adjusted to be run directly in the Docker plat
         \midrule
         Axon service & 06:53 & 07:44 & 5 657 \\
         Eventuate service & 14:05 & 14:46 & 19 791 \\
+        Eventuate sagas & 03:20 & 03:56 & 10 000 \\
         LRA service & 00:22 & 08:58 & 10 000 \\
         \bottomrule
     \end{tabularx}
-    \caption{Performance test -- scenario 2 (10000 request, 100 threads)}
+    \caption{Performance test -- scenario 2 (10000 requests, 100 threads)}
     \label{tab:performance-scenario-2}
 \end{table}
 
