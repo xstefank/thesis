@@ -72,7 +72,7 @@ abstract
 \begin{document}
 \chapter{Introduction}
 
-
+Transaction processing is widely recognized as a critical technology for modern applications \cite{java_tran_processing}. It allows to group a sequence of operations in to the logical unit of work which assures that correctness guarantees are met. The achievement of these properties is
 
 \clearpage
 \chapter{Transaction concepts}
@@ -1102,14 +1102,13 @@ The major performance problem of this example was the artificial one second dela
 
 Another problem was synchronous REST calls for the inter-service command dispatching. This issue has been reported and still being investigated by the time of this writing.
 
-The performance test in the scenario 1 has been executed successfully in 51 seconds. The scenario 2 met the limits of the platform when the database lock for the first command could not taken after about 5000 requests. This scenario was ran three times with the best result of 5657 completed orders in 7 minutes and 44 seconds.
+The performance test in the scenario 1 has been executed successfully in 51 seconds. The scenario 2 met the limits of the platform when the database lock for the first command could not taken after about 5000 requests. This scenario was run three times with the best result of 5657 completed orders in 7 minutes and 44 seconds.
 
 \newlinepar{Eventutate service}
 
 This performance test discovered a new issue in the Eventuate Local platform. When order requests are created in fast succession, the database update may fail which results into redelivery of the same events and therefore several orders for one request. This problem has been reported to the Eventuate project.
 
-In the scenario 1 the 1000 request has been created in 58 seconds, but because of the above mentioned issue the final count reached 2000 orders.
-
+In the scenario 1 the 1000 request has been created in 58 seconds, but because of the above mentioned issue the final count reached 2000 orders. The scenario 2 was executed three times where each run produced different amount of completed orders. The presented test execution finished after 14 minutes and 46 seconds with 19791 completed orders.
 
 \newlinepar{Eventutate sagas}
 
@@ -1117,7 +1116,7 @@ The Eventuate Tram project performed well at both scenarios where all order requ
 
 \newlinepar{LRA service}
 
-This test showed that the LRA coordinator orchestration does not influence the processing performance. The total time delay is due to the propagation between example services. The scenario 1 has been finished in exceptional 4 seconds.
+This quickstart was for this test adjusted to be run directly in Docker to simulate similar environment for all examples. The test showed that the LRA coordinator orchestration does not influence the processing performance. The scenario 1 has been finished in exceptional 4 seconds.
 
 \newlinepar{Summary}
 
@@ -1142,6 +1141,7 @@ This test showed that the LRA coordinator orchestration does not influence the p
         Project & Processing delay & Total time & Completed requests \\
         \midrule
         Axon service & 06:53 & 07:44 & 5657 \\
+        Eventuate service & 14:05 & 14:46 & 19791 \\
         \bottomrule
     \end{tabularx}
     \caption{Performance test -- scenario 2 (10000 request, 100 threads)}
