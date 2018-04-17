@@ -72,9 +72,12 @@ abstract
 \begin{document}
 \chapter{Introduction}
 
-Transaction processing is widely recognized as a critical technology for modern applications \cite{java_tran_processing}. The capability to group a sequence of operations into a logical unit of work represents a common business concept.
+Transaction processing is widely recognized as a critical technology for modern applications \cite{java_tran_processing}. The capability to group a sequence of operations into a logical unit of work represents a common business concept that relies on certain correctness guarantees. Particularly in the distributed environment, the comprehension and the achievement of these requirements based on the currently available technology stack represents a considerably complex programming task.
 
-Microservices architectural pattern represents an important emerging development technique. It separates the application domain into a set of isolated services that model product business concepts. Each service is autonomous and decoupled from other services to promote independent deployment and failure isolation.
+Microservices architectural pattern defines an important emerging development technique which separates the application domain into a set of isolated services that collaborate together to model various business concepts. Each service depicts an autonomous self-maintained unit that is decoupled from other services to promote an independent lifecycle management, deployment and failure isolation. In order to cooperate their activities, microservices must employ a non-blocking remote invocation model that is frequently utilizing a form of asynchronous communication mechanisms.
+
+Due to their distributed character, the microservices applications development is often inclined to many issues associated with the failure processing and isolated development model. To ensure that the system is able to function even in the degraded state, these applications commonly provide a design that guarantees certain quality properties which were specified in the Reactive Manifesto \cite{reactive_manifesto} as the reactive systems.
+
 
 \clearpage
 \chapter{Transaction concepts}
@@ -1244,8 +1247,6 @@ The integration also includes some minor modifications to ease the use of the de
 
 The current implementation of the \textit{LRA executor extension} discussed in previous chapters provides a working proof of concept of potential Narayana LRA execution capabilities. However, there are still some tasks that need to be addressed before it can be included in the project.
 
-\subsection{Narayana executor implementation}
-
 The first assignment of the executor inclusion would be the refactoring of the current LRA code base to extract the orchestration logic from the LRA coordinator. This will allow to employ different communication patterns and protocols for the LRA processing on top of the same service layer. 
 
 Apart from the refactoring, the main problem that needs to be addressed is the recovery capabilities of the executor. If the executor fails in the middle of the execution, there is currently no failure handling that may allow it to continue processing once it is recovered. One possible solution can be implemented by persisting the LRA definition before the execution starts and also by marking each participant invocation start and completion.
@@ -1253,16 +1254,6 @@ Apart from the refactoring, the main problem that needs to be addressed is the r
 As a part of the failure handling, it may be also useful to allow developers to declare a strategy that would handle the participant failures. These strategies can be mapped exactly to saga recovery modes. 
 
 Another issue that may present an improvement point is that currently the default implementation executes actions sequentially in the same order as they are specified in the definition. However, when the actions do not depend on each other, it may be effective to execute them in parallel. This information can be included directly in the LRA definition to permit users to specify the processing mode for separated parts of the saga execution.
-
-\subsection{Distributed Saga Execution Coordinator}
-
-This idea has been deducted from the saga investigation and the specification in the original paper \cite{sagas_publ}. It is only a preliminary theory that needs to be formally defined and can possibly implemented in the future.
-
-The distributed Saga Execution Coordinator (SEC) represents an orchestration of the saga processing spanned across several participants. It would include a distributed saga transaction log which must be always available to all SEC instances. This log provides all information about the saga processing -- starting, participant invocations and completions and the saga completion or compensation. Different SEC instances are allowed to access the log and take separate tasks depending on various criteria while marking all of their actions in the log. In this scenario, the saga processing would be available until at least one SEC is active.
-
-Another extension may be that if it would be possible to include the SEC implementation as a client library, the saga processing can be functioning as long as the user application is active. 
-
-There are still many questions that needs to be addressed, but by the of this writing there is no this kind of SEC processing available. After the executor implementation is included in the Narayana project, this can represent an interesting challenge for the long term LRA development. 
 
 
 \clearpage
