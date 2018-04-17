@@ -782,13 +782,9 @@ The one substantial problem the saga processing in Axon has is the missing struc
 
 In this application the \texttt{OrderManagementSaga} contains two internal classes -- \texttt{OrderProcessing} and \texttt{OrderCompensationProcessing} which are responsible for keeping track of the saga execution and compensation respectively. As production ready sagas can be expected to run in a number of days, this can quickly become the bottleneck of the saga maintenance.
 
-\newlinepar{Distribution of events to sagas}
-
-Another encountered problem is that by the time of this writing Axon does not provide an easy method for the configuration of the different event bus for saga events than is the one that is used by default. The \texttt{@Saga} annotation is preconfigured with the value of the local event bus which is not allowed to be changed. The workaround is to manually register a custom saga manager which is not straightforward from the user perspective when the saga needs to be distributed through different JVMs.
-
 \newlinepar{AMQP usage with sagas}
 
-When the distributed event bus is processing events from an AMQP queue which the saga class is listening to, the framework does not deliver events correctly to the attached handlers. This may be caused by the incorrect configuration from the previous problem. The workaround used in the quickstart is to artificially wait 1000 milliseconds before delivering the event from the queue to the framework.
+When the distributed event bus is processing events from an AMQP queue which the saga class is listening to, the framework does not deliver events correctly to the attached handlers. This issue has been reported to the Axon framework and it will be fixed in the next release. The workaround that was used in the quickstart was to artificially wait 1000 milliseconds before delivering the event from the queue to the framework.
 
 \newlinepar{CQRS restrictions}
 
@@ -1100,11 +1096,18 @@ Every example has been tested in two modes -- 1000 order requests with 10 thread
 
 \newlinepar{Axon service}
 
-The major performance problem of this example was the artificial one second delay placed on the shipment and invoice response receival in the \texttt{order-service}. Another problem was synchronous REST calls for the inter-service command dispatching. Both of these issues have been reported and still have been investigated by the time of this writing.
+The major performance problem of this example was the artificial one second delay placed on the shipment and invoice response receival in the \texttt{order-service}. This problem has been reported to the Axon framework and this quickstart has been provided with a fixed configuration that removed the need for the timeout. This setting will be included by default in the Axon next release. 
 
-The performance test in the scenario 1 has been executed successfully in 33 minutes and 46 seconds. Because of the time limits, the scenario 2 has been executed with the receive delay decreased to 100 milliseconds. Because of lost events, the test ended after 7 minutes and 45 seconds with only 2020 completed orders.
+Another problem was synchronous REST calls for the inter-service command dispatching. This issue has been reported and still being investigated by the time of this writing.
+
+The performance test in the scenario 1 has been executed successfully in 51 seconds. 
 
 \newlinepar{Eventutate service}
+
+This performance test discovered a new issue in the Eventuate Local platform. When order requests are created in fast succession, the database update may fail which results into redelivery of the same events and therefore several orders for one request. This problem has been reported to the Eventuate project.
+
+In the scenario 1 the 1000 request has been created in 58 seconds, but because of the above issue the final count reached 2000 orders.
+
 
 \newlinepar{Eventutate sagas}
 
@@ -1121,8 +1124,8 @@ This test showed that the LRA coordinator orchestration does not influence the p
         \toprule
         Project & Processing delay & Total Time & Completed requests \\
         \midrule
-        Axon service & 33:40 & 33:46 & 1000 \\
-        Eventuate service & 00:28 & time & 1000 \\
+        Axon service & 00:46 & 00:51 & 1000 \\
+        Eventuate service & 00:49 & 00:58 & 2000 \\
         Eventuate sagas & 00:27 & 00:34 & 1000 \\
         LRA service & 00:04 & 01:10 & 1000 \\
         \bottomrule
