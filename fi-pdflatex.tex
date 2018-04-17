@@ -1118,7 +1118,7 @@ The Eventuate Tram project performed well at both scenarios where all order requ
 
 \newlinepar{LRA service}
 
-This quickstart was for this test adjusted to be run directly in Docker to simulate similar environment for all examples. The test showed that the LRA coordinator orchestration does not influence the processing performance. The scenario 1 has been finished in exceptional 4 seconds.
+This quickstart was for this test adjusted to be run directly in the Docker platform to simulate similar environment for all examples. The test presented that the LRA coordinator orchestration does not influence the processing performance. The scenario 1 has been finished with  exceptional overhead only 4 seconds and total time 1 minute and 10 seconds while the scenario 2 finished in 
 
 \newlinepar{Summary}
 
@@ -1127,10 +1127,10 @@ This quickstart was for this test adjusted to be run directly in Docker to simul
         \toprule
         Project & Processing delay & Total Time & Completed requests \\
         \midrule
-        Axon service & 00:46 & 00:51 & 1000 \\
-        Eventuate service & 00:49 & 00:58 & 2000 \\
-        Eventuate sagas & 00:27 & 00:34 & 1000 \\
-        LRA service & 00:04 & 01:10 & 1000 \\
+        Axon service & 00:46 & 00:51 & 1 000 \\
+        Eventuate service & 00:49 & 00:58 & 2 000 \\
+        Eventuate sagas & 00:27 & 00:34 & 1 000 \\
+        LRA service & 00:04 & 01:10 & 1 000 \\
         \bottomrule
     \end{tabularx}
     \caption{Performance test -- scenario 1 (1000 request, 10 threads)}
@@ -1142,8 +1142,9 @@ This quickstart was for this test adjusted to be run directly in Docker to simul
         \toprule
         Project & Processing delay & Total time & Completed requests \\
         \midrule
-        Axon service & 06:53 & 07:44 & 5657 \\
-        Eventuate service & 14:05 & 14:46 & 19791 \\
+        Axon service & 06:53 & 07:44 & 5 657 \\
+        Eventuate service & 14:05 & 14:46 & 19 791 \\
+        LRA service & 00:22 & 08:58 & 10 000 \\
         \bottomrule
     \end{tabularx}
     \caption{Performance test -- scenario 2 (10000 request, 100 threads)}
