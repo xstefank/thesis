@@ -1327,6 +1327,7 @@ Another issue that may present an improvement point is that currently the defaul
 
 \appendix %% Start the appendices.
 
+\clearpage
 \chapter{The CQRS pattern}
 \label{sec:appendix-cqrs}
 
@@ -1349,6 +1350,7 @@ The CQRS pattern may be particularly suitable for service (microservices) orient
 To finalize, although the CQRS pattern has its benefits (ease of complexity and performance support), the practice showed that systems usually need to share the model between command and query sides. If the systems is not build with this patter in mind, the CQRS may place a very hard restrictions that may not be applicable in every application.
 
 
+\clearpage
 \chapter{Reactive Streams v1.0.2 API}
 \label{reactive_streams}
 
@@ -1393,9 +1395,37 @@ To finalize, although the CQRS pattern has its benefits (ease of complexity and 
 \end{minted}
 
 
+\clearpage
 \chapter{The saga scenarios}
 \label{sec:appendix-scenarios}
 
+\newlinepar{Success scenario}
+
+\begin{figure}[h]
+    \begin{center}
+        \includegraphics[height=45mm]{images/sequence/validSagaCQRS.png}
+    \end{center}
+    \caption{CQRS saga example success}
+\end{figure}
+
+\hfill \break
+
+\begin{figure}[h]
+    \begin{center}
+        \includegraphics[height=60mm]{images/sequence/validSagaTram.png}
+    \end{center}
+    \caption{Eventuate Tram saga example success}
+\end{figure}
+
+\begin{figure}[h]
+    \begin{center}
+        \includegraphics[height=60mm]{images/sequence/validSagaLRA.png}
+    \end{center}
+    \caption{LRA service saga example success}
+\end{figure}
+
+
+\clearpage
 \chapter{The example applications public APIs}
 \label{sec:appendixAPI}
 
@@ -1551,6 +1581,7 @@ To finalize, although the CQRS pattern has its benefits (ease of complexity and 
 \end{minted}
 
 
+\clearpage
 \chapter{LRA executor extension class diagrams}
 \label{sec:appendix-class-diagrams}
 
