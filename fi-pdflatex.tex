@@ -88,7 +88,19 @@ The saga pattern \cite{sagas_publ} represents an alternative approach to the tra
 
 \section{Research objectives}
 
-The main goal of this thesis is to investigate the usage of the saga pattern in the reactive architecture through the available solutions based on the Java platform.
+There are three main objectives conducted in this work:
+
+\begin{enumerate}
+    \item The investigation of asynchronous approaches available for the transaction processing in the microservices context.
+    
+    \item The proposal of the proof of concept implementation utilizing the Narayana transaction manager to create a service providing the transaction management in the reactive microservices systems.
+    
+    \item The preparation of a quickstart example presenting practical considerations of the applied solution for the asynchronous execution.
+\end{enumerate}
+
+The investigation is focused on the saga pattern \cite{sagas_publ} application in the reactive architecture through the available solutions based on the Java platform. The four studied frameworks are Axon \cite{axon_framework}, Eventuate platform \cite{eventuate.io}, Eventuate Tram \cite{eventuate-tram} and Narayana long running actions (LRA) \cite{narayana_lra}. As a part of the research, we created an example quickstart project that simulates a simple order processing application  for each investigated framework. 
+
+The proposed proof of concept asynchronous LRA processing is called the \textit{LRA executor extension}. This project is build on top of the current Narayana LRA coordination management to allow the asynchronous LRA execution based on the user definition. Together with this extension, a simple quickstart project \textit{LRA executor quickstart} has been created to demonstrate its asynchronous capabilities.
 
 
 \clearpage
