@@ -98,9 +98,33 @@ There are three main objectives conducted in this work:
     \item The preparation of a quickstart example presenting practical considerations of the applied solution for the asynchronous execution.
 \end{enumerate}
 
-The investigation is focused on the saga pattern \cite{sagas_publ} application in the reactive architecture through the available solutions based on the Java platform. The four studied frameworks are Axon \cite{axon_framework}, Eventuate platform \cite{eventuate.io}, Eventuate Tram \cite{eventuate-tram} and Narayana long running actions (LRA) \cite{narayana_lra}. As a part of the research, we created an example quickstart project that simulates a simple order processing application  for each investigated framework. 
+The research investigation is focused on the saga pattern \cite{sagas_publ} application in the reactive architecture through the available solutions based on the Java platform. The four studied frameworks are Axon \cite{axon_framework}, Eventuate platform \cite{eventuate.io}, Eventuate Tram \cite{eventuate-tram} and Narayana long running actions (LRA) \cite{narayana_lra}. 
+
+\section{Research contributions}
+
+As a part of the saga implementations research, we created an example quickstart project that simulates a simple order processing application for each investigated framework. Additionally, a performance test has been created to investigate how these frameworks perform under large load. This test discovered several issues present in investigated saga solutions that have been reported to respective platforms.
 
 The proposed proof of concept asynchronous LRA processing is called the \textit{LRA executor extension}. This project is build on top of the current Narayana LRA coordination management to allow the asynchronous LRA execution based on the user definition. Together with this extension, a simple quickstart project \textit{LRA executor quickstart} has been created to demonstrate its asynchronous capabilities.
+
+The list of projects conducted within this thesis:
+
+\begin{itemize}
+    \item \textit{Axon service} -- 2 reported issues
+    
+    \item \textit{Eventuate service} -- 1 reported issue
+    
+    \item \textit{Eventuate Tram}
+    
+    \item \textit{LRA service}
+    
+    \item \textit{Saga example performance test}
+    
+    \item \textit{LRA executor extension}
+    
+    \item \textit{LRA executor quickstart}
+    
+    \item \textit{Narayana LRA integration}
+\end{itemize}
 
 
 \clearpage
