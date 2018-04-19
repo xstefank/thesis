@@ -874,7 +874,7 @@ Spring provides various ways for exposing available services. Registration serve
 
 \section{Eventuate service}
 
-Similarly to Axon, Eventuate service is also based on the event sourcing and the CQRS pattern. For this reason, the business execution is managed in the aggregates which correspond to the respective microservices projects. The communication is as a result restricted to the command processing and the event appliance.
+Similarly to Axon, Eventuate service is also based on the event sourcing and the CQRS pattern. For this reason, the business execution is managed in the aggregates which correspond to the respective microservices projects. The communication is as a result restricted to the command processing and the event application. However, conversely to axon, the command and event buses are not distributed. The remote messaging is restricted to the REST protocol.
 
 This quickstart represents the pure CQRS approach to the saga processing. This means that the whole saga implementation is created by the developer using the platform only for the event and command distribution. For this reason, the Eventuate service is more complex than any other quickstart but for the example purposes, it distinctively demonstrates how sophisticated is the saga administration provided by all remaining platforms.
 
@@ -934,7 +934,9 @@ The first complexity problem is that the project contains a great number of the 
 
 The full saga administration is handled by the project from the very beginning. That covers the support of starting, stopping and following the saga execution as well as saga compensations. The restrictions placed by the CQRS pattern furthermore put additional requirements on the saga processing which may not be demanded by other frameworks. Before the Eventuate Tram framework, the Eventuate platform did not provide any saga support.
 
-This quickstart uses the REST architectural style for the remote communication between services. Even if all of microservices are connected to the same MySQL database, they cannot directly propagate commands between each other. This is due to the way Eventuate dispatches commands through the aggregate repository. The aggregate repository represents the database table that is restricted to one aggregate and consequently, it needs to be injected by the platform. For this reason, it needs to declare the target aggregate class and the command type. The sharing of the aggregate class may be very restrictive, especially for microservices applications.
+\newlinepar{Command bus distribution restrictions}
+
+This quickstart uses the REST architectural style for the remote distribution of commands between services. Even if all of microservices are connected to the same MySQL database, they cannot directly propagate commands between each other. This is due to the way Eventuate dispatches commands through the aggregate repository. The aggregate repository represents the database table that is restricted to one aggregate and it needs to be injected by the platform. For this reason, it must declare the target aggregate class and the command type. The sharing of the aggregate class may be very restrictive, especially for microservices applications.
 
 \newlinepar{Aggregate instantiation}
 
@@ -1423,6 +1425,8 @@ To finalize, although the CQRS pattern has its benefits (ease of complexity and 
     \end{center}
     \caption{LRA service saga example success}
 \end{figure}
+
+\newlinepar{Invoice failure scenario}
 
 
 \clearpage
