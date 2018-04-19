@@ -534,6 +534,7 @@ The problems mentioned above have been elaborated in the work of James Gosling w
 Unfortunately, the original work of authors is no longer available, but Arnon Rotem-Gal-Oz provides in his publication \cite{fallacies} a very detailed descriptions of each individual assumption.
 
 \subsection{Eventual consistency}
+\label{sec:eventual-consistency}
 
 The eventual consistency is a model where after an update the system guarantees that if no new updates are made to the object, eventually all accesses (data reads) will return the last updated value \cite{event_consist}. It is a form of weak consistency -- the system do not provide any consistency guarantees for a limited time called inconsistency window. The advantage of this model is that the maximal size of the inconsistency window can be computed from system statistics if no failure occurs.
 
@@ -546,6 +547,7 @@ If the system allows microservices to make decisions based on inconsistent infor
 The propagation delay problems are also present in the monolithic systems, but as it was mentioned in the previous chapter, the remote calls are typically remarkably less performant than in process communication. However, in practice applications do not really depend on the strong consistency guarantees to the expected extent (as we will see in the later chapters, the saga pattern is based on the eventual consistency). 
 
 \subsection{CAP theorem}
+\label{sec:cap-theorem}
 
 In 2000, Eric Brewer introduced the idea that there is a fundamental trade-off between consistency, availability and partition tolerance \cite{persp_cap} in the distributed system. This proposal is known as \textit{the CAP theroem} and it states that distributed systems can provide at most two of these three properties.
 
@@ -590,7 +592,7 @@ Previous sections discussed the complexities of microservices architecture from 
 
 A saga, as described in the original publication \cite{sagas_publ} from 1987, is a long lived transaction that can be written as a sequence of transactions that can be interleaved with other transactions. Each operation that is a part of the saga represents an unit of work that can be undone by the compensation action. The saga guarantees that either all operations complete successfully, or the corresponding compensation actions are run for all executed operations to cancel the partial processing (\ref{fig:tripExample}).
 
-\begin{figure}
+\begin{figure}[h]
     \begin{center}
         \includegraphics[height=60mm]{images/tripExample.png}
     \end{center}
@@ -618,11 +620,21 @@ The compensating actions for the individual activities are expected to be idempo
 
 It is important to keep in mind that even the compensating transactions may fail. There are several options of how the saga management system can handle such situations. The first option is to retry the compensating transaction again, but as the reason of the failure may still be valid, the system can get caught in an infinite retry loop. Another option is to provide a recovery block -- a separated block of code which would get executed in place of the primary compensation in case of failure. The last option, which is not elegant but it is practical, is the manual intervention. This is possible to implement due to the saga nature -- it does not hold any locks on resources it is being performed on. When the compensation handler is manually repaired, the saga can continue its execution where it has left off.
 
-\section{Transactional properties}
+\section{BASE transaction}
 
-In contrast to the traditional transaction approach, the Saga pattern relaxes some of the ACID properties to achieve availability and scalability with build-in failure management. As the saga commits each activity separately, this means that the updates of uncommitted long-lived transaction are immediately visible to other parallel activities \cite{trans_concept} which breaks the isolation property.
+In contrast to the traditional transaction approach, the Saga pattern relaxes the ACID requirements to achieve availability and scalability with build-in failure management. As the saga commits each activity separately, this means that the updates of uncommitted long-lived transaction are immediately visible to other parallel activities \cite{trans_concept} which directly breaks the isolation property.
 
-In practice, applications are not always fully restricted to all of the transaction guarantees, so the saga pattern is emerging as a real alternative to traditional ACID transactions\footnote{sagas utilize also the BASE model (basic availability, soft state and eventual consistency) which values the availability over the consistency of ACID}.
+Sagas utilize an alternative BASE model \cite{life-beyond-dist-tran-helland, building-on-quicksand} which values the availability over the consistency provided by ACID (CAP theorem - \ref{sec:cap-theorem}). The specified system properties are:
+
+\begin{itemize}
+    \item \textbf{Basically Available} -- The system guarantees availability with regards to the CAP theorem.
+    
+    \item \textbf{Soft state} -- The state may change as time progresses even without any immediate modification request due to the eventual consistency.
+    
+    \item \textbf{Eventual consistency} -- The state of the system is allowed to be in inconsistent states, but if the system does not receive any new update requests, then it guarantees that the state will eventually get into the consistent state (\ref{sec:eventual-consistency}).
+\end{itemize}
+
+In practice, many modern applications are not always fully restricted to all of the ACID transaction guarantees, so the saga pattern with the BASE model is emerging as a real alternative to traditional transactional approach.
 
 \section{Saga execution component and transaction log}
 
