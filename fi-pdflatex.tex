@@ -1413,7 +1413,7 @@ To finalize, although the CQRS pattern has its benefits (ease of complexity and 
 \chapter{The saga scenarios}
 \label{sec:appendix-scenarios}
 
-\section{Success scenario}
+\section{CQRS}
 
 \begin{figure}[h]
     \begin{center}
@@ -1426,25 +1426,37 @@ To finalize, although the CQRS pattern has its benefits (ease of complexity and 
 
 \begin{figure}[h]
     \begin{center}
-        \includegraphics[height=60mm]{images/sequence/validSagaTram.png}
+        \includegraphics[height=60mm]{images/sequence/invoiceFailSagaCQRS.png}
+    \end{center}
+    \caption{CQRS saga example invoice failure}
+\end{figure}
+
+\section{Eventuate sagas}
+
+\begin{figure}[h]
+    \begin{center}
+        \includegraphics[height=50mm]{images/sequence/validSagaTram.png}
     \end{center}
     \caption{Eventuate Tram saga example success}
 \end{figure}
+
+\hfill \break
+
+\begin{figure}[h]
+    \begin{center}
+        \includegraphics[height=60mm]{images/sequence/invoiceFailSagaTram.png}
+    \end{center}
+    \caption{Eventuate Tram saga example invoice failure}
+\end{figure}
+
+\clearpage
+\section{LRA service}
 
 \begin{figure}[h]
     \begin{center}
         \includegraphics[height=60mm]{images/sequence/validSagaLRA.png}
     \end{center}
     \caption{LRA service saga example success}
-\end{figure}
-
-\section{Invoice failure scenario}
-
-\begin{figure}[h]
-    \begin{center}
-        \includegraphics[height=52mm]{images/sequence/invoiceFailSagaCQRS.png}
-    \end{center}
-    \caption{CQRS saga example invoice failure}
 \end{figure}
 
 
