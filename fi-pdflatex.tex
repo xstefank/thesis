@@ -395,7 +395,7 @@ This section presented in detail three consensus protocols that can be employed 
     \label{tab:consensus-protocols-comparison}
 \end{table}
 
-The consensus is a very sophisticated and complex problem particularly in distributed environments. As it will be presented in the following chapters, the saga pattern \cite{sagas_publ} provides a simple and elegant alternative to the distributed consensus for the long lived transaction commit.
+The consensus is a very sophisticated and complex problem. A one of its applications is the distributed transaction commit which denotes a consensus whether to commit or abort a transaction. The mostly applied protocol for this purpose in the current applications is the Two phase commit protocol (there are also experiments with other mentioned protocols \cite{paxosTransCommit}). However, the application of consensus protocols, particularly in the distributed environments, may present problems mainly because of their locking nature. As it will be presented in the following chapters, the saga pattern \cite{sagas_publ} provides an elegant alternative to the distributed consensus for the long lived transaction commit.
 
 
 
@@ -1401,7 +1401,7 @@ To finalize, although the CQRS pattern has its benefits (ease of complexity and 
 \chapter{The saga scenarios}
 \label{sec:appendix-scenarios}
 
-\newlinepar{Success scenario}
+\section{Success scenario}
 
 \begin{figure}[h]
     \begin{center}
@@ -1426,7 +1426,14 @@ To finalize, although the CQRS pattern has its benefits (ease of complexity and 
     \caption{LRA service saga example success}
 \end{figure}
 
-\newlinepar{Invoice failure scenario}
+\section{Invoice failure scenario}
+
+\begin{figure}[h]
+    \begin{center}
+        \includegraphics[height=52mm]{images/sequence/invoiceFailSagaCQRS.png}
+    \end{center}
+    \caption{CQRS saga example invoice failure}
+\end{figure}
 
 
 \clearpage
