@@ -1367,6 +1367,10 @@ All of these projects are available as open source contributions.
 
 \section{Future tasks}
 
+The \textit{LRA executor extension} provides a solid base prototype implementation of the LRA synchronous and asynchronous processing based on the user specified definition. Even if it can be applied as the extension on top of the current Narayana LRA implementation, it may be beneficial to adjust the code base to include it directly in the future. 
+
+As the Narayana LRA specification is still in the pre-released state, the inclusion of this project would require a proper specification, implementation and API finalization, and more comprehensive testing support. Additionally, due to design of the executor, there are many possibilities of how it can be extended including a support of new LRA definition formats, processing strategies and most importantly by the promotion of new communication protocols facilitating the Narayana LRA execution in microservices environments.
+
 \makeatletter\thesis@blocks@clear\makeatother
 \phantomsection %% Print the index and insert it into the
 \addcontentsline{toc}{chapter}{Bibliography} %% table of contents.
