@@ -1329,13 +1329,17 @@ Another issue that may present an improvement point is that currently the defaul
 \clearpage
 \chapter{Conclusion}
 
-The goal of this thesis was to investigate the use of transaction processing in the reactive microservices environment. The initial study covered the examination of the basic transactions concepts and the description of the well known consensus protocols that can be currently utilized for the distributed transaction commit problem in the modern distributed environments. 
+This thesis had two main objectives -- to investigate the use of transaction processing in the reactive microservices environment and to propose an asynchronous saga execution solution for the Narayana transaction manager.
 
-The Saga pattern \cite{sagas_publ} methodology has been introduced as an alternative approach to the traditional transactional processing. It presented that by the relaxation of the ACID requirements the distributed system can provide availability instead of consistency guarantees which is commonly desirable in reactive architectures. Because of its non-locking nature, it was selected as the main research subject for the employment of the transaction management in reactive microservices applications.
+\section{Saga pattern research}
 
-The current development support of the saga pattern for the production  environment was explored through the implementation of a simple order processing microservices application in four Java frameworks -- Axon, Eventuate ES, Eventuate Tram and Narayana LRA. Every example provides a straightforward quickstart introduction to the saga processing in each respective framework and almost all them has already been recognized in the community for their contribution.
+The initial study covered the examination of the basic transactions concepts and the description of the well known consensus protocols that can be currently utilized for the distributed transaction commit problem in the modern architectures. Furthermore, it provided a detailed description of the microservices architectural style and the application of the reactive ideology in this environment.
 
-The created applications were also compared from a performance perspective through a created test that examined saga processing under large applied load. These performance experiments resulted into several interesting discoveries of possible improvement points in individual frameworks saga executions. In total there were two issues reported to the Axon framework, one problem to the Eventuate ES and one feature request created in the Eventuate Tram framework.
+The Saga pattern \cite{sagas_publ} methodology has been introduced as an alternative approach to the traditional transactional processing. It presented that by the relaxation of the ACID requirements, the distributed system can provide availability instead of consistency guarantees which is commonly desirable in reactive architectures. Because of its non-locking nature and the simplicity of its programming model, it was selected as the main research subject for the employment of the transaction management in reactive microservices applications.
+
+The current development support of the saga pattern for the production  environment was explored through the implementation of a simple order processing microservices application that utilized the saga processing in four Java frameworks -- Axon, Eventuate ES, Eventuate Tram and Narayana LRA. Every example provides a straightforward quickstart introduction to the saga configuration, definition and execution in each respective framework. Almost all of the examples have already been recognized in the community for their contribution.
+
+These quickstart applications were also compared from a performance perspective through a created test that examined saga processing under large applied load. These performance experiments resulted into several interesting discoveries of possible improvement points in the saga processing of individual frameworks. In total, there were two issues reported to the Axon framework, one problem to the Eventuate ES and one feature request created in the Eventuate Tram framework.
 
 
 
