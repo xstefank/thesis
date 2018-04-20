@@ -745,6 +745,26 @@ The participant is defined by annotations present on the JAX-RS resource class. 
 
 The participant is also required to expose at least two additional endpoints that handle the end phases of the execution. The specification where these endpoints are present needs to be propagated to the coordinator. If not specified, by default the coordinator expects them on the request endpoint with respective suffixes (\texttt{/complete} or \texttt{/compensate}). The participant is also allowed to specify these methods with annotations (\texttt{@Complete} or \texttt{@Compensate}) that define the handler outside of the JAX-RS context for the possible future implementations. The complete and compensate are required but not the only possible endpoints that the participant can expose. Other potential values are status, forget and leave where each has its respective handling inclinations to the LRA participant processing \cite{narayana_lra}.
 
+\subsection{Summary}
+
+The previous section described four frameworks that provide saga implementation support. This section provides a simple summary of the discussed properties influencing the saga definition and execution of each respective framework applicable in microservices applications. The overview is detailed in the table \ref{tab:saga-implementations-comparison}.
+
+\begin{table}[ht]
+    \begin{tabularx}{\textwidth}{lXXX}
+        \toprule
+        Framework & CQRS restrictions & Asynchronous by default & Saga execution tracking\\
+        \midrule
+        Axon & Yes & Yes & No \\
+        Eventuate ES & Yes & Yes & No \\
+        Eventuate Tram & Optional & No & Yes\\
+        Narayana LRA & No & No & No \\
+        \bottomrule
+    \end{tabularx}
+    \caption{Saga implementations comparison}
+    \label{tab:saga-implementations-comparison}
+\end{table}
+
+
 
 \clearpage
 \chapter{Saga implementations comparison example}
