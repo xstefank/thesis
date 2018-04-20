@@ -104,27 +104,7 @@ The research investigation is focused on the saga pattern \cite{sagas_publ} appl
 
 As a part of the saga implementations research, we created an example quickstart project that simulates a simple order processing application for each investigated framework. Additionally, a performance test has been created to investigate how these frameworks perform under large load. This test discovered several issues present in investigated saga solutions that have been reported to respective platforms.
 
-The proposed proof of concept asynchronous LRA processing is called the \textit{LRA executor extension}. This project is build on top of the current Narayana LRA coordination management to allow the asynchronous LRA execution based on the user definition. Together with this extension, a simple quickstart project \textit{LRA executor quickstart} has been created to demonstrate its asynchronous capabilities.
-
-The list of projects conducted within this thesis:
-
-\begin{itemize}
-    \item \textit{Axon service} -- 2 reported issues
-    
-    \item \textit{Eventuate service} -- 1 reported issue
-    
-    \item \textit{Eventuate Tram}
-    
-    \item \textit{LRA service}
-    
-    \item \textit{Saga example performance test}
-    
-    \item \textit{LRA executor extension}
-    
-    \item \textit{LRA executor quickstart}
-    
-    \item \textit{Narayana LRA integration}
-\end{itemize}
+The proposed proof of concept implementation of the asynchronous LRA processing is called the \textit{LRA executor extension}. This project is build on top of the current Narayana LRA coordination management to allow the asynchronous LRA execution based on the user definition. Together with this extension, a simple quickstart project \textit{LRA executor quickstart} has been created to demonstrate asynchronous capabilities of this solution.
 
 \section{Structure}
 
@@ -1355,7 +1335,35 @@ The LRA executor represents a consistent method of the LRA processing according 
 
 Both modules abstract the communication methods the executor employs to contact LRA participants in the form of actions which specify how the individual invocations are performed. The current proof of concept was based on the REST protocol.
 
-\section{Contribution}
+\section{Contributions}
+
+This thesis provides a general overview of the approaches that are available for the transaction processing in the microservices environment. With regards to the reactive architectures, it in detail describes the saga pattern as a suitable solution for the asynchronous transaction execution in distributed applications.
+
+The first important contribution is the research of the saga solutions available for the production application. The created quickstart examples function as a stable starting point for the saga definition, configuration and execution demonstration in each respective framework. This thesis additionally also contributes by the detailed comparison and the summary of advantages and disadvantages regarding saga processing in implemented examples. The produced performance test revealed several problems that has been properly reported.
+
+The main contribution is concluded in the implementation of \textit{LRA executor extension}. This project provides a proof of concept prototype that illustrates the LRA execution capabilities that are build on top of the Narayana LRA implementation. The project is promoted also by a simple \textit{LRA executor quickstart} application that presents the asynchronous LRA processing.
+
+The full list of projects conducted within this thesis:
+
+\begin{itemize}
+    \item \textit{Axon service} -- 2 reported issues
+    
+    \item \textit{Eventuate service} -- 1 reported issue
+    
+    \item \textit{Eventuate Tram}
+    
+    \item \textit{LRA service}
+    
+    \item \textit{Saga example performance test}
+    
+    \item \textit{LRA executor extension}
+    
+    \item \textit{LRA executor quickstart}
+    
+    \item \textit{Narayana LRA integration}
+\end{itemize}
+
+All of these projects are available as open source contributions.
 
 \section{Future tasks}
 
