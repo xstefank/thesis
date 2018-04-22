@@ -1,0 +1,28 @@
+\select@language {english}
+\addvspace {4\p@ }
+\addvspace {4\p@ }
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Dirty writes}}{8}{figure.2.1}
+\addvspace {4\p@ }
+\addvspace {4\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Example saga execution}}{38}{figure.4.1}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Distributed saga example \cite {applying_saga_pattern}}}{45}{figure.4.2}
+\addvspace {4\p@ }
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Product Information example JSON}}{53}{figure.5.1}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces The saga model}}{54}{figure.5.2}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces LRA definition example JSON}}{72}{figure.5.3}
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Action example JSON}}{72}{figure.5.4}
+\addvspace {4\p@ }
+\addvspace {4\p@ }
+\addvspace {4\p@ }
+\addvspace {4\p@ }
+\addvspace {4\p@ }
+\contentsline {figure}{\numberline {C.1}{\ignorespaces CQRS saga example success}}{103}{figure.C.1}
+\contentsline {figure}{\numberline {C.2}{\ignorespaces CQRS saga example invoice failure}}{103}{figure.C.2}
+\contentsline {figure}{\numberline {C.3}{\ignorespaces Eventuate Tram saga example success}}{104}{figure.C.3}
+\contentsline {figure}{\numberline {C.4}{\ignorespaces Eventuate Tram saga example invoice failure}}{104}{figure.C.4}
+\contentsline {figure}{\numberline {C.5}{\ignorespaces LRA service saga example success}}{105}{figure.C.5}
+\contentsline {figure}{\numberline {C.6}{\ignorespaces LRA service saga example invoice failure}}{105}{figure.C.6}
+\addvspace {4\p@ }
+\addvspace {4\p@ }
+\contentsline {figure}{\numberline {E.1}{\ignorespaces LRA definitions class diagram}}{109}{figure.E.1}
+\contentsline {figure}{\numberline {E.2}{\ignorespaces LRA executor class diagram}}{110}{figure.E.2}

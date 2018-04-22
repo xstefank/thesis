@@ -185,15 +185,15 @@ nested : List&lt;LRADefinition&gt;, parentLRA : String, clientId : String, timel
             </y:ModelParameter>
           </y:NodeLabel>
           <y:UML clipContent="false" constraint="" omitDetails="false" stereotype="" use3DEffect="true">
-            <y:AttributeLabel>-name : String
--actions : List&lt;V&gt;
--data : Object
--nested : List&lt;LRADefinition&gt;
--parentLRA : String
--clientId : String
--timelimit : long</y:AttributeLabel>
+            <y:AttributeLabel>#name : String
+#actions : List&lt;V&gt;
+#-data : Object
+#nested : List&lt;LRADefinition&gt;
+#parentLRA : String
+#clientId : String
+#timelimit : long</y:AttributeLabel>
             <y:MethodLabel>&lt;html&gt;
--LRABuilder()&lt;br/&gt;
+#LRABuilder()&lt;br/&gt;
 &lt;u&gt;+lra() : LRABuilder&lt;/u&gt;&lt;br/&gt;
 +name(name : String) : T&lt;br/&gt;
 +withAction(action : V) : T&lt;br/&gt;
