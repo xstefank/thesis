@@ -392,7 +392,7 @@ nested : List&lt;LRADefinition&gt;, parentLRA : String, clientId : String, timel
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="10.910612187497918" sy="-71.875" tx="0.0" ty="0.0"/>
-          <y:LineStyle color="#000000" type="dashed" width="1.0"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="none" target="plain"/>
           <y:BendStyle smoothed="false"/>
         </y:PolyLineEdge>
@@ -407,7 +407,7 @@ nested : List&lt;LRADefinition&gt;, parentLRA : String, clientId : String, timel
             <y:Point x="332.5778" y="1014.1648208333297"/>
             <y:Point x="332.5778" y="363.5"/>
           </y:Path>
-          <y:LineStyle color="#000000" type="dashed" width="1.0"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="none" target="plain"/>
           <y:BendStyle smoothed="false"/>
         </y:PolyLineEdge>
@@ -423,7 +423,7 @@ nested : List&lt;LRADefinition&gt;, parentLRA : String, clientId : String, timel
             <y:Point x="312.5778" y="258.0"/>
             <y:Point x="1112.75" y="258.0"/>
           </y:Path>
-          <y:LineStyle color="#000000" type="dashed" width="1.0"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="none" target="plain"/>
           <y:BendStyle smoothed="false"/>
         </y:PolyLineEdge>
@@ -435,7 +435,7 @@ nested : List&lt;LRADefinition&gt;, parentLRA : String, clientId : String, timel
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="9.348112187497804" ty="100.95227333333241"/>
-          <y:LineStyle color="#000000" type="dashed" width="1.0"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="none" target="plain"/>
           <y:BendStyle smoothed="false"/>
         </y:PolyLineEdge>
@@ -451,7 +451,7 @@ nested : List&lt;LRADefinition&gt;, parentLRA : String, clientId : String, timel
             <y:Point x="1364.3784" y="238.0"/>
             <y:Point x="606.5" y="238.0"/>
           </y:Path>
-          <y:LineStyle color="#000000" type="dashed" width="1.0"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="none" target="plain"/>
           <y:BendStyle smoothed="false"/>
         </y:PolyLineEdge>
@@ -466,7 +466,7 @@ nested : List&lt;LRADefinition&gt;, parentLRA : String, clientId : String, timel
             <y:Point x="1344.3784" y="1191.9197733333324"/>
             <y:Point x="1344.3784" y="363.5"/>
           </y:Path>
-          <y:LineStyle color="#000000" type="dashed" width="1.0"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="none" target="plain"/>
           <y:BendStyle smoothed="false"/>
         </y:PolyLineEdge>
