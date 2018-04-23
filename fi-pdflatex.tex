@@ -47,7 +47,7 @@
 }
 \thesislong{abstract}{The transaction processing is an inherent part of the application development. However, particularly in the distributed environments, the employment of transactions introduces several challenges that the transaction management must be able to handle. Microservices represent an emerging architectural style for the modern distributed application design. These applications commonly address similar concerns to stay responsive, elastic and resilient which is why the employment of the traditional locking transaction commit protocols may not be acceptable. The saga pattern presents a suitable alternative solution to the transaction processing that relaxes some of ACID properties in order to promote availability. In this work, we examine how sagas differ from conventional transactions, investigate currently available saga solutions and propose a saga execution implementation for the Naryana transaction manager.
 }
-\thesislong{thanks}{I would like to express my sincere thanks to my supervisor Bruno Rossi, PhD for his help and support in my work on this thesis. I would also like to thank Mgr. Ondrej Chaloupka from the Narayana team for his supervision, neverending passion and interest in this topic that was inspiring to complete many of the achieved results. Last but foremost, I would like to direct thanks to my family and my beloved Magdalena who comprehensively supported me throughout the formation of this work.
+\thesislong{thanks}{I would like to express my sincere thanks to my supervisor Bruno Rossi, PhD for his help and support in my work on this thesis. I would also like to thank Mgr. Ondrej Chaloupka from the Narayana team for his supervision, neverending passion and interest in this topic that was inspiring to complete many of the achieved results. Last but foremost, I would like to direct my thanks to my family and my beloved Magdalena who comprehensively supported me throughout the formation of this work.
 }
 %% The following section sets up the bibliography.
 \usepackage{booktabs}
@@ -120,11 +120,13 @@ This chapter introduces the basic notions of transactions, their properties and 
 
 \section{Transaction}
 
-A transaction is an unit of processing that provides all-or-nothing property to the work that is conducted within its scope, also ensuring that shared resources are protected from multiple users \cite{java_tran_processing}. It represents an unified and inseparable sequence of operations that are either all provided or none of them take effect. 
+A transaction is an unit of processing that provides all-or-nothing property to the work that is conducted within its scope, also ensuring that shared resources are protected from multiple users \cite{java_tran_processing}. It represents an unified and inseparable sequence of operations that are either all performed or none of them take effect. 
 
 The transaction can end in two forms: it can be either \textit{commited} or \textit{aborted}. The commit determines a successful outcome - all operations within the transaction have been executed. The abort means that all performed operations have been undone and the system is in the same state as if the transaction have not been started.
 
-Generally, the achievement of the above mentioned features may differ depending on the scope and utilization of the transaction concepts in the application.
+From the developer point of view, it is commonly only required to start and end the transaction. All complex processing necessary for the achievement of the transaction's properties is commonly hidden by the transaction system \cite{java_tran_processing} which allows developers to focus on the business processing contained in the transaction.
+
+Generally, the achievement of the above mentioned features may differ depending on the scope and the utilization of the transaction concepts in the application.
 
 \section{ACID properties}
 
@@ -136,35 +138,35 @@ The transaction consists of a sequence of operations performed on different reso
 
 As the word atomicity is an overloaded term in many computational science branches, some authors prefer to reference it in the ACID context as the abortability property. The abortability is defined as  the ability to abort a transaction on error and have all writes from that transaction discarded \cite{design_data_intens_apps}. This implies that when the transaction commits successfully, all of its operations are also required to execute a valid commit. Conversely, when the transaction fails and needs to be aborted, all realized operations and effects must be undone.
 
-Particularly in the distributed environment, the atomicity property is commonly achieved by the usage of consensus multi-phase protocols. The standardized protocol is the two phase commit protocol (2PC) which is used by the majority of modern transaction systems. The consensus protocols are discussed in detail in the section \ref{sec:consensus-protocols}.
-
 \subsection{Consistency}
 
-The word consistency refers to restrictions placed on data changes that may happen only in allowed ways. When the data is persisted, it must be valid according to all defined rules which meet the application invariants. The consistency property describes that the transaction maintains the consistency of the system and resources that it is being performed on. When the transaction is started on the consistent system, this system must remain consistent when the transaction ends - it moves from one consistent state to another.
+The word consistency refers to restrictions placed on data changes that may happen only in allowed ways. When the data is persisted, it must be valid according to all defined rules which meet the application invariants. The consistency property describes that the transaction maintains the consistency of the system and resources that it is being performed on. When the transaction is started on the consistent system, this system must remain consistent when the transaction ends -- it moves from one consistent state to another.
 
 Unlike other transactional properties (A, I, D), consistency cannot be realized by the transaction system as it does not hold any semantic knowledge about the resources it manipulates \cite{java_tran_processing}. Therefore, the achievement of this property is the responsibility of the application code.
 
 \subsection{Isolation}
 
-The isolation property takes effect when multiple transactions can be executed concurrently on the same resources. It provides a guarantee that concurrent transactions can not interfere one with another. Therefore each concurrent execution on the shared resource must be equivalent to some serial ordering of contained transactions. This is why the isolation is often also referred to as a serializability.
+The isolation property takes effect when multiple transactions can be executed concurrently on the same resources. It provides a guarantee that concurrent transactions can not interfere one with another. Therefore, each concurrent execution on the shared resource must be equivalent to some serial ordering of contained transactions. This is why the isolation is often also referred to as a serializability.
 
-From the perspective of an external user the isolation property means that the transaction appears as it was executed entirely alone. This means that even if there are multiple transactions in the system executed concurrently, this fact is hidden from the every external view.
+From the perspective of an external view the isolation property means that the transaction appears as it was executed in the system entirely alone. This means that even if there are multiple transactions executed concurrently, this fact is hidden from the external perspective.
 
 As an instinctive extension of the consistency property, the serial execution of the transaction keeps the consistent state. The execution of the transactions in parallel therefore cannot result into inconsistent system.
 
 \newlinepar{Isolation levels}
 
-The ANSI SQL-92 \cite{sql-92} standard distinguishes several levels that describe to which extent the isolation guarantees are provided. Levels are differentiated by simplifications of the locking mechanism in exchange for the faster processing. These levels, in decreasing order, are serializable, repeatable read, snapshot isolation, read committed and read uncommitted isolation. The standard defines distinction between levels by the type of anomalies their are able to prevent. 
+The ANSI SQL-92 \cite{sql-92} standard distinguishes several levels that describe to which extent the isolation guarantees are provided. Levels are differentiated by simplifications of the locking mechanism in exchange for the faster processing. These levels, in decreasing order, are serializable, repeatable read, read committed and read uncommitted isolation. The standard defines distinction between levels by the type of anomalies their are able to prevent. 
 
-In practice, this approach is not always considered as sufficient due to its locking expectations \cite{ansi-sql-critique}. The alternative technique which is not based on locking mechanisms is called the Multi version concurrency control (MVCC). This section describes isolation levels based on the SQL-92 standard but the MVCC will be referenced where applicable.
+In practice, this approach is not always considered as sufficient due to its locking expectations \cite{ansi-sql-critique}. The alternative technique which is not based on locking mechanisms is called the Multi Version Concurrency Control (MVCC). This section describes isolation levels based on the SQL-92 standard but the MVCC is referenced where applicable.
 
 \newlinepar{Read uncommitted}
 
-This is the lowest level in which the transaction sets the lock only when it needs to modify the data item and releases it immediately after the modification is complete. This allows that one transaction may read the not yet committed changes of any other transaction which is phenomena referred to as the dirty read.
+This is the lowest level in which the transaction sets the lock only when it needs to modify the data item and releases it immediately after the transaction is completed (long write-locks). This allows that one transaction may read the not yet committed changes of any other transaction which is phenomena referred to as the dirty read.
 
-However, the read uncommitted isolation level already prevents the dirty write conflict which represents the transaction the overwrite of the value previously written by another transaction that did not commit. This problem can be easily described on an example depicted in the figure 2.1. In this execution, the resulting data state contains different values for variables (x = B and y = A). However, in any serial execution of transaction the result would be consistent. The read uncommitted level prevents this phenomena as it prohibits access to data items before the former write locks are released.
+However, the read uncommitted isolation level already prevents the dirty write conflict which represents the transaction that overwrites a value previously written by another transaction that has not yet been committed. This problem can be easily described on an example depicted in the figure 2.1. In this execution, the resulting data state contains different values for variables (x = B and y = A). However, in any serial execution of transaction the result would be consistent. The read uncommitted level prevents this phenomena as it prohibits write access to data items before the former write locks are released.
 
-\begin{figure}
+\hfill \break
+
+\begin{figure}[h]
     \begin{center}
         \includegraphics[height=55mm]{images/dirtyWrite.png}
     \end{center}
@@ -174,24 +176,24 @@ However, the read uncommitted isolation level already prevents the dirty write c
 
 \newlinepar{Read committed}
 
-Read committed level differs from the previous level in that it prohibits dirty reads. It allows to read the data item only when it has been committed. This directly implies that dirty reads are impossible to occur in this isolation level by the definition.
+Read committed level differs from the previous level in that it prohibits dirty reads. It allows to read the data item only when it has been committed. This directly implies that the dirty read phenomena is impossible to occur in this isolation level by the definition.
 
 
 \newlinepar{Repeatable read}
 
 This isolation level prevents the anomaly called the non-repeatable read which may still appear in read committed. The non-repeatable read is a problem of reading the data values in different points of time in which the whole consistent data state may not be ensured. This means that the transaction may read the data change in later point in time which may invalidate already read information from a previous processing.
 
-For example, imagine a bank system with two accounts -- both with starting balance 500 and a transfer of 100 from account 1 to 2 as a transaction. If another transaction reads the balance of the account 2 prior to start of transaction, it will get 500. However, the subsequent read from the account 1 after the transaction has committed would output 400 which would result into inconsistent information.
+For example, imagine a bank system with two accounts -- both with starting the balance 500 and a transfer of 100 from account 1 to 2 as a transaction. If another transaction reads the balance of the account 2 prior to start of transaction, it will get 500. However, the subsequent read from the account 1, after the first transaction has committed, would output 400 which would result into inconsistent information.
 
-The MVCC alternative to the repeatable read is the snapshot isolation. Both the repeatable read and the snapshot isolation prevent non-repeatable reads, but they differ in implementation \cite{isolation_levels}. Repeatable read is based on the locking mechanisms which may be complex to maintain. However, the snapshot isolation allows each transaction to read data from a snapshot of the (committed) data which is created at the time the transaction is started \cite{ansi-sql-critique}. The database is required to internally keep track of several states and provide each transaction with the snapshot that is appropriate for its time span.
+The MVCC alternative to the repeatable read is the snapshot isolation. Both the repeatable read and the snapshot isolation prevent non-repeatable reads, but they differ in implementation \cite{isolation_levels}. Repeatable read is based on the locking mechanisms which may be complex to maintain. However, the snapshot isolation allows each transaction to read data from a snapshot of the (committed) data which is created at the time the transaction is started \cite{ansi-sql-critique}. The database is required to internally keep track of several states and to provide each transaction with the snapshot that is appropriate for its time span.
 
 \newlinepar{Serializable}
 
-On top of the repeatable read, the serializable isolation prevents the system from one more race condition known as the write skew. The basic principle of a write skew is a transaction that reads data from the storage and then makes a decision based on this information. However, different transactions may write the result into different parts of the database which means they can not conflict. The problem is that by the time the transaction commits, the premise of the decision may no longer be true and the resulting state may break the integrity constraints of the database.
+On top of the repeatable read, the serializable isolation prevents the system from one more race condition known as the write skew. The basic principle of a write skew is a transaction that reads data from the storage and then makes a decision based on this information. The problem is that different transactions may write these decision results into different parts of the database and therefore they can not conflict. The problem is that by the time the transaction commits, the premise of the decision may no longer be true and the resulting state may break the integrity constraints of the database.
 
 \subsection{Durability}
 
-This property characterizes that all changes done by the transactions must be persistent, i. e. any state changes performed during the transaction must be preserved in case of any subsequent system failure. How the state is preserved usually depends on the particular implementation of the transaction system. Generally, to achieve this property the use of the persistent storage like a disk drive or a cloud is sufficient. Even if this kind of storage is acceptable, it still can not prevent data loss in the case of more critical catastrophic failures.
+This property characterizes that all changes done by the transactions must be persistent, i. e. any state changes performed during the successfully committed transaction must be preserved in case of any subsequent system failure. How the state is preserved usually depends on the particular implementation of the transaction system. Generally, to achieve this property the use of the persistent storage like a disk drive or a cloud is sufficient. Even if this kind of storage is acceptable, it still can not prevent data loss in the case of more critical catastrophic failures.
 
 
 \section{Transaction manager}
@@ -213,11 +215,11 @@ The management of transactions over multiple resources is supported by a global 
 
 \subsection{JTA and JTS}
 
-The definition and management of transactions with a guarantee of all ACID properties is in the Java environment represented by two Java EE specifications: the Java Transaction API (JTA) and the Java Transaction Service (JTS). 
+The definition and the management of transactions with a guarantee of all ACID properties is in the Java environment represented by two Java EE specifications: the Java Transaction API (JTA) and the Java Transaction Service (JTS). 
 
 The JTA is a specification which defines high-level interfaces between a transaction manager and the parties involved in a distributed transaction system: the application, the resource manager and the application server \cite{jta}. It also determines the Java mapping of the industry standard X/Open XA protocol which allows local resource managers to participate in the global transaction managed by an external transaction manager.
 
-The JTS represents a specification of the transaction manager implementation which supports the JTA specification at the high-level and implements the Java mapping of the Object Management group (OMG) Object Transaction Service (OTS) specification at the low-level \cite{jts}. It uses the Common Object Request Broker Architecture Object Transaction Service (CORBA OTS) interfaces for the interoperability and portability of the transaction context between different JTS transaction managers over the Internet InterORB Protocol (IIOP).
+The JTS represents a specification of the transaction manager implementation which supports the JTA specification at the high-level and implements the Java mapping of the Object Management group (OMG) Object Transaction Service (OTS) specification at the low-level \cite{jts}. It utilizes the Common Object Request Broker Architecture (CORBA) OTS interfaces for the interoperability and portability of the transaction context between different JTS transaction managers over the Internet InterORB Protocol (IIOP).
 
 \subsection{XA specification}
 
@@ -229,19 +231,19 @@ The resource manager implements the XA interface in order to provide a switch th
 
 \section{Transaction models}
 
-From the development point of view, there exist three distinct transaction models that may be used in the Java environment. The transaction model defines rules and semantics of how developers declare and work with transactions. These models are local, programmatic and declarative transactions. This chapter describes each model respectively and examines how it can be applied in Java applications.
+The transaction model defines rules and semantics of how developers declare and work with transactions. From the development point of view, there exist three distinct transaction models that may be applied in the Java environment -- local, programmatic and declarative transactions. This section describes each model respectively and examines how it can be employed in Java applications based on the Enterprise JavaBeans (EJB) technologies.
 
 \subsection{Local transaction model}
 
-The local transaction model derives its name from the fact that transactions are managed by a local resource manager described in the previous section. This approach represents the transaction as a connection to the individual resource. Common use-cases for this model include the Java database connectivity (JDBC) or the Java Message Service (JMS) connection providers.
+The local transaction model derives its name from the fact that transactions are managed by a local resource manager which was described in the previous section. This approach represents the transaction as a connection to the individual resource. Common use-cases for this model include the Java database connectivity (JDBC) or the Java Message Service (JMS) connection providers.
 
-The connection is usually by default configured to commit or rollback the local transaction after each operation, e. g. a database query or sending a message to a queue. The interaction with the local manager may differ depending on the underlying resource. For instance, the JMS \texttt{Session} interface provides both methods \texttt{commit()} and \texttt{rollback()} that process or destroy included message operations respectively.
+The connection is usually by default configured to commit the local transaction after each operation, e. g. a database query or sending a message to a queue. The interaction with the local manager may differ depending on the underlying resource. For instance, the JMS \texttt{Session} interface provides both methods \texttt{commit()} and \texttt{rollback()} that process or destroy message operations included in the transaction respectively.
 
 The major drawback of this model is that local transactions cannot be joined into the single ACID transaction that spans over multiple resources using the XA global transaction \cite{java_transaction_design_strategies} (e. g. we need to update a database and propagate this information to the JMS topic). Another important problem is the requirement of the manual transaction management in the application code base.
 
 \subsection{Programmatic transaction model}
 
-The programmatic transaction model (also referenced as the Bean-Managed transaction (BMT)) is introduced by the JTA transaction service implementation. In this model, the developer handles the complete management of the transaction in the source code.
+The programmatic transaction model (also referenced as the Bean-Managed transaction (BMT)) is introduced by the Java Transaction API (JTA) specification. In this model, the developer handles the complete management of transactions in the source code.
 
 Although the JTA specification provides a range of APIs, the only required interface for the utilization of the programmatic transactions is the \texttt{javax.transaction.UserTransaction} \cite{jta}. This interface represents an abstraction for the developer to programatically control transaction boundaries. The only concerned methods are \texttt{begin()}, \texttt{commit()}, \texttt{rollback()} and \texttt{getStatus()}. The call to the \texttt{begin()} will start a new transaction and associates it with the current thread. As the Java platform allows only one transaction to be associated with the thread, a call to the \texttt{begin()} method may result into exception in case the transaction has already been started in the current context. The transaction end methods (\texttt{commit()} and \texttt{rollback()}) perform their respective actions and disassociate the transaction with the thread. The \texttt{getStatus()} method returns an integer value representing the status of the current transaction derived from  \texttt{javax.transaction.Status} class \cite{jta}.
 
@@ -252,9 +254,7 @@ The most important problem introduced by the programmatic model is that the deve
 
 The declarative transaction model is also referred to as the Container-Managed Transactions (CMT). In this model, the supplying, underlying container manages all transactions on the users behalf. This includes starting and the administration of the end phases (either commit or rollback) of transactions. The developer is only required to setup the container with the transaction configuration that declares, for instance, that the transaction should be rollbacked on any exception.
 
-The main interface that is utilized in declarative transactions is the \texttt{javax.transaction.TransactionManager}. Although this interface provides  same methods that are present in the \texttt{UserTransaction} interface used in the programmatic model, users are strongly encouraged to use it only in CMT. In addition to the \texttt{UserTransaction}, it introduces two methods that manage the transaction suspensions. The \texttt{suspend()} method suspends and  disassociates the transaction with the current thread. It returns an object that represents the identification of the running transaction. This transaction object can be afterwards used as an argument to the \texttt{resume()} method to associate the transaction again with the current thread and continue the transaction execution. In practice, CMT transactions are generally defined by specific annotations and the direct use of \texttt{TransactionManager} interface is discouraged.
-
-Another essential method that is often associated with the container transactions is the \texttt{setRollbackOnly()}. It declares that the only possible transaction result is to rollback and any consequent actions can not change it.
+The \texttt{javax.transaction.TransactionManager} is the main interface utilized for the declarative transaction model. However, in practice CMT transactions are generally controlled by specific annotations and the direct use of \texttt{TransactionManager} interface is discouraged. This interface is targeted for the use in the application server which allows it to control transaction boundaries on behalf of the application being managed \cite{jta}.
 
 With the declarative transaction model, the users are required to configure the container with the settings of how individual transactions should be managed. This can be set up through the transaction attribute represented by, for instance, \texttt{TransactionAttributeType} (Enterprise Java Beans (EJB)), \texttt{Transactional.TxType} (Context and Dependency Injection (CDI)) or \texttt{TransactionDefinition} (Spring) classes. The supported values are -- Required, Mandatory, RequiresNew, Supports, NotSupported and Never\footnote{Spring adds one more transaction attribute called Nested which represents a single physical transaction with multiple savepoints that it can roll back to \cite{spring_transaction_management_documentation}}:
 
@@ -278,7 +278,9 @@ Transaction concepts, presented in the previous sections, can be certainly expan
 
 Each node is associated with a transaction manager (TM) that manages a local transaction and communicates with other TMs in order to perform a global transaction. Generally, there is one TM selected as a global coordinator that administers TMs participating in the distributed transaction. The coordinator can be allocated with the participating node or can act as a standalone service.
 
-The accomplishment of ACID properties with the frequent partitions failures is very difficult to achieve. In order to achieve the atomic outcome, all of the participating nodes needs to achieve a shared consensus on whether it is possible to execute a successful commit. Even if the DTP system is able to provide the distributed consensus, it often comes with a performance cost. This lead to the commonly hesitant utilization of the DTP concept in distributed applications in the past. 
+The accomplishment of ACID properties with the frequent partitions failures is very difficult to achieve. In order to achieve the atomic outcome, all of the participating nodes needs to achieve a shared consensus on whether it is possible to execute a successful commit. The standardized protocol which guarantees the ACID transaction outcome is the two phase commit protocol (2PC) which is used by the majority of modern transaction systems. The consensus protocols are discussed in detail in the following section.
+
+Even if the DTP system is able to provide the distributed consensus, it often comes with a performance cost. This lead to the commonly hesitant utilization of the DTP concept in distributed applications in the past. 
 
 However, recent network speeds and computational capacities are increasing. This allows consensus protocols (2PC, Paxos) and other DTP solutions (e.g. sagas) to be easily employed in modern, scalable distributed applications.
 
