@@ -306,7 +306,7 @@ In the transactions environment, the consensus represents the shared decision wh
 
 \subsection{2PC}
 
-The \textit{Two phase commit protocol} is one of the most known employed consensus protocols used not only in the transaction processing. The procedure consists of two phases:
+The \textit{Two-phase commit protocol} is one of the most known employed consensus protocols used not only in the transaction processing. The procedure consists of two phases:
 
 \begin{itemize}
     \item \textbf{The prepare phase} - All participants send their proposals to the coordinator (TM) in which each of them states either that it is able to proceed and commit its work segment or that the transaction needs to be aborted.
@@ -316,54 +316,55 @@ The \textit{Two phase commit protocol} is one of the most known employed consens
 
 The 2PC protocol is able to handle node failures to some extent through the use of transaction log. However, this do not cover every scenario and certain failures may require manual intervention.
 
-The algorithm expects one node to act as a coordinator. This does not necessarily need to be an elected participant. Any node can act as a coordinator and initiate 2PC prepare phase by asking other participants for their votes. Furthermore, there also exits a decentralized variant but with higher massage complexity.
+The algorithm expects one node to act as a coordinator. This does not necessarily need to be an elected participant. Any node can act as a coordinator and initiate 2PC prepare phase by asking other participants for their votes. Furthermore, there also exits a decentralized variant but with the higher massage complexity.
 
-The main disadvantage is that the 2PC is a blocking protocol as it can not proceed when the coordinator is unavailable. If the coordinator fails after the first phase is completed, all participants will block waiting for the coordinator's decision and can not progress (e. g. release locks) until it recovers.
+The main disadvantage of the 2PC is that it is a lock based protocol. After the first phase, participants are required to hold locks on prepared resources until they receive a decision from the coordinator. If the coordinator fails after the first phase is completed, all participants will block waiting for the coordinator's decision and can not progress (i. e. release locks) until it recovers.
 
 \subsection{3PC}
 
-The \textit{Three phase commit protocol} is a consensus protocol introduced in 1982 by Dale Skeen \cite{3PC}. It extends the 2PC protocol in a non-blocking way -- it allows participants to place upper time bounds on the phases completion which assures that resources are not  held indefinitely. The three phases are:
+The \textit{Three-phase commit protocol} is a consensus protocol introduced in 1982 by Dale Skeen \cite{3PC}. It extends the 2PC protocol in a non-blocking way -- it allows participants to place upper time bounds on the phases completion which assures that resources are not  held indefinitely. The three phases are:
 
 \begin{itemize}
     \item \textbf{The prepare phase} -- Same as in the 2PC protocol.
     
-    \item \textbf{The pre-commit phase} -- If all participants voted in the first phase to commit the transaction, the coordinator sends to every participant a \texttt{preCommit} massage. After the participant receives \texttt{preCommit}, it will proceed by preparing the commit by locking the required resources assuring that it is able to finish the commit. By this stage the participant can not execute any irreversible actions. If the preparation was successful, it responds to the coordinator with the acknowledgment message.
+    \item \textbf{The pre-commit phase} -- If all participants voted in the first phase to commit the transaction, the coordinator sends to every participant a \texttt{preCommit} massage. After the participant receives \texttt{preCommit}, it will proceed by preparing the commit by locking the required resources assuring that it is able to finish the commit. By this stage, the participant can not execute any irreversible actions. If the preparation was successful, it responds to the coordinator with the acknowledgment message.
     
     \item \textbf{The commit phase} -- After the coordinator receives preparation confirmation from all participants (the original paper \cite{3PC} allows also to specify a majority vote count), it will commence the commit phase by sending the \texttt{commit} or \texttt{abort} messages, same as in the 2PC protocol.
 \end{itemize}
 
-The termination is achieved by the timeout boundaries set on every message expedition. If the coordinator timeouts, it always assumes the rollback outcome -- after the first phase it cannot proceed as it did not receive votes from every participant and after the second phase if the coordinator fails, the state of the protocol would not be recoverable. However, the participant behaves in the same way after phase one (as it did not receive the outcome from the coordinator, it must assume abort) but if it timeouts after the second phase, it proceeds with the commit. This is allowed as the \texttt{preCommit} message is sent by the coordinator only if all participants wanted to commit the transaction in the phase one.
+The termination is achieved by the timeout boundaries set on every message expedition. If the coordinator timeouts, it always assumes the rollback outcome -- it cannot proceed after the first phase as it did not receive votes from every participant and if the coordinator fails after the second phase, the state of the protocol would not be recoverable. However, the participant rollbacks in the same way after phase one (as it did not receive the outcome from the coordinator, it must assume abort) but if it timeouts after the second phase, it proceeds with the commit. This is allowed as the \texttt{preCommit} message is sent by the coordinator only if all participants wanted to commit the transaction in the phase one.
 
 If the coordinator fails, the new coordinator is selected by any election algorithm. This recovery node can determine the outcome of the protocol based on the state of other nodes -- if any node received a \texttt{preCommit} message, the transaction can be committed (all other participants must have also received the \texttt{preCommit} message). If some node did not receive the \texttt{preCommit} message, the transaction can be aborted.
 
-By contrast to the 2PC protocol, the 3PC is resilient to more types of failures. Nevertheless, it cannot withstand the network partition. If the partition disassociate nodes that did receive the \texttt{preCommit} message from those which did not, the newly selected coordinators on each side of the partition will result into opposite outcomes and thereby an inconsistent system. The resilience capabilities are at the expense of the performance cost which approximately two times higher that in the 2PC protocol \cite{3PC}.
+By contrast to the 2PC protocol, the 3PC is resilient to more types of failures. Nevertheless, it cannot withstand the network partition. If the partition disassociate nodes that did receive the \texttt{preCommit} message from those which did not, the newly selected coordinators on each side of the partition will result into opposite outcomes and thereby an inconsistent system. These resilience capabilities are at the expense of the performance cost which approximately two times higher that in the 2PC protocol \cite{3PC}.
 
-In 1998, Keidar and Dolev introduced an \textit{Enhanced three phase commit} protocol (E3PC) which maintains the consistency in the face of site failures and network partitions \cite{E3PC}. It is using two additional counters that impose linear order on the majorities of the system node while still preserving the same computational complexity as 3PC. 
+In 1998, Keidar and Dolev introduced an \textit{Enhanced three-phase commit} protocol (E3PC) which maintains the consistency in the face of site failures and network partitions \cite{E3PC}. It is using two additional counters that impose linear order on the majorities of the system node while still preserving the same computational complexity as 3PC. 
 
 
 \subsection{Paxos}
 
 The Paxos represents a family of distributed algorithms designed to solve the consensus problem. It has been introduced by Leslie Lamport in 1998 \cite{Paxos}.
 
-The idea of the basic variant of the algorithm is reasonably simple. The Paxos distinguishes three types of system nodes: proposers, acceptors and learners. One node can be of more than one type, even act as all of them. Proposers act as client representatives proposing values that the client wants the system to agree on. Acceptors serves as the voting mechanism and all nodes must know the number of acceptors that form a majority. Learners serve as the representatives that can be queried for the decided value. The algorithm runs in two phases:
+The idea of the basic variant of the algorithm is reasonably simple. The Paxos distinguishes three types of system nodes: proposers, acceptors and learners. One node can be of more than one type, even act as all of them. Proposers act as client representatives proposing values that the client wants the system to agree on. Acceptors serves as the voting mechanism and all nodes are required to know the number of acceptors that form a majority. Learners serve as the representatives that can be queried for the decided value. The algorithm runs in two phases:
 
 \begin{itemize}
-    \item \textbf{The promise phase} -- The proposer first sends its proposed value with a new unique identification number generated from a sequence to all acceptors (or the majority). When the acceptor receives a proposed value, it first checks whether the received id number is higher than the last id it promised to ignore. In that case it will respond to the proposer with the \texttt{promise} message which denotes that it will ignore any newly received messages with lower ids. Otherwise, it already promised to the higher proposed id and therefore no action is taken.
+    \item \textbf{The promise phase} -- The proposer first sends its proposed value with a new unique identification number generated from a sequence to all acceptors (or the majority). When the acceptor receives a proposed value, it first checks whether the received id number is higher than the last id it promised to ignore. In that case, it will respond to the proposer with the \texttt{promise} message which denotes that it will ignore any newly received messages with lower ids. Otherwise, it already promised to the higher proposed id and therefore no action is taken.
     
-    \item \textbf{The commit phase} -- If the proposer collects promises from the majority of acceptors, it sends the \texttt{accept-request} message to all acceptors (or the majority) with the same id and the proposed value. When the acceptor receives the \texttt{accept-request} message and it did not already promised to ignore the received id, it sends the \texttt{accept} message to the proposer and all learners. If the id in the message is lower than the promised id, the message is ignored. As the \texttt{accept-request} message is send to the majority of acceptors and all of them accept the value, the consensus is reached.
+    \item \textbf{The commit phase} -- If the proposer collects promises from the majority of acceptors, it sends the \texttt{accept-request} message to all acceptors (or the majority) with the same id and the proposed value. When the acceptor receives the \texttt{accept-request} message and it did not already promise to ignore the received id, it sends the \texttt{accept} message to the proposer and all learners. If the id in the message is lower than the promised id, the message is ignored. As the \texttt{accept-request} message is send to the majority of acceptors and all of them accept the value, the consensus is reached.
 \end{itemize}
 
-If the acceptor accepts a value, it appends the accepted id and value to each subsequent \texttt{promise} message sent to new proposers. In this case, the proposer knows that there is some value already decided in the system and it continues the processing with the value received in the \texttt{promise} message containing the highest of all received ids. If it wants to update this value, it needs to initiate a new run of the algorithm after the current one has ended. 
+If the acceptor accepts a value, it appends the accepted id and value to each subsequent \texttt{promise} message that is sent to new proposers. In this case, the proposer knows that there is some value already being decided in the system and it continues the processing with the value received in the \texttt{promise} message containing the highest of all received ids. If it wants to update this value, it needs to initiate a new run of the algorithm after the current one has ended. 
 
 Many variants of the Paxos algorithm allows it to sufficiently handle various types of failures that may influence the achievement of the consensus. In particular, even the basic variant handles problems of the 3PC algorithm, namely, network partitions and the restriction to the fail-stop model. Instead, the Paxos protocol is resilient to the fail-recover model which allows individual nodes to recover and continue processing from the point of the failure -- which is expected in the modern distributed systems.
 
-The problem that the algorithm can not solve is two proposers that actively compete for the highest proposal number. This happens between phases as the participants \texttt{accept-request} is rejected due to the higher \texttt{promise} issued by the other proposer. The system is blocked until the conflict can be resolved. To mitigate this impact, systems can employ a form of the exponential back off mechanisms which allow one proposer to wait sufficiently long for the other one to finish. Another expectation of the algorithm is that acceptors are also required to have a persistent storage to avoid providing misleading information in case of the fail-recovery.
+The problem that the algorithm can not solve is two proposers that actively compete for the highest proposal number. This happens between phases as the proposer's \texttt{accept-request} message is rejected due to the higher proposal issued by the different proposer. The system is blocked until the conflict can be resolved. To mitigate this impact, systems can employ a form of the exponential back off mechanisms which allow one proposer to wait sufficiently long for the other one to finish. Another expectation of the algorithm is that acceptors are also required to have a persistent storage to avoid providing misleading information in case of the fail-recovery.
 
 \subsection{Conclusions}
 
 This section presented in detail three consensus protocols that can be employed to solve the transaction commit / abort consensus in the distributed systems. There also exists many other algorithms, for instance, the Raft or the Ark which can not be discussed due to the space limitations. The summary of the presented algorithms is available in the table \ref{tab:consensus-protocols-comparison} (this table represents scenarios without any failures).
 
-\begin{table}
+\hfill \break
+\begin{table}[h]
     \begin{tabularx}{\textwidth}{lllX}
         \toprule
         Protocol & Time (phases) & Message complexity & Client delay \\
@@ -377,14 +378,14 @@ This section presented in detail three consensus protocols that can be employed 
     \label{tab:consensus-protocols-comparison}
 \end{table}
 
-The consensus is a very sophisticated and complex problem. A one of its applications is the distributed transaction commit which denotes a consensus whether to commit or abort a transaction. The mostly applied protocol for this purpose in the current applications is the Two phase commit protocol (there are also experiments with other mentioned protocols \cite{paxosTransCommit}). However, the application of consensus protocols, particularly in the distributed environments, may present problems mainly because of their locking nature. As it will be presented in the following chapters, the saga pattern \cite{sagas_publ} provides an elegant alternative to the distributed consensus for the long lived transaction commit.
+The consensus is a very sophisticated and complex problem. A one of its applications is the distributed transaction commit which denotes a consensus whether to commit or abort a transaction. The mostly applied protocol for this purpose in the current development is the Two-phase commit protocol (there are also experiments with other mentioned protocols \cite{paxosTransCommit}). However, the application of consensus protocols, particularly in the distributed environments, may present problems mainly because of their locking nature. As it will be presented in the following chapters, the saga pattern \cite{sagas_publ} provides a sophisticated alternative to the distributed transaction commit processing for the long lived transactions.
 
 
 
 \clearpage
 \chapter{Microservices architecture pattern}
 
-This chapter introduces the concept of microservices and it focuses on why modern, elastic and resilient enterprise systems should be designed and implemented according to this pattern. It provides an updated microservices status overview from my previous work publication \cite{bachelor_thesis}.
+This chapter introduces the concept of microservices and it explains why modern, elastic and resilient enterprise systems should be designed and implemented according to this pattern. It provides an updated microservices status overview from my previous work publication \cite{bachelor_thesis}.
 
 \section{Architectural pattern}
 
