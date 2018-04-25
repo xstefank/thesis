@@ -543,7 +543,7 @@ Imagine a situation where the customer creates an order in a web interface. Afte
 
 Microservices are required to manage eventual consistency to avoid making decisions based on the inconsistent information. This kind of issues are often hard to find as they are often discovered only after the inconsistent window has been closed.
 
-The propagation delay problems are also present in the monolithic systems, but as it was mentioned in the previous chapter, the remote calls are typically remarkably less performant than in process communication. However, in practice applications do not really depend on the strong consistency guarantees to the expected extent -- for instance, the saga pattern (\ref{sec:base}) is based on the eventually consistent model. As it will be presented in the following section, modern distributed business applications are often willing to reasonably tolerate inconsistencies in the system in order to promote availability.
+The propagation delay problems are also present in the monolithic systems, but as it was mentioned in the previous chapter, the remote calls are typically remarkably less performant than in process communication. However, in practice applications do not really depend on the strong consistency guarantees to the expected extent -- for instance, the saga pattern (\ref{sec:base}) is based on the eventually consistent model. As it will be presented in the following section, it was proven that distributed systems can not achieve both strong consistency and high availability at same time, which is why modern distributed business applications are often willing to reasonably tolerate temporary data inconsistencies in order to promote availability.
 
 \subsection{CAP theorem}
 \label{sec:cap-theorem}
@@ -612,9 +612,9 @@ As the definition in the original paper by Garcia-Molina and Salem \cite{sagas_p
 
 \section{Compensations}
 
-Each operation in a saga needs to have an associated compensation action. The purpose of the compensating action is to semantically undo the work performed by the original operation. This is not necessarily the contradictory action that puts the system into the same state as it was present before the activity began or generally the saga started. 
+Each operation in a saga needs to have an associated compensation action. The purpose of the compensating action is to semantically undo the work performed by the original operation. This is not necessarily the contradictory action that puts the system into the same state as it was before the activity began or generally the saga started. 
 
-Imagine that the activity consists of the sending of an email. The saga compensation transaction cannot directly undo the email consignment. Instead it would send another email to the same destination which could explain why the previous action did fail. In this case, we can see that the system is in the state where it has two additional emails being send. However, the comprising system state is expected to be semantically consistent as both transaction and compensation have been defined by the participant. Therefore, the consistency guarantees must be ensured by individual participants at the activity level.
+Imagine that the operation consists of the sending of an email. The saga compensation transaction cannot directly undo the email consignment. Instead it would send another email to the same destination which could explain why the previous action did fail. In this case, we can see that the system is in the state where it has two additional emails being send. However, the comprising system state is expected to be semantically consistent as both transaction and compensation have been defined by the participant. Therefore, the consistency guarantees must be ensured by individual participants at the activity level.
 
 The compensating actions for the individual activities are expected to be idempotent. The main reason for this requirement is the saga failure and recovery management which in detail described in section \ref{sec:recovery-modes}.
 
