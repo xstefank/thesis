@@ -690,11 +690,11 @@ The saga execution coordinator (SEC) is spanned process across the participating
     \label{fig:SEC}
 \end{figure}
 
-As all of the above mentioned components are distributed, the saga management system needs to deal with a number of additional problems that are not present in the localized environment. The main problem is that the saga system is required to deal with network and participant failures that may happen between remote invocations. There are four main locations that where the network failure can influence the saga execution -- writes of the beginning and the end of the request to the transaction log and the request and response calls to the associated participant. This may introduce unnecessary saga aborts\footnote{if the SEC fails after it has written the \texttt{start-request} entry to the transaction log -- the recovery cannot determine whether the failure happened before the request, due to the network failure, or the participant response has been lost}, but generally approaches from the non-distributed environment still apply.
+As all of the above mentioned components are distributed, the saga management system needs to deal with a number of additional problems that are not present in the localized environment. The main problem is that the saga system is required to deal with network and participant failures that may happen between remote invocations. The four main locations where these failures can influence the saga execution are writes of the beginning and the end of the request to the transaction log and request and response calls to the associated participant. This may introduce unnecessary saga aborts\footnote{e.g. if the SEC fails after it has written the \texttt{start-request} entry to the transaction log -- the recovery cannot determine whether the failure happened before the request, due to the network failure, or the participant response has been lost}, but generally approaches from the non-distributed environment still apply.
 
 \section{Current development support}
 
-This section presents the current implementations of the saga pattern available for the enterprise use. The four explored frameworks are Axon \cite{axon_framework}, Eventuate Event Sourcing (ES) \cite{eventuate.io}, Eventuate Tram \cite{eventuate-tram} and Narayana Long Running Actions (LRA) \cite{narayana_lra}.
+This section presents the current implementations of the saga pattern available for the enterprise use in Java applications. The four explored frameworks are Axon \cite{axon_framework}, Eventuate Event Sourcing (ES) \cite{eventuate.io}, Eventuate Tram \cite{eventuate-tram} and Narayana Long Running Actions (LRA) \cite{narayana_lra}.
 
 \subsection{Axon framework}
 
@@ -712,65 +712,85 @@ As the most of the Axon functionality, the easiest way to define sagas in an app
 
 All interaction with the saga class happens only by triggering of events. Event handlers in saga instances are annotated with the annotation \texttt{@SagaEventHandler}. 
 
-To start a saga execution the framework needs to receive the event with the special event handler annotated with \texttt{@StartSaga}. By default, the new instance will be created only if the corresponding saga can not be found.
+To start a saga execution, the framework needs to receive the event with the special event handler annotated with \texttt{@StartSaga} annotation. By default, the new instance will be created only if the corresponding saga can not be found.
 
-Ending of the saga can be defined by two means -- by the event or by the API call. If the ending event is used, than the conforming event handler needs to be annotated with the \texttt{@EndSaga} annotation. Alternatively, the conditional end of the saga can be signaled by the call to the \texttt{SagaLifecycle.end()} from some method inside the saga class.
+The end of the saga can be defined by two means -- by the event or by the API call. If the ending event is used, than the conforming event handler needs to be annotated with the \texttt{@EndSaga} annotation. Alternatively, the conditional end of the saga can be signaled by the call to the \texttt{SagaLifecycle.end()} from any method inside the saga class.
 
 As many instances of the saga class may exist at the same time, there is a need to publish events only to the saga for which they are intended. This is done by a definition of association values. The association value is a simple key-value pair where the key is a property present in the event which forms a connection to the saga instance. The \texttt{@SagaEventHandler} annotation contains a custom attribute called the \texttt{associationProperty} which denotes the key property in the incoming event. Axon also allows the definition of additional association values by a call to the \texttt{SagaLifecycle.associateWith(key, value)} and the \texttt{SagaLifecycle.removeAssociationWith(key, value)} inside any method of the saga class.
 
-\subsection{Eventuate.io}
+\subsection{Eventuate ES}
 
 Eventuate is a platform for developing asynchronous microservices \cite{eventuate.io}. It focuses on the distributed data management allowing developers to focus on the business implementations. The platform consists of two products -- the Eventuate ES and the Evenetuate Tram. By the time of this writing, the Eventuate Tram was still in development and as it introduced the sophisticated saga processing to the platform, it is in detail described in the section \ref{sec:eventuate-tram}. This section presents the more general Eventuate ES product.
 
-The Eventuate ES provides application with the programming model based on the event sourcing. Event sourcing is a mechanism that tracks all changes to the data model as a sequence of events stored in the event log. Every model change is appended to the log and the sequence can be anytime replayed to restore the application state. The event log can also serve as an auditing solution and provide temporal queries to track application previous states. Another advantage is that the events can be replayed to the failed service after it reconnects.
+The Eventuate Event Sourcing (ES) provides application with the programming model based on the event sourcing -- a mechanism that tracks all changes to the data model as a sequence of events stored in the event log. Every model change is appended to the log and the sequence can be anytime replayed to restore the application state. The event log can also serve as an auditing solution and provide temporal queries to track application previous states. Another advantage is that the events can be replayed to the failed service after it reconnects.
 
 
-The ES project is also based on CQRS principles which allows natural employment of event sourcing capabilities for aggregate entities. It is provided in two versions -- as a service hosted on Amazon Web Services (AWS) or as open source local platform.
+The ES project is also based on CQRS principles which allows natural employment of event sourcing capabilities for aggregate entities. It is provided in two versions -- as a service hosted on Amazon Web Services (AWS) or as an open source local platform.
 
 \newlinepar{Saga definition}
 
-The saga processing of the Eventuate platform is handled by Eventuate Tram project and therefore the ES product do not support saga implementation directly. However, the example \textit{Eventuate service}, which is presented in the following chapter, is based exclusively on the Eventuate ES local platform providing the complete CQRS saga solution. It represents the user saga handling implementation not supported by the platform. 
+The saga processing of the Eventuate platform is handled by Eventuate Tram project and therefore the ES product do not support saga implementation directly. However, the example \textit{Eventuate service}, which is presented in the following chapter, is based exclusively on the Eventuate ES local platform providing the complete CQRS saga solution. It represents the manual user saga handling implementation not supported by the platform. 
 
 \subsection{Eventuate Tram}
 \label{sec:eventuate-tram}
 
-The Eventuate Tram framework enables a Java/Spring application to send asynchronous messages as a part of a database transaction \cite{eventuate-tram}. It utilizes the traditional Java Database Connectivity (JDBC) and Java Persistence API (JPA) based persistence model to provide the transactional messaging. This enables microservices application to atomically update its state and to publish this information as a message or an event to other services.
+The Eventuate Tram framework enables a Java/Spring application to send asynchronous messages as a part of a database transaction \cite{eventuate-tram}. It utilizes the traditional Java Database Connectivity (JDBC) and Java Persistence API (JPA) based persistence model to provide the transactional messaging. This enables microservices application to atomically update its state and to publish this information as a message or as an event to other services.
 
-The Eventuate ES platform builds the communication exchange on top of the event sourcing. Conversely, Tram provides three types of transactional messaging abstractions -- messaging, events and commands. The messages are sent trough dedicated named channels. The platform still supports the application development according to the CQRS pattern but it does not enforce it.
+The Eventuate ES platform builds the communication exchange on top of the event sourcing. The Tram additionally provides three types of transactional messaging abstractions -- messaging, events and commands. The messages are sent trough dedicated named channels. The platform still supports the application development according to the CQRS pattern but it does not enforce it.
 
-The Eventuate Tram Sagas is a framework that provides saga processing on top of the Eventuate Tram message passing. It introduced a very sophisticated saga model that allows to specify the saga definition as single point of reference. 
+The Eventuate Tram Sagas is a framework that provides saga processing on top of the Eventuate Tram message passing. It introduced a very sophisticated saga model that allows users to specify the saga definition as a single point of reference. 
 
 \newlinepar{Saga definition}
 
-The saga is defined by the saga orchestrator -- the service responsible for the saga handling. It is identified as an implementation of the \texttt{io.eventuate.tram.sagas.orchestration.Saga} interface. The respective saga definition is represented as an instance of the class \texttt{io.eventuate.tram.sagas.orchestration.SagaDefinition}. This instance must be returned by the \texttt{Saga.getSagaDefinition} method. It can be specified with a simple fluent API that allows to define operations that should be executed when the saga fails, when it needs to invoke a participant or how to process participants compensations. 
+The saga is defined by the saga orchestrator -- the service responsible for the saga handling. It is identified as an implementation of the \texttt{io.eventuate.tram.sagas.orchestration.Saga} interface. The respective saga definition is represented as an instance of the class \texttt{io.eventuate.tram.sagas.orchestration.SagaDefinition}. This instance must be returned by the \texttt{Saga.getSagaDefinition} method. It can be specified with a simple fluent API that provides methods to define operations that should be executed when the saga fails, when it needs to invoke a participant or how to process participants compensations. 
 
 The saga is defined as a sequence of steps specified by a simple Domain Specific Language (DSL) available in the \texttt{StepBuilder} class. Each step represents a local invocation, a remote participant invocation or the compensation definition. The last two return a participant builder which allows to additionally specify more actions that needs to be processed when the participant is invoked or the handler method which will be called when the participant responds.
 
 \subsection{Narayana LRA}
 
-Narayana Long Running Actions is a specification developed by the Narayana team in the collaboration with the Eclipse MicroProfile initiative \cite{saga-impl-comp}. It proposes a new API for the coordination of long running activities with the assurance of the globally consistent outcome and without any locking mechanisms.
+Narayana Long Running Actions (LRA) is a specification developed by the Narayana team in the collaboration with the Eclipse MicroProfile initiative \cite{saga-impl-comp}. It proposes a new API for the coordination of long running activities with the assurance of the globally consistent outcome and without any locking mechanisms.
 
-The current reference implementation (RI) of the LRA specification is based on the Context and Dependency Injection (CDI) and Java API for RESTful Web services (JAX-RS) Java EE specifications. The communication is handled over HyperText Transfer Protocol (HTTP) by the Representational State Transfer (REST) protocol.
+The current reference implementation of the LRA specification is based on the Context and Dependency Injection (CDI) and Java API for RESTful Web services (JAX-RS) Java EE specifications. The communication is handled over HyperText Transfer Protocol (HTTP) and the Representational State Transfer (REST) protocol.
 
-The LRA is utilizing an orchestration saga model. One node is selected as dedicated LRA coordinator that manages the saga processing. Its main responsibilities are the LRA initialization, participant enlisting and either completion or compensation of the saga. 
+The LRA is utilizing an orchestration saga model. One node is selected as a dedicated LRA coordinator that manages the saga processing. Its main responsibilities are the LRA initialization, participant enlisting and either the saga completion or compensation. 
 
-The coordinator can be a standalone service or it can be embedded within application service. For the second option, the coordinator communicates with the to the enclosing application by in-memory calls rather than REST.
+The coordinator can be a standalone service or it can be embedded within application service. For the second option, the coordinator communicates with the enclosing application by in-memory calls rather than REST.
 
-The second model component defined in the LRA processing is the saga participant. This may be any service that is involved in the LRA. Each participant is required to provide at least two REST endpoints that serve as completion and compensation handlers respectively.
+The second model component defined in the LRA processing is the saga participant. This may be any service that is involved in the LRA. Each participant is required to provide at least one REST endpoint that serves as the compensation handler.
 
-The execution of the LRA is started by the initiating service on the user request. The service calls the coordinator that in turn starts a new LRA and return its  unique identification to the initiating service. This id is used to enlist every participant within the saga. After the LRA id is received, the initiating service can optionally enlist itself and it continues the saga processing with other participants invocations where each call has to contain the acquired LRA id. When the participant is invoked, it will perform its work request, enlists itself within the received LRA and subsequently returns the processing outcome to the initiator. After all calls are completed, depending on the collected answers the initiating service calls the coordinator with one of the finalizing methods (\texttt{close} or \texttt{compensate}). The coordinator then performs the corresponding requested action for each of the enlisted participants.
+The execution of the LRA is started by the initiating service on the user request. The service calls the coordinator that in turn starts a new LRA and return its  unique identification to the initiating service. This id is used to enlist every participant within the saga. After the initiating service receives the LRA id, it can optionally enlist itself within the LRA and it continues the saga processing with other participants invocations where each call has to contain the acquired LRA id. When the participant is invoked, it will enlist itself within the received LRA, perform its work request and subsequently return the processing outcome to the initiator. After all calls are completed, depending on the collected answers the initiating service calls the coordinator with one of the finalizing requests (\texttt{close} or \texttt{compensate}). The coordinator then performs the corresponding requested action for each enlisted participant.
  
 \newlinepar{Saga Definition}
 
-The LRA do not require users to specify the saga in any explicit way. The saga execution is handled by the initiating service. Narayana provides \texttt{io.narayana.lra.client.NarayanaLRAClient} class that allows users to perform basic requests for the coordinator operations. On the background, it calls the coordinator through its REST interface which users are also allowed to use directly. The \texttt{NarayanaLRAClient} is provided by the CDI dependency injection.
+The LRA specification permits users to control the LRA lifecycle in two ways -- by Java annotations or by the client API. 
 
-The participant is defined by annotations present on the JAX-RS resource class. The \texttt{@LRA} annotation declares the endpoint as saga participant. It takes as an argument the value of the transaction attribute which can have same values as for declarative transactions presented in section \ref{sec:decl-tran-model}. This JAX-RS endpoint must also expect the \texttt{NarayanaLRAClient.LRA\_HTTP\_HEADER} header parameter that contains the coordinator address and the LRA identification. Depending on the value of the transaction attribute, the participant can be automatically enlisted to the saga without any intervention.
+The MicroProfile LRA support is primarily targeted for the use of annotations which are present in the \texttt{io.narayana.lra.annotation} package. The \texttt{@LRA} is the main concerned annotation which denotes the method that should be executed within a compensatable LRA context \cite{narayana_lra}. This is specified by a required \texttt{Type} attribute which can have same values as conventional transaction attributes (\ref{sec:decl-tran-model}). Additionally, this annotation may also specify if the participant should join the incoming LRA or on which HTTP status codes the LRA should be canceled. The LRA can also be declared as scoped under another existing LRA by the \texttt{@NestedLRA} annotation. In this case, a new LRA will be started and its outcome will depend upon whether the enclosing LRA is closed or canceled \cite{narayana_lra}.
 
-The participant is also required to expose at least two additional endpoints that handle the end phases of the execution. The specification where these endpoints are present needs to be propagated to the coordinator. If not specified, by default the coordinator expects them on the request endpoint with respective suffixes (\texttt{/complete} or \texttt{/compensate}). The participant is also allowed to specify these methods with annotations (\texttt{@Complete} or \texttt{@Compensate}) that define the handler outside of the JAX-RS context for the possible future implementations. The complete and compensate are required but not the only possible endpoints that the participant can expose. Other potential values are status, forget and leave where each has its respective handling inclinations to the LRA participant processing \cite{narayana_lra}.
+In the reference implementation, if the LRA is already present on the invocation, it should be made available to the business processing through the HTTP header \texttt{Long-Running-Action}. This header contains the coordinator address and the LRA identification.
+
+Narayana also provides an ability to control the coordinator directly by the LRA client API. These operations are contained in the  \texttt{io.narayana.lra.client.LRAClient} class which allows users to perform basic client requests for the LRA services. On the background, the reference implementation contacts the LRA coordinator through its REST interface which users are also allowed to use directly. The implementation present in the \texttt{NarayanaLRAClient} class can be provided by the CDI dependency injection.
+
+The participant is defined by annotations present on the JAX-RS resource class. It is required to expose at least one REST endpoint that handles the participant compensation. The handler resource method is defined by the \texttt{@Compensate} annotation and is automatically registered within the coordinator when participant is enlisted. This method will be invoked in case of the LRA cancellation.
+
+The resource class is also allowed to specify more methods that control the participant LRA lifecycle by respective annotations:
+
+\begin{itemize}
+    \item \texttt{@Complete} -- invoked when the LRA is closed
+    
+    \item \texttt{@Status} -- reports the participant's status to the coordinator
+    
+    \item \texttt{@Forget} -- the coordinator allows the participant to forget information about the LRA\footnote{this information needs to be preserved if the participant is unable to complete or compensate immediately}
+    
+    \item \texttt{@Leave} -- causes the participant to leave the LRA
+\end{itemize}
+
+Both \texttt{@LRA} and \texttt{@Compensate} methods may additionally be annotated by the \texttt{@Timelimit} annotation that denotes the maximum time period after which the participant is timed out.
+
+The participant can be registered also directly through the API. For this purpose, it must be a serializable java class that implements the \texttt{LRAParticipant} interface. The registration is performed by a call to the \texttt{joinLRA} method of the \texttt{LRAManagement} class which can be in the reference implementation injected through the CDI.
 
 \subsection{Summary}
 
-The previous section described four frameworks that provide saga implementation support. This section provides a simple summary of the discussed properties influencing the saga definition and execution of each respective framework applicable in microservices applications. The overview is detailed in the table \ref{tab:saga-implementations-comparison}.
+The previous section described four frameworks that provide saga implementation support. The following table \ref{tab:saga-implementations-comparison} provides a simple summary of the discussed properties influencing the saga definition and execution of each respective framework applicable in microservices applications. 
 
 \begin{table}[ht]
     \begin{tabularx}{\textwidth}{lXXX}
@@ -1428,7 +1448,7 @@ As the Narayana LRA specification is still in the pre-released state, the inclus
 \chapter{The CQRS pattern}
 \label{sec:appendix-cqrs}
 
-The Command Query Responsibility Segregation pattern describes the separation of the application domain into two distinct parts -- the command model which is responsible for the application processing and the query model that is managing the access to the persisted information. 
+The Command Query Responsibility Segregation pattern describes the separation of the application domain into two distinct parts -- the command model which is responsible for the application processing that changes the system state and the query model that provides information about the current system state to the user including various transformations or filtering. 
 
 This pattern extends a base given by the Command-query separation (CQS) which was introduced by Bertrand Meyer in his book \textit{Object-Oriented Software Construction}. The main idea is to split the object's methods into two categories -- queries which just return a value without changing the state, and commands that change the state of the object and do not return any result.
 
@@ -1438,7 +1458,7 @@ The query segment is responsible for the presentation of data to the end user. T
 
 An aggregate is a main building block in the CQRS architecture. It represents a data entity that is always kept in a consistent state. The state can be changed by a reaction to the published event. Events are produced (applied) by the aggregate as a reaction to the received command. 
 
-To create a more resilient systems, most of the CQRS frameworks also employ an event sourcing mechanism. Every published event is being persisted to the durable storage which allows the aggregate to rebuild its state in the case of failure. This can be done just by replaying (reapplying) of the already published events. It also allows to persist and redeliver events that cannot be transmitted to aggregate during the failed state.
+To create a more resilient systems, most of the CQRS frameworks also employ an event sourcing mechanism. Every published event is being persisted to the durable storage which allows the aggregate to rebuild its state in the case of failure. This can be done just by replaying (reapplying) of the already published events. It also allows to persist and redeliver events that cannot be transmitted to the aggregate during the failed state.
 
 Another advantage of the domain separation is the performance increase. As both sides are allowed to scale up independently, the system can perform more operations concurrently.
 

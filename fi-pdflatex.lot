@@ -4,10 +4,10 @@
 \contentsline {table}{\numberline {2.1}{\ignorespaces Consensus protocols comparison}}{21}{table.2.1}
 \addvspace {4\p@ }
 \addvspace {4\p@ }
-\contentsline {table}{\numberline {4.1}{\ignorespaces Saga implementations comparison}}{53}{table.4.1}
+\contentsline {table}{\numberline {4.1}{\ignorespaces Saga implementations comparison}}{54}{table.4.1}
 \addvspace {4\p@ }
-\contentsline {table}{\numberline {5.1}{\ignorespaces Performance test -- scenario 1 (1 000 requests, 10 threads)}}{82}{table.5.1}
-\contentsline {table}{\numberline {5.2}{\ignorespaces Performance test -- scenario 2 (10 000 requests, 100 threads)}}{82}{table.5.2}
+\contentsline {table}{\numberline {5.1}{\ignorespaces Performance test -- scenario 1 (1 000 requests, 10 threads)}}{83}{table.5.1}
+\contentsline {table}{\numberline {5.2}{\ignorespaces Performance test -- scenario 2 (10 000 requests, 100 threads)}}{83}{table.5.2}
 \addvspace {4\p@ }
 \addvspace {4\p@ }
 \addvspace {4\p@ }
