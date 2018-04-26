@@ -801,7 +801,8 @@ The previous section described four frameworks that provide saga implementation 
         Asynchronous by \newline default & Yes & Yes & No & No \\
         Saga tracking and \newline definition & No & No & Yes & No\\
         Single point of failure & No & Yes & Yes & Yes$^*$\\
-        Communication  restrictions &  Yes & Yes & Yes & No\\
+        Communication restrictions & Yes & Yes & Yes & No\\
+        Distributed by default & No & Yes & Yes & Yes\\
         \bottomrule
     \end{tabularx}
     \caption{Saga implementations comparison}
@@ -929,28 +930,28 @@ As CQRS is a pattern that manages the domain formation of the application, Axon 
 
 \section{Eventuate service}
 
-Similarly to Axon, Eventuate service is also based on the event sourcing and the CQRS pattern. For this reason, the business execution is managed in the aggregates which correspond to the respective microservices projects. The communication is as a result restricted to the command processing and the event application. However, conversely to axon, the command and event buses are not distributed. The remote messaging is restricted to the REST protocol.
+Similarly to Axon, Eventuate service is also based on the event sourcing and the CQRS pattern. For this reason, the business execution is managed in the aggregates which correspond to the respective microservices projects. The communication is as a result restricted to the command processing and the event application. However, conversely to Axon, the command and event buses are not distributed. The remote messaging is restricted to the REST protocol.
 
 This quickstart represents the pure CQRS approach to the saga processing. This means that the whole saga implementation is created by the developer using the platform only for the event and command distribution. For this reason, the Eventuate service is more complex than any other quickstart but for the example purposes, it distinctively demonstrates how sophisticated is the saga administration provided by all remaining platforms.
 
 \subsection{Platform}
 \label{sec:eventuate-platform}
 
-Eventuate service is a microservices application consisting of a set of Spring Boot \cite{spring_boot} business services, one backing module and a number of support services provided by the Eventuate platform. In this section, we will focus on the Eventuate platform and the services it provides, the business part of the application is described in the following section.
+Eventuate service is a microservices application consisting of a set of Spring Boot \cite{spring_boot} business services, one backing module and a number of support services provided by the Eventuate platform. In this section, we will focus on the Eventuate platform and services it provides, the business part of the application is described in the following section.
 
-This quickstart is established as a Eventuate Local version of the platform. This means that it uses underlying SQL database for the event persistence and the Kafka streaming platform for the event distribution. Eventuate Local provides five services used by the quickstart that are managed by the platform, namely Apache Zookeeper, Apache Kafka, MySQL database, the change data capture component and the Eventuate console service. The example employs these services as a Docker images included in the provided docker-compose configuration.
+This quickstart is established as a Eventuate Local version of the platform. This means that it uses underlying SQL database for the event persistence and the Kafka streaming platform for the event distribution. Eventuate Local provides five services used by the quickstart that are managed by the platform, namely, Apache Zookeeper, Apache Kafka, MySQL database, the change data capture component and the Eventuate console service. The example employs these services as a Docker images included in the provided docker-compose configuration.
 
 \newlinepar{Apache Zookeeper service}
 
-Apache Zookeeper is an open-source project which enables highly reliable distributed coordination \cite{apache_zookeeper}. It maintains a centralized service which supervise various functionalities like handling of the configuration information, synchronization, naming or grouping. The Eventuate Local platform provides its own Docker image tagged as \texttt{eventuateio/eventuateio-local-zookeeper}.
+Apache Zookeeper is an open-source project which enables highly reliable distributed coordination \cite{apache_zookeeper}. It maintains a centralized service which supervises various functionalities like handling of the configuration information, synchronization, naming or grouping. The Eventuate Local platform provides its own Docker image tagged as \texttt{eventuateio/eventuateio-local-zookeeper}.
 
 \newlinepar{Apache Kafka service}
 
-The Apache Kafka streaming platform is the service which is responsible for the administration of subscription and publishing mechanisms controlling the event processing for the business microservices. As it is based on the Streams API it allows the platform to react to events in real time. Eventuate manipulates Kafka as the notification service for the event propagation. Eventuate ships its own Kafka version in the \texttt{eventuateio/eventuateio-local-kafka} docker image.
+The Apache Kafka streaming platform is the service which is responsible for the administration of subscription and publishing mechanisms controlling the event processing for business microservices. As it is based on the Streams API, it allows the platform to react to events in real time. Eventuate manages Kafka as the notification service for the event propagation. Eventuate ships its own Kafka version in the \texttt{eventuateio/eventuateio-local-kafka} docker image.
 
 \newlinepar{MySQL database service}
 
-The SQL database used in this application for the event persistence is the MySQL open-source database which is currently the only database supported by the platform. The Eventuate Local maintains two tables -- \texttt{EVENTS} and \texttt{ENTITIES}. This database serves also as a transaction log maintained as a mean for the event sourcing. The containerized version is located under \texttt{eventuateio/eventuateio-local-mysql} tag.
+The SQL database used in this application for the event persistence is the MySQL open-source database which is currently the only database supported by the platform. The Eventuate Local maintains two tables -- \texttt{EVENTS} and \texttt{ENTITIES}. This database serves also as a transaction log maintained as a base for the event sourcing. The containerized version is located under \texttt{eventuateio/eventuateio-local-mysql} tag.
 
 \newlinepar{CDC service}
 
@@ -958,40 +959,40 @@ This service represents the change data capture (CDC) component. The CDC service
 
 \newlinepar{Eventuate console}
 
-The last support service is the \texttt{consoleserver}. It provides a simple interface for accessing the information about created aggregate types and the event log. The supplied Docker container image is the \texttt{eventuateio/eventuateio-local-console}.
+The last support service is the \texttt{consoleserver}. It provides a simple interface for accessing collected information about created aggregate types and the event log. The supplied Docker container image is the \texttt{eventuateio/eventuateio-local-console}.
 
 
 \subsection{Project structure}
 
-This section describes the set of services composing the business side of the application. This set contains four services that cover the saga execution and data processing (\texttt{order-service}, \texttt{shipment-service}, \texttt{invoice-service} and \texttt{query-service}), one service (\texttt{mongodb}) representing the persistent storage and one additional support module (\texttt{service-model}).
+This section describes the set of services composing the business side of the application. This set contains four services that cover the saga execution and data processing (\texttt{order-service}, \texttt{shipment-service}, \texttt{invoice-service} and \texttt{query-service}), one service representing the persistent storage (\texttt{mongodb}) and the support module (\texttt{service-model}).
 
-All of the business services are a Spring Boot applications based on the Gradle \cite{gradle} build system. Each microservice is represented as a independent module capable of being separately built and deployed. Even if Spring Boot projects can be executed directly from the command line as ordinary Java applications, this quickstart leverages the Docker approach of the Eventuate Local platform and containerize all of its services.
+All of the business services are Spring Boot applications based on the Gradle \cite{gradle} build system. Each microservice is represented as a independent module capable of being separately built and deployed. Even if Spring Boot projects can be executed directly from the command line as ordinary Java applications, this quickstart leverages the Docker approach of the Eventuate Local platform and containerize all of its services.
 
-To connect to the Eventuate platform each service defines a set of environment variables that are leveraged in their Spring Boot configuration. This information includes the connection and authentication details for the MySQL database, the CDC component and the connection URLs\footnote{Uniform Resource Locator} for the Kafka and the Zookeeper services. These variables are specified in the container specification for each individual business service in the \texttt{docker-compose.yml} file.
+To connect to the Eventuate platform each service defines a set of environment properties that are utilized in their Spring Boot configuration. This information includes connection and authentication details for the MySQL database, the CDC component and the connection Uniform Resource Locators (URLs) for Kafka and Zookeeper services. These properties are specified in the container specification for each individual business service in the \texttt{docker-compose.yml} file.
 
-The actual saga execution is managed in the \texttt{order-service} microservice. The saga realization implementation is contained in three classes -- the \texttt{OrderSagaAggregate}, the \texttt{SagaEventSubscriber} and the \texttt{OrderSagaService}. The first class is an ordinary CQRS aggregate that handles the commands for the saga initialization and the participants outcomes. Conversely, the latter one is the event processor listening for the events produced by the aggregate which is basically a wrapper around the \texttt{OrderSagaService} - the class responsible for the remote REST calls to the other services and the command dispatching for the \texttt{OrderSagaAggregate}. The usage of the separated event listener is required because Eventuate does not allow aggregates to be declared as Spring components. The reason of this defect is described in more detail in the following section.
+The actual saga execution is managed in the \texttt{order-service} microservice. The saga realization implementation is contained in three classes -- the \texttt{OrderSagaAggregate}, the \texttt{SagaEventSubscriber} and the \texttt{OrderSagaService}. The first class is an ordinary CQRS aggregate that handles commands for the saga initialization and participants outcomes. Conversely, the second class represents the event processor listening for the events produced by the aggregate. It is basically a wrapper around the \texttt{OrderSagaService} -- the class responsible for the remote REST calls to other services and the command dispatching for the \texttt{OrderSagaAggregate}. The usage of the separated event listener is required because Eventuate does not allow aggregates to be declared as Spring components. The reason of this drawback is described in more detail in the following section.
 
 Except for the normal order API, the \texttt{order-service} also provides a management API for the participants to be able to share the information about their processing. This endpoints are hardcoded in the application which may not be acceptable for a production realization.
 
-The \texttt{shipment-service} and the \texttt{invoice-service} both contain a simple aggregate together with its associated event listener which control the participant interaction with the saga. Each service also accommodate the REST endpoint for the saga request and its possible compensation.
+Both the \texttt{shipment-service} and the \texttt{invoice-service} contain a simple aggregate together with its associated event listener which control participant interactions within the saga. Each service accommodates REST endpoints for the saga request and its possible compensation.
 
-Similarly to Axon service, the \texttt{service-model} project acts as a support library for other services. It contains a core API for each business service which needs to be shared and the utilization classes.
+Similarly to Axon service, the \texttt{service-model} project acts as a support library for other services. It contains a core API for each business service which needs to be shared and a few utilization classes.
 
-The last business microservice is the \texttt{query-service}. It performs as a response service providing the information about persisted orders, shipmetns and invoices. It contains an event listener for each designated microservice which in turn preserve the achieved information in the Mongo NoSQL database. This service also provides a simple Swagger interface to ease the user application interaction.
+The last business microservice is the \texttt{query-service}. It performs as a response service providing the information about persisted orders, shipments and invoices. It contains an event listener for each designated microservice which in turn preserves the achieved information in the Mongo NoSQL database. This service also provides a simple Swagger interface to ease the user application interaction.
 
 \subsection{Problems}
 
 \newlinepar{Complexity}
 
-As this project represents a plain CQRS based example it completely demonstrates the background process required for the saga execution. Therefore the complexity of this quickstart may appear more critical than in other projects as the background saga execution often contains many optimizations.
+As this project represents a plain CQRS based example, it completely demonstrates the background process required for the saga execution. Therefore, the complexity of this quickstart may appear more critical than in other projects as the background saga execution often contains many optimizations.
 
-The first complexity problem is that the project contains a great number of the command and event classes. This is required as aggregate classes are only able to consume commands and produce events. For that reason,  the communication between components often demands a few additional steps.
+The first complexity problem is that the project contains a great number of command and event classes. This is required as aggregate classes are only able to consume commands and produce events. For this reason,  the communication between components often demands a few additional steps.
 
-The full saga administration is handled by the project from the very beginning. That covers the support of starting, stopping and following the saga execution as well as saga compensations. The restrictions placed by the CQRS pattern furthermore put additional requirements on the saga processing which may not be demanded by other frameworks. Before the Eventuate Tram framework, the Eventuate platform did not provide any saga support.
+The full saga administration is handled by the project from the very beginning. It covers the support of starting, stopping and following the saga execution as well as saga compensations. Restrictions placed by the CQRS pattern furthermore put additional requirements on the saga processing which may not be demanded by other frameworks. Before the introduction of the Eventuate Tram framework, the Eventuate platform did not provide any saga support.
 
 \newlinepar{Command bus distribution restrictions}
 
-This quickstart uses the REST architectural style for the remote distribution of commands between services. Even if all of microservices are connected to the same MySQL database, they cannot directly propagate commands between each other. This is due to the way Eventuate dispatches commands through the aggregate repository. The aggregate repository represents the database table that is restricted to one aggregate and it needs to be injected by the platform. For this reason, it must declare the target aggregate class and the command type. The sharing of the aggregate class may be very restrictive, especially for microservices applications.
+This quickstart uses the REST architectural style for the remote distribution of commands between services. Even if all of microservices are connected to the same MySQL database, they cannot directly propagate commands between each other. This is due to the way Eventuate dispatches commands through the aggregate repository. The aggregate repository represents the database table that is restricted to one aggregate and it is provided by the platform through the dependency injection. For this reason, it must declare the target aggregate class and the command type. The sharing of the aggregate class type may be very restrictive, especially for microservices applications.
 
 \newlinepar{Aggregate instantiation}
 
@@ -1004,13 +1005,13 @@ This restriction is seconded by the rule stating that each produced event from t
 
 \newlinepar{Event entity specification}
 
-As well as the command type, Eventuate also requires the definition of the event type each aggregate is able to produce. The event class is defined as a value of the \texttt{entity} attribute of the \texttt{@EventEntity} annotation. This annotation is usually placed on the event interface which implementation represents produced events.
+As well as the command type, Eventuate also requires the definition of the event type each aggregate is able to apply. The aggregate class is defined as a value of the \texttt{entity} attribute of the \texttt{@EventEntity} annotation. This annotation is usually placed on the event interface which implementation represents produced events.
 
-The problem rises when the events needs to be shared between several modules. This is a common requirement as the CQRS pattern requires the query domain to be separated. The event interfaces are therefore included in the common library module as the \texttt{service-model} used in this project. The hard coded information of the full name of the aggregate class used in the \texttt{@EventEntity} annotation then may become hard to maintain.
+The problem rises when the events needs to be shared between several modules. This is a common requirement as the CQRS pattern requires the query domain to be separated. The event interfaces are therefore included in the common library module same as the \texttt{service-model} used in this project. The hard coded information of the full name of the aggregate class used in the \texttt{@EventEntity} annotation then may become hard to maintain.
 
 \newlinepar{Platform structure}
 
-The platform structure places the obligation on each developed microservice to conduct with the connecting specification. This means that every service must provide linking information for the Eventuate platform services described in the previous section, namely MySql database, Apache Kafka, Apache Zookeeper and CDC component. This information is manually replicated in each service (restricted to system properties) and therefore predisposed to errors.
+The platform structure places the obligation on each developed microservice to conduct with the connecting specification. This means that every service must provide linking information for the Eventuate platform services described in the previous section, namely, MySQL database, Apache Kafka, Apache Zookeeper and CDC component. This information is manually replicated in each service (restricted to system properties) and therefore predisposed to errors.
 
 \hfill \break
 

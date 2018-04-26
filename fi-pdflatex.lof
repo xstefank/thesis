@@ -10,21 +10,21 @@
 \contentsline {figure}{\numberline {5.1}{\ignorespaces Product Information example JSON}}{56}{figure.5.1}
 \contentsline {figure}{\numberline {5.2}{\ignorespaces The saga model}}{57}{figure.5.2}
 \contentsline {figure}{\numberline {5.3}{\ignorespaces LRA definition example JSON}}{72}{figure.5.3}
-\contentsline {figure}{\numberline {5.4}{\ignorespaces Action example JSON}}{73}{figure.5.4}
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Action example JSON}}{72}{figure.5.4}
 \addvspace {4\p@ }
 \addvspace {4\p@ }
 \addvspace {4\p@ }
 \addvspace {4\p@ }
 \addvspace {4\p@ }
-\contentsline {figure}{\numberline {C.1}{\ignorespaces CQRS saga example success}}{107}{figure.C.1}
-\contentsline {figure}{\numberline {C.2}{\ignorespaces CQRS saga example invoice failure}}{107}{figure.C.2}
-\contentsline {figure}{\numberline {C.3}{\ignorespaces Eventuate Tram saga example success}}{108}{figure.C.3}
-\contentsline {figure}{\numberline {C.4}{\ignorespaces Eventuate Tram saga example invoice failure}}{108}{figure.C.4}
-\contentsline {figure}{\numberline {C.5}{\ignorespaces LRA service saga example success}}{109}{figure.C.5}
-\contentsline {figure}{\numberline {C.6}{\ignorespaces LRA service saga example invoice failure}}{109}{figure.C.6}
+\contentsline {figure}{\numberline {C.1}{\ignorespaces CQRS saga example success}}{106}{figure.C.1}
+\contentsline {figure}{\numberline {C.2}{\ignorespaces CQRS saga example invoice failure}}{106}{figure.C.2}
+\contentsline {figure}{\numberline {C.3}{\ignorespaces Eventuate Tram saga example success}}{107}{figure.C.3}
+\contentsline {figure}{\numberline {C.4}{\ignorespaces Eventuate Tram saga example invoice failure}}{107}{figure.C.4}
+\contentsline {figure}{\numberline {C.5}{\ignorespaces LRA service saga example success}}{108}{figure.C.5}
+\contentsline {figure}{\numberline {C.6}{\ignorespaces LRA service saga example invoice failure}}{108}{figure.C.6}
 \addvspace {4\p@ }
 \addvspace {4\p@ }
-\contentsline {figure}{\numberline {E.1}{\ignorespaces LRA definitions class diagram}}{113}{figure.E.1}
-\contentsline {figure}{\numberline {E.2}{\ignorespaces LRA executor class diagram}}{114}{figure.E.2}
-\contentsline {figure}{\numberline {E.3}{\ignorespaces LRA REST definitions class diagram}}{115}{figure.E.3}
-\contentsline {figure}{\numberline {E.4}{\ignorespaces LRA REST definitions class diagram}}{116}{figure.E.4}
+\contentsline {figure}{\numberline {E.1}{\ignorespaces LRA definitions class diagram}}{112}{figure.E.1}
+\contentsline {figure}{\numberline {E.2}{\ignorespaces LRA executor class diagram}}{113}{figure.E.2}
+\contentsline {figure}{\numberline {E.3}{\ignorespaces LRA REST definitions class diagram}}{114}{figure.E.3}
+\contentsline {figure}{\numberline {E.4}{\ignorespaces LRA REST definitions class diagram}}{115}{figure.E.4}
