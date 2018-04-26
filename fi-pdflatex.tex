@@ -556,7 +556,7 @@ In practice, the general belief is that for wide-area systems, designers cannot 
 
 The CAP theorem has been formally proven in 2002 by Seth Gilbert and Nancy Lynch \cite{cap_prove}. The prove is surprisingly simple and can be modeled by just two nodes.
 
-In 2012, Daniel J. Abadi proposed an extension of the CAP theorem called PACELC theorem which is particularly applicable for distributed database systems (DDBSs). The theorem states -- if there is a partition (P), how does the system trade off availability and consistency (A and C) or else (E) when the system is running normally in the absence of partitions, how does the system trade off latency (L) and consistency (C) \cite{pacelc}. Conversely to the CAP theorem which implies to any read-write distributed storage implementation, the ELC part applies only when the system replicates data.
+In 2012, Daniel J. Abadi proposed an extension of the CAP theorem called PACELC theorem which is particularly applicable for distributed database systems (DDBSs). The theorem states -- if there is a partition (P), how does the system trade off availability and consistency (A and C) or else (E) when the system is running normally in the absence of partitions, how does the system trade off latency (L) and consistency (C) \cite{pacelc}. Conversely to the CAP theorem, which implies to any read-write distributed implementation, the ELC part applies only when the system replicates data.
 
 \subsection{Operations}
 
@@ -793,18 +793,21 @@ The participant can be registered also directly through the API. For this purpos
 The previous section described four frameworks that provide saga implementation support. The following table \ref{tab:saga-implementations-comparison} provides a simple summary of the discussed properties influencing the saga definition and execution of each respective framework applicable in microservices applications. 
 
 \begin{table}[ht]
-    \begin{tabularx}{\textwidth}{lXXX}
+    \begin{tabularx}{\textwidth}{p{4cm}XXXX}
         \toprule
-        Framework & CQRS restrictions & Asynchronous by default & Saga execution tracking\\
+        Problem & Axon & Eventuate ES & Eventuate Tram & LRA\\
         \midrule
-        Axon & Yes & Yes & No \\
-        Eventuate ES & Yes & Yes & No \\
-        Eventuate Tram & Optional & No & Yes\\
-        Narayana LRA & No & No & No \\
+        CQRS restriction & Yes & Yes & Optional & No \\
+        Asynchronous by \newline default & Yes & Yes & No & No \\
+        Saga tracking and \newline definition & No & No & Yes & No\\
+        Single point of failure & No & Yes & Yes & Yes$^*$\\
+        Communication  restrictions &  Yes & Yes & Yes & No\\
         \bottomrule
     \end{tabularx}
     \caption{Saga implementations comparison}
     \label{tab:saga-implementations-comparison}
+    \bigskip
+    $^*$there is a plan to make the coordinator flexible and resilient
 \end{table}
 
 
