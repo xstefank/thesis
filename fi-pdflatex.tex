@@ -867,15 +867,29 @@ As it was stated in the previous chapter, the Axon framework is based upon the C
 
 \subsection{Platform}
 
-Axon service is a Java Spring Boot \cite{spring_boot} microservices application. Each service is fully separated and independent Maven  project \cite{maven}. Individual projects represent standalone runnable applications (fat java archive (jar)) which is the preferred distribution method for the Spring Boot applications.
+Axon service is a Java Spring Boot \cite{spring_boot} microservices application. Each service is fully separated and independent Maven  project \cite{maven}. Individual projects represent standalone runnable applications (fat java archive (jar)) which is the preferred distribution method for the Spring Boot applications. Axon is composed as a Java framework which is why it is included as a Maven dependency in individual microservices.
 
 As a CQRS based quickstart, Axon service uses two different and separated communication channels to exchange information between services: the command bus and the event bus. By default, Axon framework constrains both channels to a single JVM and therefore one microservice. However, developers are also able to specify several specialized ways of the configuration to distribute messages between different services which is used in this Axon quickstart.
 
+\newlinepar{Command bus -- Registration server service}
+
 The quickstart utilizes a variant of the distributed command bus which is based upon a different approach than the one used in the traditional single JVM Axon applications. The distributed command bus forms a bridge between separated command bus implementations to transfer commands between different JVMs \cite{axon_framework_reference_guide}. Apart from the command distribution, it is also responsible for the selection of the applied communication protocol and the choice of the target destination for each transferred command. 
 
-Axon provides two options for the connection of different services through the distributed command bus -- \texttt{JGroups Connector} and \texttt{Spring Cloud Connector}. The one used in this quickstart is the Spring Cloud \cite{spring_cloud} method. Axon allows users to choose which particular Spring Cloud implementation will be used to distribute commands. The underlying implementation employed in this quickstart is based on the Netflix Eureka Discovery and Eureka Server combination \cite{service_registration}. Each business service as a part of its initialization registers itself with the  \texttt{registration-server} service which functions as the Eureka server. Axon is then able to redirect commands to the right service chosen by the value of parameters in the command class that are annotated by the \texttt{@TargetAggregateIdentifier} annotation.
+Axon provides two options for the connection of different services through the distributed command bus -- \texttt{JGroups Connector} and \texttt{Spring Cloud Connector}. The one used in this quickstart is the Spring Cloud \cite{spring_cloud} method. Axon also allows users to choose which particular Spring Cloud implementation will be used to distribute commands. The underlying implementation employed in this quickstart is based on the Netflix Eureka Discovery client and Eureka Server combination \cite{service_registration}. 
 
-For the distribution of the event bus, Axon service uses an external messaging system based on the Advanced Message Queuing Protocol (AMQP) protocol. The utilized message broker implementation is the RabbitMQ \cite{rabbitmq} which is contained in the \texttt{rabbitmq} service. The quickstart uses separated message queue for each business service and one special queue for the \texttt{query-service} microservice which is subscribed to all processing events. Axon platform provides the direct support for the AMQP so no specific handling of the produced events is required -- Axon automatically distributes events to all connected queues.
+Eureka server is a REST based service that is primarily used in the Amazon Web Services (AWS) cloud for locating services for the purpose of load balancing and failover of middle-tier servers \cite{eureka}. In this application it is represented by the \texttt{registration-server} service.
+
+% which provides the service registry and discovery capabilities. 
+
+Eureka is also distributed as a Java-based client library Eureka Client which is included in all application business services -- each service, as a part of its initialization, registers itself with the Eureka server. Axon is then able to redirect commands to the right service chosen by the value of parameters in the command class that are annotated by the \texttt{@TargetAggregateIdentifier} annotation.
+
+\newlinepar{Event bus - RabbitMQ service}
+
+For the distribution of the event bus, Axon service uses an external messaging system based on the Advanced Message Queuing Protocol (AMQP) protocol. The utilized message broker implementation is the RabbitMQ \cite{rabbitmq} which is contained in the \texttt{rabbitmq} service. 
+
+RabbitMQ is an open source message broker that supports multiple messaging protocols and is easy to deploy both on premises and in the cloud \cite{rabbitmq}. Main provided features include asynchronous messaging, high availability cluster deployment or various tooling that supports continuous integration, management and monitoring.
+
+This quickstart provides a separated message queue for each business service and one special queue for the \texttt{query-service} microservice which is subscribed to all processing events. Axon platform provides the direct support for the AMQP so no specific handling of the produced events is required -- Axon automatically distributes events to all connected queues.
 
 Both the Spring Cloud registration server and the RabbitMQ message broker are required external providers that need to be running before the business services can be deployed. Unfortunately, by the time of this writing there is no way to distribute commands or events directly in the Axon platform.
 
@@ -1113,7 +1127,7 @@ In the LRA service is this problem addressed by the \texttt{api-gateway} service
 
 \section{Used technologies}
 
-This section provides a point of reference that summarizes the technology stack applied in the above described quickstart examples.
+This section provides a point of reference that summarizes the technologies applied in all of the above described quickstart examples.
 
 \subsection{Microservices platforms}
 
