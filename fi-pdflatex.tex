@@ -910,24 +910,6 @@ When the distributed event bus is processing events from an AMQP queue which the
 
 As CQRS is a pattern that manages the domain formation of the application, Axon can place a hard requirements for the projects that do not follow the CQRS domain separation. Like it was already presented, sagas in Axon are only a specialized type of the event listener. The only way Axon produces events is through an interaction with the aggregate instance - events are produced purely as a response to the received command. Therefore the use of Axon sagas in not CQRS environment may be too restrictive for an implementation.
 
-\subsection{Technology}
-
-This example contains a set of Spring Boot applications which can be run directly from the command line. Additionally, it also contains docker and docker-compose configuration to ease the development and deployment operations. In this section we focus on the Spring platform, the Docker description is provided in the section \ref{sec:docker}.
-
-\newlinepar{Spring Boot}
-\label{sec:spring-boot}
-
-Spring Boot is a framework built on top of the Spring Framework \cite{spring_ms}. Its main focus is on the creation of standalone runnable applications that are easily employed in microservices architectures. It favors convention over configuration to allow the usage of Spring features with a little of the Spring configuration \cite{spring_boot}.
-
-The Spring Boot platform is composed into aggregate modules known as \textit{starters}. The starter is a dependency descriptor which contains dependencies that are required to provide some functionality to the application. In order to use Spring Boot, the \texttt{spring-boot-starter} core module must be incorporated. Other useful modules, for instance, \texttt{spring-boot-starter-web} or \texttt{spring-boot-starter-data-jpa} can be provided to support the microservice adoption. Starters can be packaged with the application using Maven or Gradle build configurations.
-
-Another responsibility of this framework is the packaging of the application. The preferable way for the microservice is to create an executable fat Java archive (jar) which contains all of the application dependencies. The application can then be simply excuted by a \texttt{java -jar} command.
-
-A spring Boot microservice must fulfill two requirements -- it must follow a Maven layout convention and it must provide an entry point. This can be any class annotated with the \texttt{@EnableAutoConfiguration} annotation that starts the Spring Boot context.
-
-Spring provides various ways for exposing available services. Registration servers like Eureka or Consul which are integrated within the Spring cloud \cite{spring_cloud} can be used as the service discovery mechanisms. For a manual approach, the microservices functionality can be exposed through the RESTful API.
-
-
 
 \section{Eventuate service}
 
@@ -1018,29 +1000,6 @@ The platform structure places the obligation on each developed microservice to c
 
 In the end it is worth mentioning that as the Eventuate service is the pure CQRS saga example it has a few problems which has been reduced or removed in the later Eventuate Tram implementation that is in detail described in the following section. 
 
-\subsection{Technology}
-\label{sec:eventuate-technology}
-
-This section provides a detailed view of the Docker platform, for the description of Spring Boot microservices please refer to the section \ref{sec:spring-boot}.
-
-\newlinepar{Docker}
-\label{sec:docker}
-
-Docker is an open source container platform designed to make it easier to build, secure and manage the widest array of application from development to production both on premises and in the cloud \cite{docker}. Docker containers allow applications to run on top of the kernel services provided by the hosting system which considerably effects the application performance. However, it still builds containers on top of the generalized interface which warrants straightforward portability between different machines.
-
-A container image is a lightweight, stand-alone, executable package of a piece of software that includes everything needed to run it -- code, runtime, system tools, libraries or settings \cite{docker}. All docker containers that run on the same machine share the kernel services of the host. The images are build on the concept of layers. The layer provides an abstraction to share common filesystems, configuration and other data that can be reused by several docker containers.
-
-Containers isolate applications from the operating system their running on and also provide the separation from other docker containers running concurrently on the same computer. Instead of virtual machines which provide similar functionality, Docker virtualizes the operating system not the hardware. Docker provides abstraction at the application level.
-
-Docker as a tool is targeted for simple utilization. It provides an unified environment for both developers and administrators supporting the DevOps (development and operations) practices. Particularly, developers profit from portable code that is able to run on any operating platform supporting Docker, while operations gain visibility and management services from comprehensive control panel covering all containerized applications.
-
-\newlinepar{Docker compose}
-
-Docker compose is a tool for the defining and running multi-container Docker applications \cite{docker_compose}. It allows to specify configuration for several containers as YAML file that can be passed as an argument to the command line tool to run all services with a single command.
-
-The YAML configuration includes the same options that are available as a switches to native Docker commands. Additionally, it also provides functionality to orchestrate the specified services once they are started through the \texttt{docker-compose} command line utility. These functions include the network definition which allows easy addressing and the location transparency of the employed containers, the preservation of the container volumes, recreation of only changed containers or the specification of environment variables directly in the configuration file. 
-
-Docker compose represents a simple way to provide container automation that may ease the development and support of the continuous delivery (CD) and integration (CI) pipelines.
 
 \section{Eventuate Tram service}
 
@@ -1083,10 +1042,6 @@ The destination channels in Tram are distinguished by a simple string which may 
 Handler methods that are referenced in the definition are restricted to the communication model provided by the platform. This allows a single command to be sent to the required destination. Unfortunately, platform does not allow the saga to perform any other operation without the participant invocation which may lead to unnecessary empty commands and channels declarations. 
 
 Similarly, the saga may need to interact with the same participant in several different commands. This may cause problems with definitions of compensation and reply handlers as the developer needs to mind the logical grouping of participant invocations.
-
-\subsection{Technology}
-
-Eventuate Tram is based on the same microservices platform structure as standard Eventuate framework and therefore the same technology. For the description of the technology employed in this quickstart please refer to the section \ref{sec:eventuate-technology}.
 
 \section{LRA service}
 
@@ -1155,9 +1110,25 @@ The only problem that may occur in the current implementation is that the LRA fr
 
 In the LRA service is this problem addressed by the \texttt{api-gateway} service which functions as a proxy for the \texttt{lra-coordinator} that handles the saga execution. This approach does not effect the Narayana LRA management. The only change from the traditional processing is that series of LRA actions are performed by the \texttt{api-gateway} instead of the initiating service. This allows the service to be immediately available for the subsequent user requests and to scale the LRA processing independently from the application services that utilize the saga actions execution.
 
-\subsection{Technology}
 
-This section describes technologies included in the LRA example -- the WildFly Swarm project as underlying microservices provider and the OpenShift and Kubernetes containerization platforms as the quickstart has been designed for the deployment to these environments.
+\section{Used technologies}
+
+This section provides a point of reference that summarizes the technology stack applied in the above described quickstart examples.
+
+\subsection{Microservices platforms}
+
+\newlinepar{Spring Boot}
+\label{sec:spring-boot}
+
+Spring Boot is a framework built on top of the Spring Framework \cite{spring_ms}. Its main focus is on the creation of standalone runnable applications that are easily employed in microservices architectures. It favors convention over configuration to allow the usage of Spring features with a little of the Spring configuration \cite{spring_boot}.
+
+The Spring Boot platform is composed into aggregate modules known as \textit{starters}. The starter is a dependency descriptor which contains dependencies that are required to provide some functionality to the application. In order to use Spring Boot, the \texttt{spring-boot-starter} core module must be incorporated. Other useful modules, for instance, \texttt{spring-boot-starter-web} or \texttt{spring-boot-starter-data-jpa} can be provided to support the microservice adoption. Starters can be packaged with the application using Maven or Gradle build configurations.
+
+Another responsibility of this framework is the packaging of the application. The preferable way for the microservice is to create an executable fat Java archive (jar) which contains all of the application dependencies. The application can then be simply excuted by a \texttt{java -jar} command.
+
+A spring Boot microservice must fulfill two requirements -- it must follow a Maven layout convention and it must provide an entry point. This can be any class annotated with the \texttt{@EnableAutoConfiguration} annotation that starts the Spring Boot context.
+
+Spring provides various ways for exposing available services. Registration servers like Eureka or Consul which are integrated within the Spring cloud \cite{spring_cloud} can be used as the service discovery mechanisms. For a manual approach, the microservices functionality can be exposed through the RESTful API.
 
 \newlinepar{WildFly Swarm}
 
@@ -1168,6 +1139,28 @@ The traditional Java Enterprise Edition (EE) approach follows the development of
 The default fat jar (also called the uberjar) contains the user application and the needed parts of the WildFly server. Swarm also supports the packaging of the necessary server parts separately from the application. This method is know as the hollow jar and is particularly useful in the containerized environment as the server may be placed in the lower layers that do not require frequent rebuilds.
 
 The individual server parts are being delivered in the packages named fractions. The fraction represents a precise selection of capabilities that can be included in the application. It may denote the exact WildFly subsystem as JAX-RS\footnote{Java API for RESTful Web Services} or CDI\footnote{Context and Dependency Injection}, or a more sophisticated set of facilities to provide some additional functionality like RHSSO\footnote{Red Hat Single Sign-On}.
+
+\subsection{Docker}
+\label{sec:docker}
+
+Docker is an open source container platform designed to make it easier to build, secure and manage the widest array of application from development to production both on premises and in the cloud \cite{docker}. Docker containers allow applications to run on top of the kernel services provided by the hosting system which considerably effects the application performance. However, it still builds containers on top of the generalized interface which warrants straightforward portability between different machines.
+
+A container image is a lightweight, stand-alone, executable package of a piece of software that includes everything needed to run it -- code, runtime, system tools, libraries or settings \cite{docker}. All docker containers that run on the same machine share the kernel services of the host. The images are build on the concept of layers. The layer provides an abstraction to share common filesystems, configuration and other data that can be reused by several docker containers.
+
+Containers isolate applications from the operating system their running on and also provide the separation from other docker containers running concurrently on the same computer. Instead of virtual machines which provide similar functionality, Docker virtualizes the operating system not the hardware. Docker provides abstraction at the application level.
+
+Docker as a tool is targeted for simple utilization. It provides an unified environment for both developers and administrators supporting the DevOps (development and operations) practices. Particularly, developers profit from portable code that is able to run on any operating platform supporting Docker, while operations gain visibility and management services from comprehensive control panel covering all containerized applications.
+
+\newlinepar{Docker compose}
+
+Docker compose is a tool for the defining and running multi-container Docker applications \cite{docker_compose}. It allows to specify configuration for several containers as YAML file that can be passed as an argument to the command line tool to run all services with a single command.
+
+The YAML configuration includes the same options that are available as a switches to native Docker commands. Additionally, it also provides functionality to orchestrate the specified services once they are started through the \texttt{docker-compose} command line utility. These functions include the network definition which allows easy addressing and the location transparency of the employed containers, the preservation of the container volumes, recreation of only changed containers or the specification of environment variables directly in the configuration file. 
+
+Docker compose represents a simple way to provide container automation that may ease the development and support of the continuous delivery (CD) and integration (CI) pipelines.
+
+
+\subsection{Containerization platforms}
 
 \newlinepar{OpenShift platform}
 
@@ -1192,6 +1185,7 @@ Kubernetes is an open source project providing automation, scaling and managemen
 The features of Kubernetes include the service discovery, load balancing, automatic container placement or the self-healing for the automated failure recovery and rollbacks. It also manages the storage orchestration, scaling of containers, secrets, container configuration and batch capabilities.
 
 Kubernetes platform is suitable and portable to any cloud environment involving public, private, hybrid clouds and multi-cloud. It allows application containers to be run in the clusters of physical or virtual machines. Kubernetes is not a traditional PaaS (Platform as a Service) solution but it provides platform that many PaaS systems build upon, e. g. OpenShift or Deis.
+
 
 
 \section{Performance test}
