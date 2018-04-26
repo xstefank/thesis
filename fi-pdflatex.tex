@@ -1020,33 +1020,33 @@ In the end it is worth mentioning that as the Eventuate service is the pure CQRS
 
 \section{Eventuate Tram service}
 
-The Eventuate Tram service quickstart is based on the new Eventuate Tram framework. This framework provides several solution to problems with saga management that are present in the Eventuate platform.
+The Eventuate Tram service quickstart is based on the new recently introduced Eventuate Tram framework. This framework provides several solutions to problems associated with the saga management that are present in the Eventuate platform.
 
 \subsection{Platform}
 
-Similarly to the full Eventuate distribution, the Eventuate Tram establishes four services that form the Tram platform: Apache Zookeeper, Apache Kafka, MySQL database and CDC component. The fifth Console service is not present as the platform does not provide this functionality by the time of this writing. As all mentioned services represent the same functionality as they are responsible for in the full Eventuate platform, the individual descriptions of each service is defined in detail in the section \ref{sec:eventuate-platform}.  
+Similarly to the full Eventuate distribution, the Eventuate Tram establishes four services that form the Tram platform: Apache Zookeeper, Apache Kafka, MySQL database and CDC component. The fifth service, Console server, is not included as the platform does not present this functionality by the time of this writing. As all mentioned services represent the same functionality as they are responsible for in the full Eventuate platform, individual descriptions of each service are defined in detail in the section \ref{sec:eventuate-platform}.  
 
 All services are deployed by the \texttt{docker-compose} configuration distributed with the framework. This setup is based on the same Eventuate docker images for \texttt{zookeeper} and \texttt{kafka} services, and with \texttt{mysql} and \texttt{cdcservice} redefined by Tram.
 
 \subsection{Project structure}
 
-As Eventuate Tram does not restrict its services to the CQRS pattern, this project, in contrast to Eventutate service, contains only three business microservices and one support module. Every service is configured in the similar way as for the full platform containing the references and authentication details for the MySQL database, Kafka framework and Apache Zookeeper service. The quickstart is distributed with the predefined \texttt{docker-compose} configuration file that enables one command start up of all services.
+As Eventuate Tram does not restrict its services to the CQRS pattern, this project, in contrast to Eventutate service, contains only three business microservices and one support module. Every service is configured in the similar way as for the full platform containing the references and authentication details for the MySQL database, Kafka framework and Apache Zookeeper service. The quickstart is distributed with the predefined \texttt{docker-compose} configuration file that enables one command start up of all specified services.
 
-The last service which is not required for the saga execution and handling is the \texttt{mongodb} NoSQL server. This service is present only for the demonstration purposes to allow the data retrieval on individual business services from different storage than the one that is used by the Eventuate platform.
+The last service which is not required for the saga execution and handling is the \texttt{mongodb} NoSQL server. This service is present only for the demonstration purposes to allow the data retrieval from different storage than the one that is used by the Eventuate platform.
 
-The first microservice \texttt{order-service} is responsible for the order requests and saga processing. It also provides the ability to query persisted orders from the remote Mongo database.
+The first microservice \texttt{order-service} is responsible for the order requests and saga processing. It also provides the ability to query persisted orders from the \texttt{mongodb} service.
 
-The most important element in the \texttt{order-service} is the saga definition that is located in the \texttt{OrderSaga} class. This definition uses the declarative approach with the fluent API to denote the saga in steps of execution. Every step declares a handler method to be invoked when the step is reached by a reference to private methods in this class.
+The most important element in the \texttt{order-service} is the saga definition that is located in the \texttt{OrderSaga} class. This definition uses the declarative approach with the fluent API to denote the saga in steps of execution. Every step declares a handler method that will be invoked when this step is reached by a reference to the private method in this class.
 
 The step provides an ability to advance the saga execution in three ways -- by invoking of the local function, by a call to the remote participant or by the definition of the compensation method for the saga. Furthermore, the participant is able to define individual actions that comprise its engagement in the saga, the compensation handler and several reply handlers that are distinguished by the data object class that is received in the reply. This definition provides a simple in one place saga specification which is suitable for easier maintenance and distribution. This declarative approach provides many advantages that will be detailed in the following chapter.
 
-The last two business services that contribute to the saga execution are \texttt{shipment-service} and \texttt{invoice-service}. Both of these microservices define several command handler methods associated with the channel that is dedicated to the service. 
+The last two business services that contribute to the saga execution are \texttt{shipment-service} and \texttt{invoice-service}. Both of these microservices define several command handler methods associated with the channel that is dedicated to their respective functionality. 
 
-The channel is a main communication mechanism used in Eventuate Tram. It is denoted by a string name that needs to be specified in the command message as a target destination. The definition of channel associates commands that it is able to receive with command handling methods that are invoked when the corresponding commands are delivered. The command handler returns a \texttt{Message} object identifying the outcome of the invocation. The failure outcome of any participant will immediately result in the saga compensation.
+The channel is a main communication mechanism used in Eventuate Tram platform. It is denoted by a string name that needs to be specified in the command message as a target destination. The definition of channel associates commands that it is able to receive with command handling methods that are invoked when the corresponding commands are delivered. The command handler returns a \texttt{Message} object identifying the outcome of the invocation. The failure outcome of any participant will immediately result in the saga compensation.
 
-Both services are also connected to the Mongo database server in order to provide the browsing of the created shipments or invoices respectively.
+Both services are also connected to the \texttt{mongodb} server in order to provide the browsing of created shipments or invoices respectively.
 
-In conclusion, Tram remarkably simplified the Eventuate platform for the usage of sagas. Most importantly, it introduced a simple fluent API for the saga definition and the loss of CQRS restrictions. Altogether, Tram platform makes a suitable saga solution for microservices based environment.
+In conclusion, Tram remarkably simplified the Eventuate platform for the usage of sagas. Most importantly, it introduced a simple fluent API for the saga definition and the loss of CQRS restrictions. Altogether, Eventuate Tram platform makes a suitable saga solution for microservices based environment.
 
 \subsection{Problems}
 
@@ -1079,9 +1079,9 @@ All other traditional microservices requirements are handled by the OpenShift pl
 
 This project consists of five WildFly Swarm microservices and one support module. Each service is designed and configured with the \texttt{fabric8-maven-plugin} providing simple deployment to the OpenShift platform. Additionally, services contain a customized Dockerfile specifying environment properties and the target Swarm uberjar file which is used for the source-to-image (S2I) builds in OpenShift.
 
-The support library project is called the \texttt{service-model}. This module is rosponsible for the definition of the LRA information, the specification of the exchanged JSON data formats, the description of the communication model used in other services and the administration of common utilities.
+The support module is called the \texttt{service-model}. This module is responsible for the specification of the LRA definition and exchanged JSON data formats, the description of the communication model used in other services and the administration of common utilities.
 
-The \texttt{LRADefinition} class denotes the JSON format of the LRA representation. It presents a simplified version of the LRA capabilities for the example purposes. The definition includes only required attributes -- the name of the LRA, a list of individual actions that form the LRA and the unspecified object containing the user defined information associated with the LRA. The example LRA definition JSON format is available in the figure \ref{fig:lra-json}.
+The \texttt{LRADefinition} class denotes the JSON format of the LRA representation. It presents a simplified version of the LRA capabilities for example purposes. The definition includes only required attributes -- the name of the LRA, a list of individual actions that form the LRA and the unspecified object containing the user defined data associated with the LRA. The example LRA definition JSON format is available in the figure \ref{fig:lra-json}.
 
 \begin{figure}[h]
     \begin{center}
@@ -1105,9 +1105,9 @@ The action definition consists of the name, the action type and the service for 
 
 The actual deployable microservices project consists of five services -- \texttt{api-gateway}, \texttt{order-service}, \texttt{shipment-service}, \texttt{invoice-service} and \texttt{lra-coordinator}. Every service is configured with the addresses of other services as they reflect the OpenShift/Kubernetes application names. All of exposed APIs are defined in the Appendix \ref{sec:appendixAPI}.
 
-The services that provide the LRA execution capabilities are the \texttt{order-service}, the \texttt{shipment-service} and the \texttt{invoice-service}. Every service provides a simple computation that contributes to the LRA realization. Additionally, \texttt{order-service} also provides a user invocation endpoint that can initiate the LRA. As all three services are eventually subscribed to the LRA, they all provide REST endpoints annotated by the LRA annotations for the completion and compensation invocations. Each service is configured with an in-memory H2 SQL database for the data persistence.
+The services that provide the LRA execution capabilities are the \texttt{order-service}, the \texttt{shipment-service} and the \texttt{invoice-service}. Every service provides a simple computation that contributes to the LRA realization. Additionally, \texttt{order-service} also provides a user invocation endpoint that can initiate the LRA. As all three services are eventually subscribed to the LRA, they all provide REST endpoints annotated by the LRA annotations for completion and compensation invocations. Each service is configured with an in-memory H2 SQL database for the data persistence.
 
-The \texttt{lra-coordinator} project is provided by the Narayana framework. Although the LRA specification does not require the application of the REST architectural style, the \texttt{lra-coordinator} operates a set of REST endpoints that maintain the start of the LRA, gathering the information about active and recovering LRAs, the management of the nested LRAs and the ability of participants to join (enlist in) or leave the LRA. Narayana distributes this project already as a WildFly Swarm distribution. but for the investigation purposes, this quickstart still builds it as a part of the S2I deployment.
+The \texttt{lra-coordinator} project is provided by the Narayana framework. Although the LRA specification does not require the application of the REST architectural style, the \texttt{lra-coordinator} operates a set of REST endpoints that maintain the start of the LRA, gathering the information about active and recovering LRAs, the management of the nested LRAs and the ability of participants to join (enlist in) or leave the LRA. Narayana provides this project already as a WildFly Swarm distribution. However, for the investigation purposes, this quickstart still builds it as a part of the S2I deployment.
 
 Even if the \texttt{lra-coordinator} presents the REST endpoints for the LRA management, this quickstart invokes the coordinator by the client module provided by Narayana. The \texttt{lra-client} dependency provides the \texttt{LRAClient} class that is configured with the coordinator location and serves as a proxy separating the user from the actual REST invocations. This class is defined as a CDI bean to enable simple use through the dependency injection. The participant enlisting and invocations are defined by annotations present in the \texttt{io.narayana.lra.annotation} package.
 
@@ -1115,17 +1115,25 @@ The last service is the \texttt{api-gateway}. This module functions as an interf
 
 The \texttt{api-gateway} uses the LRA and action definition classes from the \texttt{service-module} to handle the LRA processing on the behalf of the initiating service. It exposes a REST interface that consumes the LRA definition JSON.
 
-The actual LRA execution is managed in the \texttt{LRAExecutor} class. This class provides one public method \texttt{processLRA(LRADefinition lraDefinition) : void} that is responsible for starting and performing of the LRA, collecting the participants results and closing or compensating of the LRA. This method processes the LRA asynchronously -- each execution is propagated to the new thread from the cached thread pool defined by the executor service present in the \texttt{LRAExecutor} class.
+The actual LRA execution is managed in the \texttt{LRAExecutor} class. This class provides one public method \texttt{processLRA(LRADefinition lraDefinition) : void} that is responsible for starting and performing of the LRA, collecting the participants results and closing or compensating the LRA. This method processes the LRA asynchronously -- each execution is propagated to the new thread from the cached thread pool defined by the executor service present in the \texttt{LRAExecutor} class.
 
 As this module was designed for this particular LRA scenario, it is configured to execute the LRA actions (order, shipment and invoice requests) independently and in parallel. It collects the result of each action and eventually closes or cancels the LRA with methods provided by the \texttt{LRAClient}. Certainly, this is an area which could be in a more general execution module further extended with e.g. the sequential configuration or the LRA nesting.
 
 \subsection{Problems}
 
+\newlinepar{REST restriction}
+
 The Narayana Long running actions are a very efficient development model for the microservices applications. Although, it mainly aims for the compatibility with the MicroProfile specification (REST and CDI), it does not restrict microservices to essentially any other particular implementation restrictions. Even if the MicroProfile is restricted to REST invocations, Narayana LRA specification does not require the usage this architectural style for the communication with the coordinator. However, the only implementation that is currently available is based on REST, but it certainly can be extended to other communication protocols in the future.
 
-The only problem that may occur in the current implementation is that the LRA framework provides only coordination and management capabilities, it does not handle the saga structuring and execution. Extraction of these capabilities directly to the LRA processing would be certainly applicable in many common specifically reactive applications use cases which can ease the development and orchestration of the saga execution. 
+\newlinepar{LRA execution}
+
+The current implementation is that the LRA framework provides only coordination and management capabilities, it does not handle the saga structuring and execution. Extraction of these capabilities directly to the LRA processing would be certainly applicable in many common specifically reactive applications use cases which can ease the development and orchestration of the saga execution. 
 
 In the LRA service is this problem addressed by the \texttt{api-gateway} service which functions as a proxy for the \texttt{lra-coordinator} that handles the saga execution. This approach does not effect the Narayana LRA management. The only change from the traditional processing is that series of LRA actions are performed by the \texttt{api-gateway} instead of the initiating service. This allows the service to be immediately available for the subsequent user requests and to scale the LRA processing independently from the application services that utilize the saga actions execution.
+
+\newlinepar{Single point of failure}
+
+By the time of this writing the LRA coordinator represents a single point of failure for the LRA processing as it contains the object store that is used for storing of the LRA information. User services also need to be adjusted for the situations when the coordinator is not available.
 
 
 \section{Used technologies}
@@ -1149,47 +1157,47 @@ Spring provides various ways for exposing available services. Registration serve
 
 \newlinepar{WildFly Swarm}
 
-WildFly Swarm is the Red Hat microservices initiative designed to enable deconstructing the WildFly application server and pasting just enough of it back together with the application to create a self-contained executable jar \cite{gupta_2018}. 
+WildFly Swarm is the Red Hat microservices initiative designed to enable deconstructing the WildFly application server and pasting just enough of it back together with the application to create a self-contained executable jar \cite{gupta_2018}. It is compatible with the MicroProfile project.
 
-The traditional Java Enterprise Edition (EE) approach follows the development of the application and its successive deployment to the application server which includes necessary dependencies which the application requires to run. On the other hand, Wildfly Swarm creates a fat Java archive which packages all needed dependencies inside itself. This emulates the packaging of only requisite parts of the application server. The result jar is a standalone runnable Java application which can be executed by the \texttt{java -jar} command. It also provides Maven and Gradle plugins to ease the development of Swarm applications.
+The traditional Java Enterprise Edition (EE) approach follows the development of the application and its subsequent deployment to the application server which includes necessary dependencies which the application requires to run. On the other hand, Wildfly Swarm creates a fat Java archive which packages all needed dependencies. This emulates the packaging of only requisite parts of the application server. The result jar is a standalone runnable Java application which can be executed by the \texttt{java -jar} command. It also provides Maven and Gradle plugins to ease the development of Swarm applications.
 
 The default fat jar (also called the uberjar) contains the user application and the needed parts of the WildFly server. Swarm also supports the packaging of the necessary server parts separately from the application. This method is know as the hollow jar and is particularly useful in the containerized environment as the server may be placed in the lower layers that do not require frequent rebuilds.
 
-The individual server parts are being delivered in the packages named fractions. The fraction represents a precise selection of capabilities that can be included in the application. It may denote the exact WildFly subsystem as JAX-RS\footnote{Java API for RESTful Web Services} or CDI\footnote{Context and Dependency Injection}, or a more sophisticated set of facilities to provide some additional functionality like RHSSO\footnote{Red Hat Single Sign-On}.
+The individual server parts are being delivered in packages named fractions. The fraction represents a precise selection of capabilities that can be included in the application. It may denote the exact WildFly subsystem as JAX-RS or CDI, or a more sophisticated set of facilities to provide some additional functionality like Red Hat Single Sign-On (RHSSO).
 
 \subsection{Docker}
 \label{sec:docker}
 
-Docker is an open source container platform designed to make it easier to build, secure and manage the widest array of application from development to production both on premises and in the cloud \cite{docker}. Docker containers allow applications to run on top of the kernel services provided by the hosting system which considerably effects the application performance. However, it still builds containers on top of the generalized interface which warrants straightforward portability between different machines.
+Docker is an open source container platform designed to make it easier to build, secure and manage the widest array of applications from development to production both on premises and in the cloud \cite{docker}. Docker containers allow applications to run on top of the kernel services provided by the hosting system which considerably effects the application performance. However, it still builds containers on top of the generalized interface which warrants straightforward portability between different machines.
 
 A container image is a lightweight, stand-alone, executable package of a piece of software that includes everything needed to run it -- code, runtime, system tools, libraries or settings \cite{docker}. All docker containers that run on the same machine share the kernel services of the host. The images are build on the concept of layers. The layer provides an abstraction to share common filesystems, configuration and other data that can be reused by several docker containers.
 
-Containers isolate applications from the operating system their running on and also provide the separation from other docker containers running concurrently on the same computer. Instead of virtual machines which provide similar functionality, Docker virtualizes the operating system not the hardware. Docker provides abstraction at the application level.
+Containers isolate applications from the operating system they are running on and also provide the separation from other docker containers running concurrently on the same computer. Instead of virtual machines which provide similar functionality, Docker virtualizes the operating system not the hardware. Docker provides abstraction at the application level.
 
-Docker as a tool is targeted for simple utilization. It provides an unified environment for both developers and administrators supporting the DevOps (development and operations) practices. Particularly, developers profit from portable code that is able to run on any operating platform supporting Docker, while operations gain visibility and management services from comprehensive control panel covering all containerized applications.
+Docker as a tool is targeted for the simple utilization. It provides an unified environment for both developers and administrators supporting the DevOps (development and operations) practices. Particularly, developers profit from portable code that is able to run on almost any operating platform supporting Docker\footnote{e. g. image build on AMD cannot always run on Intel processors}, while operations gain visibility and management services from comprehensive control panel covering all containerized applications.
 
 \newlinepar{Docker compose}
 
 Docker compose is a tool for the defining and running multi-container Docker applications \cite{docker_compose}. It allows to specify configuration for several containers as YAML file that can be passed as an argument to the command line tool to run all services with a single command.
 
-The YAML configuration includes the same options that are available as a switches to native Docker commands. Additionally, it also provides functionality to orchestrate the specified services once they are started through the \texttt{docker-compose} command line utility. These functions include the network definition which allows easy addressing and the location transparency of the employed containers, the preservation of the container volumes, recreation of only changed containers or the specification of environment variables directly in the configuration file. 
+The YAML configuration includes the same options that are available as switches to native Docker commands. Additionally, it also provides functionality to orchestrate the specified services once they are started through the \texttt{docker-compose} command line utility. These functions include the network definition which allows easy addressing and the location transparency of employed containers, the preservation of the container volumes, recreation of only changed containers or the specification of environment variables directly in the configuration file. 
 
-Docker compose represents a simple way to provide container automation that may ease the development and support of the continuous delivery (CD) and integration (CI) pipelines.
+Docker compose represents a simple way to provide container automation that may ease development and support of the continuous delivery (CD) and integration (CI) pipelines.
 
 
 \subsection{Containerization platforms}
 
 \newlinepar{OpenShift platform}
 
-Red Hat OpenShift is an open source container application platform that  brings Docker and Kubernetes to the enterprise \cite{openshift} which is generally build on top of the Red Hat Enterprise Linux. It provides the deployment, management and monitoring capabilities of the containerized software. OpenShift provides automation in the cloud environment that enables simple development workflow including easy provisioning, building and deployment of enterprise applications allowing faster delivery to end customers.
+Red Hat OpenShift is an open source container application platform that  brings Docker and Kubernetes to the enterprise \cite{openshift} which is generally build on top of the Red Hat Enterprise Linux. It provides deployment, management and monitoring capabilities of the containerized software. OpenShift provides automation in the cloud environment that enables simple development workflow including easy provisioning, building and deployment of enterprise applications allowing faster delivery to end customers.
 
-The platform provides extensive set of features like self-service maintenance, polyglot (language independent) application support, container-based environment and the automation of application builds, scaling and health management. It can also administer persistence, the application centric networking and multiple interaction models, e. g. command line tools or the web console.
+The platform provides extensive set of features like self-service maintenance, polyglot (language independent) application support, container-based environment and the automation of application builds, scaling and health management. It can also administer persistence, the application centric networking and multiple interaction models, e. g., command line tools or the web console.
 
-OpenShift is provided in several variants. The upstream open source community project is OpenShift Origin which is a distribution of Kubernetes optimized for continuous application development and multi-tenant deployment \cite{openshift}. On top of the Kubernetes platform, Origin provides the developer and operations centric tooling, security, logging or pipelining and many other capabilities. Origin is also available as the all in one virtual machine called Minishift which utilizes a local single-node OpenShift cluster. 
+OpenShift is provided in several variants. The upstream open source community project is OpenShift Origin which is a distribution of Kubernetes optimized for continuous application development and multi-tenant deployment \cite{openshift}. On top of the Kubernetes platform, Origin provides the developer and operations centric tooling, security, logging or pipelining and many other capabilities. Origin is also available as the all in one virtual machine called Minishift which utilizes a local single-node OpenShift cluster targeted for the local development. 
 
-The second alternative is the OpenShift Online. Currently distributed in version 3, it serves as a Red Hat multi-tennant public cloud application development and hosting service. OpenShift Online provides an integrated environment that allows developers to focus on the application development instead of its management through the set of facilities like source-to-image builds eliminating the Dockerfiles creation, one click deployments through git hooks, automatic scaling according to the traffic and the integration build-in with many Integrated Development Environments (IDE).
+The second alternative is the OpenShift Online. Currently distributed in version 3, it serves as a Red Hat multi-tennant public cloud application development and hosting service. OpenShift Online provides an integrated environment that allows developers to focus on the application development instead of its management through the set of facilities like source-to-image builds eliminating the Dockerfiles creation, one click deployments through git hooks, automatic scaling according to the traffic and the integration with many Integrated Development Environments (IDEs).
 
-OpenShift Dedicated offers a private, highly available OpenShift cluster provided as a cloud service managed by Red Hat that is dedicated to a single customer (single-tennant). It can be hosted in public cloud services platforms like Amazon Web Services (AWS) or Google Cloud platform (GCP).
+OpenShift Dedicated offers a private, highly available OpenShift cluster provided as a cloud service managed by Red Hat that is dedicated to a single customer (single-tennant). It can be hosted in public cloud services platforms like Amazon Web Services (AWS) or the Google Cloud platform (GCP).
 
 The Red Hat OpenShift Container Platform provides a solution to operate OpenShift on the customer's own infrastructure -- in the data center of in the private cloud. Is is based on the same code base as the OpenShift Dedicated.
 
@@ -1201,7 +1209,7 @@ Kubernetes is an open source project providing automation, scaling and managemen
 
 The features of Kubernetes include the service discovery, load balancing, automatic container placement or the self-healing for the automated failure recovery and rollbacks. It also manages the storage orchestration, scaling of containers, secrets, container configuration and batch capabilities.
 
-Kubernetes platform is suitable and portable to any cloud environment involving public, private, hybrid clouds and multi-cloud. It allows application containers to be run in the clusters of physical or virtual machines. Kubernetes is not a traditional PaaS (Platform as a Service) solution but it provides platform that many PaaS systems build upon, e. g. OpenShift or Deis.
+Kubernetes platform is suitable and portable to any cloud environment involving public, private, hybrid clouds and the multi-cloud. It allows application containers to be run in the clusters of physical or virtual machines. Kubernetes is not a traditional PaaS (Platform as a Service) solution but it provides platform that many PaaS systems build upon, e. g. OpenShift or Deis.
 
 
 
@@ -1233,7 +1241,7 @@ Every example has been tested in two modes -- 1000 order requests with 10 thread
 
 The major performance problem of this example was the artificial one second delay placed on the shipment and invoice response receival in the \texttt{order-service}. This problem has been reported to the Axon framework and this quickstart has been provided with a fixed configuration that removed the need for the timeout. This setting will be included by default in the Axon next release. 
 
-Another problem was synchronous REST calls for the inter-service command dispatching. This issue has been reported and still being investigated by the time of this writing.
+Another problem was synchronous REST calls for the inter-service command dispatching over distributed command bus. This issue has been reported and it was still being investigated by the time of this writing.
 
 The performance test in the scenario 1 has been executed successfully in 51 seconds. The scenario 2 met the limits of the platform when the database lock for the first command could not taken after about 5000 requests. This scenario was run three times with the best result of 5657 completed orders in 7 minutes and 44 seconds.
 
@@ -1243,13 +1251,13 @@ This performance test discovered a new issue in the Eventuate Local platform. Wh
 
 In the scenario 1 the 1000 request has been created in 58 seconds, but because of the above mentioned issue the final count reached 2000 orders. The scenario 2 was executed three times where each run produced different amount of completed orders. The presented test execution finished after 14 minutes and 46 seconds with 19791 completed orders.
 
-\newlinepar{Eventutate sagas}
+\newlinepar{Eventutate Tram service}
 
-The Eventuate Tram project performed well in the scenario 1 which has been finished in 34 seconds with all completed orders. However, the scenario 2 in some cases produced an exception in Kafka service that timed out on the \texttt{session.timeout.ms} -- a time out that is used to detect consumer failures. The default value for this property is hard coded in the Tram code base and cannot be customized. The representing successful run has been completed in 3 minutes and 56 seconds.
+The Eventuate Tram project performed well in the scenario 1 which has been finished in 34 seconds with all completed orders. However, the scenario 2 in some cases produced an exception in Kafka service that timed out on the \texttt{session.timeout.ms} -- a time out that is used to detect consumer failures. The default value for this property is hard coded in the Eventuate code base and cannot be customized. The representing successful run has been completed in 3 minutes and 56 seconds.
 
 \newlinepar{LRA service}
 
-This quickstart was for this test adjusted to be run directly in the Docker platform to simulate similar environment for all examples. The test presented that the LRA coordinator orchestration does not influence the processing performance. The scenario 1 has been finished with  exceptional overhead only 4 seconds and total time 1 minute and 10 seconds while the scenario 2 finished in 8 minutes and 58 seconds with only 22 seconds spent on the saga processing. Both scenarios successfully completed all order requests.
+This quickstart was for this test adjusted to be run directly in the Docker platform to simulate similar environment for all examples. The test presented that the LRA coordinator orchestration does not influence the processing performance. The scenario 1 has been finished with  exceptional overhead only 4 seconds and total time 1 minute and 10 seconds while the scenario 2 finished in 8 minutes and 58 seconds with only 22 seconds spent on the additional saga processing. Both scenarios successfully completed all order requests.
 
 \newlinepar{Summary}
 
