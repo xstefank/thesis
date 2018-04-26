@@ -895,17 +895,19 @@ Both the Spring Cloud registration server and the RabbitMQ message broker are re
 
 \subsection{Project structure}
 
-The application is composed of five microservices -- the  \texttt{order-service}, the \texttt{shipment-service}, the \texttt{invoice-service}, the \texttt{query-service} and the \texttt{registration-server}. Furthermore, it also contains a separated project \texttt{service-model} which serves as a support library for individual microservices.
-
-The \texttt{registration-server} microservice is a Spring Boot application which functions as a Netflix Eureka server \cite{service_registration}. Other business services act as clients for this server, therefore it is required that this service is initialized by the time they try to register.
+The application is composed of six microservices -- the  \texttt{order-service}, the \texttt{shipment-service}, the \texttt{invoice-service}, the \texttt{query-service}, the \texttt{registration-server} and the \texttt{rabbitmq}. Furthermore, it also contains a separated project \texttt{service-model} which serves as a support library for individual microservices.
 
 The \texttt{order-service} project is a business microservice responsible for the saga handling. It contains the logic for the order request, the saga initiation and the saga compensation.
 
-Both \texttt{shipment-service} and \texttt{invoice-service} are business services functioning only as the saga participants. Their only obligation is to provide their respective computations.
+Both \texttt{shipment-service} and \texttt{invoice-service} are business services functioning only as saga participants. Their only obligation is to provide their respective computations.
 
-The \texttt{query-service} is a specific microservice included for the purposes of the CQRS pattern. It collects the information of the prepared orders, shipments and invoices and provides an external APIs for users to query these resources. 
+The \texttt{query-service} is a specific microservice included for purposes of the CQRS pattern. It collects information about prepared orders, shipments and invoices and provides an external APIs for users to query the collected data. 
 
-Finally, the \texttt{service-model} is a Kotlin and Java Maven application providing the core API for the commands and events used by various business services. This is required as all classes must match in order for particular handlers to be invoked. Furthermore, it also provides common utilities and the logging support. It is mandatory to include this project on the classpath of the every other service.
+Both \texttt{registration-server} and \texttt{rabbitmq} services are summarized in the previous section. They provide capabilities to distribute command and event buses respectively.
+
+Finally, the \texttt{service-model} is a Kotlin and Java Maven application providing the core API for commands and events used by various business services. This is required as all classes must match in order for particular handlers to be invoked. Furthermore, it also provides common utilities and the logging support. It is mandatory to include this project on the classpath of the every other service.
+
+\hfill \break
 
 \subsection{Problems}
 \label{sec:axon-problems}
