@@ -2,6 +2,7 @@
 \addvspace {4\p@ }
 \addvspace {4\p@ }
 \contentsline {figure}{\numberline {2.1}{\ignorespaces Dirty writes}}{8}{figure.2.1}
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Non repeatable read}}{9}{figure.2.2}
 \addvspace {4\p@ }
 \addvspace {4\p@ }
 \contentsline {figure}{\numberline {4.1}{\ignorespaces Example saga execution}}{40}{figure.4.1}

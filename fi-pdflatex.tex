@@ -168,7 +168,7 @@ However, the read uncommitted isolation level already prevents the dirty write c
 
 \begin{figure}[h]
     \begin{center}
-        \includegraphics[height=55mm]{images/dirtyWrite.png}
+        \includegraphics[height=60mm]{images/dirtywrite.png}
     \end{center}
     \caption{Dirty writes}
 \end{figure}
@@ -184,6 +184,13 @@ Read committed level differs from the previous level in that it prohibits dirty 
 This isolation level prevents the anomaly called the non-repeatable read which may still appear in read committed. The non-repeatable read is a problem of reading the data values in different points of time in which the whole consistent data state may not be ensured. This means that the transaction may read the data change in later point in time which may invalidate already read information from a previous processing.
 
 For example, imagine a bank system with two accounts -- both with starting the balance 500 and a transfer of 100 from account 1 to 2 as a transaction. If another transaction reads the balance of the account 2 prior to start of transaction, it will get 500. However, the subsequent read from the account 1, after the first transaction has committed, would output 400 which would result into inconsistent information.
+
+\begin{figure}[h]
+    \begin{center}
+        \includegraphics[height=55mm]{images/nonrepeatableread.png}
+    \end{center}
+    \caption{Non repeatable read}
+\end{figure}
 
 The MVCC alternative to the repeatable read is the snapshot isolation. Both the repeatable read and the snapshot isolation prevent non-repeatable reads, but they differ in implementation \cite{isolation_levels}. Repeatable read is based on the locking mechanisms. However, the snapshot isolation allows each transaction to read data from a snapshot of the (committed) data which is created at the time the transaction is started \cite{ansi-sql-critique}. The database is required to internally keep track of several states and to provide each transaction with the snapshot that is appropriate for its time span.
 
