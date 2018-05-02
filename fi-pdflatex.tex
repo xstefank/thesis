@@ -1392,7 +1392,15 @@ The current implementation functions exclusively as the LRA executor. The actual
 \section{Narayana LRA integration}
 \label{sec:narayana-lra-integration}
 
-The \textit{LRA executor extension} solution provided in this thesis has been integrated and tested with the Narayana transaction manager 5.8.1.Final.
+The \textit{LRA executor extension} solution provided in this thesis has been integrated and tested with the Narayana transaction manager 5.8.1.Final. Figure \ref{fig:integration-component} provides an overview of the integration in form of the component diagram. A more detailed view of the required integration changes in form of class diagrams is available in the Appendix \ref{sec:appendix-class-diagrams}.
+
+\begin{figure}[h]
+    \begin{center}
+        \includegraphics[width=1.0\textwidth]{images/componentDiagrams/narayana-integration-component.png}
+    \end{center}
+    \caption{Narayana LRA executor extension integration component diagram}
+    \label{fig:integration-component}
+\end{figure}
 
 A new module \texttt{lra-rest-definitions} provides a REST extension of the LRA definitions project. The \texttt{RESTLra} interface declares the REST \texttt{LRADefinition}. It additionally specifies only the callback endpoint which can be optionally notified about LRA completion. The implementation of the action interface is included in the \texttt{RESTAction} class. It is defined by the participant URL and an optional callback resource address which specifies where the LRA operations handlers are expected. If the callback address is not provided, the participant target address is used\footnote{in future, it may be possible to add support for the retrieval of this information from LRA annotations upon the participant invocation}. This module also provides a custom builder class and the JSON representation for both the LRA definition and the action respectively.
 
