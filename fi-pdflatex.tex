@@ -42,12 +42,12 @@
     advisor       = {Bruno Rossi, PhD},
     title         = {Use of Transactions within a Reactive Microservices Environment},
     TeXtitle      = {Use of Transactions within a Reactive Microservices Environment},
-    keywords      = {transactions, Narayana, LRA, reactive, microservices, asynchronous, saga, compensating transactions},
-    TeXkeywords   = {transactions, Narayana, LRA, reactive, microservices, asynchronous, saga, compensating transactions},
+    keywords      = {transactions, Narayana, Long Running Actions (LRA), reactive, microservices, asynchronous, saga, compensating transactions},
+    TeXkeywords   = {transactions, Narayana, Long Running Actions (LRA), reactive, microservices, asynchronous, saga, compensating transactions},
 }
-\thesislong{abstract}{The transaction processing is an inherent part of the application development. However, particularly in the distributed environment, the employment of transactions introduces several challenges that the transaction management must be able to handle. Microservices represent an emerging architectural style for the modern distributed application design. These applications commonly address similar concerns to stay responsive, elastic and resilient which is why the employment of traditional locking transaction commit protocols may not be acceptable. The saga pattern presents a suitable alternative solution to the transaction processing that relaxes some of ACID properties in order to promote availability. In this work, we examine how sagas differ from conventional transactions, investigate currently available saga solutions and propose a saga execution implementation for the Naryana transaction manager.
+\thesislong{abstract}{Transaction processing is an inherent part of application development. However, particularly in the distributed environment, the usage of transactions introduces several challenges that transaction management must be able to handle. Microservices represent an emerging architectural style for the modern distributed application design. These applications commonly address similar concerns to stay responsive, elastic and resilient which is why the utilization of traditional locking transaction commit protocols may not be acceptable. The saga pattern presents a suitable alternative solution to transaction processing that relaxes some of ACID properties in order to promote availability. In this work, we examine how sagas differ from conventional transactions, investigate currently available saga solutions and propose a saga execution implementation for the Narayana transaction manager.
 }
-\thesislong{thanks}{I would like to express my sincere thanks to my supervisor Bruno Rossi, PhD for his help and support in my work on this thesis. I would also like to thank Mgr. Ondrej Chaloupka from the Narayana team for his supervision, neverending passion and interest in this topic that was inspiring to complete many of the achieved results. Last but foremost, I would like to direct my thanks to my family and my beloved Magdalena who comprehensively supported me throughout the formation of this work.
+\thesislong{thanks}{I would like to express my sincere thanks to my supervisor Bruno Rossi, PhD for his help and support in my work on this thesis. I would also like to thank Mgr. Ondrej Chaloupka from the Narayana team for his supervision, neverending passion and interest in this topic that was inspiring to complete many of achieved results. Last but foremost, I would like to direct my thanks to my family and my beloved Magdalena who comprehensively supported me throughout the formation of this publication.
 }
 %% The following section sets up the bibliography.
 \usepackage{booktabs}
@@ -70,31 +70,34 @@
 \begin{document}
 \chapter{Introduction}
 
-Transaction processing is widely recognized as a critical technology for modern applications \cite{java_tran_processing}. The capability to group a sequence of operations into a logical unit of work represents a common business concept that relies on certain correctness guarantees.  Particularly in the distributed environment, the comprehension and the achievement of these requirements, based on the currently available technology stack, represents a considerably complex programming task.
+Transaction processing is widely recognized as a critical technology for modern applications \cite{java_tran_processing}. The capability to group a sequence of operations into a logical unit of work represents a common business concept that relies on certain guarantees of correctness. Particularly in the distributed environment, the comprehension and the achievement of these requirements, based on the currently available technology stack, represents a considerably complex programming task.
 
 \section{Problem domain}
 
-Microservices architectural pattern defines a sophisticated development technique which separates the application domain into a set of isolated services that collaborate together to model various business concepts. Each service depicts an autonomous self-maintained unit that is decoupled from other services to promote an independent lifecycle management, deployment and failure isolation. In order to cooperate their activities, microservices must employ a non-blocking remote invocation model that is frequently utilizing a form of asynchronous communication mechanisms.
+Microservices architectural pattern defines a sophisticated development technique which separates the application domain into set of isolated services that collaborate together to model various business concepts \cite{building_ms}. Each service depicts an autonomous self-maintained unit that is decoupled from other services to promote an independent lifecycle management, deployment and failure isolation. In order to cooperate their activities, microservices must employ a non-blocking remote invocation model that is frequently utilizing a form of asynchronous communication mechanisms.
 
-Due to their distributed character, microservices applications are often inclined to many issues associated with the failure processing and the isolated development model. To ensure that the system is able to function even in the degraded state, these applications commonly provide a design that guarantees certain quality properties which are defined in the Reactive Manifesto \cite{reactive_manifesto} as the reactive systems. The four recognized attributes of the reactive microservices system are responsiveness, resilience, elasticity and the asynchronous message passing.
+Due to their distributed character, microservices applications are often inclined to many issues associated with the failure processing and the isolated development model. To ensure that the system is able to function even in a degraded state, these applications commonly provide a design that guarantees certain quality properties which are defined in the Reactive Manifesto \cite{reactive_manifesto} as the reactive systems. The four recognized attributes of reactive microservices systems are responsiveness, resilience, elasticity and the asynchronous message passing.
 
-These characteristics naturally extend to the employment of the transaction processing in the reactive environment. As transactions may presumably span multiple services while still providing ACID guarantees, it is required that all impacted participants reach a shared uniform consensus on the transaction result. This is achieved through the utilization of consensus protocols represented conventionally by the Two-phase commit protocol (2PC). However, due to their commonly locking nature, these protocols may present difficulties with the achievement of properties reactive systems need to provide.
+These characteristics naturally extend to the application of the transaction processing in reactive environment. As transactions may presumably span multiple services while still providing ACID (Atomicity, Consistency, Isolation, Durability) guarantees, it is required that all impacted participants reach a shared uniform consensus on the transaction result. This is achieved through the utilization of consensus protocols represented conventionally by the Two-phase commit protocol (2PC). However, due to their commonly locking nature, these protocols may present difficulties with the achievement of properties reactive systems need to provide.
 
-The saga pattern \cite{sagas_publ} represents an alternative approach to the transaction processing applicable for long living transactions. In the long running transaction, traditional consensus protocols may hold locks on resources for a long time periods which is not acceptable in reactive environment. The saga addresses this problem by allowing participants to commit their intermediate states as local operations. Each operation is required to define a compensation action that can semantically undo the performed operation. The pattern guarantees that either all operations are performed successfully or the compensation actions are executed for each performed operation to amend the partial processing.
+The saga pattern \cite{sagas_publ} represents an alternative approach to transaction processing applicable for long living transactions. In a long running transaction, traditional consensus protocols may hold locks on resources for long time periods which is not acceptable in a reactive environment. The saga addresses this problem by allowing participants to commit their intermediate states as local operations. Each operation is required to define a compensation action that can semantically undo the performed operation. The pattern guarantees that either all operations are performed successfully or the compensation actions are executed for each performed operation to amend the partial processing.
 
 \section{Research objectives}
 
-There are three main objectives conducted in this work:
+There are three main objectives in this work:
 
 \begin{enumerate}
-    \item The investigation of asynchronous approaches available for the transaction processing in the microservices context.
+    \item The investigation of asynchronous approaches available for transaction processing in the microservices context.
     
-    \item The proposal of the proof of concept implementation utilizing the Narayana transaction manager \cite{narayana} to create a service providing the transaction management in the reactive microservices systems.
+    \item The proposal of a proof of concept implementation utilizing the Narayana transaction manager \cite{narayana} to create a service providing transaction management in reactive microservices systems.
     
     \item The preparation of a quickstart example presenting practical considerations of the applied solution for the asynchronous execution.
 \end{enumerate}
 
-The research investigation is focused on the saga pattern \cite{sagas_publ} application in the reactive architecture through the available solutions based on the Java platform. The four studied frameworks are Axon \cite{axon_framework}, Eventuate ES platform \cite{eventuate.io}, Eventuate Tram \cite{eventuate-tram} and Narayana long running actions (LRA) \cite{narayana_lra}. 
+The research investigation is focused on the saga pattern \cite{sagas_publ} application in reactive architectures by means of the available solutions based on the Java platform. The four studied frameworks are Axon \cite{axon_framework}, Eventuate Event Sourcing (ES) platform \cite{eventuate.io}, Eventuate Tram \cite{eventuate-tram} and Narayana Long Running Actions (LRA) \cite{narayana_lra}. 
+
+\hfill \break
+
 
 \section{Research contributions}
 
@@ -102,7 +105,7 @@ As a part of the saga implementations research, we created an example quickstart
 
 The proposed proof of concept implementation of the asynchronous LRA processing in Narayana transaction manager is called the \textit{LRA executor extension}. This project is build on top of the current Narayana LRA coordination management to allow the asynchronous LRA execution based on the user definition. Together with this extension, an example quickstart project the \textit{LRA executor quickstart} has been created to demonstrate asynchronous capabilities of this solution.
 
-The research and the development conducted within this thesis has been performed in the collaboration with the Narayana open source transaction manager \cite{narayana}. All originated source code associated with this thesis is available open source under the GNU LGPL 2.1 license.
+The research and the development conducted within this thesis has been performed in collaboration with the Narayana open source transaction manager \cite{narayana} development team. All originated source code associated with this thesis is available under the open source GNU LGPL 2.1 license \cite{gnuLGPL21}.
 
 \section{Structure}
 
@@ -110,7 +113,7 @@ This thesis can be divided into three logical segments. The first part consists 
 
 The second segment provides the detailed description of the saga pattern \cite{sagas_publ}. The fourth chapter describes what the saga is, how it relates to the traditional transaction processing and it presents an overview of four investigated frameworks that provide saga execution capabilities. The fifth chapter covers the detailed description of the saga implementation in each example and the study of the performance test execution performed on researched saga solutions.
 
-The last part represents the description of the proposed solution of the asynchronous saga execution in the Narayana LRA project. The sixth chapter provides the motivation, design and implementation of the \textit{LRA executor extension} project together with its integration requirements and the description of the possible future inclusion of this project in the Narayana codebase. The last chapter provides a summary of the performed work and concludes achieved results.
+The last part represents the description of the proposed solution of the asynchronous saga execution in the Narayana LRA project. The sixth chapter provides the motivation, design and implementation of the \textit{LRA executor extension} project together with its integration requirements and the description of the possible future inclusion of this project in the Narayana codebase. The last chapter provides a summary of the performed work and concludes with the achieved results.
 
 
 \clearpage
