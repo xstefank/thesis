@@ -1413,9 +1413,17 @@ The \texttt{RESTLRAExecutor} provides a capability to enlist saga participants p
 
 The integration also includes some minor modifications to ease the use of the definition within the coordinator. This mainly concerns a separate starting endpoint in the \texttt{lra-coordinator} which consumes the \texttt{RESTLra} and the corresponding client method declaration in the \texttt{NarayanaLRAClient}.
 
+\section{LRA executor quickstart}
+
+To demonstrate asynchronous LRA execution capabilities of the proposed solution, we created a sample quickstart application \textit{LRA executor quickstart} that utilizes the LRA coordinator with incorporated \textit{LRA executor extension}. 
+
+The example consists of four services: a saga service, two participant services and the LRA coordinator. The execution simulates artificial asynchronous processing. The LRA is initiated by the saga service which sends the predefined LRA definition to the coordinator and immediately returns a response. The coordinator processes the definition by two invocations of respective participants and completes the LRA. Both participants only wait for specified time periods to simulate asynchronous tasks.
+
+For the ease of use, the LRA coordinator is provided as a docker image under \texttt{xstefank/lra-coordinator:5.8.1.Final} tag available on Docker hub. The example is accommodated to be run by a single command as the Docker compose or OpenShift configuration.
+
 \section{Future work}
 
-The current implementation of the \textit{LRA executor extension} discussed in previous chapters provides a working proof of concept of potential Narayana LRA execution capabilities. However, there are still some tasks that need to be addressed before it can be included in the project.
+The current implementation of the \textit{LRA executor extension}, discussed in previous sections, provides a working proof of concept of potential Narayana LRA execution capabilities. However, there are still some tasks that need to be addressed before it can be included in the project.
 
 The first assignment of the executor inclusion would be the refactoring of the current LRA code base to extract the orchestration logic from the LRA coordinator. This will allow to employ different communication patterns and protocols for the LRA processing on top of the same service layer. 
 
