@@ -828,15 +828,17 @@ The previous section described four frameworks that provide saga implementation 
 \clearpage
 \chapter{Saga implementations comparison example}
 
-As a part of the investigation of the each discussed framework from the previous chapter, we created a sample application simulating the saga utilization. The main goal of this quickstart projects is to compare the base attributes of the investigated saga solution provided by these frameworks. This includes the comparison of the development model, microservices feasibility, maintainability, scalability, performance and the applicability of the reactive principles within the saga execution. The examples created for this thesis may be considered as artifacts of the one iteration of the design science research \cite{design_science}.
+As a part of the investigation of the each discussed framework from the previous chapter, we created a sample application simulating the saga utilization. The main goal of this quickstart projects is to compare the base attributes of the investigated saga solution provided by these frameworks. This includes the comparison of the development model, microservices feasibility, maintainability, scalability, performance and the applicability of the reactive principles within the saga execution. The examples created for this thesis may be considered as artifacts of one iteration of design science research \cite{design_science}.
 
 The sample application represents a backend processing for orders with a simple REST user interface. Users are also allowed to query persisted information through the defined microservices APIs available in appendix \ref{sec:appendixAPI}.
 
 All examples are based on the microservices pattern. As every framework is suitable for the use in different environments, each example is achieving the same goal through the different portfolio of technologies. The exact mechanisms used in individual projects will be discussed in more detail in their respective sections.
 
+Applications are also compared from the performance perspective in Section \ref{sec:perftest} by a created performance test executed in two different load scenarios.
+
 \section{Common scenario}
 
-A user is able to create the order by a REST call to the dedicated endpoint of the \texttt{order-service} microservice. The request must provide a product information in the JavaScript object notation (JSON) format containing the product id, the commentary and the price. For the simplicity reasons, the order always consists only of the single product. The figure \ref{fig:inputJson} presents the example of the input JSON format for the product data. The complete REST API for each individual example is provided in the Appendix \ref{sec:appendixAPI}.
+A user is able to create an order by a REST call to the dedicated endpoint of the \texttt{order-service} microservice. The request must provide a product information in the JavaScript object notation (JSON) format containing the product id, the commentary and the price. For the simplicity reasons, the order always consists only of the single product. Figure \ref{fig:inputJson} presents the example of the input JSON format for the product data. The complete REST API for each individual example is provided in the Appendix \ref{sec:appendixAPI}.
 
 \begin{figure}
     \begin{center}
@@ -1226,10 +1228,11 @@ Kubernetes platform is suitable and portable to any cloud environment involving 
 
 
 \section{Performance test}
+\label{sec:perftest}
 
-To compare examples for their applicability in real systems from the performance perspective, a simple performance test has been created to investigate how they behave under larger load.
+To compare examples for their applicability in real systems from the performance perspective, a simple performance test has been created to investigate how they behave under large load.
 
-As these projects impose only as quickstart examples which were not adjusted for performance problems, this test serves only as a reference to inspect the behavior of the simple starting application. It does not correspond to the real production environment, but it still references some of possible performance improvement points present in each inspected framework.
+As these projects represent only quickstart examples which were not adjusted for performance problems, this test serves only as a reference to inspect the behavior of the simple starting application. It does not correspond to the real production environment, but it still references some of possible performance improvement points present in each inspected framework.
 
 The test has been run in the cloud computing platform Digital Ocean \cite{digital-ocean}. The virtual machine specification:
 
@@ -1247,7 +1250,15 @@ The test has been run in the cloud computing platform Digital Ocean \cite{digita
 
 The performance test is using the PerfCake \cite{perfcake} testing framework to generate requested number of order requests. As all investigated frameworks perform the saga execution asynchronously, the test first waits for the specified delay period and then performs the get orders call to the respective service in periodic intervals. The test ends when all orders are processed or the defined timeout is reached.
 
-Every example has been tested in two modes -- 1000 order requests with 10 threads (scenario 1) and 10 000 order requests with 100 threads (scenario 2). The reason was that some of the frameworks are not able to handle the later test because of various problems discussed in following sections.
+Every example has been tested in two modes -- 1000 order requests with 10 threads (scenario 1) and 10 000 order requests with 100 threads (scenario 2). The reason was that some of the frameworks are not able to handle the later test because of various problems discussed in following sections. The scenario 2 has been run three times for each individual example, the presented results are taken from the best execution. Each test execution has been run in the same setup on a new virtual machine.
+
+\begin{figure}[h]
+    \begin{center}
+        \includegraphics[width=1.0\textwidth]{images/performance-test-flow.png}
+    \end{center}
+    \caption{Saga performance test execution}
+\end{figure}
+
 
 \newlinepar{Axon service}
 
@@ -1273,7 +1284,7 @@ This quickstart was for this test adjusted to be run directly in the Docker plat
 
 \newlinepar{Summary}
 
-Following tables present the summary of the performance test executions. The processing delay defines the time between the last sent request and the last processed order and the total time denotes time from the first request to the last completed order. The format for both times is \texttt{mm:ss}.
+Tables \ref{tab:performance-scenario-1} and \ref{tab:performance-scenario-2} present a summary of the performance test executions. The processing delay defines the time between the last sent request and the last processed order and the total time denotes time from the first request to the last completed order. The format for both times is \texttt{mm:ss}. Results presented in table \ref{tab:performance-scenario-2} represent the best result of three performed test executions in scenario 2.
 
 \begin{table}[h]
     \begin{tabularx}{\textwidth}{lXXX}
