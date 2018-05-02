@@ -1417,9 +1417,9 @@ The integration also includes some minor modifications to ease the use of the de
 
 To demonstrate asynchronous LRA execution capabilities of the proposed solution, we created a sample quickstart application \textit{LRA executor quickstart} that utilizes the LRA coordinator with incorporated \textit{LRA executor extension}. 
 
-The example consists of four services: a saga service, two participant services and the LRA coordinator. The execution simulates artificial asynchronous processing. The LRA is initiated by the saga service which sends the predefined LRA definition to the coordinator and immediately returns a response. The coordinator processes the definition by two invocations of respective participants and completes the LRA. Both participants only wait for specified time periods to simulate asynchronous tasks.
+The example consists of four microservices: a saga service, two participant services and the LRA coordinator. The execution simulates artificial asynchronous processing. The LRA is initiated by the saga service which sends the predefined LRA definition to the coordinator and immediately returns a response. The coordinator processes the definition by two invocations of respective participants and completes the LRA. Both participants only wait for specified time periods to simulate asynchronous tasks.
 
-For the ease of use, the LRA coordinator is provided as a docker image under \texttt{xstefank/lra-coordinator:5.8.1.Final} tag available on Docker hub. The example is accommodated to be run by a single command as the Docker compose or OpenShift configuration.
+For the ease of use, the LRA coordinator is provided as a docker image under \texttt{xstefank/lra-coordinator:5.8.1.Final} tag available on Docker hub. The example is accommodated to be run as the Docker compose or OpenShift configuration.
 
 \section{Future work}
 
