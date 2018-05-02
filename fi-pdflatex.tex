@@ -63,6 +63,7 @@
 \usepackage{menukeys}
 \usepackage{minted}
 \usepackage{needspace}
+\usepackage{caption}
 
 \newcommand{\newlinepar}[1]{\paragraph{#1}\needspace{4\baselineskip}\mbox{}\\}
 
@@ -598,9 +599,9 @@ Previous sections discussed the complexities of microservices architecture from 
 \chapter{Saga pattern}
 \label{sec:saga-pattern}
 
-The conventional transaction processing, as described in previous chapters, represents a complex challenge in the distributed microserivices environment. In this chapter, we introduce the notion of sagas -- an alternative approach to the traditional distributed ACID transaction execution.
+The conventional transaction processing, as described in previous chapters, represents a complex challenge in the distributed microservices environment. In this chapter, we introduce the notion of sagas -- an alternative approach to the traditional distributed ACID transaction execution.
 
-A saga, as described in the original publication \cite{sagas_publ} from 1987, is a sequence of operations that can be interleaved with other operations. Each operation, that is a part of the saga, represents an unit of work that can be undone by the compensation action. The saga guarantees that either all operations complete successfully, or the corresponding compensation actions are run for all executed operations to cancel the partial processing (\ref{fig:tripExample}). The original paper defined sagas as long lived transactions in the database environment.
+A saga, as described in the original publication \cite{sagas_publ} from 1987, is a sequence of operations that can be interleaved with other operations. Each operation, that is a part of the saga, represents an unit of work that can be undone by the compensation action. The saga guarantees that either all operations complete successfully, or the corresponding compensation actions are run for all executed operations to cancel the partial processing (Figure \ref{fig:tripExample}). The original paper \cite{sagas_publ} defines the saga as a long lived transaction in the database environment.
 
 \begin{figure}[h]
     \begin{center}
@@ -616,7 +617,7 @@ In this chapter, we will describe the saga processing as it is defined by the in
 
 An operation represents a particular work segment that is a part of the saga. Each saga can be split into a sequence of operations in which each individually can be implemented as a transaction with full ACID guarantees. When the operation completes, all results of the performed work are expected to be persisted in the durable storage. This means that the external observer may see the system in intermediate states of the saga execution, as well as that it may also introduce the system into an inconsistent state between the individual operation invocations.
 
-The ability to commit a partial operation breaks the isolation (serializability) property as it makes the segment changes available before the saga ends. Intermediate saga states may also introduce consistency contraventions. However, the saga utilizes the eventual consistency model (\ref{sec:eventual-consistency}) which guarantees that the state will become eventually consistent after the saga completes.
+The ability to commit a partial operation breaks the isolation (serializability) property as it makes the segment changes available before the saga ends. Intermediate saga states may also introduce consistency contraventions. However, the saga utilizes the eventual consistency model (Section \ref{sec:eventual-consistency}) which guarantees that the state will become eventually consistent after the saga completes.
 
 As the definition in the original paper by Garcia-Molina and Salem \cite{sagas_publ} allows individual saga operations to interleave, it prohibits any form of dependencies between them. This would imply that the participating operation cannot depend on results committed by any previous operation in the saga sequence. However, in modern systems the sequential execution of local operations is possible to implement if the system employs a single saga coordination process that manages the entire sequential execution.
 
@@ -696,7 +697,8 @@ The saga execution coordinator (SEC) is spanned process across the participating
     \begin{center}
         \includegraphics[height=70mm]{images/SEC.png}
     \end{center}
-    \caption{Distributed saga example \cite{applying_saga_pattern}}
+    \captionsetup{justification=centering}
+    \caption{Distributed saga example \cite{applying_saga_pattern}\\ (SEC - Saga Execution Coordinator, Svc - service)}
     \label{fig:SEC}
 \end{figure}
 
@@ -710,7 +712,7 @@ This section presents the current implementations of the saga pattern available 
 
 Axon is a lightweight Java framework that helps developers build scalable and extensible applications by addressing these concerns directly in the core architecture \cite{axon_framework}. It is composed on the top of the Command Query Responsibility Segregation (CQRS) pattern which is described in the Appendix \ref{sec:appendix-cqrs}.
 
-The Axon framework is based upon the event processing including asynchronous message passing and event sourcing. To decouple the communication between system components, it employs the mechanisms of the asynchronous message buses. This allows to design components with well defined boundaries and therefore easy microservices development.
+The Axon framework is based upon event processing including asynchronous message passing and event sourcing. To decouple the communication between system components, it employs the mechanisms of the asynchronous message buses. This allows to design components with well defined boundaries and therefore easy microservices development.
 
 The CQRS architecture is directly embedded in the framework. Developers are controlling distinct CQRS components (aggregates, repositories, commands) by annotations. 
 
