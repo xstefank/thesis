@@ -498,16 +498,16 @@ All of the API component interfaces discussed above has been already included in
 
 \subsection{Reactive microservice}
 
-Previous sections described the reactive principles that may be employed in software systems. This section describes how these principles apply in the microservices environment.
+Previous sections described the reactive principles that may be used in software systems. This section describes how these principles apply in the microservices environment.
 
-The reactive microservice is a service that have these four characteristics \cite{building_reactive_ms_in_java} --
+The reactive microservice is a service that have these four characteristics \cite{building_reactive_ms_in_java}:
 
 \begin{itemize}
-    \item \textbf{Autonomous} -- The service does not depend on the other services and can dynamically adapt to their availability. Services are also isolated and communicate by asynchronous messaging which allows them to isolate failures and to be developed in the independent way.
+    \item \textbf{Autonomous} -- The service does not depend on other services and can dynamically adapt to their availability. Services are also isolated and communicate exclusively by asynchronous messaging which allows them to isolate failures and to be developed in the independent way.
     
     \item \textbf{Asynchronous} -- The service communication is restricted to asynchronous message passing which decouples the interacting services and allow them to handle problems in isolation without further propagation to the non affected parts of the system.
     
-    \item \textbf{Resilient} -- The microservices are able not only to handle failures but also are required to implement a recovery mechanisms and strategies. When the failed service is recovered, it needs to know how to accommodate to the changed system state.
+    \item \textbf{Resilient} -- The microservices are not only able to handle failures but also are required to implement recovery mechanisms and strategies. When the failed service is recovered, it needs to know how to accommodate to the changed system state.
     
     \item \textbf{Elastic} -- The microservice must be able to handle the dynamic adaption of the number of its instances in case of the varying system load. This includes avoiding in-memory states, sharing states between instances or being able to route messages to the same service instance for stateful services \cite{building_reactive_ms_in_java}. 
 \end{itemize}
