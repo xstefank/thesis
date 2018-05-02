@@ -1437,7 +1437,7 @@ Another issue that may present an improvement point is that currently the defaul
 \clearpage
 \chapter{Conclusion}
 
-This thesis had two main objectives -- to investigate the use of transaction processing in the reactive microservices environment and to propose an asynchronous saga execution solution for the Narayana transaction manager.
+This thesis had three main objectives -- to investigate the use of transaction processing in the reactive microservices environment, to propose an asynchronous saga execution solution for the Narayana transaction manager and to present an example quickstart application utilizing the proposed solution.
 
 \section{Saga pattern research}
 
@@ -1451,13 +1451,13 @@ These quickstart applications were also compared from a performance perspective 
 
 \section{Narayana asynchonous LRA execution}
 
-The prepared Narayana LRA quickstart microservices application introduced a simple API gateway that abstracted business services from the saga processing by the asynchronous execution capability based on the service provided LRA definition. This processing implementation presented that Narayana LRA does not influence how the user structures or employs the LRA realization provided that coordinator is available.
+The prepared Narayana LRA quickstart microservices application introduced a simple API gateway that abstracted business services from the saga processing by the asynchronous execution capability based on the service provided LRA definition. This processing implementation presented that Narayana LRA does not influence how the user structures or employs the LRA realization, provided that coordinator is available.
 
-However, the saga definition and execution logic were required to be provided by the application employing LRA. As the asynchronous saga execution represents an expected use case in many reactive applications, the \textit{LRA executor extension} was created to extract this saga processing implementation and provide it as an extension to the current LRA coordination capabilities.
+However, the saga definition and execution logic were required to be provided by the application employing LRA. As the asynchronous saga execution represents an expected use case in many reactive applications, the \textit{LRA executor extension} was created to extract this saga processing implementation and introduce it as an extension to the current LRA coordination capabilities.
 
 The project was structured into two logical parts -- the LRA definitions and the LRA executor.
 
-The LRA definitions module provided a simple uniform LRA saga definition capabilities that fully described the LRA with all necessary information required for its successful execution. The implementation provided LRA definition in a form of the Java class or the JSON format, but its universal design may promote further expansions utilizing various data formats in the future. 
+The LRA definitions module provided uniform LRA saga definition capabilities that fully described the LRA with all necessary information required for its successful execution. The implementation provided LRA definition in a form of the Java class or the JSON format, but its universal design may promote further expansions utilizing various data formats in the future. 
 
 The LRA executor represents a consistent method of the LRA processing according to the specified definition. The specification supports both synchronous and asynchronous LRA invocation based on the strategy defined by the implementation. Due to its general design, implementations are encouraged to adjust the execution to their particular LRA use cases.
 
@@ -1467,11 +1467,11 @@ Both modules abstract the communication methods the executor employs to contact 
 
 This thesis provides a general overview of approaches that are available for the transaction processing in the microservices environment. With regards to the reactive architectures, it in detail describes the saga pattern as a suitable solution for the asynchronous transaction execution in distributed applications.
 
-The first important contribution is the research of the saga solutions available for the Java production application. The created quickstart examples function as a stable starting point for the saga definition, configuration and execution demonstration in each respective framework. This thesis additionally also contributes by the detailed comparison and the summary of advantages and disadvantages regarding saga processing in implemented examples. The produced performance test revealed several problems that have been properly reported.
+The first important contribution is the research of the saga solutions available for the Java platform. The created quickstart examples function as a stable starting point for the saga definition, configuration and execution demonstration in each respective framework. This thesis additionally also contributes with the detailed comparison and the summary of advantages and disadvantages regarding saga processing in implemented examples. The produced performance test revealed several problems that have been properly reported to the respective frameworks main developers.
 
-The main contribution is concluded in the implementation of \textit{LRA executor extension}. This project provides a proof of concept prototype that illustrates the LRA execution capabilities that are built on top of the Narayana LRA implementation. The project is promoted also by a created \textit{LRA executor quickstart} application that presents the asynchronous LRA processing.
+The main contribution is concluded with the implementation of \textit{LRA executor extension}. This project provides a proof-of-concept prototype that illustrates the LRA execution capabilities that are built on top of the Narayana LRA implementation. The project is promoted also by a created \textit{LRA executor quickstart} application that presents the asynchronous LRA processing.
 
-The full list of projects conducted within this thesis:
+The full list of projects produced within this thesis:
 
 \begin{itemize}
     \item \textit{Axon service} -- 2 reported issues
@@ -1491,13 +1491,14 @@ The full list of projects conducted within this thesis:
     \item \textit{Narayana LRA integration}
 \end{itemize}
 
+\noindent
 All of these projects are available as open source contributions.
 
 \section{Future tasks}
 
 The \textit{LRA executor extension} provides a solid base prototype implementation of the LRA synchronous and asynchronous processing based on the user specified definition. Even if it can be applied as the extension on top of the current Narayana LRA implementation, it may be beneficial to adjust the Narayana code base to include it directly in the future. 
 
-As the Narayana LRA specification is still in the pre-released state, the inclusion of this project would require a proper specification, implementation and API finalization, and more comprehensive testing support. Additionally, due to design of the executor, there are many possibilities of how it can be extended including a support of new LRA definition formats, processing strategies and most importantly by the promotion of new communication protocols facilitating the Narayana LRA execution in microservices environments.
+As the Narayana LRA specification is still in the pre-released state \cite{narayana_lra}, the inclusion of this project would require a proper specification, implementation and API finalization, and more comprehensive testing support. Additionally, due to design of the executor, there are many possibilities of how it can be extended including a support of new LRA definition formats, processing strategies and most importantly by the promotion of new communication protocols facilitating the Narayana LRA execution in microservices environments.
 
 \makeatletter\thesis@blocks@clear\makeatother
 \phantomsection %% Print the index and insert it into the
@@ -1510,7 +1511,7 @@ As the Narayana LRA specification is still in the pre-released state, the inclus
 \appendix %% Start the appendices.
 
 \clearpage
-\chapter{The CQRS pattern}
+\chapter{CQRS pattern}
 \label{sec:appendix-cqrs}
 
 The Command Query Responsibility Segregation pattern describes the separation of the application domain into two distinct parts -- the command model which is responsible for the application processing that changes the system state and the query model that provides information about the current system state to the user including various transformations or filtering. 
@@ -1638,7 +1639,7 @@ To finalize, although the CQRS pattern has its benefits (ease of complexity and 
 
 
 \clearpage
-\chapter{The example applications public APIs}
+\chapter{Example applications public APIs}
 \label{sec:appendixAPI}
 
 \section{Axon service}
