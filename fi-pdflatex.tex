@@ -120,27 +120,27 @@ The last part represents the description of the proposed solution of the asynchr
 \clearpage
 \chapter{Transaction concepts}
 
-This chapter introduces the basic notions of transactions, their properties and common problems with their management both in centralized systems (e.g. databases) and in distributed systems where transactions must be coordinated across multiple systems connected by a computer network.
+This chapter introduces the basic notions of transactions, their properties and common problems with their management both in centralized systems (e.g., databases) and in distributed systems where transactions must be coordinated across multiple service nodes connected by a computer network.
 
 \section{Transaction}
 
-A transaction is an unit of processing that provides all-or-nothing property to the work that is conducted within its scope, also ensuring that shared resources are protected from multiple users \cite{java_tran_processing}. It represents an unified and inseparable sequence of operations that are either all performed or none of them take effect. 
+A transaction is a unit of processing that provides all-or-nothing property to the work that is conducted within its scope, also ensuring that shared resources are protected from multiple users \cite{java_tran_processing}. It represents a unified and inseparable sequence of operations that are either all performed or none of them take effect. 
 
 The transaction can end in two forms: it can be either \textit{commited} or \textit{aborted}. The commit determines a successful outcome - all operations within the transaction have been executed. The abort means that all performed operations have been undone and the system is in the same state as if the transaction have not been started.
 
-From the developer point of view, it is commonly only required to start and end the transaction. All complex processing necessary for the achievement of the transaction's properties is commonly hidden by the transaction system \cite{java_tran_processing} which allows developers to focus on the business processing contained in the transaction.
+From the developer point of view, it is frequently only required to start and end the transaction. All complex processing necessary for the achievement of the transaction's properties is commonly hidden by the transaction system \cite{java_tran_processing} which allows developers to focus on the business processing contained in the transaction.
 
 Generally, the achievement of above mentioned features may differ depending on the scope and the utilization of the transaction concepts in the application.
 
 \section{ACID properties}
 
-A transaction can be viewed as a group of business logic statements with certain shared properties \cite{nar_wf}. Generally considered properties are one or more of atomicity, consistency, isolation and durability. These four properties are often referenced as ACID properties \cite{haerder_reuter_1983} and they describe the major points important for the transaction concepts.\footnote{Although the ACID acronym has been associated with transactions since their beginning, Eric Brewer, the inventor of the CAP theorem (section \ref{sec:cap-theorem}), stated in his article from 2012 that it is "more mnemonic than precise"\cite{cap_12years}.}
+A transaction can be viewed as a group of business logic statements with certain shared properties \cite{nar_wf}. Generally considered properties are one or more of atomicity, consistency, isolation, and durability. These four properties are often referenced as ACID properties \cite{haerder_reuter_1983} and they describe the major points important for the transaction concepts.\footnote{Although the ACID acronym has been associated with transactions since their beginning, Eric Brewer, the inventor of the CAP theorem (section \ref{sec:cap-theorem}), stated in his article from 2012 that it is "more mnemonic than precise"\cite{cap_12years}.}
 
 \subsection{Atomicity}
 
 The transaction consists of a sequence of operations performed on different resources. The atomicity property means that all operations in the transaction are performed as if they were a single unit. 
 
-As the word atomicity is an overloaded term in many computational science branches, some authors prefer to reference it in the ACID context as the abortability property. The abortability is defined as  the ability to abort a transaction on error and have all writes from that transaction discarded \cite{design_data_intens_apps}. This implies that when the transaction commits successfully, all of its operations are also required to execute a valid commit. Conversely, when the transaction fails and needs to be aborted, all realized operations and effects must be undone.
+As the word atomicity is an overloaded term in many computational science branches, some authors prefer to reference it in the ACID context as the abortability property. The abortability is defined as the ability to abort a transaction on error and have all writes from that transaction discarded \cite{design_data_intens_apps}. This implies that when the transaction commits successfully, all of its operations are also required to execute a valid commit. Conversely, when the transaction fails and needs to be aborted, all realized operations and effects must be undone.
 
 \subsection{Consistency}
 
@@ -150,23 +150,23 @@ Unlike other transactional properties (A, I, D), consistency cannot be realized 
 
 \subsection{Isolation}
 
-The isolation property takes effect when multiple transactions can be executed concurrently on the same resources. It provides a guarantee that concurrent transactions cannot interfere one with another. Therefore, each concurrent execution on the shared resource must be equivalent to some serial ordering of contained transactions. This is why the isolation is often also referred to as a serializability.
+The isolation property takes effect when multiple transactions can be executed concurrently on the same resources. It provides a guarantee that parallel transactions cannot interfere one with another. Therefore, each concurrent execution on the shared resource must be equivalent to some serial ordering of contained transactions. This is why the isolation is often also referred to as a serializability.
 
-From the perspective of an external view the isolation property means that the transaction appears as it was executed in the system entirely alone. This means that even if there are multiple transactions executed concurrently, this fact is hidden from the external perspective.
+From the perspective of an external view, the isolation property means that the transaction appears as it was executed in the system entirely alone. This means that even if there are multiple transactions performed concurrently, this fact is hidden from the external perspective.
 
-As an instinctive extension of the consistency property, the serial execution of transactions preserves the consistent state. The execution of the transactions in parallel therefore cannot result into inconsistent system.
+As an instinctive extension of the consistency property, the serial execution of transactions preserves the consistent state. The execution of the transactions in parallel, therefore, cannot result into an inconsistent system.
 
 \newlinepar{Isolation levels}
 
-The ANSI SQL-92 \cite{sql-92} standard distinguishes several levels that describe to which extent the isolation guarantees are provided. Levels are differentiated by simplifications of the locking mechanism in exchange for the faster processing. These levels, in decreasing order, are serializable, repeatable read, read committed and read uncommitted isolation. The standard defines distinction between levels by the type of anomalies their are able to prevent. 
+The ANSI SQL-92 \cite{sql-92} standard distinguishes several levels that describe to which extent the isolation guarantees are provided. Levels are differentiated by simplifications of the locking mechanism in exchange for the faster processing. These levels, in decreasing order, are serializable, repeatable read, read committed and read uncommitted isolation. The standard defines the distinction between levels by the type of anomalies they are able to prevent. 
 
-In practice, this approach is not always considered as sufficient due to its locking expectations \cite{ansi-sql-critique}. One of the well known alternative techniques which is not based on locking mechanisms is called the Multi Version Concurrency Control (MVCC). This section describes isolation levels based on the SQL-92 standard but the MVCC is referenced where applicable to present the similarities.
+In practice, this approach is not always considered as sufficient due to its locking expectations \cite{ansi-sql-critique}. One of the well known alternative techniques which is not based on locking mechanisms is called the Multi Version Concurrency Control (MVCC). This section describes isolation levels based on the SQL-92 standard, but the MVCC is referenced where applicable to present the similarities.
 
 \newlinepar{Read uncommitted}
 
-This is the lowest level in which the transaction sets the lock only when it needs to modify the data item and releases it immediately after the transaction is completed (long write-locks). This allows that one transaction may read the not yet committed changes of any other transaction which is phenomena referred to as the \textit{dirty read}.
+The read uncommitted is the lowest level in which the transaction sets the lock only when it needs to modify the data item and releases it immediately after the transaction is completed (long write-locks). This allows that one transaction may read the not yet committed changes of any other transaction which is phenomena referred to as the \textit{dirty read}.
 
-However, the read uncommitted isolation level already prevents the \textit{dirty write} conflict which represents the transaction that overwrites a value previously written by another transaction that has not yet been committed. This problem can be easily described on an example depicted in the figure 2.1. In this execution, the resulting data state contains different values for variables (x = B and y = A). However, in any serial execution of these transactions the result would be consistent. The read uncommitted level prevents this phenomena as it prohibits write access to data items before the former write locks are released.
+However, the read uncommitted isolation level already prevents the \textit{dirty write} conflict which represents the transaction that overwrites a value previously written by another transaction that has not yet been committed. This problem can be easily described on an example depicted in figure 2.1. In this execution, the resulting data state contains different values for variables (x = B and y = A). However, in any serial execution of these transactions the result would be consistent. The read uncommitted level prevents this phenomenon as it prohibits write access to data items before the former write locks are released.
 
 \hfill \break
 
@@ -180,14 +180,14 @@ However, the read uncommitted isolation level already prevents the \textit{dirty
 
 \newlinepar{Read committed}
 
-Read committed level differs from the previous level in that it prohibits \textit{dirty reads}. It allows to read the data item only when it has been committed. This directly implies that the \textit{dirty read} phenomena is impossible to occur in this isolation level by the definition.
+Read committed level differs from the previous level in that it prohibits \textit{dirty reads}. It allows to read the data item only when it has been committed. This directly implies that the \textit{dirty read} phenomenon is impossible to occur in this isolation level by definition.
 
 
 \newlinepar{Repeatable read}
 
-This isolation level prevents the anomaly called the \textit{non-repeatable read} which may still appear in read committed. The \textit{non-repeatable read} is a problem of reading the data values in different points of time in which the whole consistent data state may not be ensured. This means that the transaction may read the data change in later point in time which may invalidate already read information from a previous processing.
+This isolation level prevents the anomaly called the \textit{non-repeatable read} which may still appear in read committed. The \textit{non-repeatable read} is a problem of reading the data values in different points of time in which the whole consistent data state may not be ensured. This means that the transaction may read the data change at the later point in time which may invalidate already read information from previous processing.
 
-For example, imagine a bank system with two accounts -- both with starting balance 500 and a transfer of 100 from account 1 to 2 as a transaction. If another transaction reads the balance of the account 2 prior to start of transaction, it will get 500. However, the subsequent read from the account 1, after the first transaction has committed, would output 400 which would result into inconsistent information.
+For example, imagine a bank system with two accounts -- both with starting balance 500 and a transfer of 100 from account 1 to 2 as a transaction. If another transaction reads the balance of the account 2 prior to the start of the transaction, it will get 500. However, the subsequent read from the account 1, after the first transaction has committed, would output 400 which results in inconsistent information.
 
 \begin{figure}[h]
     \begin{center}
@@ -200,7 +200,7 @@ The MVCC alternative to the repeatable read is the snapshot isolation. Both the 
 
 \newlinepar{Serializable}
 
-On top of the repeatable read, the serializable isolation prevents the system from one more race condition known as the \textit{write skew}. The basic principle of the \textit{write skew} is a transaction that reads data from the storage and then makes a decision based on this information. Different transactions may write these decision results into different parts of the database and therefore they cannot conflict. The problem is that by the time the transaction commits, the premise of the decision may no longer be true and the resulting state may break the consistency of the system.
+On top of the repeatable read, the serializable isolation prevents the system from one more race condition known as the \textit{write skew}. The fundamental principle of the \textit{write skew} is a transaction that reads data from the storage and then makes a decision based on this information. Different transactions may write these decision results into different parts of the database and therefore they cannot conflict. The problem is that by the time the transaction commits, the premise of the decision may no longer be valid and the resulting state may break the consistency of the system.
 
 \subsection{Durability}
 
@@ -224,11 +224,11 @@ The management of transactions over multiple resources is supported by a global 
 
 \subsection{JTA and JTS}
 
-The definition and the management of transactions with a guarantee of all ACID properties is in the Java environment represented by two Java specifications: the Java Transaction API (JTA) and the Java Transaction Service (JTS). 
+The definition and the management of transactions with a guarantee of all ACID properties are in the Java environment represented by two Java specifications: the Java Transaction API (JTA) and the Java Transaction Service (JTS). 
 
 The JTA is a specification which defines high-level interfaces between a transaction manager and the parties involved in a distributed transaction system: the application, the resource manager and the application server \cite{jta}. It also determines the Java mapping of the industry standard X/Open XA protocol which allows local resource managers to participate in the global transaction managed by an external transaction manager.
 
-The JTS represents a specification of the transaction manager implementation which supports the JTA specification at the high-level and implements the Java mapping of the Object Management group (OMG) Object Transaction Service (OTS) specification at the low-level \cite{jts}. It utilizes the Common Object Request Broker Architecture (CORBA) OTS interfaces for the interoperability and portability of the transaction context between different JTS transaction managers over the Internet InterORB Protocol (IIOP).
+The JTS represents a specification of the transaction manager implementation which supports the JTA specification at the high-level and implements the Java mapping of the Object Management Group (OMG) Object Transaction Service (OTS) specification at the low-level \cite{jts}. It utilizes the Common Object Request Broker Architecture (CORBA) OTS interfaces for the interoperability and portability of the transaction context between different JTS transaction managers over the Internet InterORB Protocol (IIOP).
 
 \subsection{XA specification}
 
@@ -240,13 +240,13 @@ The resource manager implements the XA interface in order to provide a switch th
 
 \section{Transaction models}
 
-The transaction model defines rules and semantics of how developers declare and work with transactions. From the development point of view, there exist three distinct transaction models that may be applied in the Java environment -- local, programmatic and declarative transactions. This section describes each model respectively and examines how it can be employed in Java applications based on the Enterprise JavaBeans (EJB) technologies.
+The transaction model defines rules and semantics of how developers declare and work with transactions. From the development point of view, there exist three distinct transaction models that may be applied in the Java environment -- local, programmatic and declarative transactions. This section describes each model respectively and examines how it can be established in Java applications based on the Enterprise JavaBeans (EJB) technologies.
 
 \subsection{Local transaction model}
 
 The local transaction model derives its name from the fact that transactions are managed by a local resource manager which was described in the previous section. This approach represents the transaction as a connection to the individual resource. Common use-cases for this model include the Java database connectivity (JDBC) or the Java Message Service (JMS) connection providers.
 
-The connection is usually by default configured to commit the local transaction after each operation, e. g. a database query or sending a message to a queue. The interaction with the local manager may differ depending on the underlying resource. For instance, the JMS \texttt{Session} interface provides both methods \texttt{commit()} and \texttt{rollback()} that process or destroy message operations included in the transaction respectively.
+The connection is usually by default configured to commit the local transaction after each operation, e.g., a database query or sending a message to a queue. The interaction with the local manager may differ depending on the underlying resource. For instance, the JMS \texttt{Session} interface provides both methods \texttt{commit()} and \texttt{rollback()} that process or destroy message operations included in the transaction respectively.
 
 The major drawback of this model is that local transactions cannot be joined into the single ACID transaction that spans over multiple resources using the XA global transaction \cite{java_transaction_design_strategies} (e. g. we need to update a database and propagate this information to the JMS topic). Another important problem is the requirement of the manual transaction management in the application code base.
 
@@ -256,19 +256,19 @@ The programmatic transaction model (also referenced as the Bean-Managed transact
 
 Although the JTA specification provides a range of APIs, the main concerned interface for the utilization of the programmatic transactions is the \texttt{javax.transaction.UserTransaction} \cite{jta}. This interface represents an abstraction for the developer to programatically control transaction boundaries. The only concerned methods are \texttt{begin()}, \texttt{commit()}, \texttt{rollback()} and \texttt{getStatus()}. The call to the \texttt{begin()} will start a new transaction and associates it with the current thread. As the Java platform allows only one transaction to be associated with the thread, a call to the \texttt{begin()} method may result into exception in case the transaction has already been started in the current context. The transaction end methods (\texttt{commit()} and \texttt{rollback()}) perform their respective actions and disassociate the transaction with the thread. The \texttt{getStatus()} method returns an integer value representing the status of the current transaction derived from  \texttt{javax.transaction.Status} class \cite{jta}.
 
-The most important problem introduced by the programmatic model is that the developer must ensure that the transaction is always terminated in the method that started the transaction \cite{java_transaction_design_strategies}. This is often the case when  the initiating method ends up with an uncaught exception and for this reason, the transaction needs to be committed or rollbacked before the method returns.
+The most important problem introduced by the programmatic model is that the developer must ensure that the transaction is always terminated in the method that started the transaction \cite{java_transaction_design_strategies}. This is often the case when the initiating method ends up with an uncaught exception and for this reason, the transaction needs to be committed or rollbacked before the method returns.
 
 \subsection{Declarative transaction model}
 \label{sec:decl-tran-model}
 
-The declarative transaction model is also referred to as the Container-Managed Transactions (CMT). In this model, the supplying, underlying container manages all transactions on the users behalf. This includes starting and the administration of the end phases (either commit or rollback) of transactions. The developer is only required to setup the container with the transaction configuration that declares, for instance, that the transaction should be rollbacked on any exception.
+The declarative transaction model is also referred to as the Container-Managed Transactions (CMT). In this model, the supplying, underlying container manages all transactions on the user's behalf. This includes starting and the administration of the end phases (either commit or rollback) of transactions. The developer is only required to set up the container with the transaction configuration that declares, for instance, that the transaction should be rollbacked on any exception.
 
 The \texttt{javax.transaction.TransactionManager} is the main interface utilized for the declarative transaction model. However, in practice CMT transactions are generally controlled by specific annotations and the direct use of \texttt{TransactionManager} interface is discouraged. This interface is targeted for the use in the application server which allows it to control transaction boundaries on behalf of the application being managed \cite{jta}.
 
-With the declarative transaction model, the users are required to configure the container with the settings of how individual transactions should be managed. This can be set up through the transaction attribute represented by, for instance, \texttt{TransactionAttributeType} (Enterprise JavaBeans (EJB)), \texttt{Transactional.TxType} (Context and Dependency Injection (CDI)) or \texttt{TransactionDefinition} (Spring) classes. The supported values are -- Required, Mandatory, RequiresNew, Supports, NotSupported and Never\footnote{The Spring framework adds one more transaction attribute called Nested which represents a single physical transaction with multiple savepoints that it can rollback to \cite{spring_transaction_management_documentation}}:
+With the declarative transaction model, users are required to configure the container with the settings of how individual transactions should be managed. This can be set up through the transaction attribute represented by, for instance, \texttt{TransactionAttributeType} (Enterprise JavaBeans (EJB)), \texttt{Transactional.TxType} (Context and Dependency Injection (CDI)) or \texttt{TransactionDefinition} (Spring) classes. The supported values are -- Required, Mandatory, RequiresNew, Supports, NotSupported and Never\footnote{The Spring framework adds one more transaction attribute called Nested which represents a single physical transaction with multiple savepoints that it can rollback to \cite{spring_transaction_management_documentation}}:
 
 \begin{itemize}
-    \item \textbf{Required} -- If the transaction context is already present on the invocation, it will be used. Otherwise a new transaction is started. This is the most characteristic attribute and it usually configured as a default value.
+    \item \textbf{Required} -- If the transaction context is already present on the invocation, it will be used. Otherwise, a new transaction is started. This is the most characteristic attribute and it is usually configured as a default value.
     
     \item \textbf{Mandatory} -- Similarly to the Required, mandatory transaction attribute represents that the transaction must be present on the execution. However, it requires that the transaction is already started prior to the invocation. Alternatively, it throws \texttt{TransactionRequiredException} if the transaction context cannot be found.
     
@@ -289,29 +289,31 @@ However, these concepts can certainly be expanded to the distributed environment
 
 Each node is associated with a transaction manager (TM) that manages a local transaction and communicates with other TMs in order to perform a global transaction. Generally, there is one TM selected as a global coordinator that administers TMs participating in the distributed transaction. The coordinator can be allocated with the participating node or can act as a standalone service.
 
-The accomplishment of ACID properties with the frequent partitions failures is very difficult to achieve. In order to achieve the atomic outcome, all of the participating nodes needs to achieve a shared consensus on whether it is possible to execute a successful commit. The standardized protocol which guarantees the consensus for the ACID transactions is the two-phase commit protocol (2PC) which is used by the majority of modern transaction systems. The consensus protocols are discussed in detail in the following section.
+The accomplishment of ACID properties with the frequent partitions failures is very difficult to achieve. In order to achieve the atomic outcome, all of the participating nodes need to reach a shared consensus on whether it is possible to execute a successful commit. The standardized protocol which guarantees the consensus for the ACID transactions is the two-phase commit protocol (2PC) which is used by the majority of modern transaction systems. The consensus protocols are discussed in detail in the following section.
 
 Even if the DTP system is able to provide the distributed consensus, it often comes with a performance cost. This lead to the commonly hesitant utilization of the DTP concepts in distributed applications in the past. 
 
-However, recent network speeds and computational capacities are increasing. This allows consensus protocols (2PC, Paxos) and other DTP solutions (e.g. sagas \cite{sagas_publ}) to be easily employed in modern, scalable distributed applications.
+However, recent network speeds and computational capacities are increasing. This allows consensus protocols (2PC, Paxos) and other DTP solutions (e.g., sagas \cite{sagas_publ}) to be easily employed in modern, scalable distributed applications.
 
 
 
 \section{Consensus protocols}
 \label{sec:consensus-protocols}
 
-The consensus problem represents the procedure of achieving the  agreement for the shared data value between several components. It has its application in many environments including transactions where the TM needs to conclude whether a transaction can be committed depending on the participants consensus.
+The consensus problem represents the procedure of achieving the agreement for the shared data value between several components. It has its application in many environments including transactions where the TM needs to conclude whether a transaction can be committed depending on the participants consensus.
 
-A consensus protocol describes a series of steps that solve the consensus problem. These steps can be typically divided into three phases -- the selection of candidate values, the exchange of values between participants and the agreement. The final decision of each participant is irreversible. The consensus protocol is correct, if it complies with these conditions \cite{distributed-computing}:
+A consensus protocol describes a series of steps that solve the consensus problem. These steps can be typically divided into three phases -- the selection of candidate values, the exchange of values between participants and the agreement. The final decision of each participant is irreversible. The consensus protocol is correct if it complies with these conditions \cite{distributed-computing}:
 
 \begin{itemize}
     \item \textbf{Agreement} - all non-faulty\footnote{Some nodes may provide invalid or intentionally wrong information -- these are known as \textit{Byzantine failures} \cite{byzantine-generals-problem}} nodes decide on the same single value
+    
     \item \textbf{Validity} - if all non-faulty nodes have the same initial value, then the consensus must be reached on this value
+    
     \item \textbf{Termination} - all non-faulty nodes eventually decide
 \end{itemize}
 
 
-In the transactions environment, the consensus represents the shared decision whether to commit or rollback the transaction. The following sections describe some of the mostly widely used consensus protocols that may be employed in (potentially distributed) transactional systems.
+In the transactions environment, the consensus represents the shared decision whether to commit or rollback the transaction. The following sections describe some of the most widely used consensus protocols that may be employed in (potentially distributed) transactional systems.
 
 \subsection{2PC}
 
@@ -323,7 +325,7 @@ The \textit{Two-phase commit protocol} is one of the most known employed consens
     \item \textbf{The commit phase} -- After collecting all proposals, the transaction coordinator makes a final decision -- if all participants are able to commit, the transaction can be committed; conversely, if any participant stated that it needs to abort, the transaction is aborted. The final outcome is subsequently forwarded to every participant and the transaction can be finished.
 \end{itemize}
 
-The 2PC protocol is able to handle node failures to some extent through the use of transaction log. However, this do not cover every scenario and certain failures may require manual intervention.
+The 2PC protocol is able to handle node failures to some extent through the use of transaction log. However, this does not cover every scenario and certain failures may require manual intervention.
 
 The algorithm expects one node to act as a coordinator. This does not necessarily need to be an elected participant. Any node can act as a coordinator and initiate 2PC prepare phase by asking other participants for their votes. Furthermore, there also exits a decentralized variant but with the higher massage complexity.
 
@@ -331,46 +333,46 @@ The main disadvantage of the 2PC is that it is a lock based protocol. After the 
 
 \subsection{3PC}
 
-The \textit{Three-phase commit protocol} is a consensus protocol introduced in 1982 by Dale Skeen \cite{3PC}. It extends the 2PC protocol in a non-blocking way -- it allows participants to place upper time bounds on the phases completion which assures that resources are not  held indefinitely. The three phases are:
+The \textit{Three-phase commit protocol} is a consensus protocol introduced in 1982 by Dale Skeen \cite{3PC}. It extends the 2PC protocol in a non-blocking way -- it allows participants to place upper time bounds on the phases completion which assures that resources are not held indefinitely. The three phases are:
 
 \begin{itemize}
     \item \textbf{The prepare phase} -- Same as in the 2PC protocol.
     
-    \item \textbf{The pre-commit phase} -- If all participants voted in the first phase to commit the transaction, the coordinator sends to every participant a \texttt{preCommit} massage. After the participant receives \texttt{preCommit}, it will proceed by preparing the commit by locking the required resources assuring that it is able to finish the commit. By this stage, the participant cannot execute any irreversible actions. If the preparation was successful, it responds to the coordinator with the acknowledgment message.
+    \item \textbf{The pre-commit phase} -- If all participants voted in the first phase to commit the transaction, the coordinator sends to every participant a \texttt{preCommit} message. After the participant receives \texttt{preCommit}, it will proceed by preparing the commit by locking the required resources assuring that it is able to finish the commit. By this stage, the participant cannot execute any irreversible actions. If the preparation was successful, it responds to the coordinator with the acknowledgment message.
     
-    \item \textbf{The commit phase} -- After the coordinator receives preparation confirmation from all participants (the original paper \cite{3PC} allows also to specify a majority vote count), it will commence the commit phase by sending the \texttt{commit} or \texttt{abort} messages, same as in the 2PC protocol.
+    \item \textbf{The commit phase} -- After the coordinator receives preparation confirmation from all participants (the original paper \cite{3PC} also allows to specify a majority vote count), it will commence the commit phase by sending the \texttt{commit} or \texttt{abort} messages, same as in the 2PC protocol.
 \end{itemize}
 
-The termination is achieved by the timeout boundaries set on every message expedition. If the coordinator timeouts, it always assumes the rollback outcome -- it cannot proceed after the first phase as it did not receive votes from every participant and if the coordinator fails after the second phase, the state of the protocol would not be recoverable. However, the participant rollbacks in the same way after phase one (as it did not receive the outcome from the coordinator, it must assume abort) but if it timeouts after the second phase, it proceeds with the commit. This is allowed as the \texttt{preCommit} message is sent by the coordinator only if all participants wanted to commit the transaction in the phase one.
+The termination is achieved by the timeout boundaries set on every message expedition. If the coordinator timeouts, it always assumes the rollback outcome -- it cannot proceed after the first phase as it did not receive votes from every participant and if the coordinator fails after the second phase, the state of the protocol would not be recoverable. However, the participant rollbacks in the same way after phase one (as it did not receive the outcome from the coordinator, it must assume abort) but if it timeouts after the second phase, it proceeds with the commit. This is allowed as the \texttt{preCommit} message is sent by the coordinator only if all participants wanted to commit the transaction in phase one.
 
 If the coordinator fails, the new coordinator is selected by any election algorithm. This recovery node can determine the outcome of the protocol based on the state of other nodes -- if any node received a \texttt{preCommit} message, the transaction can be committed (all other participants must have also received the \texttt{preCommit} message). If some node did not receive the \texttt{preCommit} message, the transaction can be aborted.
 
-By contrast to the 2PC protocol, the 3PC is resilient to more types of failures. Nevertheless, it cannot withstand the network partition. If the partition disassociate nodes that did receive the \texttt{preCommit} message from those which did not, the newly selected coordinators on each side of the partition will result into opposite outcomes and thereby an inconsistent system. These resilience capabilities are at the expense of the performance cost which approximately two times higher that in the 2PC protocol \cite{3PC}.
+By contrast to the 2PC protocol, the 3PC is resilient to more types of failures. Nevertheless, it cannot withstand the network partition. If the partition disassociates nodes that did receive the \texttt{preCommit} message from those which did not, the newly selected coordinators on each side of the partition will result into opposite outcomes and thereby an inconsistent system. These resilience capabilities are at the expense of the performance cost which approximately two times higher than in the 2PC protocol \cite{3PC}.
 
-In 1998, Keidar and Dolev introduced an \textit{Enhanced three-phase commit} protocol (E3PC) which maintains the consistency in the face of site failures and network partitions \cite{E3PC}. It is using two additional counters that impose linear order on the majorities of the system node while still preserving the same computational complexity as 3PC. 
+In 1998, Keidar and Dolev introduced an \textit{Enhanced three-phase commit} protocol (E3PC) which maintains the consistency in the face of site failures and network partitions \cite{E3PC}. It is using two additional counters that impose a linear order on the majorities of system nodes while still preserving the same computational complexity as 3PC. 
 
 
 \subsection{Paxos}
 
 The Paxos represents a family of distributed algorithms designed to solve the consensus problem. It has been introduced by Leslie Lamport in 1998 \cite{Paxos}.
 
-The idea of the basic variant of the algorithm is reasonably simple. The Paxos distinguishes three types of system nodes: proposers, acceptors and learners. One node can be of more than one type, even act as all of them. Proposers act as client representatives proposing values that the client wants the system to agree on. Acceptors serves as the voting mechanism and all nodes are required to know the number of acceptors that form a majority. Learners serve as the representatives that can be queried for the decided value. The algorithm runs in two phases:
+The idea of the basic variant of the algorithm is reasonably straightforward. The Paxos distinguishes three types of system nodes: proposers, acceptors, and learners. One node can be of more than one type, even act as all of them. Proposers act as client representatives proposing values that the client wants the system to agree on. Acceptors serve as the voting mechanism and all nodes are required to know the number of acceptors that form a majority. Learners serve as the representatives that can be queried for the decided value. The algorithm runs in two phases:
 
 \begin{itemize}
     \item \textbf{The promise phase} -- The proposer first sends its proposed value with a new unique identification number generated from a sequence to all acceptors (or the majority). When the acceptor receives a proposed value, it first checks whether the received id number is higher than the last id it promised to ignore. In that case, it will respond to the proposer with the \texttt{promise} message which denotes that it will ignore any newly received messages with lower ids. Otherwise, it already promised to the higher proposed id and therefore no action is taken.
     
-    \item \textbf{The commit phase} -- If the proposer collects promises from the majority of acceptors, it sends the \texttt{accept-request} message to all acceptors (or the majority) with the same id and the proposed value. When the acceptor receives the \texttt{accept-request} message and it did not already promise to ignore the received id, it sends the \texttt{accept} message to the proposer and all learners. If the id in the message is lower than the promised id, the message is ignored. As the \texttt{accept-request} message is send to the majority of acceptors and all of them accept the value, the consensus is reached.
+    \item \textbf{The commit phase} -- If the proposer collects promises from the majority of acceptors, it sends the \texttt{accept-request} message to all acceptors (or the majority) with the same id and the proposed value. When the acceptor receives the \texttt{accept-request} message, and it did not already promise to ignore the received id, it sends the \texttt{accept} message to the proposer and all learners. If the id in the message is lower than the promised id, the message is ignored. As the \texttt{accept-request} message is sent to the majority of acceptors and all of them accept the value, the consensus is reached.
 \end{itemize}
 
-If the acceptor accepts a value, it appends the accepted id and value to each subsequent \texttt{promise} message that is sent to new proposers. In this case, the proposer knows that there is some value already being decided in the system and it continues the processing with the value received in the \texttt{promise} message containing the highest of all received ids. If it wants to update this value, it needs to initiate a new run of the algorithm after the current one has ended. 
+If the acceptor accepts a value, it appends the accepted id and value to each subsequent \texttt{promise} message. In this case, the proposer knows that there is some value already being decided in the system and it continues the processing with the value received in the \texttt{promise} message containing the highest of all received ids. If it wants to update this value, it needs to initiate a new run of the algorithm after the current one has ended. 
 
 Many variants of the Paxos algorithm allows it to sufficiently handle various types of failures that may influence the achievement of the consensus. In particular, even the basic variant handles problems of the 3PC algorithm, namely, network partitions and the restriction to the fail-stop model. Instead, the Paxos protocol is resilient to the fail-recover model which allows individual nodes to recover and continue processing from the point of the failure -- which is expected in the modern distributed systems.
 
-The problem that the algorithm cannot solve is two proposers that actively compete for the highest proposal number. This happens between phases as the proposer's \texttt{accept-request} message is rejected due to the higher proposal issued by the different proposer. The system is blocked until the conflict can be resolved. To mitigate this impact, systems can employ a form of the exponential back off mechanisms which allow one proposer to wait sufficiently long for the other one to finish. Another expectation of the algorithm is that acceptors are also required to have a persistent storage to avoid providing misleading information in case of the fail-recovery.
+The problem that the algorithm cannot solve is two proposers that actively compete for the highest proposal number. This happens between phases as the proposer's \texttt{accept-request} message is rejected due to the higher proposal issued by the different proposer. The system is blocked until the conflict can be resolved. To mitigate this impact, systems can employ a form of the exponential back off mechanisms which allow one proposer to wait sufficiently long for the other one to finish. Another expectation of the algorithm is that acceptors are also required to have persistent storage to avoid providing misleading information in case of the fail-recovery.
 
 \subsection{Conclusions}
 
-This section presented in detail three consensus protocols that can be employed to solve the transaction commit / abort consensus in the distributed systems. There also exists many other algorithms, for instance, the Raft or the Ark which cannot be discussed due to the space limitations. The summary of the presented algorithms is available in the table \ref{tab:consensus-protocols-comparison} (this table represents scenarios without any failures).
+This section presented in detail three consensus protocols that can be employed to solve the transaction commit / abort consensus in the distributed systems. There also exist many other algorithms, for instance, the Raft or the Ark which cannot be discussed due to the space limitations. The summary of the presented algorithms is available in the table \ref{tab:consensus-protocols-comparison} (this table represents scenarios without any failures).
 
 \hfill \break
 \begin{table}[h]
@@ -387,7 +389,7 @@ This section presented in detail three consensus protocols that can be employed 
     \label{tab:consensus-protocols-comparison}
 \end{table}
 
-The consensus is a very sophisticated and complex problem. A one of its applications is the distributed transaction commit which denotes a consensus whether to commit or abort a transaction. The mostly applied protocol for this purpose in the current development is the Two-phase commit protocol \cite{xa_spec, ws-at} (there is also a research conducted with other mentioned protocols \cite{paxosTransCommit}). However, the application of consensus protocols, particularly in the distributed environments, may present problems mainly because of their locking nature. As it will be presented in the following chapters, the saga pattern \cite{sagas_publ} provides a sophisticated alternative to the distributed transaction commit processing for long lived transactions.
+The consensus is a very sophisticated and complex problem. One of its applications is the distributed transaction commit which denotes a consensus whether to commit or abort a transaction. The mostly applied protocol for this purpose in the current development is the Two-phase commit protocol \cite{xa_spec, ws-at} (there is also research conducted with other mentioned protocols \cite{paxosTransCommit}). However, the application of consensus protocols, particularly in the distributed environments, may present problems mainly because of their locking nature. As it will be discussed in the following chapters, the saga pattern \cite{sagas_publ} provides a sophisticated alternative to the distributed transaction commit processing for long lived transactions.
 
 
 
