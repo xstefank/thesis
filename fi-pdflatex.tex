@@ -134,7 +134,7 @@ Generally, the achievement of above mentioned features may differ depending on t
 
 \section{ACID properties}
 
-A transaction can be viewed as a group of business logic statements with certain shared properties \cite{nar_wf}. Generally considered properties are one or more of atomicity, consistency, isolation and durability. These four properties are often referenced as ACID properties \cite{haerder_reuter_1983} and they describe the major points important for the transaction concepts.\footnote{Although the ACID acronym has been associated with transactions since their beginning, Eric Brewer, the inventor of the CAP theorem (section \ref{sec:cap-theorem}), stated in his article from 2012 that it is "more mnemonic than precise".\cite{cap_12years}}
+A transaction can be viewed as a group of business logic statements with certain shared properties \cite{nar_wf}. Generally considered properties are one or more of atomicity, consistency, isolation and durability. These four properties are often referenced as ACID properties \cite{haerder_reuter_1983} and they describe the major points important for the transaction concepts.\footnote{Although the ACID acronym has been associated with transactions since their beginning, Eric Brewer, the inventor of the CAP theorem (section \ref{sec:cap-theorem}), stated in his article from 2012 that it is "more mnemonic than precise"\cite{cap_12years}.}
 
 \subsection{Atomicity}
 
@@ -429,7 +429,7 @@ This section describes the microservices architecture from the perspective of th
 	
 	\item \textbf{Modeled around the business concepts} -- When the  microservices applications, together with the teams that are responsible for their maintenance, correspond to the business domain, they are generally more stable -- the requirements on their functionality do not change frequently. This allows developers to focus on the particular system segment, rather than on some specific technology stack. Additionally, it also permits services to directly reflect the business requirements.
 	
-	\item \textbf{Adapting a culture of automation} -- Because of the  service motion, failures or the communication distribution through the network, microservices brings additional complexity to the system. When the number of services increases, the maintenance, administration and deployment can become unmanageable. The automation then presents an essential part of the service lifecycle. The practices as the automated service testing, the employment of the continuous delivery or the unification of the deployment strategy over services, allow enterprise systems to scale more efficiently and speed up the mechanism of the service coordination.
+	\item \textbf{Adapting a culture of automation} -- Because of the  service motion, failures or the communication distribution through the network, microservices brings additional complexity to the system. When the number of services increases, the maintenance, administration and deployment can become unmanageable. The automation then presents an essential part of the service lifecycle. Practices as the automated service testing, the utilization of the continuous delivery or the unification of the deployment strategy over services, allow enterprise systems to scale more efficiently and to speed up the mechanism of the service coordination.
 	
 	\item \textbf{Hiding the internal implementation details} -- Every microservice generally needs to interact with other services or external systems to provide its functionality to the rest of the system. In order to keep the option of independent development, it is essential that each service hides its implementation details. This can be achieved through the motion of bounded contexts as defined for the Domain-Driven design (DDD) \cite{ddd}. The bounded context delimits the applicability of a particular model so that team members have a clear and shared understanding of what has to be consistent and how it relates to other contexts. The context is separated by an explicit interface represented as an API which allows teams to specify which utilities of the service can be shared and which must be hidden. Every request for the service data must be subsequently processed through this public interface.
 	
@@ -575,7 +575,7 @@ With the microservices architecture comes an inherent complexity incurred by the
 
 In the modern move to the cloud architectures -- platform as a Service (PaaS) considerably ease operations tasks. Containerization platforms like OpenShift \cite{openshift} or Kubernetes \cite{kubernetes} simplify the management of networking, automatic scaling, replication, resilience, tracing, monitoring and many other tasks.
 
-All of above mentioned procedures remarkably accelerate the software lifecycle process intervals. Therefore, the employment of DevOps (development and operations) principles which promote increased collaboration and shared responsibilities across teams is also essential. DevOps allows not only to deliver products faster, while still maintaining the reliability assurance, but they also provide capabilities to bring the quality into the development process itself.
+All of above mentioned procedures remarkably accelerate the software lifecycle process intervals. Therefore, the utilization of DevOps (development and operations) principles which promote increased collaboration and shared responsibilities across teams is also essential. DevOps allows not only to deliver products faster, while still maintaining the reliability assurance, but they also provide capabilities to bring the quality into the development process itself.
 
 \subsection{Human factor}
 
@@ -586,7 +586,7 @@ Previous sections discussed the complexities of microservices architecture from 
     
     \item \textbf{Nonuniform technology} -- The possibility to choose the technology stack individually for each service may promote independence and exploring possibilities, but may also impose a maintenance overhead in a long duration.  
     
-    \item \textbf{Design shift} -- As microservices still represent a relatively young architecture, the design composition change may be hard utilize. Even if there are a few successful employments of microservices (Netflix or Spotify), the inexperienced teams may be hesitant to make a move to the split of the working monolithic applications. Furthermore, the transition itself impose a complex task.
+    \item \textbf{Design shift} -- As microservices still represent a relatively young architecture, the design composition change may be hard to utilize. Even if there are a few successful systems based on the microservices architecture (Netflix or Spotify), inexperienced teams may be hesitant to make a move to the split of the working monolithic applications. Furthermore, the transition itself impose a complex task.
     
     \item \textbf{Monitoring} -- With the high number of services, collecting and processing of the monitoring information may become very complex task. It also affects the problem traceability and debbuging across services.
     
@@ -737,7 +737,7 @@ Eventuate is a platform for developing asynchronous microservices \cite{eventuat
 The Eventuate Event Sourcing (ES) provides application with the programming model based on the event sourcing -- a mechanism that tracks all changes to the data model as a sequence of events stored in the event log. Every model change is appended to the log and the sequence can be anytime replayed to restore the application state. The event log can also serve as an auditing solution and provide temporal queries to track application previous states. Another advantage is that the events can be replayed to the failed service after it reconnects.
 
 
-The ES project is also based on CQRS principles which allows natural employment of event sourcing capabilities for aggregate entities. It is provided in two versions -- as a service hosted on Amazon Web Services (AWS) or as an open source local platform.
+The ES project is also based on CQRS principles which allows natural usage of event sourcing capabilities for aggregate entities. It is provided in two versions -- as a service hosted on Amazon Web Services (AWS) or as an open source local platform.
 
 \newlinepar{Saga definition}
 
@@ -1011,9 +1011,9 @@ This quickstart uses the REST architectural style for the remote distribution of
 
 \newlinepar{Aggregate instantiation}
 
-The Eventuate framework creates the instances of the aggregate classes by a call to the default constructor. This effectively prohibits the use of aggregate instance managed by the underlying server container. 
+The Eventuate framework creates the instances of aggregate classes by a call to the default constructor. This effectively prohibits the use of aggregate instance managed by the underlying server container. 
 
-For this reason, each aggregate in this project is separated into two classes -- the actual aggregate responsible for the command processing and the event subscriber instance managing the incoming events. The  aggregate class is required to extend the \texttt{ReflectiveMutableCommand\\ProcessingAggregate} specifying the type of the command interface which allows the classpath instantiation. The event listener is defined by the \texttt{@EventSubscriber} annotation which permits it to be constructed as a Spring container component for the dependency injection employment. 
+For this reason, each aggregate in this project is separated into two classes -- the actual aggregate responsible for the command processing and the event subscriber instance managing incoming events. The  aggregate class is required to extend the \texttt{ReflectiveMutableCommand\\ProcessingAggregate} specifying the type of the command interface which allows the classpath instantiation. The event listener is defined by the \texttt{@EventSubscriber} annotation on the target class and by the \texttt{@EventHandlerMethod} annotation on respective methods consuming dispatched events. 
 
 This restriction is seconded by the rule stating that each produced event from the aggregate's command processing method must also be applied by the different method of the same aggregate. This limitation exists because of the event sourcing feature providing the ability to replay already executed commands to reconstruct the aggregate's state in the case of failure. The aggregate then may contain unnecessary empty methods as the saga also requires the propagation of the information to different components (e. g. the REST controller).
 
@@ -1320,7 +1320,7 @@ Tables \ref{tab:performance-scenario-1} and \ref{tab:performance-scenario-2} pre
 \clearpage
 \chapter{LRA executor extension}
 
-One of the main goals of this thesis was the investigation of how the saga pattern implementation in the Narayana LRA can be updated for the better support of the LRA employment in reactive microservices environments. The \textit{LRA executor extension} has been created as a proof of concept implementation of the proposed solution which extends the saga orchestration capabilities of the LRA coordinator with the saga execution according to the specified user definition.
+One of the main goals of this thesis was the investigation of how the saga pattern implementation in the Narayana LRA can be updated for the better support of the LRA utilization in reactive microservices environments. The \textit{LRA executor extension} has been created as a proof of concept implementation of the proposed solution which extends the saga orchestration capabilities of the LRA coordinator with the saga execution according to the specified user definition.
 
 \section{Motivation}
 
@@ -1444,7 +1444,7 @@ This thesis had three main objectives -- to investigate the use of transaction p
 
 The initial study covered the examination of the basic transactions concepts and the description of the well known consensus protocols that can be currently utilized for the distributed transaction commit problem in modern architectures. Furthermore, it provided a detailed description of the microservices architectural style and the application of the reactive ideology in this environment.
 
-The Saga pattern \cite{sagas_publ} methodology has been introduced as an alternative approach to the traditional transactional processing. It presented that by the relaxation of ACID requirements, the distributed system can provide availability instead of consistency guarantees which is commonly desirable in reactive architectures. Because of its non-locking nature and the simplicity of its programming model, it was selected as the main research subject for the employment of the transaction management in reactive microservices applications.
+The Saga pattern \cite{sagas_publ} methodology has been introduced as an alternative approach to the traditional transactional processing. It presented that by the relaxation of ACID requirements, the distributed system can provide availability instead of consistency guarantees which is commonly desirable in reactive architectures. Because of its non-locking nature and the simplicity of its programming model, it was selected as the main research subject for utilization of the transaction management in reactive microservices applications.
 
 The current development support of the saga pattern for the production environment was explored through the implementation of an order processing microservices application that utilized the saga processing in four Java frameworks -- Axon, Eventuate ES, Eventuate Tram and Narayana LRA. Every example provides a straightforward quickstart introduction to the saga configuration, definition and execution in each respective framework. Almost all examples have already been recognized in the community for their contribution.
 
