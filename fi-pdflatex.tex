@@ -762,7 +762,7 @@ The saga is defined as a sequence of steps specified by a simple Domain Specific
 
 Narayana Long Running Actions (LRA) is a specification developed by the Narayana team in the collaboration with the Eclipse MicroProfile initiative \cite{saga-impl-comp}. It proposes a new API for the coordination of long running activities with the assurance of the globally consistent outcome and without any locking mechanisms.
 
-The current reference implementation of the LRA specification is based on the Context and Dependency Injection (CDI) and Java API for RESTful Web services (JAX-RS) Java EE specifications. The communication is handled over HyperText Transfer Protocol (HTTP) and the Representational State Transfer (REST) protocol.
+The current reference implementation of the LRA specification is based on the Context and Dependency Injection (CDI) and Java API for RESTful Web services (JAX-RS) Java EE specifications. The communication is handled over HyperText Transfer Protocol (HTTP) and the Representational State Transfer (REST) architectural style.
 
 The LRA is utilizing an orchestration saga model. One node is selected as a dedicated LRA coordinator that manages the saga processing. Its main responsibilities are the LRA initialization, participant enlisting and either the saga completion or compensation. 
 
@@ -770,11 +770,12 @@ The coordinator can be a standalone service or it can be embedded within applica
 
 The second model component defined in the LRA processing is the saga participant. This may be any service that is involved in the LRA. Each participant is required to provide at least one REST endpoint that serves as the compensation handler.
 
-The execution of the LRA is started by the initiating service on the user request. The service calls the coordinator that in turn starts a new LRA and return its  unique identification to the initiating service. This id is used to enlist every participant within the saga. After the initiating service receives the LRA id, it can optionally enlist itself within the LRA and it continues the saga processing with other participants invocations where each call has to contain the acquired LRA id. When the participant is invoked, it will enlist itself within the received LRA, perform its work request and subsequently return the processing outcome to the initiator. After all calls are completed, depending on the collected answers the initiating service calls the coordinator with one of the finalizing requests (\texttt{close} or \texttt{compensate}). The coordinator then performs the corresponding requested action for each enlisted participant.
+The execution of the LRA is started by the initiating service on the user request. The service calls the coordinator that in turn starts a new LRA and returns its unique identification to the initiating service. This id is used to enlist every participant within the saga. After the initiating service receives the LRA id, it can optionally enlist itself within the LRA and continues the saga processing with other participants invocations where each call has to contain the acquired LRA id. When a participant is invoked, it will enlist itself within the received LRA, perform its work request and subsequently return the invocation outcome to the initiator. 
+After the LRA processing is completed or an error occurs, one of participating services (commonly the initiating service) that knows the LRA identification, contacts the coordinator to close or compensate the LRA. The coordinator then performs the corresponding requested action for each enlisted participant.
  
 \newlinepar{Saga Definition}
 
-The LRA specification permits users to control the LRA lifecycle in two ways -- by Java annotations or by the client API. 
+The LRA specification permits users to control the LRA lifecycle in two ways -- by Java annotations or by a client API. 
 
 The MicroProfile LRA support is primarily targeted for the use of annotations which are present in the \texttt{io.narayana.lra.annotation} package. The \texttt{@LRA} is the main concerned annotation which denotes the method that should be executed within a compensatable LRA context \cite{narayana_lra}. This is specified by a required \texttt{Type} attribute which can have same values as conventional transaction attributes (\ref{sec:decl-tran-model}). Additionally, this annotation may also specify if the participant should join the incoming LRA or on which HTTP status codes the LRA should be canceled. The LRA can also be declared as scoped under another existing LRA by the \texttt{@NestedLRA} annotation. In this case, a new LRA will be started and its outcome will depend upon whether the enclosing LRA is closed or canceled \cite{narayana_lra}.
 
