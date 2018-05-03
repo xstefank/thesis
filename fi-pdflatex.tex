@@ -1356,7 +1356,7 @@ The current design also requires that the executor implementation specifies how 
 
 \section{Implementation}
 
-This section describes the implementation of two modules included in the \textit{LRA executor extension}: LRA definitions and the LRA executor. Each component contains a set of unit tests that verify the solution applicability and also present basic usage examples. Figure \ref{fig:integration-component} provides an overview of the \textit{LRA executor extension} utilization together with its integration in the Narayana LRA project which is detail discussed in the following section. Class diagrams of individual modules are available for reference in the Appendix \ref{sec:appendix-class-diagrams}.
+This section describes the implementation of two modules included in the \textit{LRA executor extension}: LRA definitions and the LRA executor. Each component contains a set of unit tests that verify the solution applicability and also present basic usage examples. Figure \ref{fig:integration-component} provides an overview of the \textit{LRA executor extension} utilization together with its integration in the Narayana LRA project which is in detail discussed in the following section. Class diagrams of individual modules are available for reference in the Appendix \ref{sec:appendix-class-diagrams}.
 
 \hfill \break
 
@@ -1418,9 +1418,11 @@ The integration also includes some minor modifications to ease the use of the de
 
 To demonstrate asynchronous LRA execution capabilities of the proposed solution, we created a sample quickstart application \textit{LRA executor quickstart} that utilizes the LRA coordinator with incorporated \textit{LRA executor extension}. 
 
-The example consists of four microservices: a saga service, two participant services and the LRA coordinator. The execution simulates artificial asynchronous processing. The LRA is initiated by the saga service which sends the predefined LRA definition to the coordinator and immediately returns a response. The coordinator processes the definition by two invocations of respective participants and completes the LRA. Both participants only wait for specified time periods to simulate asynchronous tasks.
+The example consists of four microservices: a saga service, two participant services and the LRA coordinator. The execution simulates artificial asynchronous processing. The LRA is initiated on user request by the saga service which sends the predefined LRA definition to the coordinator and immediately returns a response. The coordinator processes the definition by two invocations of respective participants and completes the LRA (processing can be monitored in the coordinator's output). Both participants only wait for specified time periods to simulate asynchronous tasks.
 
-For the ease of use, the LRA coordinator is provided as a docker image under \texttt{xstefank/lra-coordinator:5.8.1.Final} tag available on Docker hub. The example is accommodated to be run as the Docker compose or OpenShift configuration.
+For the ease of use, the LRA coordinator is provided as a docker image under \texttt{xstefank/lra-coordinator:5.8.1.Final} tag available on Docker hub. The example is accommodated to be run with the Docker compose or OpenShift configuration.
+
+As the LRA start request to the saga service returns immediately a response, it allows the saga service to be instantly available for subsequent requests. This extraction of the LRA execution from the invoking service allows the microservices system to stay responsive in a way aligned with the reactive principles \cite{reactive_manifesto}.
 
 \section{Future work}
 

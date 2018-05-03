@@ -19,15 +19,15 @@
 \addvspace {4\p@ }
 \addvspace {4\p@ }
 \addvspace {4\p@ }
-\contentsline {figure}{\numberline {C.1}{\ignorespaces CQRS saga example success\relax }}{110}{figure.caption.65}
-\contentsline {figure}{\numberline {C.2}{\ignorespaces CQRS saga example invoice failure\relax }}{110}{figure.caption.66}
-\contentsline {figure}{\numberline {C.3}{\ignorespaces Eventuate Tram saga example success\relax }}{111}{figure.caption.67}
-\contentsline {figure}{\numberline {C.4}{\ignorespaces Eventuate Tram saga example invoice failure\relax }}{111}{figure.caption.68}
-\contentsline {figure}{\numberline {C.5}{\ignorespaces LRA service saga example success\relax }}{112}{figure.caption.69}
-\contentsline {figure}{\numberline {C.6}{\ignorespaces LRA service saga example invoice failure\relax }}{112}{figure.caption.70}
+\contentsline {figure}{\numberline {C.1}{\ignorespaces CQRS saga example success\relax }}{111}{figure.caption.65}
+\contentsline {figure}{\numberline {C.2}{\ignorespaces CQRS saga example invoice failure\relax }}{111}{figure.caption.66}
+\contentsline {figure}{\numberline {C.3}{\ignorespaces Eventuate Tram saga example success\relax }}{112}{figure.caption.67}
+\contentsline {figure}{\numberline {C.4}{\ignorespaces Eventuate Tram saga example invoice failure\relax }}{112}{figure.caption.68}
+\contentsline {figure}{\numberline {C.5}{\ignorespaces LRA service saga example success\relax }}{113}{figure.caption.69}
+\contentsline {figure}{\numberline {C.6}{\ignorespaces LRA service saga example invoice failure\relax }}{113}{figure.caption.70}
 \addvspace {4\p@ }
 \addvspace {4\p@ }
-\contentsline {figure}{\numberline {E.1}{\ignorespaces LRA definitions class diagram\relax }}{116}{figure.caption.71}
-\contentsline {figure}{\numberline {E.2}{\ignorespaces LRA executor class diagram\relax }}{117}{figure.caption.72}
-\contentsline {figure}{\numberline {E.3}{\ignorespaces LRA REST definitions class diagram\relax }}{118}{figure.caption.73}
-\contentsline {figure}{\numberline {E.4}{\ignorespaces LRA coordinator required integration changes\relax }}{119}{figure.caption.75}
+\contentsline {figure}{\numberline {E.1}{\ignorespaces LRA definitions class diagram\relax }}{117}{figure.caption.71}
+\contentsline {figure}{\numberline {E.2}{\ignorespaces LRA executor class diagram\relax }}{118}{figure.caption.72}
+\contentsline {figure}{\numberline {E.3}{\ignorespaces LRA REST definitions class diagram\relax }}{119}{figure.caption.73}
+\contentsline {figure}{\numberline {E.4}{\ignorespaces LRA coordinator required integration changes\relax }}{120}{figure.caption.75}
