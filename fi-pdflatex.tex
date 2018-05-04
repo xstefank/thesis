@@ -1308,7 +1308,7 @@ One of the main goals of this thesis was the investigation of how the saga patte
 
 \section{Motivation}
 
-With the current LRA implementation, the LRA coordinator is an orchestrating service that manages the saga processing spanning multiple user services. When the service wants to start a new saga, it contacts the coordinator which creates and starts a new LRA and returns its identification (an URL combining coordinator address and transaction object unique identifier) to the initiating service. This service then starts the saga execution by invoking other services that perform individual operations passing them the saga identification in the HTTP header. The participant upon invocation contacts the coordinator to enlist itself within the received saga. After the processing is completed or an error occurs, the coordinator is requested by any (commonly initiating) service that knows the saga identification to complete or compensate the LRA execution.
+With the current LRA implementation, the LRA coordinator is an orchestrating service that manages the saga processing spanning multiple user services. When the service wants to start a new saga, it contacts the coordinator which creates and starts a new LRA and returns its identification (an URL combining coordinator address and transaction object unique identifier) to the initiating service. This service then begins the saga execution by invoking other services that perform individual operations passing them the saga identification in the HTTP header. The participant upon invocation contacts the coordinator to enlist itself within the received saga. After the processing is completed or an error occurs, the coordinator is requested by any (commonly initiating) service that knows the saga identification to complete or compensate the LRA execution.
 
 This approach is suitably employable in any application with a minimal impact on the existing code base. The coordinator ensures that the saga guarantee is preserved -- either all enlisted participants complete their operations successfully or their compensating actions are invoked. It does not influence the actual saga execution which is in full control of the initiating and other included services.
 
@@ -1318,7 +1318,7 @@ Certainly, this processing is something that can be implemented by the user serv
 
 Another advantage of this approach is the decrease of the number of exchanged messages required for the saga processing. As the coordinator / executor receives all participating services in the user's saga definition, it is possible to enlist each participant within the LRA prior to its actual invocation. This means that the participating service is not required to contact the coordinator. It also allows the coordinator to manage participant invocations uniformly (number of retries, failure policies). After the coordinator collects responses from all specified participants, it makes the decision of whether to complete or compensate the LRA and optionally informs the initiating service about the result.
 
-Definitely, this approach is not appropriate for every user saga scenario. For instance, if the saga should be formed dynamically depending on certain intermediate results, some services may be only occasionally enlisted within the saga execution. However, long running transactions have generally well defined purpose which is why the \textit{LRA exector extension} may be effective in many applications utilizing the Narayana LRA implementation.
+This approach is definitely not appropriate for every user saga scenario. For instance, if the saga should be formed dynamically depending on certain intermediate results, some services may be only occasionally enlisted within the saga execution. However, long running transactions have generally well-defined purpose which is why the \textit{LRA executor extension} may be effective in many applications utilizing the Narayana LRA implementation.
 
 \section{Design}
 \label{sec:extension-design}
@@ -1327,15 +1327,15 @@ The \textit{LRA executor extension} project consists of two main modules -- the 
 
 These modules do not have any direct dependency on the Narayana project. However, this proof of concept includes custom code base changes that adjust the Narayana \texttt{lra-coordinator} project to the executor capabilities providing the implementation based on the REST protocol.
 
-The \texttt{lra-definitions} module aims to provide an uniform interface for the user LRA definition. This definition is intended to fully describe the saga execution with all necessary information that the initiator needs to propagate to participating services. The definition can be supplied to the executing service as the Java class or as a provided JSON representation.
+The \texttt{lra-definitions} module aims to provide a uniform interface for the user LRA definition. This definition is intended to fully describe the saga execution with all necessary information that the initiator needs to propagate to participating services. The definition can be supplied to the executing service as the Java class or as a provided JSON representation.
 
-This module also maintains a set of builder classes that focus on the ease of the saga development experience in a similar way as it is implemented in the Eventuate Tram project (\ref{sec:eventuate-tram}). It provides a fluent API that promotes the readability and the presentation of the LRA Domain specific language (DSL).  
+This module also maintains a set of builder classes that focus on the ease of the saga development experience in a similar way as it is implemented in the Eventuate Tram project (section \ref{sec:eventuate-tram}). It provides a fluent API that promotes the readability and the presentation of the LRA Domain Specific Language (DSL).  
 
-The \texttt{lra-executor} module represents a simple executor definition and both synchronous and asynchronous default processing implementation. Both execution methods consumes the LRA definition as an argument. The default implementation executes individual LRA actions in the same order as they were specified in the LRA definition.
+The \texttt{lra-executor} module represents a simple executor definition and both synchronous and asynchronous default processing implementation. Both execution methods consume the LRA definition as an argument. The default implementation executes individual LRA actions in the same order as they were specified in the LRA definition.
 
-The executor has been designed in a way that is intended for extension. This mainly includes the action invocation implementation that is associated with communication conventions utilized in targeted applications. 
+The executor has been designed in a way that is intended for an extension. This mainly includes the action invocation implementation that is associated with communication conventions utilized in targeted applications. 
 
-The current design also requires that the executor implementation specifies how the LRA is started as the existing LRA orchestration logic is available only in the Narayana's \texttt{lra-coordinator} module. The inclusion of this module in the \textit{LRA executor extension} would result into cyclic dependencies as the \texttt{lra-coordinator} has been modified as the presently only executor implementation. This problem can be easily resolved by a refactoring of the \texttt{lra-coordinator} module that would extract the LRA orchestration from the LRA REST processing to allow further extensions with different protocols. The current implementation is described in the section \ref{sec:narayana-lra-integration}.
+The current design also requires that the executor implementation specifies how the LRA is started as the existing LRA orchestration logic is available only in the Narayana's \texttt{lra-coordinator} module. The inclusion of this module in the \textit{LRA executor extension} would result into cyclic dependencies as the \texttt{lra-coordinator} has been modified as the presently only executor implementation. This problem can be easily resolved by a refactoring of the \texttt{lra-coordinator} module that would extract the LRA orchestration from the LRA REST processing to allow further extensions with different protocols. The current integration implementation is described in section \ref{sec:narayana-lra-integration}.
 
 
 \section{Implementation}
@@ -1355,9 +1355,9 @@ This section describes the implementation of two modules included in the \textit
 
 \subsection{LRA definitions}
 
-The essential component of this module is the \texttt{LRADefinition} interface. It encapsulates all necessary information describing the saga execution. The full list of included properties is available in the appendix \ref{sec:appendix-class-diagrams}. 
+The essential part of this module is the \texttt{LRADefinition} interface. It encapsulates all necessary information describing the saga execution. The full list of included properties is available in the appendix \ref{sec:appendix-class-diagrams}. 
 
-The \texttt{lra-definitions} module contains one implementation of this interface called the \texttt{LRADefinitionImpl} which represents the JSON representation of the \texttt{LRADefinition} interface. This is required as the automatic JSON object creation can be determined only from the Java classes, not interfaces. This representation has been included as the JSON format is commonly utilized in the microservices applications but certainly it is not required in every environment (e. g. in-JVM implementation).
+The \texttt{lra-definitions} module contains one implementation of this interface called the \texttt{LRADefinitionImpl} which represents the JSON representation of the \texttt{LRADefinition} interface. This is required as the automatic JSON object creation can be determined only from the Java classes, not interfaces. This representation has been included as the JSON format is commonly utilized in the microservices applications, but certainly it is not required in every environment (e.g., in-JVM implementation).
 
 The main concerned segment of the \texttt{LRADefintion} interface for the saga executor is the list of \texttt{Action} objects that define individual saga participant invocations. The \texttt{Action} represents a functional interface\footnote{an interface with exactly one abstract method} with one included method \mintinline{java}{ActionResult invoke(LRAData lraData)}. This interface is intended to be implemented by the respective executor implementation to define the communication procedures required to invoke the participant (e. g. REST calls or JMS messages). It consumes a \texttt{LRAData} object that encapsulates the optional saga data provided by the initiating service which are to be included in invocations. The returned \texttt{ActionResult} class provides information about the outcome of the invocation with the potential failure description.
 
@@ -1373,7 +1373,7 @@ The main definition of the executor capabilities is defined by the \texttt{LRAEx
     \item \textbf{URL startLRA(LRADefinition)} -- This method starts a new LRA based on the information provided in the definition. This method can be removed once the \textit{LRA executor extension} is included in the Narayana project.
 \end{itemize}
 
-The \texttt{AbstractLRAExecutor} class represents a default abstract implementation of the \texttt{LRAExecutor} interface. Both execution methods process provided actions in order they are defined in the received LRA definition. This class provides three abstract protected methods:
+The \texttt{AbstractLRAExecutor} class represents a default abstract implementation of the \texttt{LRAExecutor} interface. Both execution methods process provided actions in the order they are defined in the received LRA definition. This class provides three abstract protected methods:
 
 \begin{itemize}
     \item \textbf{ActionResult executeAction(Action, LRAData)} -- By default, it represents a wrapper around the action invocation. Users can override this method to customize the action processing.
@@ -1383,7 +1383,9 @@ The \texttt{AbstractLRAExecutor} class represents a default abstract implementat
     \item \textbf{void compensateLRA(LRAResult)} -- Indicates that the LRA needs to be compensated.
 \end{itemize}
 
-The current implementation functions exclusively as the LRA executor. The actual orchestration and tracking is left to the implementations of the \texttt{LRAExecutor} interface. The following section describes how it is integrated on top of the current LRA implementation. The \texttt{LRAResult} class contains all information about the saga execution, namely, the LRA id, definition and optionally the failure cause.
+The \texttt{LRAResult} class contains all information about the saga execution, namely, the LRA id, definition and optionally the failure cause.
+
+The current implementation functions exclusively as the LRA executor. The actual orchestration and tracking are left to the implementations of the \texttt{LRAExecutor} interface. The following section describes how it is integrated on top of the current LRA implementation. 
 
 \section{Narayana LRA integration}
 \label{sec:narayana-lra-integration}
@@ -1402,11 +1404,11 @@ The integration also includes some minor modifications to ease the use of the de
 
 To demonstrate asynchronous LRA execution capabilities of the proposed solution, we created a sample quickstart application \textit{LRA executor quickstart} that utilizes the LRA coordinator with incorporated \textit{LRA executor extension}. 
 
-The example consists of four microservices: a saga service, two participant services and the LRA coordinator. The execution simulates artificial asynchronous processing. The LRA is initiated on user request by the saga service which sends the predefined LRA definition to the coordinator and immediately returns a response. The coordinator processes the definition by two invocations of respective participants and completes the LRA (processing can be monitored in the coordinator's output). Both participants only wait for specified time periods to simulate asynchronous tasks.
+The example consists of four microservices: a saga service, two participant services, and the LRA coordinator. The execution simulates artificial asynchronous processing. The LRA is initiated on user request by the saga service which sends the predefined LRA definition to the coordinator and immediately returns a response. The coordinator processes the definition by two invocations of respective participants and completes the LRA (processing can be monitored in the coordinator's output). Both participants only wait for specified time periods to simulate asynchronous tasks.
 
 For the ease of use, the LRA coordinator is provided as a docker image under \texttt{xstefank/lra-coordinator:5.8.1.Final} tag available on Docker hub. The example is accommodated to be run with the Docker compose or OpenShift configuration.
 
-As the LRA start request to the saga service returns immediately a response, it allows the saga service to be instantly available for subsequent requests. This extraction of the LRA execution from the invoking service allows the microservices system to stay responsive in a way aligned with the reactive principles \cite{reactive_manifesto}.
+As the LRA start request to the saga service returns a response immediately, it allows the saga service to be instantly available for subsequent requests. This extraction of the LRA execution from the invoking service enables the microservices system to stay responsive in a way aligned with the reactive principles \cite{reactive_manifesto}.
 
 \section{Future work}
 
@@ -1416,9 +1418,9 @@ The first assignment of the executor inclusion would be the refactoring of the c
 
 Apart from the refactoring, the main problem that needs to be addressed is the recovery capabilities of the executor. If the executor fails in the middle of the execution, there is currently no failure handling that may allow it to continue processing once it is recovered. One possible solution can be implemented by persisting the LRA definition before the execution starts and also by marking each participant invocation start and completion.
 
-As a part of the failure handling, it may be also useful to allow developers to declare a strategy that would be applied in case of the participant failure. These strategies can be mapped exactly to saga recovery modes. 
+As a part of the failure handling, it may also be useful to allow developers to declare a strategy that would be applied in case of the participant failure. These strategies can be mapped exactly to saga recovery modes. 
 
-Another issue that may present an improvement point is that currently the default implementation executes actions sequentially in the same order as they are specified in the definition. However, when the actions do not depend on each other, it may be effective to execute them in parallel. This information can be included directly in the LRA definition to permit users to specify the processing mode for separated parts of the saga execution.
+Another issue that may present an improvement point is that currently, the default implementation executes actions sequentially in the same order as they are specified in the definition. However, when the actions do not depend on each other, it may be effective to execute them in parallel. This information can be included directly in the LRA definition to permit users to specify the processing mode for separated parts of the saga execution.
 
 
 \clearpage
