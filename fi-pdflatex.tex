@@ -45,7 +45,7 @@
     keywords      = {transactions, Narayana, Long Running Actions (LRA), reactive, microservices, asynchronous, saga, compensating transactions},
     TeXkeywords   = {transactions, Narayana, Long Running Actions (LRA), reactive, microservices, asynchronous, saga, compensating transactions},
 }
-\thesislong{abstract}{Transaction processing is an inherent part of application development. However, particularly in the distributed environment, the utilization of transactions introduces several challenges that transaction management must be able to handle. Microservices represent an emerging architectural style for the modern distributed application design. These applications commonly address similar concerns to stay responsive, elastic and resilient which is why the utilization of traditional locking transaction commit protocols may not be acceptable. The saga pattern presents a suitable alternative solution to transaction processing that relaxes some of ACID properties in order to promote availability. In this work, we examine how sagas differ from conventional transactions, investigate currently available saga solutions and propose a saga execution implementation for the Narayana transaction manager.
+\thesislong{abstract}{Transaction processing is an inherent part of application development. However, particularly in the distributed environment, the utilization of transactions introduces several challenges that transaction management must be able to handle. Microservices represent an emerging architectural style for the modern distributed application design. These applications commonly address similar concerns to stay responsive, elastic and resilient which is why the utilization of traditional locking transaction commit protocols may not be acceptable. The saga pattern presents a suitable alternative solution to transaction processing that relaxes some of the ACID properties in order to promote availability. In this work, we examine how sagas differ from conventional transactions, investigate currently available saga solutions and propose a saga execution implementation for the Narayana transaction manager.
 }
 \thesislong{thanks}{I would like to express my sincere thanks to my supervisor Bruno Rossi, PhD for his help and support in my work on this thesis. I would also like to thank Mgr. Ondrej Chaloupka from the Narayana team for his supervision, neverending passion and interest in this topic that was inspiring to complete many of achieved results. Last but foremost, I would like to direct my thanks to my family and my beloved Magdalena who comprehensively supported me throughout the formation of this publication.
 }
@@ -126,7 +126,7 @@ This chapter introduces the basic notions of transactions, their properties and 
 
 A transaction is a unit of processing that provides all-or-nothing property to the work that is conducted within its scope, also ensuring that shared resources are protected from multiple users \cite{java_tran_processing}. It represents a unified and inseparable sequence of operations that are either all performed or none of them take effect. 
 
-The transaction can end in two forms: it can be either \textit{committed} or \textit{aborted}. The commit determines a successful outcome - all operations within the transaction have been executed. The abort means that all performed operations have been undone and the system is in the same state as if the transaction have not been started.
+The transaction can end in two forms: it can be either \textit{committed} or \textit{aborted}. The commit determines a successful outcome - all operations within the transaction have been executed. The abort means that all performed operations have been undone and the system is in the same state as if the transaction has not been started.
 
 From the developer point of view, it is frequently only required to start and end the transaction. All complex processing necessary for the achievement of the transaction's properties is commonly hidden by the transaction system \cite{java_tran_processing} which allows developers to focus on the business processing contained in the transaction.
 
@@ -154,7 +154,7 @@ The isolation property takes effect when multiple transactions can be executed c
 
 From the perspective of an external view, the isolation property means that the transaction appears as it was executed in the system entirely alone. This means that even if there are multiple transactions performed concurrently, this fact is hidden from the external perspective.
 
-As an instinctive extension of the consistency property, the serial execution of transactions preserves the consistent state. The execution of the transactions in parallel, therefore, cannot result into an inconsistent system.
+As an instinctive extension of the consistency property, the serial execution of transactions preserves the consistent state. The execution of the transactions in parallel, therefore, cannot result in an inconsistent system.
 
 \newlinepar{Isolation levels}
 
@@ -254,7 +254,7 @@ The major drawback of this model is that local transactions cannot be joined int
 
 The programmatic transaction model (also referenced as the Bean-Managed transaction (BMT)) is introduced by the Java Transaction API (JTA) specification. In this model, the developer handles the complete management of transactions in the source code.
 
-Although the JTA specification provides a range of APIs, the main concerned interface for the utilization of the programmatic transactions is the \texttt{javax.transaction.UserTransaction} \cite{jta}. This interface represents an abstraction for the developer to programatically control transaction boundaries. The only concerned methods are \texttt{begin()}, \texttt{commit()}, \texttt{rollback()} and \texttt{getStatus()}. The call to the \texttt{begin()} will start a new transaction and associates it with the current thread. As the Java platform allows only one transaction to be associated with the thread, a call to the \texttt{begin()} method may result into exception in case the transaction has already been started in the current context. The transaction end methods (\texttt{commit()} and \texttt{rollback()}) perform their respective actions and disassociate the transaction with the thread. The \texttt{getStatus()} method returns an integer value representing the status of the current transaction derived from  \texttt{javax.transaction.Status} class \cite{jta}.
+Although the JTA specification provides a range of APIs, the main concerned interface for the utilization of the programmatic transactions is the \texttt{javax.transaction.UserTransaction} \cite{jta}. This interface represents an abstraction for the developer to programmatically control transaction boundaries. The only concerned methods are \texttt{begin()}, \texttt{commit()}, \texttt{rollback()} and \texttt{getStatus()}. The call to the \texttt{begin()} will start a new transaction and associates it with the current thread. As the Java platform allows only one transaction to be associated with the thread, a call to the \texttt{begin()} method may result into an exception in case the transaction has already been started in the current context. The transaction end methods (\texttt{commit()} and \texttt{rollback()}) perform their respective actions and disassociate the transaction with the thread. The \texttt{getStatus()} method returns an integer value representing the status of the current transaction derived from  \texttt{javax.transaction.Status} class \cite{jta}.
 
 The most important problem introduced by the programmatic model is that the developer must ensure that the transaction is always terminated in the method that started the transaction \cite{java_transaction_design_strategies}. This is often the case when the initiating method ends up with an uncaught exception and for this reason, the transaction needs to be committed or rollbacked before the method returns.
 
@@ -354,7 +354,7 @@ In 1998, Keidar and Dolev introduced an \textit{Enhanced three-phase commit} pro
 
 \subsection{Paxos}
 
-The Paxos represents a family of distributed algorithms designed to solve the consensus problem. It has been introduced by Leslie Lamport in 1998 \cite{Paxos}.
+The Paxos represents a family of distributed algorithms designed to solve the consensus problem. It was introduced by Leslie Lamport in 1998 \cite{Paxos}.
 
 The idea of the basic variant of the algorithm is reasonably straightforward. The Paxos distinguishes three types of system nodes: proposers, acceptors, and learners. One node can be of more than one type, even act as all of them. Proposers act as client representatives proposing values that the client wants the system to agree on. Acceptors serve as the voting mechanism and all nodes are required to know the number of acceptors that form a majority. Learners serve as the representatives that can be queried for the decided value. The algorithm runs in two phases:
 
@@ -447,7 +447,7 @@ This section describes the microservices architecture from the perspective of th
 	
 	\item \textbf{Customer first} -- Services exist to be called. It is indispensable to make these calls as simple as possible for the customers. The developers can advantage from any feedback from the clients that use their service. To ease the understanding of the service API, it should be supported by proper documentation provided by API frameworks like Swagger \cite{swagger}. This also includes the service discovery mechanisms to propagate system services and to make the discovery of the service providers more apparent. To combine this information, we can use the humane registries \cite{humane_registry} which indicate the human interaction. 
 	
-	\item \textbf{Failure isolation} -- Even if microservices force distributed isolated development, the architecture still needs to protect against the failure propagation between services. This principle encourages resources separation to avoid the single point of failure. It is also supported by the service location distribution. As services require to communicate remotely, it is important to account for the network failures. To prevent cascading failures various techniques like timeouts, bulkheads or circuit breakers \cite{release_it} may be employed. As there are many vulnerabilities in applications which cannot be considered, there is no precise manual on how to attain this principle.
+	\item \textbf{Failure isolation} -- Even if microservices force distributed isolated development, the architecture still needs to protect against the failure propagation between services. This principle encourages resources separation to avoid the single point of failure. It is also supported by the service location distribution. As services require to communicate remotely, it is important to account for the network failures. To prevent cascading failures, various techniques like timeouts, bulkheads or circuit breakers \cite{release_it} may be employed. As there are many vulnerabilities in applications which cannot be considered, there is no precise manual on how to attain this principle.
 	
 	\item \textbf{High observability} -- Monitoring is an important part of development and production deployment. Because of the microservices system distribution, it is not sufficient to observe actions performed by particular services apart. Instead, the monitoring solution must record the system operations altogether. To make this information more accessible, the aggregation is essential. Storing all log entries and statistics in one place can highly impact the monitoring process. Another relevant issue is to track the service calls as each service typically communicates with other services. This can be achieved by mechanisms as semantic monitoring and techniques like synthetic transactions or correlation IDs \cite{building_ms}. By logging this kind of information, we can ensure traceability in the case of service failure.
 	
@@ -513,7 +513,7 @@ The service distribution supports the architecture by the inherent model of the 
 
 The first considerable issue is network failures. Because this is something that cannot be controlled by the invoking service, it is required that each microservice call is treated with caution (e.g., by setting an explicit timeout). Consequently, every service should always be designed in a resilient way with the possibility of failures in mind. 
 
-Another relevant problem presented by the network overhead is the communication performance. Remote calls that are required for inter service invocations, represent additional complexity and time consumption that are not present in modular monolithic systems. There are several various techniques that may be employed to improve the general performance like, for instance, decreasing the number of calls or making them asynchronous.
+Another relevant problem presented by the network overhead is the communication performance. Remote calls that are required for inter-service invocations, represent additional complexity and time consumption that are not present in modular monolithic systems. There are several various techniques that may be employed to improve the general performance like, for instance, decreasing the number of calls or making them asynchronous.
 
 The problems mentioned above have been elaborated in the work of James Gosling who in 1997 extended the draft created by Peter Deutsch which stated wrong assumptions that are commonly being made about distributed systems. These assumptions are known as \textit{The 8 fallacies of distributed computing}:
 
@@ -547,7 +547,7 @@ The propagation delay problems are also present in the monolithic systems, but a
 \subsection{CAP theorem}
 \label{sec:cap-theorem}
 
-In 2000, Eric Brewer introduced the idea that there is a fundamental trade-off between consistency, availability and partition tolerance \cite{persp_cap} in the distributed system. This proposal is known as \textit{the CAP theroem} and it states that distributed systems can provide at most two of these three properties.
+In 2000, Eric Brewer introduced the idea that there is a fundamental trade-off between consistency, availability and partition tolerance \cite{persp_cap} in the distributed system. This proposal is known as \textit{the CAP theorem} and it states that distributed systems can provide at most two of these three properties.
 
 The consistency guarantee ensures that if some value has been written by a specific node, the query placed on any other node must return the same value or the later update. The availability states that if the node has not failed, it must always be able to respond. This does not permit error responses since the system could be trivially available by always returning an error \cite{cap_faq}. Finally, the partition tolerance is an ability of the system to continue functioning even if the communication access between two or more nodes has been lost. In other words, this means that services are still operating but they are not mutually reachable.
 
@@ -631,7 +631,7 @@ Sagas utilize an alternative BASE model \cite{life-beyond-dist-tran-helland, bui
     
     \item \textbf{Soft state} -- The state may change as time progresses even without any immediate modification request due to the eventual consistency.
     
-    \item \textbf{Eventual consistency} -- The state of the system is allowed to be in inconsistent states, but if the system does not receive any new update requests, then it guarantees that the state will eventually get into the consistent state (\ref{sec:eventual-consistency}).
+    \item \textbf{Eventual consistency} -- The state of the system is allowed to be in inconsistent states, but if the system does not receive any new update requests, then it guarantees that the state will eventually get into the consistent state (section \ref{sec:eventual-consistency}).
 \end{itemize}
 
 In practice, many modern applications are not always entirely restricted to all of the ACID transaction guarantees, so the saga pattern with the BASE model is emerging as a real alternative to traditional transactional approach.
@@ -642,7 +642,7 @@ The saga execution component (SEC) is a process that is responsible for the saga
 
 The entries that may be written to the transaction log are usually associated with the saga or operation lifecycle. The saga log includes \texttt{start-saga} entry followed by one or more \texttt{start-operation} / \texttt{end-operation} entries and is finished by the \texttt{end-saga} entry. Optionally, the transaction system may also provide an ability for users to cancel the saga execution with the \texttt{abort-saga} command. 
 
-Each saga operation is channeled through the saga execution component and it is recorded into the transaction log before any action may be taken. The transaction log can also contain any parameters associated with the saga execution.
+Each saga operation is channeled through the saga execution component and is recorded in the transaction log before any action may be taken. The transaction log can also contain any parameters associated with the saga execution.
 
 \section{Recovery modes}
 \label{sec:recovery-modes}
@@ -734,7 +734,7 @@ The saga processing of the Eventuate platform is handled by Eventuate Tram proje
 \subsection{Eventuate Tram}
 \label{sec:eventuate-tram}
 
-The Eventuate Tram framework enables a Java/Spring application to send asynchronous messages as a part of a database transaction \cite{eventuate-tram}. It utilizes the traditional Java Database Connectivity (JDBC) and Java Persistence API (JPA) based persistence model to provide the transactional messaging. This enables the microservices application to atomically update its state and to publish this information as a message or as an event to other services.
+The Eventuate Tram framework enables a Java/Spring application to send asynchronous messages as a part of a database transaction \cite{eventuate-tram}. It utilizes the traditional Java Database Connectivity (JDBC) and Java Persistence API (JPA) based persistence model to provide the transactional messaging. This enables the microservice to atomically update its state and to publish this information as a message or as an event to other services.
 
 The Eventuate ES platform builds the communication exchange on top of the event sourcing. The Tram additionally provides three types of transactional messaging abstractions -- messaging, events and commands. The messages are sent through dedicated named channels. The platform still supports the application development according to the CQRS pattern, but it does not enforce it.
 
@@ -764,7 +764,7 @@ The execution of the LRA is started by the initiating service on the user reques
 
 The LRA specification permits users to control the LRA lifecycle in two ways -- by Java annotations or by a client API. 
 
-The MicroProfile LRA support is primarily targeted for the use of annotations which are present in the \texttt{io.narayana.lra.annotation} package. The \texttt{@LRA} is the main concerned annotation which denotes the method that should be executed within a compensatable LRA context \cite{narayana_lra}. This is specified by a required \texttt{Type} attribute which can have same values as conventional transaction attributes (\ref{sec:decl-tran-model}). Additionally, this annotation may also specify if the participant should join the incoming LRA or on which HTTP status codes the LRA should be canceled. The LRA can also be declared as scoped under another existing LRA by the \texttt{@NestedLRA} annotation. In this case, a new LRA will be started and its outcome will depend upon whether the enclosing LRA is closed or canceled \cite{narayana_lra}.
+The MicroProfile LRA support is primarily targeted for the use of annotations which are present in the \texttt{io.narayana.lra.annotation} package. The \texttt{@LRA} is the main concerned annotation which denotes the method that should be executed within a compensatable LRA context \cite{narayana_lra}. This is specified by a required \texttt{Type} attribute which can have same values as conventional transaction attributes (section \ref{sec:decl-tran-model}). Additionally, this annotation may also specify if the participant should join the incoming LRA or on which HTTP status codes the LRA should be canceled. The LRA can also be declared as scoped under another existing LRA by the \texttt{@NestedLRA} annotation. In this case, a new LRA will be started and its outcome will depend upon whether the enclosing LRA is closed or canceled \cite{narayana_lra}.
 
 In the reference implementation, if the LRA is already present on the invocation, it should be made available to the business processing through the HTTP header \texttt{Long-Running-Action}. This header contains the coordinator address and the LRA identification.
 
@@ -818,7 +818,7 @@ Previous sections described four frameworks that provide saga implementation sup
 
 As a part of the investigation of the each discussed framework from the previous chapter, we created a sample application simulating the saga utilization. The main goal of this quickstart projects is to compare the base attributes of the investigated saga solution provided by these frameworks. This includes the comparison of the development model, microservices feasibility, maintainability, scalability, performance and the applicability of the reactive principles within the saga execution. The examples created for this thesis may be considered as artifacts of one iteration of design science research \cite{design_science}.
 
-The sample application represents a backend processing for orders with a simple REST user interface. Users are also allowed to query persisted information through the defined microservices APIs available in appendix \ref{sec:appendixAPI}.
+The sample application represents a backend processing for orders with a simple REST user interface. Users are also allowed to query persisted information through the defined microservices APIs available in Appendix \ref{sec:appendixAPI}.
 
 All examples are based on the microservices pattern. As every framework is suitable for the use in different environments, each example is achieving the same goal through the different portfolio of technologies. The exact mechanisms used in individual projects will be discussed in more detail in their respective sections.
 
@@ -860,7 +860,7 @@ As most of the applied platforms invoke participants sequentially, we distinguis
 
 The invoice failure scenario, on the other hand, validates that the saga compensations are executed on all participating services as the shipment is already expected to be completed. Generally, the saga pattern assumes that the compensations of the participants are called in the reverse order of the invocations because of the possible dependencies between them.
 
-To initiate failures scenarios in examples both \texttt{shipment-service} and \texttt{invoice-service} contain injected failure conditions. To invoke the failure the quickstarts expect a product information containing a specialized product identification: \texttt{failShipment} or \texttt{failInvoice} respectively. 
+To initiate failures scenarios in examples both \texttt{shipment-service} and \texttt{invoice-service} contain injected failure conditions. To invoke the failure, the quickstarts expect product information containing a specific product identification: \texttt{failShipment} or \texttt{failInvoice} respectively. 
 
 The graphical representation in the form of the sequence diagrams for corresponding scenarios in individual quickstarts is available in the Appendix \ref{sec:appendix-scenarios}.
 
@@ -1355,15 +1355,15 @@ This section describes the implementation of two modules included in the \textit
 
 \subsection{LRA definitions}
 
-The essential part of this module is the \texttt{LRADefinition} interface. It encapsulates all necessary information describing the saga execution. The full list of included properties is available in the appendix \ref{sec:appendix-class-diagrams}. 
+The essential part of this module is the \texttt{LRADefinition} interface. It encapsulates all necessary information describing the saga execution. The full list of included properties is available in the Appendix \ref{sec:appendix-class-diagrams}. 
 
 The \texttt{lra-definitions} module contains one implementation of this interface called the \texttt{LRADefinitionImpl} which represents the JSON representation of the \texttt{LRADefinition} interface. This is required as the automatic JSON object creation can be determined only from the Java classes, not interfaces. This representation has been included as the JSON format is commonly utilized in the microservices applications, but certainly it is not required in every environment (e.g., in-JVM implementation).
 
-The main concerned segment of the \texttt{LRADefintion} interface for the saga executor is the list of \texttt{Action} objects that define individual saga participant invocations. The \texttt{Action} represents a functional interface\footnote{an interface with exactly one abstract method} with one included method \mintinline{java}{ActionResult invoke(LRAData lraData)}. This interface is intended to be implemented by the respective executor implementation to define the communication procedures required to invoke the participant (e. g. REST calls or JMS messages). It consumes a \texttt{LRAData} object that encapsulates the optional saga data provided by the initiating service which are to be included in invocations. The returned \texttt{ActionResult} class provides information about the outcome of the invocation with the potential failure description.
+The main concerned segment of the \texttt{LRADefintion} interface for the saga executor is the list of \texttt{Action} objects that define individual saga participant invocations. The \texttt{Action} represents a functional interface\footnote{an interface with exactly one abstract method} with one included method \mintinline{java}{ActionResult invoke(LRAData lraData)}. This interface is intended to be implemented by the respective executor implementation to define the communication procedures required to invoke the participant (e. g. REST calls or JMS messages). It consumes an \texttt{LRAData} object that encapsulates the optional saga data provided by the initiating service which are to be included in invocations. The returned \texttt{ActionResult} class provides information about the outcome of the invocation with the potential failure description.
 
 \subsection{LRA executor}
 
-The main definition of the executor capabilities is defined by the \texttt{LRAExecutor} interface. This interface contains three methods (the full API specification is available in the appendix \ref{sec:appendix-class-diagrams}):
+The main definition of the executor capabilities is defined by the \texttt{LRAExecutor} interface. This interface contains three methods (the full API specification is available in the Appendix \ref{sec:appendix-class-diagrams}):
 
 \begin{itemize}
     \item \textbf{LRAResult executeLRA(LRADefinition)} -- This method starts and executes the LRA according to the provided definition. It will return the result once all actions are processed.
@@ -1394,7 +1394,7 @@ The \textit{LRA executor extension} solution provided in this thesis has been in
 
 A new module \texttt{lra-rest-definitions} provides a REST extension of the LRA definitions project. The \texttt{RESTLra} interface declares the REST \texttt{LRADefinition}. It additionally specifies only the callback endpoint which can be optionally notified about LRA completion. The implementation of the action interface is included in the \texttt{RESTAction} class. It is defined by the participant URL and an optional callback resource address which specifies where the LRA operations handlers are expected. If the callback address is not provided, the participant target address is used\footnote{in future, it may be possible to add support for the retrieval of this information from LRA annotations upon the participant invocation}. This module also provides a custom builder class and the JSON representation for both the LRA definition and the action respectively.
 
-The executor implementation is contained in the \texttt{lra-coordinator} module which contains the main concerned class \texttt{RESTLRAExecutor}. It represents a \texttt{LRAExecutor} implementation based on the REST protocol. Internally, it also utilizes the Narayana \texttt{LRAService} class to manage the saga lifecycle (start, complete and compensate of the LRA).
+The executor implementation is contained in the \texttt{lra-coordinator} module which contains the main concerned class \texttt{RESTLRAExecutor}. It represents the \texttt{LRAExecutor} implementation based on the REST protocol. Internally, it also utilizes the Narayana \texttt{LRAService} class to manage the saga lifecycle (start, complete and compensate of the LRA).
 
 The \texttt{RESTLRAExecutor} provides a capability to enlist saga participants prior to the invocation. This allows to lose the requirement of the enlisting call from participants and therefore the need to declare LRA processing on their endpoints. However, participants are still expected to expose endpoints for LRA handlers (e. g. complete, compensate). For this reason, the \texttt{lra-rest-definitions} module contains a \texttt{ParticipantCallback} interface that declares the required methods for the RestEasy JAX-RS resource. The callback URL may be provided as a part of the \texttt{RESTAction} definition.
 
