@@ -1430,11 +1430,11 @@ This thesis had three main objectives -- to investigate the use of transaction p
 
 \section{Saga pattern research}
 
-The initial study covered the examination of the basic transactions concepts and the description of the well known consensus protocols that can be currently utilized for the distributed transaction commit problem in modern architectures. Furthermore, it provided a detailed description of the microservices architectural style and the application of the reactive ideology in this environment.
+The initial study covered the examination of the basic transactions concepts and the description of the well-known consensus protocols that can be currently utilized for the distributed transaction commit problem in modern architectures. Furthermore, it provided a detailed description of the microservices architectural style and the application of the reactive ideology in this environment.
 
-The Saga pattern \cite{sagas_publ} methodology has been introduced as an alternative approach to the traditional transactional processing. It presented that by the relaxation of ACID requirements, the distributed system can provide availability instead of consistency guarantees which is commonly desirable in reactive architectures. Because of its non-locking nature and the simplicity of its programming model, it was selected as the main research subject for utilization of the transaction management in reactive microservices applications.
+The Saga pattern \cite{sagas_publ} methodology has been introduced as an alternative approach to the traditional transactional processing. It presented that by the relaxation of ACID requirements, the distributed system can provide availability instead of consistency guarantees which is commonly desirable in reactive architectures. Because of its non-locking nature and the simplicity of its programming model, it was selected as the primary research subject for the utilization of the transaction management in reactive microservices applications.
 
-The current development support of the saga pattern for the production environment was explored through the implementation of an order processing microservices application that utilized the saga processing in four Java frameworks -- Axon, Eventuate ES, Eventuate Tram and Narayana LRA. Every example provides a straightforward quickstart introduction to the saga configuration, definition and execution in each respective framework. Almost all examples have already been recognized in the community for their contribution.
+The current development support of the saga pattern for the production environment was explored through the implementation of an order processing microservices application that utilized the saga processing in four Java frameworks -- Axon, Eventuate ES, Eventuate Tram and Narayana LRA. Every example provides a straightforward quickstart introduction to the saga configuration, definition, and execution in each respective framework. Almost all examples have already been recognized in the community for their contribution.
 
 These quickstart applications were also compared from a performance perspective through a created test that examined saga processing under large applied load. These performance experiments resulted into several interesting discoveries of possible improvement points in the saga processing of individual frameworks. In total, there were two issues reported to the Axon framework, one problem reported to the Eventuate ES and one feature request submitted to the Eventuate Tram framework.
 
@@ -1446,7 +1446,7 @@ However, the saga definition and execution logic were required to be provided by
 
 The project was structured into two logical parts -- the LRA definitions and the LRA executor.
 
-The LRA definitions module provided uniform LRA saga definition capabilities that fully described the LRA with all necessary information required for its successful execution. The implementation provided LRA definition in a form of the Java class or the JSON format, but its universal design may promote further expansions utilizing various data formats in the future. 
+The LRA definitions module provided uniform LRA saga definition capabilities that fully described the LRA with all necessary information required for its successful execution. The implementation provided LRA definition in the form of the Java class or the JSON format, but its universal design may promote further expansions utilizing various data formats in the future. 
 
 The LRA executor represents a consistent method of the LRA processing according to the specified definition. The specification supports both synchronous and asynchronous LRA invocation based on the strategy defined by the implementation. Due to its general design, implementations are encouraged to adjust the execution to their particular LRA use cases.
 
@@ -1456,9 +1456,9 @@ Both modules abstract the communication methods the executor employs to contact 
 
 This thesis provides a general overview of approaches that are available for the transaction processing in the microservices environment. With regards to the reactive architectures, it in detail describes the saga pattern as a suitable solution for the asynchronous transaction execution in distributed applications.
 
-The first important contribution is the research of the saga solutions available for the Java platform. The created quickstart examples function as a stable starting point for the saga definition, configuration and execution demonstration in each respective framework. This thesis additionally also contributes with the detailed comparison and the summary of advantages and disadvantages regarding saga processing in implemented examples. The produced performance test revealed several problems that have been properly reported to the respective frameworks main developers.
+The first important contribution is the research of the saga solutions available for the Java platform. The created quickstart examples function as a stable starting point for the saga definition, configuration, and execution demonstration in each respective framework. This thesis additionally also contributes with the detailed comparison and the summary of advantages and disadvantages regarding saga processing in implemented examples. The produced performance test revealed several problems that have been properly reported to the respective frameworks main developers.
 
-The main contribution is concluded with the implementation of \textit{LRA executor extension}. This project provides a proof-of-concept prototype that illustrates the LRA execution capabilities that are built on top of the Narayana LRA implementation. The project is promoted also by a created \textit{LRA executor quickstart} application that presents the asynchronous LRA processing.
+The main contribution is concluded with the implementation of \textit{LRA executor extension}. This project provides a proof-of-concept prototype that illustrates the LRA execution capabilities that are built on top of the Narayana LRA implementation. The project is also promoted by a created \textit{LRA executor quickstart} application that presents the asynchronous LRA processing.
 
 The full list of projects produced within this thesis:
 
@@ -1485,9 +1485,9 @@ All of these projects are available as open source contributions.
 
 \section{Future tasks}
 
-The \textit{LRA executor extension} provides a solid base prototype implementation of the LRA synchronous and asynchronous processing based on the user specified definition. Even if it can be applied as the extension on top of the current Narayana LRA implementation, it may be beneficial to adjust the Narayana code base to include it directly in the future. 
+The \textit{LRA executor extension} provides a stable base prototype implementation of the LRA synchronous and asynchronous processing based on the user specified definition. Even if it can be applied as the extension on top of the current Narayana LRA implementation, it may be beneficial to adjust the Narayana code base to include it directly in the future. 
 
-As the Narayana LRA specification is still in the pre-released state \cite{narayana_lra}, the inclusion of this project would require a proper specification, implementation and API finalization, and more comprehensive testing support. Additionally, due to design of the executor, there are many possibilities of how it can be extended including a support of new LRA definition formats, processing strategies and most importantly by the promotion of new communication protocols facilitating the Narayana LRA execution in microservices environments.
+As the Narayana LRA specification is still in the pre-released state \cite{narayana_lra}, the inclusion of this project would require a proper specification, implementation and API finalization, and more comprehensive testing support. Additionally, due to the design of the executor, there are many possibilities of how it can be extended including support of new LRA definition formats, processing strategies and most importantly by the promotion of new communication protocols facilitating the Narayana LRA execution in microservices environments.
 
 \makeatletter\thesis@blocks@clear\makeatother
 \phantomsection %% Print the index and insert it into the
