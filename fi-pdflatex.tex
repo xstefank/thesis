@@ -589,7 +589,7 @@ Previous sections discussed the complexities of microservices architecture from 
 
 The conventional transaction processing, as described in previous chapters, represents a complex challenge in the distributed microservices environment. In this chapter, we introduce the notion of sagas -- an alternative approach to the traditional distributed ACID transaction execution.
 
-A saga, as described in the original publication \cite{sagas_publ} from 1987, is a sequence of operations that can be interleaved with other operations. Each operation, that is a part of the saga, represents an unit of work that can be undone by the compensation action. The saga guarantees that either all operations complete successfully, or the corresponding compensation actions are run for all executed operations to cancel the partial processing (Figure \ref{fig:tripExample}). The original paper \cite{sagas_publ} defines the saga as a long lived transaction in the database environment.
+A saga, as described in the original publication \cite{sagas_publ} from 1987, is a sequence of operations that can be interleaved with other operations. Each operation, which is a part of the saga, represents a unit of work that can be undone by the compensation action. The saga guarantees that either all operations complete successfully or the corresponding compensation actions are run for all executed operations to cancel the partial processing (Figure \ref{fig:tripExample}). The original paper \cite{sagas_publ} defines the saga as the long lived transaction in the database environment.
 
 \begin{figure}[h]
     \begin{center}
@@ -599,7 +599,7 @@ A saga, as described in the original publication \cite{sagas_publ} from 1987, is
     \label{fig:tripExample}
 \end{figure}
 
-In this chapter, we will describe the saga processing as it is defined by the initial publication \cite{sagas_publ}, describe how the operations and compensations work in sagas, how the saga handles the failure recovery and present several modern frameworks that provide the support for the saga implementation. 
+In this chapter, we will describe the saga processing as it is defined by the initial publication \cite{sagas_publ}, explain how the operations and compensations work in sagas, how the saga handles the failure recovery and present several modern frameworks that provide the support for the saga implementation. 
 
 \section{Operations}
 
@@ -607,13 +607,13 @@ An operation represents a particular work segment that is a part of the saga. Ea
 
 The ability to commit a partial operation breaks the isolation (serializability) property as it makes the segment changes available before the saga ends. Intermediate saga states may also introduce consistency contraventions. However, the saga utilizes the eventual consistency model (Section \ref{sec:eventual-consistency}) which guarantees that the state will become eventually consistent after the saga completes.
 
-As the definition in the original paper by Garcia-Molina and Salem \cite{sagas_publ} allows individual saga operations to interleave, it prohibits any form of dependencies between them. This would imply that the participating operation cannot depend on results committed by any previous operation in the saga sequence. However, in modern systems the sequential execution of local operations is possible to implement if the system employs a single saga coordination process that manages the entire sequential execution.
+As the definition in the original paper by Garcia-Molina and Salem \cite{sagas_publ} allows individual saga operations to interleave, it prohibits any form of dependencies between them. This would imply that the participating operation cannot depend on results committed by any previous operation in the saga sequence. However, in modern systems, the sequential execution of local operations is possible to implement if the system employs a single saga coordination process that manages the entire sequential execution.
 
 \section{Compensations}
 
 Each operation in a saga needs to have an associated compensation action. The purpose of the compensating action is to semantically undo the work performed by the original operation. This is not necessarily the contradictory action that puts the system into the same state as it was before the activity began or generally the saga started. 
 
-Imagine that the operation consists of the sending of an email. The  compensation cannot directly undo the email dispatch. Instead, it would send another email to the same destination which could explain why the previous action did fail. In this case, we can see that the system is in the state where it has two additional emails being send. However, the comprising system state is expected to be semantically consistent as both operation and compensation have been defined by the participant. Therefore, the consistency guarantees must be ensured by individual participants at the operation level.
+Imagine that the operation consists of the sending of an email. The compensation cannot directly undo the email dispatch. Instead, it would send another email to the same destination which could explain why the previous action did fail. In this case, the system is in the state where it has two additional emails being sent. However, the comprising system state is expected to be semantically consistent as both operation and compensation have been defined by the participant. Therefore, the consistency guarantees must be ensured by individual participants at the operation level.
 
 The compensating actions for the individual operations are expected to be idempotent. The main reason for this requirement is the saga failure and recovery management which in detail described in section \ref{sec:recovery-modes}.
 
@@ -622,7 +622,7 @@ It is important to keep in mind that even compensating actions may fail. There a
 \section{BASE transaction}
 \label{sec:base}
 
-In contrast to the traditional transaction approach, the Saga pattern relaxes the ACID requirements to achieve availability and scalability with build-in failure management. As the saga commits each operation separately, updates of not fully committed saga are immediately visible to other parallel operations \cite{trans_concept} which directly breaks the isolation property.
+In contrast to the traditional transaction approach, the Saga pattern relaxes the ACID requirements to achieve availability and scalability with built-in failure management. As the saga commits each operation separately, updates of the not fully committed saga are immediately visible to other parallel operations \cite{trans_concept} which directly breaks the isolation property.
 
 Sagas utilize an alternative BASE model \cite{life-beyond-dist-tran-helland, building-on-quicksand} which values the availability over the consistency provided by ACID (CAP theorem - \ref{sec:cap-theorem}). The specified system properties are:
 
@@ -634,15 +634,15 @@ Sagas utilize an alternative BASE model \cite{life-beyond-dist-tran-helland, bui
     \item \textbf{Eventual consistency} -- The state of the system is allowed to be in inconsistent states, but if the system does not receive any new update requests, then it guarantees that the state will eventually get into the consistent state (\ref{sec:eventual-consistency}).
 \end{itemize}
 
-In practice, many modern applications are not always fully restricted to all of the ACID transaction guarantees, so the saga pattern with the BASE model is emerging as a real alternative to traditional transactional approach.
+In practice, many modern applications are not always entirely restricted to all of the ACID transaction guarantees, so the saga pattern with the BASE model is emerging as a real alternative to traditional transactional approach.
 
 \section{Saga execution component and transaction log}
 
-The saga execution component (SEC) is a process that is responsible for the saga management. It communicates with the transaction manager which manages operations included in the saga. Both of these components require a transaction log to record their respective interactions\footnote{it is convenient to share the transaction log between both components}. The saga execution component does not require  concurrency control because the saga activities can be interleaved.
+The saga execution component (SEC) is a process that is responsible for the saga management. It communicates with the transaction manager which manages operations included in the saga. Both of these components require a transaction log to record their respective interactions\footnote{it is convenient to share the transaction log between both components}. The saga execution component does not require concurrency control because the saga operations can be interleaved.
 
 The entries that may be written to the transaction log are usually associated with the saga or operation lifecycle. The saga log includes \texttt{start-saga} entry followed by one or more \texttt{start-operation} / \texttt{end-operation} entries and is finished by the \texttt{end-saga} entry. Optionally, the transaction system may also provide an ability for users to cancel the saga execution with the \texttt{abort-saga} command. 
 
-Each saga operation is channeled through the saga execution component and it is recorded in to the transaction log before any action may be taken. The transaction log can also contain any parameters associated with the saga execution.
+Each saga operation is channeled through the saga execution component and it is recorded into the transaction log before any action may be taken. The transaction log can also contain any parameters associated with the saga execution.
 
 \section{Recovery modes}
 \label{sec:recovery-modes}
@@ -653,33 +653,33 @@ The saga paper \cite{sagas_publ} distinguishes two options to handle a failure t
 
 A backward recovery mode is the most common way of handling saga failure management as it was described in previous sections. It requires that all activities must define a compensation handler.
 
-When the SEC component receives an \texttt{abort-saga} command in the backward recovery mode, it firstly aborts the currently executed operation. Then for every previous operation in the reverse order of the original execution, it calls its respective compensation action. After the invocation of the compensation handler corresponding to the first operation is completed, the saga may end and the system is in semantically consistent state as it was before the saga began.
+When the SEC component receives an \texttt{abort-saga} command in the backward recovery mode, it firstly aborts the currently executed operation. Then for every previous operation in the reverse order of the original execution, it calls its respective compensation action. After the invocation of the compensation handler corresponding to the first operation is completed, the saga may end and the system is in the semantically consistent state as it was before the saga began.
 
 When the saga management system applies the backward recovery mode, the associated transaction log is also used to recover from the crashes of the saga coordinator. After the recovery, once all operations have been completed (committed or aborted), the saga coordinator determines the status of each saga execution by the investigation of transaction log entries. 
 
-If the log contains only both \texttt{start-operation} and \texttt{end-operation} entries for the operations comprised in the saga,  than the execution is safe to continue with the next operation which has not been started. Another safe state is when the transaction log contains the \texttt{abort-saga} entry. In this case, it calls all compensation handlers for all referenced operations in the saga. This is possible due to the fact that all compensating actions are required to be idempotent.
+If the log contains only both \texttt{start-operation} and \texttt{end-operation} entries for the operations comprised in the saga, then the execution is safe to continue with the next operation which has not been started. Another safe state is when the transaction log contains the \texttt{abort-saga} entry. In this case, it calls all compensation handlers for all referenced operations in the saga. This is possible due to the fact that all compensating actions are required to be idempotent.
 
-The only unsafe state, that may be introduced after the coordinator recovers, is when the transaction log contains the \texttt{start-operation} entry without the corresponding \texttt{end-operation}. In this case, the saga coordinator selects the last successfully executed operation (contained in the transaction log) and invokes its compensation handler and compensations for all operations that have been executed before it.
+The only unsafe state, which may be introduced after the coordinator recovers, is when the transaction log contains the \texttt{start-operation} entry without the corresponding \texttt{end-operation}. In this case, the saga coordinator selects the last successfully executed operation (contained in the transaction log) and invokes its compensation handler and compensations for all operations that have been performed before it.
 
 As in the case of repetitive recovery for the same saga, the saga coordinator may call the corresponding compensation handlers repeatedly, the compensation actions are required to be idempotent. The original paper acknowledges that this constraint may be difficult to implement in some applications which is the reason for the introduction of the forward recovery mode discussed in the following section.
 
 \newlinepar{Forward recovery}
 
-For the use of the forward recovery mode, the transaction management requires that the saga itself is predefined and that the system is able to produce a checkpoint. The checkpoint represents a snapshot of the system state in the particular point in time into which the system can be always restored.
+For the use of the forward recovery mode, the transaction management requires that the saga itself is predefined and that the system is able to produce a checkpoint. The checkpoint represents a snapshot of the system state at the particular point in time into which the system can always be restored.
 
-The pure forward recovery mode takes the checkpoint automatically at the beginning of each operation. Furthermore, it also disallows to abort the saga intermediate execution. This effectively eliminates the need to define any compensation actions. If the crash of the SEC occurs, it will abort the last executed operation and restart the saga from the last checkpoint. This approach effectively degrades the saga execution component to a basic persistent transaction executor, therefore loosing most of the saga benefits.
+The pure forward recovery mode takes the checkpoint automatically at the beginning of each operation. Furthermore, it also disallows to abort the intermediate saga execution. This effectively eliminates the need to define any compensation actions. If the crash of the SEC occurs, it will abort the last executed operation and restart the saga from the last checkpoint. This approach effectively degrades the saga execution component to a basic persistent transaction executor, therefore losing most of the saga benefits.
 
-\hfill \break
+\newlinepar{Backward / forward recovery}
 
-In addition to modes defined above, it is also possible to combine these two approaches into the backward / forward recovery mode. In this mode, the transaction system takes checkpoints in predefined intervals which may be periodical or based on a different criteria (e. g. the operation complexity). In case of the SEC failure, the system performs the backward recovery to the last defined checkpoint and then continues the saga execution in forward recovery mode.
+In addition to modes defined above, it is also possible to combine these two approaches into the backward / forward recovery mode. In this mode, the transaction system takes checkpoints in predefined intervals which may be periodical or based on different criteria (e.g., the operation complexity). In case of the SEC failure, the system performs the backward recovery to the last defined checkpoint and then continues the saga execution in forward recovery mode.
 
 \section{Distributed sagas}
 
-The notion of sagas can be naturally extended into distributed environments \cite{sagas_publ}. The saga pattern as an architectural pattern focuses on integrity, reliability, quality and it pertains to the communication patterns between services \cite{prac_ms}. This allows the saga definition in distributed systems to be redefined as a sequence of requests that are being placed on particular participants invocations. These requests may provide ACID guarantees, but this is not restricted and it must ensured by individual participants. Similarly, each participant is also required to expose the idempotent compensating request handler which can semantically undo the request that is handled by this participant in the saga.
+The notion of sagas can be naturally extended into distributed environments \cite{sagas_publ}. The saga pattern as an architectural pattern focuses on integrity, reliability, quality and it pertains to the communication patterns between services \cite{prac_ms}. This allows the saga definition in distributed systems to be redefined as a sequence of requests that are being placed on particular participants invocations. These requests may provide ACID guarantees, but this is not restricted and it must be ensured by individual participants. Similarly, each participant is also required to expose the idempotent compensating request handler which can semantically undo the request that is handled by this participant in the saga.
 
-Analogously to the centralized system, the distributed saga management also requires a transaction log which needs to be durable and distributed. The examples of distributed database providers include e.g. Cassandra, RethinkDB or Apache Ignite and many others.
+Analogously to the centralized system, the distributed saga management also requires a transaction log which needs to be durable and distributed. The examples of distributed database providers include, e.g., Cassandra, RethinkDB or Apache Ignite and many others.
 
-The saga execution coordinator (SEC) is spanned process across the participating services. This process manages and interprets the saga and it persists all processing information into the transaction log. The coordinator does not represent a single point of failure as it is allowed to fail. This is possible because the SEC process does not hold any state data, the complete saga state is held in the distributed log. The general example of the application model employing SEC is available in the figure \ref{fig:SEC}.
+The saga execution coordinator (SEC) is spanned process across the participating services. This process manages and interprets the saga and it persists all processing information into the transaction log. The coordinator does not represent a single point of failure as it is allowed to fail. This is possible because the SEC process does not hold any state data, the complete saga state is contained in the distributed log. The general example of the application model employing SEC is available in figure \ref{fig:SEC}.
 
 \begin{figure}
     \begin{center}
@@ -700,7 +700,7 @@ This section presents the current implementations of the saga pattern available 
 
 Axon is a lightweight Java framework that helps developers build scalable and extensible applications by addressing these concerns directly in the core architecture \cite{axon_framework}. It is composed on the top of the Command Query Responsibility Segregation (CQRS) pattern which is described in the Appendix \ref{sec:appendix-cqrs}.
 
-The Axon framework is based upon event processing including asynchronous message passing and event sourcing. To decouple the communication between system components, it employs the mechanisms of the asynchronous message buses. This allows to design components with well defined boundaries and therefore easy microservices development.
+The Axon framework is based upon event processing including asynchronous message passing and event sourcing. To decouple the communication between system components, it employs the mechanisms of the asynchronous message buses. This allows to design components with well-defined boundaries and therefore easy microservices development.
 
 The CQRS architecture is directly embedded in the framework. Developers are controlling distinct CQRS components (aggregates, repositories, commands) by annotations. 
 
@@ -708,35 +708,35 @@ Axon supports two types of message buses -- the command bus and the event bus. T
 
 \newlinepar{Saga definition}
 
-As the most of the Axon functionality, the easiest way to define sagas in an application is by annotations. The annotation \texttt{@Saga} marks the Java class as a saga implementation. In Axon sagas are a special type of event listeners. Each object instance of the saga class is responsible for the management of a single business transaction. This includes controlling the saga state information, execution and handling of the transaction (including start and stop) or performing the corresponding compensation actions.
+As the most of the Axon functionality, the easiest way to define sagas in an application is by annotations. The annotation \texttt{@Saga} marks the Java class as a saga implementation. In Axon, sagas are a special type of event listeners. Each object instance of the saga class is responsible for the management of a single business transaction. This includes controlling the saga state information, execution and handling of the transaction (including start and stop) or performing the corresponding compensation actions.
 
 All interaction with the saga class happens only by triggering of events. Event handlers in saga instances are annotated with the annotation \texttt{@SagaEventHandler}. 
 
 To start a saga execution, the framework needs to receive the event with the special event handler annotated with \texttt{@StartSaga} annotation. By default, the new instance will be created only if the corresponding saga cannot be found.
 
-The end of the saga can be defined by two means -- by the event or by the API call. If the ending event is used, than the conforming event handler needs to be annotated with the \texttt{@EndSaga} annotation. Alternatively, the conditional end of the saga can be signaled by the call to the \texttt{SagaLifecycle.end()} from any method inside the saga class.
+The end of the saga can be defined by two means -- by the event or by the API call. If the ending event is used, then the conforming event handler needs to be annotated with the \texttt{@EndSaga} annotation. Alternatively, the conditional end of the saga can be signaled by the call to the \texttt{SagaLifecycle.end()} from any method inside the saga class.
 
 As many instances of the saga class may exist at the same time, there is a need to publish events only to the saga for which they are intended. This is done by a definition of association values. The association value is a simple key-value pair where the key is a property present in the event which forms a connection to the saga instance. The \texttt{@SagaEventHandler} annotation contains a custom attribute called the \texttt{associationProperty} which denotes the key property in the incoming event. Axon also allows the definition of additional association values by a call to the \texttt{SagaLifecycle.associateWith(key, value)} and the \texttt{SagaLifecycle.removeAssociationWith(key, value)} inside any method of the saga class.
 
 \subsection{Eventuate ES}
 
-Eventuate is a platform for developing asynchronous microservices \cite{eventuate.io}. It focuses on the distributed data management allowing developers to focus on the business implementations. The platform consists of two products -- the Eventuate ES and the Evenetuate Tram. By the time of this writing, the Eventuate Tram was still in development and as it introduced the sophisticated saga processing to the platform, it is in detail described in the section \ref{sec:eventuate-tram}. This section presents the more general Eventuate ES product.
+Eventuate is a platform for developing asynchronous microservices \cite{eventuate.io}. It focuses on the distributed data management allowing developers to focus on the business implementations. The platform consists of two products -- the Eventuate ES and the Eventuate Tram. By the time of this writing, the Eventuate Tram was still in development, but as it introduced the sophisticated saga processing to the platform, it is in detail described in the section \ref{sec:eventuate-tram}. This section presents the more general Eventuate ES product.
 
-The Eventuate Event Sourcing (ES) provides application with the programming model based on the event sourcing -- a mechanism that tracks all changes to the data model as a sequence of events stored in the event log. Every model change is appended to the log and the sequence can be anytime replayed to restore the application state. The event log can also serve as an auditing solution and provide temporal queries to track application previous states. Another advantage is that the events can be replayed to the failed service after it reconnects.
+The Eventuate Event Sourcing (ES) provides the application with the programming model based on the event sourcing -- a mechanism that tracks all changes to the data model as a sequence of events stored in the event log. Every model change is appended to the log and the sequence can be anytime replayed to restore the application state. The event log can also serve as an auditing solution and provide temporal queries to track previous application states. Another advantage is that the events can be replayed to the failed service after it reconnects.
 
 
-The ES project is also based on CQRS principles which allows natural usage of event sourcing capabilities for aggregate entities. It is provided in two versions -- as a service hosted on Amazon Web Services (AWS) or as an open source local platform.
+The ES project is also based on CQRS principles which allow natural usage of event sourcing capabilities for aggregate entities. It is provided in two versions -- as a service hosted on Amazon Web Services (AWS) or as an open source local platform.
 
 \newlinepar{Saga definition}
 
-The saga processing of the Eventuate platform is handled by Eventuate Tram project and therefore the ES product do not support saga implementation directly. However, the example \textit{Eventuate service}, which is presented in the following chapter, is based exclusively on the Eventuate ES local platform providing the complete CQRS saga solution. It represents the manual user saga handling implementation not supported by the platform. 
+The saga processing of the Eventuate platform is handled by Eventuate Tram project and therefore the ES product does not support saga implementation directly. However, the example \textit{Eventuate service}, which is presented in the following chapter, is based exclusively on the Eventuate ES local platform providing the complete CQRS saga solution. It represents the manual user saga handling implementation not supported by the platform. 
 
 \subsection{Eventuate Tram}
 \label{sec:eventuate-tram}
 
-The Eventuate Tram framework enables a Java/Spring application to send asynchronous messages as a part of a database transaction \cite{eventuate-tram}. It utilizes the traditional Java Database Connectivity (JDBC) and Java Persistence API (JPA) based persistence model to provide the transactional messaging. This enables microservices application to atomically update its state and to publish this information as a message or as an event to other services.
+The Eventuate Tram framework enables a Java/Spring application to send asynchronous messages as a part of a database transaction \cite{eventuate-tram}. It utilizes the traditional Java Database Connectivity (JDBC) and Java Persistence API (JPA) based persistence model to provide the transactional messaging. This enables the microservices application to atomically update its state and to publish this information as a message or as an event to other services.
 
-The Eventuate ES platform builds the communication exchange on top of the event sourcing. The Tram additionally provides three types of transactional messaging abstractions -- messaging, events and commands. The messages are sent trough dedicated named channels. The platform still supports the application development according to the CQRS pattern but it does not enforce it.
+The Eventuate ES platform builds the communication exchange on top of the event sourcing. The Tram additionally provides three types of transactional messaging abstractions -- messaging, events and commands. The messages are sent through dedicated named channels. The platform still supports the application development according to the CQRS pattern, but it does not enforce it.
 
 The Eventuate Tram Sagas is a framework that provides saga processing on top of the Eventuate Tram message passing. It introduced a very sophisticated saga model that allows users to specify the saga definition as a single point of reference. 
 
@@ -744,11 +744,11 @@ The Eventuate Tram Sagas is a framework that provides saga processing on top of 
 
 The saga is defined by the saga orchestrator -- the service responsible for the saga handling. It is identified as an implementation of the \texttt{io.eventuate.tram.sagas.orchestration.Saga} interface. The respective saga definition is represented as an instance of the class \texttt{io.eventuate.tram.sagas.orchestration.SagaDefinition}. This instance must be returned by the \texttt{Saga.getSagaDefinition} method. It can be specified with a simple fluent API that provides methods to define operations that should be executed when the saga fails, when it needs to invoke a participant or how to process participants compensations. 
 
-The saga is defined as a sequence of steps specified by a simple Domain Specific Language (DSL) available in the \texttt{StepBuilder} class. Each step represents a local invocation, a remote participant invocation or the compensation definition. The last two return a participant builder which allows to additionally specify more actions that needs to be processed when the participant is invoked or the handler method which will be called when the participant responds.
+The saga is defined as a sequence of steps specified by a simple Domain Specific Language (DSL) available in the \texttt{StepBuilder} class. Each step represents a local invocation, a remote participant invocation or the compensation definition. The last two return a participant builder which allows to additionally specify more actions that need to be processed when the participant is invoked or the handler method which will be called when the participant responds.
 
 \subsection{Narayana LRA}
 
-Narayana Long Running Actions (LRA) is a specification developed by the Narayana team in the collaboration with the Eclipse MicroProfile initiative \cite{saga-impl-comp}. It proposes a new API for the coordination of long running activities with the assurance of the globally consistent outcome and without any locking mechanisms.
+Narayana Long Running Actions (LRA) is a specification developed by the Narayana team in collaboration with the Eclipse MicroProfile initiative \cite{saga-impl-comp}. It proposes a new API for the coordination of long running activities with the assurance of the globally consistent outcome and without any locking mechanisms.
 
 The current reference implementation of the LRA specification is based on the Context and Dependency Injection (CDI) and Java API for RESTful Web services (JAX-RS) Java EE specifications. The communication is handled over HyperText Transfer Protocol (HTTP) and the Representational State Transfer (REST) architectural style.
 
@@ -758,8 +758,7 @@ The coordinator can be a standalone service or it can be embedded within applica
 
 The second model component defined in the LRA processing is the saga participant. This may be any service that is involved in the LRA. Each participant is required to provide at least one REST endpoint that serves as the compensation handler.
 
-The execution of the LRA is started by the initiating service on the user request. The service calls the coordinator that in turn starts a new LRA and returns its unique identification to the initiating service. This id is used to enlist every participant within the saga. After the initiating service receives the LRA id, it can optionally enlist itself within the LRA and continues the saga processing with other participants invocations where each call has to contain the acquired LRA id. When a participant is invoked, it will enlist itself within the received LRA, perform its work request and subsequently return the invocation outcome to the initiator. 
-After the LRA processing is completed or an error occurs, one of participating services (commonly the initiating service) that knows the LRA identification, contacts the coordinator to close or compensate the LRA. The coordinator then performs the corresponding requested action for each enlisted participant.
+The execution of the LRA is started by the initiating service on the user request. The service calls the coordinator that in turn starts a new LRA and returns its unique identification to the initiating service. This id is used to enlist every participant in the saga. After the initiating service receives the LRA id, it can optionally enlist itself within the LRA and continues the saga processing with other participants invocations where each call has to contain the acquired LRA id. When a participant is invoked, it will enlist itself within the received LRA, perform its work request and subsequently return the invocation outcome to the initiator. After the LRA processing is completed or an error occurs, one of participating services (commonly the initiating service) that knows the LRA identification, contacts the coordinator to close or compensate the LRA. The coordinator then performs the corresponding requested action for each enlisted participant.
  
 \newlinepar{Saga Definition}
 
@@ -771,7 +770,7 @@ In the reference implementation, if the LRA is already present on the invocation
 
 Narayana also provides an ability to control the coordinator directly by the LRA client API. These operations are contained in the  \texttt{io.narayana.lra.client.LRAClient} class which allows users to perform basic client requests for the LRA services. On the background, the reference implementation contacts the LRA coordinator through its REST interface which users are also allowed to use directly. The implementation present in the \texttt{NarayanaLRAClient} class can be provided by the CDI dependency injection.
 
-The participant is defined by annotations present on the JAX-RS resource class. It is required to expose at least one REST endpoint that handles the participant compensation. The handler resource method is defined by the \texttt{@Compensate} annotation and is automatically registered within the coordinator when participant is enlisted. This method will be invoked in case of the LRA cancellation.
+The participant is defined by annotations present on the JAX-RS resource class. It is required to expose at least one REST endpoint that handles the participant compensation. The handler resource method is defined by the \texttt{@Compensate} annotation and is automatically registered within the coordinator when the participant is enlisted. This method will be invoked in case of the LRA cancellation.
 
 The resource class is also allowed to specify more methods that control the participant LRA lifecycle by respective annotations:
 
@@ -787,7 +786,7 @@ The resource class is also allowed to specify more methods that control the part
 
 Both \texttt{@LRA} and \texttt{@Compensate} methods may additionally be annotated by the \texttt{@Timelimit} annotation that denotes the maximum time period after which the participant is timed out.
 
-The participant can be registered also directly through the API. For this purpose, it must be a serializable java class that implements the \texttt{LRAParticipant} interface. The registration is performed by a call to the \texttt{joinLRA} method of the \texttt{LRAManagement} class which can be in the reference implementation injected through the CDI.
+The participant can also be registered directly through the API. For this purpose, it must be a serializable Java class that implements the \texttt{LRAParticipant} interface. The registration is performed by a call to the \texttt{joinLRA} method of the \texttt{LRAManagement} class which can be in the reference implementation injected through the CDI.
 
 \subsection{Summary}
 
