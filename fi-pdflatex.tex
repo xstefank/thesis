@@ -114,7 +114,7 @@ This thesis can be divided into three logical segments. The first part consists 
 
 The second segment provides the detailed description of the saga pattern \cite{sagas_publ}. The fourth chapter describes what the saga is, how it relates to the traditional transaction processing and it presents an overview of four investigated frameworks that provide saga execution capabilities. The fifth chapter covers the detailed description of the saga implementation in each example and the study of the performance test execution performed on researched saga solutions.
 
-The last part represents the description of the proposed solution of the asynchronous saga execution in the Narayana LRA project. The sixth chapter provides the motivation, design, and implementation of the \textit{LRA executor extension} project together with its integration requirements and the description of the possible future inclusion of this project in the Narayana codebase. The last chapter provides a summary of the performed work and concludes with the achieved results.
+The last part represents the description of the proposed solution of the asynchronous saga execution in the Narayana LRA project. The sixth chapter provides the motivation, design, and implementation of the \textit{LRA executor extension} project together with its integration requirements and the description of the possible future inclusion of this project in the Narayana code base. The last chapter provides a summary of the performed work and concludes with the achieved results.
 
 
 \clearpage
@@ -126,7 +126,7 @@ This chapter introduces the basic notions of transactions, their properties and 
 
 A transaction is a unit of processing that provides all-or-nothing property to the work that is conducted within its scope, also ensuring that shared resources are protected from multiple users \cite{java_tran_processing}. It represents a unified and inseparable sequence of operations that are either all performed or none of them take effect. 
 
-The transaction can end in two forms: it can be either \textit{commited} or \textit{aborted}. The commit determines a successful outcome - all operations within the transaction have been executed. The abort means that all performed operations have been undone and the system is in the same state as if the transaction have not been started.
+The transaction can end in two forms: it can be either \textit{committed} or \textit{aborted}. The commit determines a successful outcome - all operations within the transaction have been executed. The abort means that all performed operations have been undone and the system is in the same state as if the transaction have not been started.
 
 From the developer point of view, it is frequently only required to start and end the transaction. All complex processing necessary for the achievement of the transaction's properties is commonly hidden by the transaction system \cite{java_tran_processing} which allows developers to focus on the business processing contained in the transaction.
 
@@ -409,7 +409,7 @@ The effective way of describing why the microservice architecture is emerging as
 Monolithic applications present a few advantages -- the development model is often easy to adjust to the application requirements\footnote{the traditional development model represented as the client-server-database or the Model-View-Controller architecture \cite{mvn_architecture}}, the deployment is reduced to single archive (or a small number of archives), and it is easy to horizontally scale by adding more servers behind a shared load balancer. The problems arise when the system becomes large. The monolithic code base is often complex and hard to understand which results in long learning curves \cite{learning_curve} and developer concerns. The automatic deployment and the continuous delivery (CD) of the system also decelerate -- in order to update one component you have to redeploy the entire application \cite{monolithic_arch}. Although it is still able to scale horizontally, the replicated server instances take up more resources and overload the container with slower startup speeds. In general, the monolith also represents a commitment to a particular technology (or even its specific version) which makes the system difficult to maintain and also adapt to new emerging technologies.
 
 
-\subsection{Microservice architecture}
+\subsection{Microservices architecture}
 
 Microservices introduced the application separation into the self-maintained units – services \cite{intro_to_microservices}. The service is a single scalable and deployable unit, which is not dependent on any context. This means that services may be deployed and scaled independently of each other, and may employ different middleware stacks for their implementation \cite{ms_arch_ecommerce}. 
 
@@ -435,7 +435,7 @@ This section describes the microservices architecture from the perspective of th
 	
 	\item \textbf{Hiding the internal implementation details} -- Every microservice generally needs to interact with other services or external systems to provide its functionality to the rest of the system. In order to keep the option of independent development, it is essential that each service hides its implementation details. This can be achieved through the motion of bounded contexts as defined for the Domain-Driven design (DDD) \cite{ddd}. The bounded context delimits the applicability of a particular model, so that team members have a clear and shared understanding of what has to be consistent and how it relates to other contexts. The context is separated by an explicit interface represented as an API which allows teams to specify which utilities of the service can be shared and which must be hidden. Every request for the service data must be subsequently processed through this public interface.
 	
-	\item \textbf{Decentralizating all things} -- Microservice architecture is built around the idea of self-sustaining development which means that services are maintained autonomously. This allows to delegate decision making and authority to the team that is accountable for the service maintenance. The team is then able to take full ownership of the service, which with the support of the independent deployment mechanism, results into the convenient development, testing, and life-cycle management. This principle accentuates that relevant business logic should be kept in services themselves and the communication between them must be as simple as possible. This permits to design systems in a way that adheres to Conway's law  stated in 1967 \cite{conways_law}:
+	\item \textbf{Decentralizating all things} -- Microservices architecture is built around the idea of self-sustaining development which means that services are maintained autonomously. This allows to delegate decision making and authority to the team that is accountable for the service maintenance. The team is then able to take full ownership of the service, which with the support of the independent deployment mechanism, results into the convenient development, testing, and life-cycle management. This principle accentuates that relevant business logic should be kept in services themselves and the communication between them must be as simple as possible. This permits to design systems in a way that adheres to Conway's law  stated in 1967 \cite{conways_law}:
     
     \begin{displayquote}
        Any organization that designs a system (defined broadly) will produce a design whose structure is a copy of the organization's communication structure.
@@ -1157,7 +1157,7 @@ Spring provides various ways for exposing available services. Registration serve
 
 WildFly Swarm is the Red Hat microservices initiative designed to enable deconstructing the WildFly application server and pasting just enough of it back together with the application to create a self-contained executable jar \cite{gupta_2018}. It is compatible with the MicroProfile project.
 
-The traditional Java Enterprise Edition (EE) approach follows the development of the application and its subsequent deployment to the application server which includes necessary dependencies which the application requires to run. On the other hand, Wildfly Swarm creates a fat Java archive which packages all needed dependencies. This emulates the packaging of only requisite parts of the application server. The resulting jar is a standalone runnable Java application which can be executed by the \texttt{java -jar} command. It also provides Maven and Gradle plugins to ease the development of Swarm applications.
+The traditional Java Enterprise Edition (EE) approach follows the development of the application and its subsequent deployment to the application server which includes necessary dependencies which the application requires to run. On the other hand, WildFly Swarm creates a fat Java archive which packages all needed dependencies. This emulates the packaging of only requisite parts of the application server. The resulting jar is a standalone runnable Java application which can be executed by the \texttt{java -jar} command. It also provides Maven and Gradle plugins to ease the development of Swarm applications.
 
 The default fat jar (also called the uberjar) contains the user application and the needed parts of the WildFly server. Swarm also supports the packaging of the necessary server parts separately from the application. This method is known as the hollow jar and is particularly useful in the containerized environment as the server may be placed in the lower layers that do not require frequent rebuilds.
 
@@ -1438,7 +1438,7 @@ The current development support of the saga pattern for the production environme
 
 These quickstart applications were also compared from a performance perspective through a created test that examined saga processing under large applied load. These performance experiments resulted into several interesting discoveries of possible improvement points in the saga processing of individual frameworks. In total, there were two issues reported to the Axon framework, one problem reported to the Eventuate ES and one feature request submitted to the Eventuate Tram framework.
 
-\section{Narayana asynchonous LRA execution}
+\section{Narayana asynchronous LRA execution}
 
 The prepared Narayana LRA quickstart microservices application introduced a simple API gateway that abstracted business services from the saga processing by the asynchronous execution capability based on the service provided LRA definition. This processing implementation presented that Narayana LRA does not influence how the user structures or employs the LRA realization, provided that coordinator is available.
 
@@ -1766,8 +1766,8 @@ GET /api/invoice/{invoiceId}
     PUT  /lra-coordinator/{LraId}
     PUT  /lra-coordinator/{LraId}/remove
     GET  /api/health
-    GET  /lra-recovery-coordinator/{LRAId}/{RecCoordId}
-    PUT  /lra-recovery-coordinator/{LRAId}/{RecCoordId}
+    GET  /lra-recovery-coordinator/{LraId}/{RecCoordId}
+    PUT  /lra-recovery-coordinator/{LraId}/{RecCoordId}
     GET  /lra-recovery-coordinator/recovery
 \end{minted}
 
