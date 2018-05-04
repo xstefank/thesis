@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+    \PYG{n}{POST} \PYG{o}{/}\PYG{n}{api}\PYG{o}{/}\PYG{n}{order}
+    \PYG{n}{GET}  \PYG{o}{/}\PYG{n}{api}\PYG{o}{/}\PYG{n}{orders}
+    \PYG{n}{GET}  \PYG{o}{/}\PYG{n}{api}\PYG{o}{/}\PYG{n}{order}\PYG{o}{/}\PYG{p}{\PYGZob{}}\PYG{n}{order\PYGZus{}id}\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

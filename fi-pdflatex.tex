@@ -65,7 +65,7 @@
 \usepackage{needspace}
 \usepackage{caption}
 
-\newcommand{\newlinepar}[1]{\paragraph{#1}\needspace{4\baselineskip}\mbox{}\\}
+\newcommand{\newlinepar}[1]{\paragraph{#1}\needspace{3\baselineskip}\mbox{}\\}
 
 
 \begin{document}
@@ -624,7 +624,7 @@ It is important to keep in mind that even compensating actions may fail. There a
 
 In contrast to the traditional transaction approach, the Saga pattern relaxes the ACID requirements to achieve availability and scalability with built-in failure management. As the saga commits each operation separately, updates of the not fully committed saga are immediately visible to other parallel operations \cite{trans_concept} which directly breaks the isolation property.
 
-Sagas utilize an alternative BASE model \cite{life-beyond-dist-tran-helland, building-on-quicksand} which values the availability over the consistency provided by ACID (CAP theorem - \ref{sec:cap-theorem}). The specified system properties are:
+Sagas utilize an alternative BASE model \cite{life-beyond-dist-tran-helland, building-on-quicksand} which values the availability over the consistency provided by ACID (CAP theorem - section \ref{sec:cap-theorem}). The specified system properties are:
 
 \begin{itemize}
     \item \textbf{Basically Available} -- The system guarantees availability with regards to the CAP theorem.
@@ -1698,25 +1698,25 @@ To finalize, although the CQRS pattern has its benefits (ease of complexity and 
 \textbf{Order service}
 
 \begin{minted}{python}
-POST /api/order
-GET  /api/orders
-GET  /api/order/{orderId}
+    POST /api/order
+    GET  /api/orders
+    GET  /api/order/{order_id}
 \end{minted}
 
 \noindent
 \textbf{Shipment service}
 
 \begin{minted}{python}
-GET /api/shipments
-GET /api/shipment/{shipmentId}
+    GET /api/shipments
+    GET /api/shipment/{shipment_id}
 \end{minted}
 
 \noindent
 \textbf{Invoice service}
 
 \begin{minted}{python}
-GET /api/invoices
-GET /api/invoice/{invoiceId}
+    GET /api/invoices
+    GET /api/invoice/{invoice_id}
 \end{minted}
 
 \section{LRA service}
@@ -1802,6 +1802,8 @@ GET /api/invoice/{invoiceId}
 
 \section{LRA executor}
 
+\hfill \break
+
 \begin{figure}[h]
     \begin{center}
         \includegraphics[trim=5cm 0 0 -2cm,width=1.2\textwidth]{images/classDiagrams/lra-executor.png}
@@ -1832,7 +1834,8 @@ GET /api/invoice/{invoiceId}
 \newlinepar{Required integration changes}
 
 \hfill \break
-
+\hfill \break
+\hfill \break
 
 \begin{figure}[!h]
     \begin{center}
