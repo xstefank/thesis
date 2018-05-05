@@ -64,6 +64,8 @@
 \usepackage{minted}
 \usepackage{needspace}
 \usepackage{caption}
+\usepackage{notoccite}
+\usepackage{hyperref}
 
 \newcommand{\newlinepar}[1]{\paragraph{#1}\needspace{3\baselineskip}\mbox{}\\}
 
@@ -686,7 +688,7 @@ The saga execution coordinator (SEC) is spanned process across the participating
         \includegraphics[height=70mm]{images/SEC.png}
     \end{center}
     \captionsetup{justification=centering}
-    \caption{Distributed saga example \cite{applying_saga_pattern}\\ (SEC - Saga Execution Coordinator, Svc - service)}
+    \caption{Distributed saga example \cite{applying_saga_pattern}}
     \label{fig:SEC}
 \end{figure}
 

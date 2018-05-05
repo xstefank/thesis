@@ -263,6 +263,7 @@ ENTRY
     chapter
     day
     dayfiled
+    doi
     edition
     editor
     howpublished
@@ -1420,6 +1421,7 @@ FUNCTION {format.article.title}
     }
   if$
   "title" bibinfo.check
+  doi empty$ {} { "\href{https://doi.org/" doi * "}{" * swap$ * "}" * } if$
   duplicate$ empty$ 'skip$
     { quote.close 'this.status.quote :=
       is.last.char.not.punct

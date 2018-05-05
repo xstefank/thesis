@@ -6,7 +6,7 @@
 \addvspace {4\p@ }
 \addvspace {4\p@ }
 \contentsline {figure}{\numberline {4.1}{\ignorespaces Example saga execution\relax }}{40}{figure.caption.16}
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Distributed saga example \cite {applying_saga_pattern} (SEC - Saga Execution Coordinator, Svc - service)\relax }}{47}{figure.caption.20}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Distributed saga example \cite {applying_saga_pattern}\relax }}{47}{figure.caption.20}
 \addvspace {4\p@ }
 \contentsline {figure}{\numberline {5.1}{\ignorespaces Product Information example JSON\relax }}{56}{figure.caption.26}
 \contentsline {figure}{\numberline {5.2}{\ignorespaces The saga model\relax }}{57}{figure.caption.27}
