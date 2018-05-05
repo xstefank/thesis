@@ -1727,6 +1727,11 @@ To finalize, although the CQRS pattern has its benefits (ease of complexity and 
 
 \begin{minted}{python}
     POST /api/order
+    POST /api/request
+    PUT  /api/complete
+    PUT  /api/compensate
+    GET  /api/orders
+    GET  /api/order/{orderId}
     GET  /api/health
 \end{minted}
 
@@ -1737,6 +1742,8 @@ To finalize, although the CQRS pattern has its benefits (ease of complexity and 
     POST /api/request
     PUT  /api/complete
     PUT  /api/compensate
+    GET  /api/shipments
+    GET  /api/shipment/{shipmentId}
     GET  /api/health
 \end{minted}
 
@@ -1747,6 +1754,8 @@ To finalize, although the CQRS pattern has its benefits (ease of complexity and 
     POST /api/request
     PUT  /api/complete
     PUT  /api/compensate
+    GET  /api/invoices
+    GET  /api/invoice/{invoiceId}
     GET  /api/health
 \end{minted}
 
@@ -1772,6 +1781,8 @@ To finalize, although the CQRS pattern has its benefits (ease of complexity and 
     PUT  /lra-recovery-coordinator/{LraId}/{RecCoordId}
     GET  /lra-recovery-coordinator/recovery
 \end{minted}
+
+\clearpage
 
 \noindent
 \textbf{API gateway}
