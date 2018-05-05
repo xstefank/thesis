@@ -16,7 +16,6 @@
     <data key="d0"/>
     <node id="n0">
       <data key="d4"/>
-      <data key="d5"/>
       <data key="d6">
         <y:UMLClassNode>
           <y:Geometry height="36.31999999999999" width="248.00440000000003" x="231.38920000000007" y="106.51629333332903"/>
@@ -38,10 +37,9 @@
     </node>
     <node id="n1">
       <data key="d4"/>
-      <data key="d5"/>
       <data key="d6">
         <y:UMLClassNode>
-          <y:Geometry height="118.23999999999995" width="300.48440000000005" x="205.14920000000006" y="219.98375488281172"/>
+          <y:Geometry height="130.23999999999995" width="300.48440000000005" x="205.14920000000006" y="219.98375488281172"/>
           <y:Fill color="#FFCC00" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="13" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="19.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="134.076171875" x="83.20411406250003" y="3.0">RESTLRAExecutor<y:LabelModel>
@@ -54,16 +52,16 @@
           <y:UML clipContent="true" constraint="" omitDetails="false" stereotype="" use3DEffect="true">
             <y:AttributeLabel>-lraService : LRAService</y:AttributeLabel>
             <y:MethodLabel>+startLRA(lra : LRADefinition) : URL
-+executeAction(action : Action, data : LRAData)
-+completeLRA(lraResult : LRAResult) : void
-+compensateLRA(lraResult : LRAResult) : void</y:MethodLabel>
+#executeAction(action : Action, data : LRAData)
+#completeLRA(lraResult : LRAResult) : void
+#compensateLRA(lraResult : LRAResult) : void
+-invokeCallback(lraResult : LRAResult) : void</y:MethodLabel>
           </y:UML>
         </y:UMLClassNode>
       </data>
     </node>
     <node id="n2">
       <data key="d4"/>
-      <data key="d5"/>
       <data key="d6">
         <y:UMLClassNode>
           <y:Geometry height="75.36000000000001" width="576.9066666666666" x="241.1844813132821" y="449.7712164322945"/>
@@ -88,7 +86,6 @@
     </node>
     <node id="n3">
       <data key="d4"/>
-      <data key="d5"/>
       <data key="d6">
         <y:UMLClassNode>
           <y:Geometry height="72.16" width="235.67999999999995" x="587.2111479799488" y="243.0237548828117"/>
@@ -110,7 +107,6 @@
     </node>
     <node id="n4">
       <data key="d4"/>
-      <data key="d5"/>
       <data key="d6">
         <y:UMLClassNode>
           <y:Geometry height="44.00000000000003" width="161.60000000000002" x="604.7727479799486" y="106.51629333332903"/>
@@ -132,7 +128,6 @@
     </node>
     <edge id="e0" source="n1" target="n0">
       <data key="d8"/>
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -144,7 +139,6 @@
     </edge>
     <edge id="e1" source="n1" target="n2">
       <data key="d8"/>
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="2.400000000000091" ty="-16.373870849482557">
@@ -159,7 +153,6 @@
     </edge>
     <edge id="e2" source="n3" target="n1">
       <data key="d8"/>
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -171,7 +164,6 @@
     </edge>
     <edge id="e3" source="n3" target="n2">
       <data key="d8"/>
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="19.534933333333015" ty="-10.773870849482591">
@@ -186,10 +178,9 @@
     </edge>
     <edge id="e4" source="n1" target="n4">
       <data key="d8"/>
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
-          <y:Path sx="32.18134797994844" sy="0.15640320000039765" tx="0.0" ty="0.0">
+          <y:Path sx="32.18134797994844" sy="0.17227632584617544" tx="0.0" ty="0.0">
             <y:Point x="387.57274797994853" y="186.46015808281211"/>
             <y:Point x="685.5727479799486" y="186.46015808281211"/>
           </y:Path>

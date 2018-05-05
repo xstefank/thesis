@@ -21,8 +21,8 @@
 \addvspace {4\p@ }
 \contentsline {figure}{\numberline {C.1}{\ignorespaces CQRS saga example success\relax }}{110}{figure.caption.66}
 \contentsline {figure}{\numberline {C.2}{\ignorespaces CQRS saga example invoice failure\relax }}{110}{figure.caption.67}
-\contentsline {figure}{\numberline {C.3}{\ignorespaces Eventuate Tram saga example success\relax }}{111}{figure.caption.68}
-\contentsline {figure}{\numberline {C.4}{\ignorespaces Eventuate Tram saga example invoice failure\relax }}{111}{figure.caption.69}
+\contentsline {figure}{\numberline {C.3}{\ignorespaces Eventuate Tram service saga example success\relax }}{111}{figure.caption.68}
+\contentsline {figure}{\numberline {C.4}{\ignorespaces Eventuate Tram service saga example invoice failure\relax }}{111}{figure.caption.69}
 \contentsline {figure}{\numberline {C.5}{\ignorespaces LRA service saga example success\relax }}{112}{figure.caption.70}
 \contentsline {figure}{\numberline {C.6}{\ignorespaces LRA service saga example invoice failure\relax }}{112}{figure.caption.71}
 \addvspace {4\p@ }

@@ -16,7 +16,6 @@
     <data key="d0"/>
     <node id="n0">
       <data key="d4"/>
-      <data key="d5"/>
       <data key="d6">
         <y:UMLClassNode>
           <y:Geometry height="109.96960000000001" width="376.19360000000006" x="503.0" y="303.0"/>
@@ -55,7 +54,6 @@
     </node>
     <node id="n1">
       <data key="d4"/>
-      <data key="d5"/>
       <data key="d6">
         <y:UMLClassNode>
           <y:Geometry height="119.51999999999998" width="388.8044" x="496.69460000000004" y="499.7581466666645"/>
@@ -82,10 +80,9 @@
     </node>
     <node id="n2">
       <data key="d4"/>
-      <data key="d5"/>
       <data key="d6">
         <y:UMLClassNode>
-          <y:Geometry height="229.60000000000002" width="706.0310666666662" x="732.0968" y="696.5775250000002"/>
+          <y:Geometry height="241.60000000000002" width="706.0310666666662" x="732.0967999999999" y="696.5775250000002"/>
           <y:Fill color="#FFCC00" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="13" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="19.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="78.84521484375" x="313.5929259114581" y="3.0">LRAResult<y:LabelModel>
@@ -106,6 +103,7 @@
 +LRAResult(lraId : URL, outcome : LRAOutcome, lraDefinition : LRADefinition)
 +getLraId() : URL
 +getOutcome() : LRAOutcome
++isSuccess() : boolean
 +getLraDefinition() : LRADefinition
 +getMessage() : String
 +getCause() : Throwable</y:MethodLabel>
@@ -115,7 +113,6 @@
     </node>
     <node id="n3">
       <data key="d4"/>
-      <data key="d5"/>
       <data key="d6">
         <y:UMLClassNode>
           <y:Geometry height="95.0" width="156.0" x="1007.112333333333" y="512.0181466666645"/>
@@ -138,7 +135,6 @@
     </node>
     <edge id="e0" source="n1" target="n0">
       <data key="d8"/>
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -150,7 +146,6 @@
     </edge>
     <edge id="e1" source="n1" target="n2">
       <data key="d8"/>
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0">
@@ -164,7 +159,6 @@
     </edge>
     <edge id="e2" source="n1" target="n3">
       <data key="d8"/>
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -176,7 +170,6 @@
     </edge>
     <edge id="e3" source="n2" target="n3">
       <data key="d8"/>
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
