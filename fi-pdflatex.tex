@@ -1646,11 +1646,11 @@ To finalize, although the CQRS pattern has its benefits (ease of complexity and 
 
 \begin{minted}{python}
     GET /api/orders
-    GET /api/order/{order_id}
+    GET /api/order/{orderId}
     GET /api/shipments
-    GET /api/shipment/{shipment_id}
+    GET /api/shipment/{shipmentId}
     GET /api/invoices
-    GET /api/invoice/{invoice_id}
+    GET /api/invoice/{invoiceId}
 \end{minted}
 
 \section{Eventuate service}
@@ -1688,11 +1688,11 @@ To finalize, although the CQRS pattern has its benefits (ease of complexity and 
 
 \begin{minted}{python}
     GET /api/orders
-    GET /api/order/{order_id}
+    GET /api/order/{orderId}
     GET /api/shipments
-    GET /api/shipment/{shipment_id}
+    GET /api/shipment/{shipmentId}
     GET /api/invoices
-    GET /api/invoice/{invoice_id}
+    GET /api/invoice/{invoiceId}
 \end{minted}
 
 \section{Eventuate Tram service}
@@ -1702,7 +1702,7 @@ To finalize, although the CQRS pattern has its benefits (ease of complexity and 
 \begin{minted}{python}
     POST /api/order
     GET  /api/orders
-    GET  /api/order/{order_id}
+    GET  /api/order/{orderId}
 \end{minted}
 
 \noindent
@@ -1710,7 +1710,7 @@ To finalize, although the CQRS pattern has its benefits (ease of complexity and 
 
 \begin{minted}{python}
     GET /api/shipments
-    GET /api/shipment/{shipment_id}
+    GET /api/shipment/{shipmentId}
 \end{minted}
 
 \noindent
@@ -1718,7 +1718,7 @@ To finalize, although the CQRS pattern has its benefits (ease of complexity and 
 
 \begin{minted}{python}
     GET /api/invoices
-    GET /api/invoice/{invoice_id}
+    GET /api/invoice/{invoiceId}
 \end{minted}
 
 \section{LRA service}
