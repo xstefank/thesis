@@ -136,7 +136,7 @@ Generally, the achievement of above mentioned features may differ depending on t
 
 \section{ACID properties}
 
-A transaction can be viewed as a group of business logic statements with certain shared properties \cite{nar_wf}. Generally considered properties are one or more of atomicity, consistency, isolation, and durability. These four properties are often referenced as ACID properties \cite{haerder_reuter_1983} and they describe the major points important for the transaction concepts.\footnote{Although the ACID acronym has been associated with transactions since their beginning, Eric Brewer, the inventor of the CAP theorem (section \ref{sec:cap-theorem}), stated in his article from 2012 that it is "more mnemonic than precise"\cite{cap_12years}.}
+A transaction can be viewed as a group of business logic statements with certain shared properties \cite{nar_wf}. Generally considered properties are one or more of atomicity, consistency, isolation, and durability. These four properties are often referenced as ACID properties \cite{haerder_reuter_1983} and they describe the major points important for the transaction concepts.\footnote{Although the ACID acronym has been associated with transactions since their beginning, Eric Brewer, the inventor of the CAP theorem (Section \ref{sec:cap-theorem}), stated in his article from 2012 that it is "more mnemonic than precise"\cite{cap_12years}.}
 
 \subsection{Atomicity}
 
@@ -374,7 +374,7 @@ The problem that the algorithm cannot solve is two proposers that actively compe
 
 \subsection{Conclusions}
 
-This section presented in detail three consensus protocols that can be employed to solve the transaction commit / abort consensus in the distributed systems. There also exist many other algorithms, for instance, the Raft or the Ark which cannot be discussed due to the space limitations. The summary of the presented algorithms is available in the table \ref{tab:consensus-protocols-comparison} (this table represents scenarios without any failures).
+This section presented in detail three consensus protocols that can be employed to solve the transaction commit / abort consensus in the distributed systems. There also exist many other algorithms, for instance, the Raft or the Ark which cannot be discussed due to the space limitations. The summary of the presented algorithms is available in Table \ref{tab:consensus-protocols-comparison} (this table represents scenarios without any failures).
 
 \hfill \break
 \begin{table}[h]
@@ -544,7 +544,7 @@ Imagine a situation where the customer creates an order in a web interface. Afte
 
 Microservices are required to manage eventual consistency to avoid making decisions based on the inconsistent information. These kind of issues are often hard to find as they are often discovered only after the inconsistent window has been closed.
 
-The propagation delay problems are also present in the monolithic systems, but as it was mentioned in the previous chapter, the remote calls are typically remarkably less performant than in-process communication. However, in practice applications do not really depend on the strong consistency guarantees to the expected extent -- for instance, the saga pattern (section \ref{sec:base}) is based on the eventually consistent model. As it will be presented in the following section, it was proven that distributed systems cannot achieve both strong consistency and high availability at the same time, which is why modern distributed business applications are often willing to reasonably tolerate temporary data inconsistencies in order to promote availability.
+The propagation delay problems are also present in the monolithic systems, but as it was mentioned in the previous chapter, the remote calls are typically remarkably less performant than in-process communication. However, in practice applications do not really depend on the strong consistency guarantees to the expected extent -- for instance, the saga pattern (Section \ref{sec:base}) is based on the eventually consistent model. As it will be presented in the following section, it was proven that distributed systems cannot achieve both strong consistency and high availability at the same time, which is why modern distributed business applications are often willing to reasonably tolerate temporary data inconsistencies in order to promote availability.
 
 \subsection{CAP theorem}
 \label{sec:cap-theorem}
@@ -617,7 +617,7 @@ Each operation in a saga needs to have an associated compensation action. The pu
 
 Imagine that the operation consists of the sending of an email. The compensation cannot directly undo the email dispatch. Instead, it would send another email to the same destination which could explain why the previous action did fail. In this case, the system is in the state where it has two additional emails being sent. However, the comprising system state is expected to be semantically consistent as both operation and compensation have been defined by the participant. Therefore, the consistency guarantees must be ensured by individual participants at the operation level.
 
-The compensating actions for the individual operations are expected to be idempotent. The main reason for this requirement is the saga failure and recovery management which in detail described in section \ref{sec:recovery-modes}.
+The compensating actions for the individual operations are expected to be idempotent. The main reason for this requirement is the saga failure and recovery management which in detail described in Section \ref{sec:recovery-modes}.
 
 It is important to keep in mind that even compensating actions may fail. There are several options of how the saga management system can handle such situations. The first option is to retry the compensating operation again, but as the reason of the failure may still be valid which means that the system can get caught in an infinite retry loop. Another option is to provide a recovery block -- a separated block of code which would get executed in place of the primary compensation in case of failure. The last option, which is not elegant but it is practical, is the manual intervention. This is possible to implement due to the saga nature -- it does not hold any locks on resources it is being performed on. When the compensation handler is manually repaired, the saga can continue its execution where it has left off.
 
@@ -626,14 +626,14 @@ It is important to keep in mind that even compensating actions may fail. There a
 
 In contrast to the traditional transaction approach, the Saga pattern relaxes the ACID requirements to achieve availability and scalability with built-in failure management. As the saga commits each operation separately, updates of the not fully committed saga are immediately visible to other parallel operations \cite{trans_concept} which directly breaks the isolation property.
 
-Sagas utilize an alternative BASE model \cite{life-beyond-dist-tran-helland, building-on-quicksand} which values the availability over the consistency provided by ACID (CAP theorem - section \ref{sec:cap-theorem}). The specified system properties are:
+Sagas utilize an alternative BASE model \cite{life-beyond-dist-tran-helland, building-on-quicksand} which values the availability over the consistency provided by ACID (CAP theorem - Section \ref{sec:cap-theorem}). The specified system properties are:
 
 \begin{itemize}
     \item \textbf{Basically Available} -- The system guarantees availability with regards to the CAP theorem.
     
     \item \textbf{Soft state} -- The state may change as time progresses even without any immediate modification request due to the eventual consistency.
     
-    \item \textbf{Eventual consistency} -- The state of the system is allowed to be in inconsistent states, but if the system does not receive any new update requests, then it guarantees that the state will eventually get into the consistent state (section \ref{sec:eventual-consistency}).
+    \item \textbf{Eventual consistency} -- The state of the system is allowed to be in inconsistent states, but if the system does not receive any new update requests, then it guarantees that the state will eventually get into the consistent state (Section \ref{sec:eventual-consistency}).
 \end{itemize}
 
 In practice, many modern applications are not always entirely restricted to all of the ACID transaction guarantees, so the saga pattern with the BASE model is emerging as a real alternative to traditional transactional approach.
@@ -722,7 +722,7 @@ As many instances of the saga class may exist at the same time, there is a need 
 
 \subsection{Eventuate ES}
 
-Eventuate is a platform for developing asynchronous microservices \cite{eventuate.io}. It focuses on the distributed data management allowing developers to focus on the business implementations. The platform consists of two products -- the Eventuate ES and the Eventuate Tram. By the time of this writing, the Eventuate Tram was still in development, but as it introduced the sophisticated saga processing to the platform, it is in detail described in the section \ref{sec:eventuate-tram}. This section presents the more general Eventuate ES product.
+Eventuate is a platform for developing asynchronous microservices \cite{eventuate.io}. It focuses on the distributed data management allowing developers to focus on the business implementations. The platform consists of two products -- the Eventuate ES and the Eventuate Tram. By the time of this writing, the Eventuate Tram was still in development, but as it introduced the sophisticated saga processing to the platform, it is in detail described in Section \ref{sec:eventuate-tram}. This section presents the more general Eventuate ES product.
 
 The Eventuate Event Sourcing (ES) provides the application with the programming model based on the event sourcing -- a mechanism that tracks all changes to the data model as a sequence of events stored in the event log. Every model change is appended to the log and the sequence can be anytime replayed to restore the application state. The event log can also serve as an auditing solution and provide temporal queries to track previous application states. Another advantage is that the events can be replayed to the failed service after it reconnects.
 
@@ -766,7 +766,7 @@ The execution of the LRA is started by the initiating service on the user reques
 
 The LRA specification permits users to control the LRA lifecycle in two ways -- by Java annotations or by a client API. 
 
-The MicroProfile LRA support is primarily targeted for the use of annotations which are present in the \texttt{io.narayana.lra.annotation} package. The \texttt{@LRA} is the main concerned annotation which denotes the method that should be executed within a compensatable LRA context \cite{narayana_lra}. This is specified by a required \texttt{Type} attribute which can have same values as conventional transaction attributes (section \ref{sec:decl-tran-model}). Additionally, this annotation may also specify if the participant should join the incoming LRA or on which HTTP status codes the LRA should be canceled. The LRA can also be declared as scoped under another existing LRA by the \texttt{@NestedLRA} annotation. In this case, a new LRA will be started and its outcome will depend upon whether the enclosing LRA is closed or canceled \cite{narayana_lra}.
+The MicroProfile LRA support is primarily targeted for the use of annotations which are present in the \texttt{io.narayana.lra.annotation} package. The \texttt{@LRA} is the main concerned annotation which denotes the method that should be executed within a compensatable LRA context \cite{narayana_lra}. This is specified by a required \texttt{Type} attribute which can have same values as conventional transaction attributes (Section \ref{sec:decl-tran-model}). Additionally, this annotation may also specify if the participant should join the incoming LRA or on which HTTP status codes the LRA should be canceled. The LRA can also be declared as scoped under another existing LRA by the \texttt{@NestedLRA} annotation. In this case, a new LRA will be started and its outcome will depend upon whether the enclosing LRA is closed or canceled \cite{narayana_lra}.
 
 In the reference implementation, if the LRA is already present on the invocation, it should be made available to the business processing through the HTTP header \texttt{Long-Running-Action}. This header contains the coordinator address and the LRA identification.
 
@@ -792,7 +792,7 @@ The participant can also be registered directly through the API. For this purpos
 
 \subsection{Summary}
 
-Previous sections described four frameworks that provide saga implementation support. The following table \ref{tab:saga-implementations-comparison} provides a simple summary of the discussed properties influencing the saga definition and execution of each respective framework applicable in microservices applications. 
+Previous sections described four frameworks that provide saga implementation support. The following Table \ref{tab:saga-implementations-comparison} provides a simple summary of the discussed properties influencing the saga definition and execution of each respective framework applicable in microservices applications. 
 
 \begin{table}[ht]
     \begin{tabularx}{\textwidth}{p{4cm}XXXX}
@@ -1024,7 +1024,7 @@ The Eventuate Tram service quickstart is based on the new recently introduced Ev
 
 \subsection{Platform}
 
-Similarly to the full Eventuate distribution, the Eventuate Tram establishes four services that form the Tram platform: Apache Zookeeper, Apache Kafka, MySQL database and CDC component. The fifth service, Console server, is not included as the platform does not present this functionality by the time of this writing. As all mentioned services represent the same functionality as they are responsible for in the full Eventuate platform, individual descriptions of each service are defined in detail in the section \ref{sec:eventuate-platform}.  
+Similarly to the full Eventuate distribution, the Eventuate Tram establishes four services that form the Tram platform: Apache Zookeeper, Apache Kafka, MySQL database and CDC component. The fifth service, Console server, is not included as the platform does not present this functionality by the time of this writing. As all mentioned services represent the same functionality as they are responsible for in the full Eventuate platform, individual descriptions of each service are defined in detail in Section \ref{sec:eventuate-platform}.  
 
 All services are deployed by the \texttt{docker-compose} configuration distributed with the framework. This setup is based on the same Eventuate docker images for \texttt{zookeeper} and \texttt{kafka} services, and with \texttt{mysql} and \texttt{cdcservice} redefined by Tram.
 
@@ -1271,7 +1271,7 @@ This quickstart was for the performance test adjusted to be run directly in the 
 
 \newlinepar{Summary}
 
-Tables \ref{tab:performance-scenario-1} and \ref{tab:performance-scenario-2} present a summary of the performance test executions. The processing delay defines the time between the last sent request and the last processed order and the total time denotes time from the first request to the last completed order. The format for both times is \texttt{mm:ss}. Results presented in table \ref{tab:performance-scenario-2} represent the best result of three performed test executions in scenario 2.
+Tables \ref{tab:performance-scenario-1} and \ref{tab:performance-scenario-2} present a summary of the performance test executions. The processing delay defines the time between the last sent request and the last processed order and the total time denotes time from the first request to the last completed order. The format for both times is \texttt{mm:ss}. Results presented in Table \ref{tab:performance-scenario-2} represent the best result of three performed test executions in scenario 2.
 
 \begin{table}[h]
     \begin{tabularx}{\textwidth}{lXXX}
@@ -1331,13 +1331,13 @@ These modules do not have any direct dependency on the Narayana project. However
 
 The \texttt{lra-definitions} module aims to provide a uniform interface for the user LRA definition. This definition is intended to fully describe the saga execution with all necessary information that the initiator needs to propagate to participating services. The definition can be supplied to the executing service as the Java class or as a provided JSON representation.
 
-This module also maintains a set of builder classes that focus on the ease of the saga development experience in a similar way as it is implemented in the Eventuate Tram project (section \ref{sec:eventuate-tram}). It provides a fluent API that promotes the readability and the presentation of the LRA Domain Specific Language (DSL).  
+This module also maintains a set of builder classes that focus on the ease of the saga development experience in a similar way as it is implemented in the Eventuate Tram project (Section \ref{sec:eventuate-tram}). It provides a fluent API that promotes the readability and the presentation of the LRA Domain Specific Language (DSL).  
 
 The \texttt{lra-executor} module represents a simple executor definition and both synchronous and asynchronous default processing implementation. Both execution methods consume the LRA definition as an argument. The default implementation executes individual LRA actions in the same order as they were specified in the LRA definition.
 
 The executor has been designed in a way that is intended for an extension. This mainly includes the action invocation implementation that is associated with communication conventions utilized in targeted applications. 
 
-The current design also requires that the executor implementation specifies how the LRA is started as the existing LRA orchestration logic is available only in the Narayana's \texttt{lra-coordinator} module. The inclusion of this module in the \textit{LRA executor extension} would result into cyclic dependencies as the \texttt{lra-coordinator} has been modified as the presently only executor implementation. This problem can be easily resolved by a refactoring of the \texttt{lra-coordinator} module that would extract the LRA orchestration from the LRA REST processing to allow further extensions with different protocols. The current integration implementation is described in section \ref{sec:narayana-lra-integration}.
+The current design also requires that the executor implementation specifies how the LRA is started as the existing LRA orchestration logic is available only in the Narayana's \texttt{lra-coordinator} module. The inclusion of this module in the \textit{LRA executor extension} would result into cyclic dependencies as the \texttt{lra-coordinator} has been modified as the presently only executor implementation. This problem can be easily resolved by a refactoring of the \texttt{lra-coordinator} module that would extract the LRA orchestration from the LRA REST processing to allow further extensions with different protocols. The current integration implementation is described in Section \ref{sec:narayana-lra-integration}.
 
 
 \section{Implementation}
