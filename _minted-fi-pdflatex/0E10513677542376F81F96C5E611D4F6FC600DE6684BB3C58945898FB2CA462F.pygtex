@@ -1,0 +1,8 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+    \PYG{n}{POST} \PYG{o}{/}\PYG{n}{api}\PYG{o}{/}\PYG{n}{request}
+    \PYG{n}{PUT}  \PYG{o}{/}\PYG{n}{api}\PYG{o}{/}\PYG{n}{complete}
+    \PYG{n}{PUT}  \PYG{o}{/}\PYG{n}{api}\PYG{o}{/}\PYG{n}{compensate}
+    \PYG{n}{GET}  \PYG{o}{/}\PYG{n}{api}\PYG{o}{/}\PYG{n}{invoices}
+    \PYG{n}{GET}  \PYG{o}{/}\PYG{n}{api}\PYG{o}{/}\PYG{n}{invoice}\PYG{o}{/}\PYG{p}{\PYGZob{}}\PYG{n}{invoiceId}\PYG{p}{\PYGZcb{}}
+    \PYG{n}{GET}  \PYG{o}{/}\PYG{n}{api}\PYG{o}{/}\PYG{n}{health}
+\end{Verbatim}

@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+    \PYG{n}{GET} \PYG{o}{/}\PYG{n}{api}\PYG{o}{/}\PYG{n}{invoices}
+    \PYG{n}{GET} \PYG{o}{/}\PYG{n}{api}\PYG{o}{/}\PYG{n}{invoice}\PYG{o}{/}\PYG{p}{\PYGZob{}}\PYG{n}{invoiceId}\PYG{p}{\PYGZcb{}}
+\end{Verbatim}
