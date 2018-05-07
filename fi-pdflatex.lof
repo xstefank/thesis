@@ -2,13 +2,13 @@
 \addvspace {4\p@ }
 \addvspace {4\p@ }
 \contentsline {figure}{\numberline {2.1}{\ignorespaces Dirty write (adapted from \cite {isolation_levels})\relax }}{8}{figure.caption.10}
-\contentsline {figure}{\numberline {2.2}{\ignorespaces Non repeatable read (adapted from \cite {isolation_levels})\relax }}{9}{figure.caption.13}
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Non-repeatable read (adapted from \cite {isolation_levels})\relax }}{9}{figure.caption.13}
 \addvspace {4\p@ }
 \addvspace {4\p@ }
 \contentsline {figure}{\numberline {4.1}{\ignorespaces Example saga execution\relax }}{40}{figure.caption.16}
 \contentsline {figure}{\numberline {4.2}{\ignorespaces Distributed saga example \cite {applying_saga_pattern}\relax }}{47}{figure.caption.20}
 \addvspace {4\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Product Information example JSON\relax }}{56}{figure.caption.26}
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Product information example JSON\relax }}{56}{figure.caption.26}
 \contentsline {figure}{\numberline {5.2}{\ignorespaces The saga model\relax }}{57}{figure.caption.27}
 \contentsline {figure}{\numberline {5.3}{\ignorespaces LRA definition example JSON\relax }}{72}{figure.caption.45}
 \contentsline {figure}{\numberline {5.4}{\ignorespaces Action example JSON\relax }}{73}{figure.caption.46}

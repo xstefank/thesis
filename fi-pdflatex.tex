@@ -45,7 +45,7 @@
     keywords      = {transactions, Narayana, Long Running Actions (LRA), reactive, microservices, asynchronous, saga, compensating transactions},
     TeXkeywords   = {transactions, Narayana, Long Running Actions (LRA), reactive, microservices, asynchronous, saga, compensating transactions},
 }
-\thesislong{abstract}{Transaction processing is an inherent part of application development. However, particularly in the distributed environment, the utilization of transactions introduces several challenges that transaction management must be able to handle. Microservices represent an emerging architectural style for the modern distributed application design. These applications commonly address similar concerns to stay responsive, elastic and resilient which is why the utilization of traditional locking transaction commit protocols may not be acceptable. The saga pattern presents a suitable alternative solution to transaction processing that relaxes some of the ACID properties in order to promote availability. In this work, we examine how sagas differ from conventional transactions, investigate currently available saga solutions and propose a saga execution implementation for the Narayana transaction manager.
+\thesislong{abstract}{Transaction processing is an inherent part of application development. However, particularly in the distributed environment, the utilization of transactions introduces several challenges that transaction management must be able to handle. Microservices represent an emerging architectural style for the modern distributed application design. These applications commonly address similar concerns to stay responsive, elastic and resilient which is why the use of traditional locking transaction commit protocols may not be acceptable. The saga pattern presents a suitable alternative solution to transaction processing that relaxes some of the ACID properties in order to promote availability. In this work, we examine how sagas differ from conventional transactions, investigate currently available saga solutions and propose a saga execution implementation for the Narayana transaction manager.
 }
 \thesislong{thanks}{I would like to express my sincere thanks to my supervisor Bruno Rossi, PhD for his help and support in my work on this thesis. I would also like to thank Mgr. Ondrej Chaloupka from the Narayana team for his supervision, neverending passion and interest in this topic that was inspiring to complete many of achieved results. Last but foremost, I would like to direct my thanks to my family and my beloved Magdalena who comprehensively supported me throughout the formation of this publication.
 }
@@ -168,7 +168,7 @@ In practice, this approach is not always considered as sufficient due to its loc
 
 The read uncommitted is the lowest level in which the transaction sets the lock only when it needs to modify the data item and releases it immediately after the transaction is completed (long write-locks). This allows that one transaction may read the not yet committed changes of any other transaction which is phenomena referred to as the \textit{dirty read}.
 
-However, the read uncommitted isolation level already prevents the \textit{dirty write} conflict which represents the transaction that overwrites a value previously written by another transaction that has not yet been committed. This problem can be easily described on an example depicted in figure 2.1. In this execution, the resulting data state contains different values for variables (x = B and y = A). However, in any serial execution of these transactions the result would be consistent. The read uncommitted level prevents this phenomenon as it prohibits write access to data items before the former write locks are released.
+However, the read uncommitted isolation level already prevents the \textit{dirty write} conflict which represents the transaction that overwrites a value previously written by another transaction that has not yet been committed. This problem can be easily described on an example depicted in Figure 2.1. In this execution, the resulting data state contains different values for variables (x = B and y = A). However, in any serial execution of these transactions the result would be consistent. The read uncommitted level prevents this phenomenon as it prohibits write access to data items before the former write locks are released.
 
 \hfill \break
 
@@ -195,7 +195,7 @@ For example, imagine a bank system with two accounts -- both with starting balan
     \begin{center}
         \includegraphics[height=55mm]{images/nonrepeatableread.png}
     \end{center}
-    \caption{Non repeatable read (adapted from \cite{isolation_levels})}
+    \caption{Non-repeatable read (adapted from \cite{isolation_levels})}
 \end{figure}
 
 The MVCC alternative to the repeatable read is the snapshot isolation. Both the repeatable read and the snapshot isolation prevent \textit{non-repeatable reads}, but they differ in implementation \cite{isolation_levels}. Repeatable read is based on the locking mechanisms. However, the snapshot isolation allows each transaction to read data from a snapshot of the (committed) data which is created at the time the transaction is started \cite{ansi-sql-critique}. The database is required to internally keep track of several states and to provide each transaction with the snapshot that is appropriate for its time span.
@@ -681,7 +681,7 @@ The notion of sagas can be naturally extended into distributed environments \cit
 
 Analogously to the centralized system, the distributed saga management also requires a transaction log which needs to be durable and distributed. The examples of distributed database providers include, e.g., Cassandra, RethinkDB or Apache Ignite and many others.
 
-The saga execution coordinator (SEC) is spanned process across the participating services. This process manages and interprets the saga and it persists all processing information into the transaction log. The coordinator does not represent a single point of failure as it is allowed to fail. This is possible because the SEC process does not hold any state data, the complete saga state is contained in the distributed log. The general example of the application model employing SEC is available in figure \ref{fig:SEC}.
+The saga execution coordinator (SEC) is spanned process across the participating services. This process manages and interprets the saga and it persists all processing information into the transaction log. The coordinator does not represent a single point of failure as it is allowed to fail. This is possible because the SEC process does not hold any state data, the complete saga state is contained in the distributed log. The general example of the application model employing SEC is available in Figure \ref{fig:SEC}.
 
 \begin{figure}
     \begin{center}
@@ -834,7 +834,7 @@ A user is able to create an order by a REST call to the dedicated endpoint of th
     \begin{center}
         \includegraphics[height=30mm]{images/productInfoJSON.png}
     \end{center}
-    \caption{Product Information example JSON}
+    \caption{Product information example JSON}
     \label{fig:inputJson}
 \end{figure}
 
@@ -846,7 +846,7 @@ Users are also allowed to query the persisted saga data (orders, shipments, and 
 
 \section{Order saga}
 
-The saga pattern applied in this application performs the order requests. The order saga consists of three parts -- the production of shipping and invoice information and if both invocations are successful, the actual order creation. If any part of the processing fails, the whole progress is expected to be undone. For instance, if the shipment is successfully created but the invoice assembly is not able to be confirmed, the persisted shipment information, as well as the order, must be canceled (also optionally notifying the user that the order cannot be created). The graphical representation of the saga progress is available in the figure \ref{fig:saga-model}.
+The saga pattern applied in this application performs the order requests. The order saga consists of three parts -- the production of shipping and invoice information and if both invocations are successful, the actual order creation. If any part of the processing fails, the whole progress is expected to be undone. For instance, if the shipment is successfully created but the invoice assembly is not able to be confirmed, the persisted shipment information, as well as the order, must be canceled (also optionally notifying the user that the order cannot be created). The graphical representation of the saga progress is available in Figure \ref{fig:saga-model}.
 
 \begin{figure}
     \begin{center}
@@ -1081,7 +1081,7 @@ This project consists of five WildFly Swarm microservices and one support module
 
 The support module is called the \texttt{service-model}. This module is responsible for the specification of the LRA definition and exchanged JSON data formats, the description of the communication model used in other services and the administration of common utilities.
 
-The \texttt{LRADefinition} class denotes the JSON format of the LRA representation. It presents a simplified version of the LRA capabilities for example purposes. The definition includes only required attributes -- the name of the LRA, a list of individual actions that form the LRA and the unspecified object containing the user defined data associated with the LRA. The example LRA definition JSON format is available in the figure \ref{fig:lra-json}.
+The \texttt{LRADefinition} class denotes the JSON format of the LRA representation. It presents a simplified version of the LRA capabilities for example purposes. The definition includes only required attributes -- the name of the LRA, a list of individual actions that form the LRA and the unspecified object containing the user defined data associated with the LRA. The example LRA definition JSON format is available in Figure \ref{fig:lra-json}.
 
 \begin{figure}[h]
     \begin{center}
@@ -1093,7 +1093,7 @@ The \texttt{LRADefinition} class denotes the JSON format of the LRA representati
 
 The individual actions that compose the LRA are incident to the pattern services in this quickstart use for the communication. The information exchange is based upon the REST architectural style which expects that services adhere to predefined endpoint rules. 
 
-The action definition consists of the name, the action type and the service for which the invocation is intended. The \texttt{service-model} project contains both \texttt{ActionType} and \texttt{Service} enumerations that denote possible values. The example action JSON is included in the figure \ref{fig:action-json}.
+The action definition consists of the name, the action type and the service for which the invocation is intended. The \texttt{service-model} project contains both \texttt{ActionType} and \texttt{Service} enumerations that denote possible values. The example action JSON is included in Figure \ref{fig:action-json}.
 
 \begin{figure}[h]
     \begin{center}
