@@ -1,5 +1,5 @@
 \documentclass[oneside,
-  digital, %% This option enables the default options for the
+  printed, %% This option enables the default options for the
            %% digital version of a document. Replace with `printed`
            %% to enable the default options for the printed version
            %% of a document.
@@ -626,7 +626,7 @@ It is important to keep in mind that even compensating actions may fail. There a
 
 In contrast to the traditional transaction approach, the Saga pattern relaxes the ACID requirements to achieve availability and scalability with built-in failure management. As the saga commits each operation separately, updates of the not fully committed saga are immediately visible to other parallel operations \cite{trans_concept} which directly breaks the isolation property.
 
-Sagas utilize an alternative BASE model \cite{life-beyond-dist-tran-helland, building-on-quicksand} which values the availability over the consistency provided by ACID (CAP theorem - Section \ref{sec:cap-theorem}). The specified system properties are:
+Sagas utilize an alternative BASE model \cite{life-beyond-dist-tran-helland, building-on-quicksand} which values the availability over the consistency provided by ACID (CAP theorem, Section \ref{sec:cap-theorem}). The specified system properties are:
 
 \begin{itemize}
     \item \textbf{Basically Available} -- The system guarantees availability with regards to the CAP theorem.
