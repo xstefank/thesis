@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{ActionResult} \PYG{n+nf}{invoke}\PYG{o}{(}\PYG{n}{LRAData}\PYG{o}{)}
+\end{Verbatim}
