@@ -613,7 +613,7 @@ As the definition in the original paper by Garcia-Molina and Salem \cite{sagas_p
 
 \section{Compensations}
 
-Each operation in a saga needs to have an associated compensation action. The purpose of the compensating action is to semantically undo the work performed by the original operation. This is not necessarily the contradictory action that puts the system into the same state as it was before the activity began or generally the saga started. 
+Each operation in a saga needs to have an associated compensation action. The purpose of the compensating action is to semantically undo the work performed by the original operation. This is not necessarily the contradictory action that puts the system into the same state as it was before the operation began or generally the saga started. 
 
 Imagine that the operation consists of the sending of an email. The compensation cannot directly undo the email dispatch. Instead, it would send another email to the same destination which could explain why the previous action did fail. In this case, the system is in the state where it has two additional emails being sent. However, the comprising system state is expected to be semantically consistent as both operation and compensation have been defined by the participant. Therefore, the consistency guarantees must be ensured by individual participants at the operation level.
 
@@ -653,7 +653,7 @@ The saga paper \cite{sagas_publ} distinguishes two options to handle a failure t
 
 \newlinepar{Backward recovery}
 
-A backward recovery mode is the most common way of handling saga failure management as it was described in previous sections. It requires that all activities must define a compensation handler.
+A backward recovery mode is the most common way of handling saga failure management as it was described in previous sections. It requires that all operations must define a compensation handler.
 
 When the SEC component receives an \texttt{abort-saga} command in the backward recovery mode, it firstly aborts the currently executed operation. Then for every previous operation in the reverse order of the original execution, it calls its respective compensation action. After the invocation of the compensation handler corresponding to the first operation is completed, the saga may end and the system is in the semantically consistent state as it was before the saga began.
 
