@@ -1,0 +1,157 @@
+#
+# JBoss, Home of Professional Open Source
+# Copyright 2008, Red Hat Middleware LLC, and individual contributors
+# as indicated by the @author tags.
+# See the copyright.txt in the distribution for a
+# full listing of individual contributors.
+# This copyrighted material is made available to anyone wishing to use,
+# modify, copy, or redistribute it subject to the terms and conditions
+# of the GNU Lesser General Public License, v. 2.1.
+# This program is distributed in the hope that it will be useful, but WITHOUT A
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.  See the GNU Lesser General Public License for more details.
+# You should have received a copy of the GNU Lesser General Public License,
+# v.2.1 along with this distribution; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+# MA  02110-1301, USA.
+#
+# (C) 2005-2008,
+# @author JBoss Inc.
+
+#########
+# This is the 'default' version of the profile, used by hosts that
+# can't find one mathcing their own name, which most means hudson slaves.
+#
+# The dbs it uses are in boston, so if running from a dev box on the vpn
+# you probably want to use the boston vpn endpoint or the tests will
+# be more likely to timeout.
+#########
+
+#DB2
+#https://hub.docker.com/r/ibmcom/db2express-c/
+#docker run -it -p 50000:50000 -e DB2INST1_PASSWORD=db2inst1-pwd -e LICENSE=accept ibmcom/db2express-c:latest bash
+#docker run -d -p 50000:50000 -e DB2INST1_PASSWORD=db2inst1-pwd -e LICENSE=accept  ibmcom/db2express-c:latest db2start
+#docker run --name db2-ci -e DB2INST1_PASSWORD=db2inst1-pwd -e LICENSE=accept -d -p 50000:50000 ibmcom/db2express-c:latest db2start
+#docker rename <container> db2
+# docker start db2-ci
+#useradd -g db2iadm1 db2
+#echo "db2:db2" | chpasswd
+#su - db2inst1
+#db2start
+#db2 create db BTDB1
+#db2
+#CONNECT TO BTDB1
+#GRANT CONNECT ON DATABASE TO USER db2
+
+######################################################################
+# PostgreSQL JNDI Pair
+######################################################################
+
+# docker run --name postgres-ci -e DB_USER="postgres" -e DB_PASSWORD="postgres" -d -p 5432:5432 dcerecedo/postgres-docker:postgresql-9.3
+# docker start postgres-ci
+# /var/lib/pgsql/data - conf files for tcp/ip and auth
+# su - postgres
+# createdb jbossts
+# docker run --rm -ti dcerecedo/postgres-docker:postgresql-9.3 psql -h narayanaci1.eng.hst.ams2.redhat.com -p 5432 -U dtf11 jbossts
+# CREATE USER dtf11 PASSWORD 'dtf11';
+# GRANT ALL ON DATABASE jbossts TO dtf11;
+# CREATE USER dtf12 PASSWORD 'dtf12';
+# GRANT ALL ON DATABASE jbossts TO dtf12;
+# ALTER DATABASE jbossts SET bytea_output TO 'escape';
+# \q
+# sed -i "s/#max_prepared_transactions = 0/max_prepared_transactions = 100/g" ./etc/postgresql/9.3/main/postgresql.conf
+#docker stop postgres-ci
+#docker start postgres-ci
+
+DB1_PGSQL_JNDI_NumberOfDrivers=2
+DB1_PGSQL_JNDI_Driver0=org.postgresql.Driver
+DB1_PGSQL_JNDI_Driver1=com.arjuna.ats.jdbc.TransactionalDriver
+DB1_PGSQL_JNDI_Binding=pgsql1
+DB1_PGSQL_JNDI_DatabaseURL=jdbc:arjuna:pgsql1
+DB1_PGSQL_JNDI_DatabaseUser=dtf11
+DB1_PGSQL_JNDI_DatabasePassword=dtf11
+DB1_PGSQL_JNDI_DatabaseName=jbossts
+DB1_PGSQL_JNDI_Host=narayanaci1.eng.hst.ams2.redhat.com
+
+DB2_PGSQL_JNDI_NumberOfDrivers=2
+DB2_PGSQL_JNDI_Driver0=org.postgresql.Driver
+DB2_PGSQL_JNDI_Driver1=com.arjuna.ats.jdbc.TransactionalDriver
+DB2_PGSQL_JNDI_Binding=pgsql2
+DB2_PGSQL_JNDI_DatabaseURL=jdbc:arjuna:pgsql2
+DB2_PGSQL_JNDI_DatabaseUser=dtf12
+DB2_PGSQL_JNDI_DatabasePassword=dtf12
+DB2_PGSQL_JNDI_DatabaseName=jbossts
+DB2_PGSQL_JNDI_Host=narayanaci1.eng.hst.ams2.redhat.com
+
+######################################################################
+# MySQL JNDI Pair
+######################################################################
+
+#docker run --name mariadb-ci -e MYSQL_ROOT_PASSWORD="admin1234" -d -p 3306:3306 mariadb:latest
+#docker start mariadb-ci
+# docker run --rm -ti mariadb:latest mysql -p
+# create database jbossts;
+# CREATE USER dtf11 IDENTIFIED BY 'dtf11';
+# grant all on jbossts.* to 'dtf11'@'%' identified by 'dtf11';
+# CREATE USER dtf12 IDENTIFIED BY 'dtf12';
+# grant all on jbossts.* to 'dtf12'@'%' identified by 'dtf12';
+# flush privileges;
+ 
+DB1_MYSQL_JNDI_NumberOfDrivers=2
+DB1_MYSQL_JNDI_Driver0=com.mysql.jdbc.Driver
+DB1_MYSQL_JNDI_Driver1=com.arjuna.ats.jdbc.TransactionalDriver
+DB1_MYSQL_JNDI_Binding=mysql1
+DB1_MYSQL_JNDI_DatabaseURL=jdbc:arjuna:mysql1
+DB1_MYSQL_JNDI_DatabaseUser=dtf11
+DB1_MYSQL_JNDI_DatabasePassword=dtf11
+DB1_MYSQL_JNDI_DatabaseName=jbossts
+DB1_MYSQL_JNDI_Host=narayanaci1.eng.hst.ams2.redhat.com
+
+DB2_MYSQL_JNDI_NumberOfDrivers=2
+DB2_MYSQL_JNDI_Driver0=com.mysql.jdbc.Driver
+DB2_MYSQL_JNDI_Driver1=com.arjuna.ats.jdbc.TransactionalDriver
+DB2_MYSQL_JNDI_Binding=mysql2
+DB2_MYSQL_JNDI_DatabaseURL=jdbc:arjuna:mysql2
+DB2_MYSQL_JNDI_DatabaseUser=dtf12
+DB2_MYSQL_JNDI_DatabasePassword=dtf12
+DB2_MYSQL_JNDI_DatabaseName=jbossts
+DB2_MYSQL_JNDI_Host=narayanaci1.eng.hst.ams2.redhat.com
+
+######################################################################
+# Oracle thin JNDI Pair
+######################################################################
+
+# https://github.com/oracle/docker-images/tree/master/OracleDatabase
+# docker run --name oracle-ci --shm-size=1g -p 1521:1521 -p 8080:8080 -e ORACLE_PWD=oracle oracle/database:11.2.0.2-xe
+# docker run --rm -ti oracle/database:11.2.0.2-xe sqlplus sys/oracle@narayanaci1.eng.hst.ams2.redhat.com:1521/XE as sysdba
+# CREATE USER dtf11 IDENTIFIED BY dtf11; 
+# GRANT CONNECT, RESOURCE TO dtf11;
+# CREATE USER dtf12 IDENTIFIED BY dtf12;
+# GRANT CONNECT, RESOURCE TO dtf12;
+# docker start oracle-ci
+#sqlplus / as sysdba
+#sqlplus>alter system set processes=300 scope=spfile;
+#sqlplus>shut immediate;
+# docker start oracle-ci
+
+DB1_THIN_JNDI_NumberOfDrivers=2
+DB1_THIN_JNDI_Driver0=oracle.jdbc.driver.OracleDriver
+DB1_THIN_JNDI_Driver1=com.arjuna.ats.jdbc.TransactionalDriver
+DB1_THIN_JNDI_Binding=oracle_thin1
+DB1_THIN_JNDI_DatabaseURL=jdbc:arjuna:oracle_thin1
+DB1_THIN_JNDI_DatabaseUser=dtf11
+DB1_THIN_JNDI_DatabasePassword=dtf11
+DB1_THIN_JNDI_DatabaseName=XE
+DB1_THIN_JNDI_Host=narayanaci1.eng.hst.ams2.redhat.com
+DB1_THIN_JNDI_Port=1521
+
+DB2_THIN_JNDI_NumberOfDrivers=2
+DB2_THIN_JNDI_Driver0=oracle.jdbc.driver.OracleDriver
+DB2_THIN_JNDI_Driver1=com.arjuna.ats.jdbc.TransactionalDriver
+DB2_THIN_JNDI_Binding=oracle_thin2
+DB2_THIN_JNDI_DatabaseURL=jdbc:arjuna:oracle_thin2
+DB2_THIN_JNDI_DatabaseUser=dtf12
+DB2_THIN_JNDI_DatabasePassword=dtf12
+DB2_THIN_JNDI_DatabaseName=XE
+DB2_THIN_JNDI_Host=narayanaci1.eng.hst.ams2.redhat.com
+DB2_THIN_JNDI_Port=1521

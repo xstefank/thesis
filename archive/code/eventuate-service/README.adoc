@@ -1,0 +1,30 @@
+= Eventuate-service
+
+Example testing application using http://eventuate.io/[eventuate.io] framework
+
+== Running
+
+1. build project
+ * `./gradlew clean build`
+
+1. run docker-compose
+ * `docker-compose up -d --build`
+
+=== Stopping
+
+ * `docker-compose down --remove-orphans`
+
+== Testing
+
+==== Valid order
+
+* `curl -X POST -H "Content-Type: application/json" -d '{"productId":"testProduct", "comment":"testComment", "price":"20"}' http://localhost:8080/api/order`
+
+==== Shipment failure
+
+* `curl -X POST -H "Content-Type: application/json" -d '{"productId":"failShipment", "comment":"testComment", "price":"20"}' http://localhost:8080/api/order`
+
+==== Invoice failure
+
+* `curl -X POST -H "Content-Type: application/json" -d '{"productId":"failInvoice", "comment":"testComment", "price":"20"}' http://localhost:8080/api/order`
+
