@@ -31,17 +31,27 @@
 \usepackage{tikz}      % Diagrams
 \usetikzlibrary{calc, shapes, backgrounds}
 \usepackage{amsmath, amssymb}
-\usepackage{url}       % `\url`s
 \usepackage{listings}  % Code listings
+\usepackage{hyperref}
 \frenchspacing
 \begin{document}
   \frame{\maketitle}
 
-  \begin{darkframes}
-    \section{Transactions}
+        \section{Transactions}
+        
+    \begin{frame}{Microservices}
+    
+        \begin{tikzpicture}
+        \node  {
+            \includegraphics[width=100mm]{resources/fowlerMS.png}
+        };
+        \end{tikzpicture}%
+    
+    \end{frame}
+
     \begin{frame}{Transactions}
     
-     A transaction is a unit of processing that provides all-or-nothing property to the work that is conducted within its scope, also ensuring thatshared resources are protected from multiple users \cite{java_transaction_processing}.
+     "A transaction is a unit of processing that provides all-or-nothing property to the work that is conducted within its scope, also ensuring thatshared resources are protected from multiple users" \cite{java_transaction_processing}.
      \hfill \break
         \begin{itemize}
             \item sequence of operations
@@ -67,7 +77,7 @@
     \begin{tikzpicture}[overlay]
     \node[anchor=south east,xshift=-70pt,yshift=-30pt]
     at (current page.south east) {
-        \includegraphics[width=50mm]{resources/vials.jpg}
+        \includegraphics[width=55mm]{resources/vials.jpg}
     };
     \end{tikzpicture}%
 
@@ -381,14 +391,16 @@
       \end{thebibliography}
   Images
   \begin{thebibliography}{9}
+      \bibitem{fowlerMS}
+      \small
+      \href{https://www.martinfowler.com/articles/microservices.html}{https://www.martinfowler.com/articles/microservices.html}
       \bibitem{vials}
-      http://www.24pressrelease.com/assets/news/Propylene%20Glycol%20Solvent%2017614.jpg
+      \href{http://www.24pressrelease.com/assets/news/Propylene\%20Glycol\%20Solvent\%2017614.jpg}{http://www.24pressrelease.com/assets/news/Propylene\\\%20Glycol\%20Solvent\%2017614.jpg}.
   \end{thebibliography}
   
         
     \end{frame}
 
-  \end{darkframes}
 
   \section{Light Frames}
     \subsection{Blind Text}
