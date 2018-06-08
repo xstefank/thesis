@@ -41,21 +41,39 @@
     \section{Transactions}
     \begin{frame}{Transactions}
     
+     A transaction is a unit of processing that provides all-or-nothing property to the work that is conducted within its scope, also ensuring thatshared resources are protected from multiple users \cite{java_transaction_processing}.
+     \hfill \break
         \begin{itemize}
-            \item all or nothing property
+            \item sequence of operations
             \item commit or rollback
-            \item ACID properties
-            \begin{itemize}
-                \item Atomicity
-                \item Consistency
-                \item Isolation
-                \item Durability
-            \end{itemize}
-            \item XA transaction
-            \item distributed transaction
         \end{itemize}
-        
+        \begin{tikzpicture}[overlay]
+        \node[anchor=south east,xshift=-50pt,yshift=-40pt]
+        at (current page.south east) {
+            \includegraphics[width=65mm]{resources/transaction_states.png}
+        };
+        \end{tikzpicture}%
     \end{frame}
+    
+\begin{frame}{ACID transaction}
+
+    \Large
+    \begin{itemize}
+        \item Atomicity
+        \item Consistency
+        \item Isolation
+        \item Durability
+    \end{itemize}
+    \begin{tikzpicture}[overlay]
+    \node[anchor=south east,xshift=-70pt,yshift=-30pt]
+    at (current page.south east) {
+        \includegraphics[width=50mm]{resources/vials.jpg}
+    };
+    \end{tikzpicture}%
+
+\end{frame}
+
+
     \subsection{Basic}
     \begin{frame}{Transaction}
       \framesubtitle{Lewis Carroll}%
@@ -329,12 +347,11 @@
     \end{frame}
 
     \begin{frame}[label=bibliography]{Bibliography}
-      \framesubtitle{\TeX, \LaTeX, and Beamer}
       \begin{thebibliography}{9}
-        \bibitem{knuth84}
-            Donald~E.~Knuth.
-            \emph{The \TeX book}.
-            Addison-Wesley, 1984.
+        \bibitem{java_transaction_processing}
+           M.~Little, J.~Maron, and G.~Pavlik.
+           \emph{Java transaction processing}.
+           Prentice Hall, 2004.
         \bibitem{lamport94}
             Leslie~Lamport.
             \emph{\LaTeX : A Document Preparation System}.
@@ -347,12 +364,14 @@
             Till~Tantau.
             \emph{User's Guide to the Beamer Class Version 3.01}.
             Available at \url{http://latex-beamer.sourceforge.net}.
-        \bibitem{MS05}
-            A.~Mertz and W.~Slough.
-            Edited by B.~Beeton and K.~Berry.
-            \emph{Beamer by example} In TUGboat,
-              Vol. 26, No. 1., pp. 68-73.
       \end{thebibliography}
+  Images
+  \begin{thebibliography}{9}
+      \bibitem{vials}
+      http://www.24pressrelease.com/assets/news/Propylene%20Glycol%20Solvent%2017614.jpg
+  \end{thebibliography}
+  
+        
     \end{frame}
 
   \end{darkframes}
