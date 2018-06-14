@@ -51,8 +51,12 @@
 
     \begin{frame}{Transactions}
     
-     "A transaction is a unit of processing that provides all-or-nothing property to the work that is conducted within its scope, also ensuring thatshared resources are protected from multiple users" \cite{java_transaction_processing}.
-     \hfill \break
+     \begin{quotation}
+         \begin{center}
+             "A transaction is a unit of processing that provides all-or-nothing property to the work that is conducted within its scope, also ensuring thatshared resources are protected from multiple users" \cite{java_transaction_processing}.
+         \end{center}
+     \end{quotation}
+     \Large
         \begin{itemize}
             \item sequence of operations
             \item commit or rollback
@@ -63,6 +67,9 @@
             \includegraphics[width=65mm]{resources/transaction_states.png}
         };
         \end{tikzpicture}%
+        \hfill \break
+        \hfill \break
+        
     \end{frame}
     
 \begin{frame}{ACID transaction}
@@ -75,11 +82,14 @@
         \item Durability
     \end{itemize}
     \begin{tikzpicture}[overlay]
-    \node[anchor=south east,xshift=-70pt,yshift=-30pt]
+    \node[anchor=south east,xshift=-70pt,yshift=-50pt]
     at (current page.south east) {
         \includegraphics[width=55mm]{resources/vials.jpg}
     };
     \end{tikzpicture}%
+    \hfill \break
+    \hfill \break
+    \hfill \break
 
 \end{frame}
 
@@ -115,7 +125,97 @@
 
 \end{frame}
 
+\begin{frame}{Two phase commit protocol}
 
+\hfill \break
+\hfill \break
+\hfill \break
+\hfill \break
+\hfill \break
+\Large
+\begin{itemize}
+    \item $O(n^2)$ messages
+    \item blocking
+    \item coordinator - single point of failure
+\end{itemize}
+\begin{tikzpicture}[overlay]
+\node[anchor=south east,xshift=-40pt,yshift=65pt]
+at (current page.south east) {
+    \includegraphics[width=65mm]{resources/2pc.jpg}
+};
+\end{tikzpicture}%
+
+\end{frame}
+
+\begin{frame}{Saga pattern}
+
+\begin{quotation}
+\begin{center}
+    Hector Garcia-Molina and Kenneth Salem, Princeton University, 1987
+\end{center}
+\end{quotation}
+
+\Large
+\begin{itemize}
+    \item long lived transactions
+    \item compensations
+    \item all-or-nothing property
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{Saga executions}
+
+\Large
+\begin{itemize}
+    \item 2PC - $T_1$, $T_2$, ..., $T_n$ (in a single step)
+    \item Saga
+    \begin{itemize}
+        \Large
+        \item success - $T_1$, $T_2$, ..., $T_n$
+        \item failure - $T_1$, $T_2$, ..., $T_k$, $C_k$, $C_{k-1}$, ..., $C_1$
+    \end{itemize}
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{Example saga execution}
+
+\begin{center}
+    \Large
+    Success
+\end{center}
+\begin{tikzpicture}[overlay]
+\node[anchor=south east,xshift=105pt,yshift=-15pt]
+at (current page.south) {
+    \includegraphics[width=90mm]{resources/tripExample.png}
+};
+\end{tikzpicture}%
+\hfill \break
+\hfill \break
+
+\begin{center}
+    \Large
+    Failure / Compensation
+\end{center}
+\begin{tikzpicture}[overlay]
+\node[anchor=south east,xshift=-50pt,yshift=-55pt]
+at (current page.south east) {
+    \includegraphics[width=100mm]{resources/tripExampleCompensation.png}
+};
+\end{tikzpicture}%
+\hfill \break
+\hfill \break
+\hfill \break
+\hfill \break
+\hfill \break
+\hfill \break
+
+\end{frame}
+
+%------------------
     \subsection{Basic}
     \begin{frame}{Transaction}
       \framesubtitle{Lewis Carroll}%
