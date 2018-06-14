@@ -215,6 +215,87 @@ at (current page.south east) {
 
 \end{frame}
 
+\begin{frame}{Two phase commit protocol}
+
+\begin{tikzpicture}[overlay]
+\node[anchor=south east,xshift=-50pt,yshift=-105pt]
+at (current page.south east) {
+    \includegraphics[width=110mm]{resources/2pc.png}
+};
+\end{tikzpicture}%
+
+\end{frame}
+
+\begin{frame}{Saga pattern}
+
+\begin{tikzpicture}[overlay]
+\node[anchor=south east,xshift=-40pt,yshift=-115pt]
+at (current page.south east) {
+    \includegraphics[width=117mm]{resources/saga.png}
+};
+\end{tikzpicture}%
+
+\end{frame}
+
+\begin{frame}{Saga implementations comparison scenario}
+
+\begin{tikzpicture}[overlay]
+\node[anchor=center,xshift=-35pt,yshift=0pt]
+at (current page.south) {
+    \includegraphics[width=100mm]{resources/SagaModel.png}
+};
+\end{tikzpicture}%
+
+\end{frame}
+
+\begin{frame}{Saga implementations investigation}
+
+\Large
+\begin{itemize}
+    \item Axon framework
+    \item Eventuate Event Sourcing (ES)
+    \item Eventuate Tram
+    \item Narayana Long Running Actions (LRA)
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Saga implementations comparison}
+
+\begin{tikzpicture}[overlay]
+\node[anchor=center,xshift=-35pt,yshift=0pt]
+at (current page.south) {
+    \includegraphics[width=110mm]{resources/comparison.png}
+};
+\end{tikzpicture}%
+
+
+\end{frame}
+
+\begin{frame}{Saga implementations performance testing}
+
+\Large
+\begin{itemize}
+    \item Axon - 2 reported issues
+    \item Eventuate ES - 1 reported issue
+    \item Eventuate Tram - 1 feature request
+    \item Narayana LRA
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{LRA executor motivation}
+
+\begin{tikzpicture}[overlay]
+\node[anchor=center,xshift=-35pt,yshift=0pt]
+at (current page.south) {
+    \includegraphics[width=110mm]{resources/msa_calls.png}
+};
+\end{tikzpicture}%
+
+
+\end{frame}
+
 %------------------
     \subsection{Basic}
     \begin{frame}{Transaction}
