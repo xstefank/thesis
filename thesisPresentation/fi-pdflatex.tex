@@ -86,13 +86,31 @@
 \begin{frame}{Distributed transactions}
 
     \begin{itemize}
-        \item XA vs distributed system
-        \item Two phase commit protocol
-        \begin{itemize}
-            \item $O(n^2)$ messages
-            \item blocking
-            \item coordinator - single point of failure
-        \end{itemize}
+        \item XA 
+        \begin{tikzpicture}[overlay]
+        \node[anchor=south east,xshift=-150pt,yshift=-75pt]
+        at (current page.south east) {
+            \includegraphics[width=70mm]{resources/XATransaction.png}
+        };
+        \end{tikzpicture}%
+        \hfill \break
+        \hfill \break
+        \hfill \break
+        \hfill \break
+        \hfill \break
+        \item Distributed system
+        \begin{tikzpicture}[overlay]
+        \node[anchor=south east,xshift=-230pt,yshift=-75pt]
+        at (current page.south east) {
+            \includegraphics[width=65mm]{resources/DistributedTransaction.png}
+        };
+        \end{tikzpicture}%
+        
+        \hfill \break
+        \hfill \break
+        \hfill \break
+        \hfill \break
+        \hfill \break
     \end{itemize}
 
 \end{frame}
