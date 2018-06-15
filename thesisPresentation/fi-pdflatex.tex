@@ -81,9 +81,6 @@
         \begin{itemize}
             \item sequence of operations
             \item commit or rollback
-            \begin{itemize}
-                \item heuristic outcome
-            \end{itemize}
         \end{itemize}
         \begin{tikzpicture}[overlay]
         \node[anchor=south east,xshift=-50pt,yshift=-40pt]
@@ -419,6 +416,9 @@ at (current page.south) {
     \item processing strategies
 \end{itemize}
 
+\end{frame}
+
+\begin{frame}{Questions}
 
 \end{frame}
 
@@ -451,6 +451,42 @@ at (current page.south) {
     \end{thebibliography}
 
 
+\end{frame}
+
+\begin{frame}{Opponent's review}
+    \Large
+    \begin{itemize}
+        \item transaction heuristic outcomes
+        \begin{itemize}
+            \item heuristic commit, rollback, mixed
+            \item non-atomic outcome
+            \item requires semantic knowledge
+        \end{itemize}
+        \item LRA service performance test
+        \begin{itemize}
+            \item REST requests queuing 
+            %instead of the command sending in other frameworks
+        \end{itemize}
+        \item recovery capabilities of the executor
+        \begin{itemize}
+            \item main concern - failure after the marking of the participant invocation
+            \item idempotent requests (may be too restrictive)
+            \item timeouts
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Supervisor's review}
+    \Large
+    \begin{itemize}
+        \item performance testing
+        \item LRA specification relations
+        \begin{itemize}
+            \item still in the draft form
+            \item focusing only on the coordination capabilities
+            \item currently only providing the REST reference implementation
+        \end{itemize}
+    \end{itemize}
 \end{frame}
 
 \end{document}
