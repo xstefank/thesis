@@ -81,6 +81,9 @@
         \begin{itemize}
             \item sequence of operations
             \item commit or rollback
+            \begin{itemize}
+                \item heuristic outcome
+            \end{itemize}
         \end{itemize}
         \begin{tikzpicture}[overlay]
         \node[anchor=south east,xshift=-50pt,yshift=-40pt]
@@ -229,6 +232,26 @@ at (current page.south east) {
 \end{tikzpicture}%
 \hfill \break
 \hfill \break
+\hfill \break
+\hfill \break
+\hfill \break
+\hfill \break
+
+\end{frame}
+
+\begin{frame}{BASE transaction}
+    \Large
+    \begin{itemize}
+        \item Basically Available
+        \item Soft state
+        \item Eventual consistency
+    \end{itemize}
+\begin{tikzpicture}[overlay]
+\node[anchor=south east,xshift=-50pt,yshift=-80pt]
+at (current page.south east) {
+    \includegraphics[width=55mm]{resources/base1.jpg}
+};
+\end{tikzpicture}%
 \hfill \break
 \hfill \break
 \hfill \break
