@@ -90,62 +90,36 @@
         \begin{itemize}
             \item sequence of operations
             \item commit or rollback
+            \item ACID (values consistency)
         \end{itemize}
         \begin{tikzpicture}[overlay]
-        \node[anchor=south east,xshift=-50pt,yshift=-40pt]
+        \node[anchor=south east,xshift=-50pt,yshift=-45pt]
         at (current page.south east) {
             \includegraphics[width=65mm]{resources/transaction_states.png}
         };
         \end{tikzpicture}%
         \hfill \break
         \hfill \break
-        
+        \hfill \break       
     \end{frame}
-    
-\begin{frame}{ACID transaction}
-
-    \Large
-    \begin{itemize}
-        \item Atomicity
-        \item Consistency
-        \item Isolation
-        \item Durability
-    \end{itemize}
-    \begin{tikzpicture}[overlay]
-    \node[anchor=south east,xshift=-70pt,yshift=-50pt]
-    at (current page.south east) {
-        \includegraphics[width=55mm]{resources/vials.jpg}
-    };
-    \end{tikzpicture}%
-    \hfill \break
-    \hfill \break
-    \hfill \break
-
-\end{frame}
 
 \begin{frame}{Distributed transactions}
 
     \begin{itemize}
         \item XA 
-        \begin{tikzpicture}[overlay]
-        \node[anchor=south east,xshift=-150pt,yshift=-75pt]
-        at (current page.south east) {
-            \includegraphics[width=70mm]{resources/XATransaction.png}
-        };
-        \end{tikzpicture}%
-        \hfill \break
-        \hfill \break
-        \hfill \break
-        \hfill \break
-        \hfill \break
         \item Distributed system
         \begin{tikzpicture}[overlay]
-        \node[anchor=south east,xshift=-230pt,yshift=-75pt]
+        \node[anchor=south east,xshift=-175pt,yshift=-105pt]
         at (current page.south east) {
-            \includegraphics[width=65mm]{resources/DistributedTransaction.png}
+            \includegraphics[width=100mm]{resources/DistributedTransaction.png}
         };
         \end{tikzpicture}%
         
+        \hfill \break
+        \hfill \break
+        \hfill \break
+        \hfill \break
+        \hfill \break
         \hfill \break
         \hfill \break
         \hfill \break
@@ -189,44 +163,23 @@ at (current page.south east) {
 \begin{itemize}
     \item long lived transactions
     \item compensations
+    \begin{itemize}
+        
+    \end{itemize}
     \item all-or-nothing property
-\end{itemize}
-
-\end{frame}
-
-
-\begin{frame}{Saga executions}
-
-\Large
-\begin{itemize}
-    \item 2PC - $T_1$, $T_2$, ..., $T_n$ (in a single step)
-    \item Saga
     \begin{itemize}
-        \Large
-        \item success - $T_1$, $T_2$, ..., $T_n$
-        \item failure - $T_1$, $T_2$, ..., $T_k$, $C_k$, $C_{k-1}$, ..., $C_1$
+        \item 2PC - $T_1$, $T_2$, \dots, $T_n$ (in a single step)
+        \item Saga
+        \begin{itemize}
+            \item success - $T_1$, $T_2$, \dots, $T_n$
+            \item failure - $T_1$, $T_2$, \dots, $T_k$, $C_k$, $C_{k-1}$, \dots, $C_1$
+        \end{itemize}
+    \end{itemize}
+    \item BASE (values availability)
+    \begin{itemize}
+        \item Basically Available, Soft state, Eventual consistency
     \end{itemize}
 \end{itemize}
-
-\end{frame}
-
-\begin{frame}{BASE transaction}
-    \Large
-    \begin{itemize}
-        \item Basically Available
-        \item Soft state
-        \item Eventual consistency
-    \end{itemize}
-\begin{tikzpicture}[overlay]
-\node[anchor=south east,xshift=-50pt,yshift=-80pt]
-at (current page.south east) {
-    \includegraphics[width=55mm]{resources/base1.jpg}
-};
-\end{tikzpicture}%
-\hfill \break
-\hfill \break
-\hfill \break
-\hfill \break
 
 \end{frame}
 
